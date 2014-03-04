@@ -10,7 +10,7 @@
 ?>
 
 <li class="list-group-item">
-	<div class="support-status <?php echo shoestrap_bbps_get_topic_status(); ?>"></div>
+	<div class="support-status <?php echo four7_bbps_get_topic_status(); ?>"></div>
 	<ul id="bbp-topic-<?php bbp_topic_id(); ?>" <?php bbp_topic_class(); ?>>
 
 		<li class="col-md-1">
@@ -57,14 +57,14 @@
 		<li class="bbp-topic-reply-count col-md-2 text-center"><?php bbp_show_lead_topic() ? bbp_topic_reply_count() : bbp_topic_post_count(); ?></li>
 
 		<li class="bbp-topic-freshness col-md-2 text-right small">
-			<?php do_action( 'bbp_theme_before_topic_freshness_link' ); ?>
-			<?php bbp_topic_freshness_link(); ?>
-			<?php do_action( 'bbp_theme_after_topic_freshness_link' ); ?>
+			<?php do_action( 'bbp_theme_before_topic_freshnefs_link' ); ?>
+			<?php bbp_topic_freshnefs_link(); ?>
+			<?php do_action( 'bbp_theme_after_topic_freshnefs_link' ); ?>
 			<!-- <hr /> -->
 			<p class="bbp-topic-meta">
-				<?php do_action( 'bbp_theme_before_topic_freshness_author' ); ?>
+				<?php do_action( 'bbp_theme_before_topic_freshnefs_author' ); ?>
 				<span class="bbp-topic-freshness-author"><?php bbp_author_link( array( 'post_id' => bbp_get_topic_last_active_id(), 'size' => 20, 'link_title' => '' ) ); ?></span>
-				<?php do_action( 'bbp_theme_after_topic_freshness_author' ); ?>
+				<?php do_action( 'bbp_theme_after_topic_freshnefs_author' ); ?>
 			</p>
 		</li>
 

@@ -3,4 +3,4 @@
 Template Name: Sidebar - Sidebar - Main
 */
 
-ss_get_template_part( 'page' );
+fs_get_template_part( 'page' );

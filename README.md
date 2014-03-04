@@ -40,7 +40,7 @@ Want to override the template for single posts? No problem! All you have to do i
 function my_custom_single_content() {
 	// CONTENT HERE
 }
-add_action( 'shoestrap_content_single_override', 'my_custom_single_content' );
+add_action( 'four7_content_single_override', 'my_custom_single_content' );
 ```
 
 ## Contributing

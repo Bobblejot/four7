@@ -9,7 +9,7 @@
 
 ?>
 
-<?php if ( bbp_current_user_can_access_create_reply_form() ) : ?>
+<?php if ( bbp_current_user_can_accefs_create_reply_form() ) : ?>
 	<div id="new-reply-<?php bbp_topic_id(); ?>" class="bbp-reply-form">
 		<form id="new-post" name="new-post" method="post" action="<?php the_permalink(); ?>">
 			<?php do_action( 'bbp_theme_before_reply_form' ); ?>

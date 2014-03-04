@@ -1,8 +1,8 @@
 ### HEAD
 
-* Fix: Rename all `roots_*` functions to `shoestrap_` for consistency
+* Fix: Rename all `roots_*` functions to `four7_` for consistency
 * Fix: Use tabs for identation instead of 2 spaces from now on. Closer to WordPress Coding Standards.
-* Fix: Rename all `Roots_*` classes to `Shoestrap_*`
+* Fix: Rename all `Roots_*` classes to `Four7_*`
 * Fix: Use a single translation domain: shoestrap for consistency. All strings that were using roots as a textdomain were switched to shoestrap.
 * Fix: Use the "alternative" NavWalker as a default. Deprecating the default NavWalker
 * Fix: Move jQuery CDN to the "core" module instead of scripts.php
@@ -31,7 +31,7 @@
 * New: Modules are now Self-Contained.
 * Fix: Re-organizing file structure for modules
 * Fix: Fixed inline style generation of header margin. (props @larruda)
-* Fix: Adding variables using the shoestrap_compiler filter
+* Fix: Adding variables using the four7_compiler filter
 * FIx: Variables and Less files are now per-module.
 * Fix: Other Bugfixes
 
@@ -167,7 +167,7 @@ PLEASE re-compile your stylesheets after updating.
 * Fix: Updating Redux Framework
 * Fix: fixed deprecated class name for unstyled lists
 * Fix: bugfix for avatar image in WP admin bar
-* New: Added the 'shoestrap_compiler' filter to the compiler
+* New: Added the 'four7_compiler' filter to the compiler
 * Fix: Simplifications to the compiler
 * New: Update to Bootstrap 3.0.3
 * New: Adding NavList Navwalker to widget menus
@@ -178,7 +178,7 @@ PLEASE re-compile your stylesheets after updating.
 * Fix: Updating Redux Framework
 * Fix: fixed deprecated class name for unstyled lists
 * Fix: bugfix for avatar image in WP admin bar
-* New: Added the 'shoestrap_compiler' filter to the compiler
+* New: Added the 'four7_compiler' filter to the compiler
 * Fix: Simplifications to the compiler
 * New: Update to Bootstrap 3.0.3
 * New: Adding [NavList Navwalker](https://github.com/twittem/wp-bootstrap-navlist-walker) to widget menus

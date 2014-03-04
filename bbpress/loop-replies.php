@@ -19,8 +19,8 @@
 			<div class="bbp-reply-content col-md-6">
 				<?php if ( !bbp_show_lead_topic() ) : ?>
 					<div class="pull-right">
-						<?php shoestrap_bbp_user_subscribe_link( array( 'before' => '' ) ); ?>
-						<?php shoestrap_bbp_user_favorites_link(); ?>
+						<?php four7_bbp_user_subscribe_link( array( 'before' => '' ) ); ?>
+						<?php four7_bbp_user_favorites_link(); ?>
 					</div>
 				<?php else : ?>
 					<?php _e( 'Replies', 'bbpress' ); ?>
