@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Include the TGM_Plugin_Activation class.
- */
-require_once dirname( __FILE__ ) . '/class-TGM_Plugin_Activation.php';
-
 add_action( 'tgmpa_register', 'four7_required_plugins' );
 /**
  * Register the required plugins for this theme.
@@ -20,7 +15,7 @@ function four7_required_plugins() {
 		array(
 			'name'               => 'GitHub Updater',
 			'slug'               => 'github-updater',
-			'source'             => get_template_directory() . '/lib/plugins/github-updater-2.5.0.zip',
+			'source'             => get_template_directory() . '/library/plugins/github-updater-2.5.0.zip',
 			'required'           => false,
 			'version'            => '2.5.0',
 			'force_activation'   => false,
@@ -30,8 +25,8 @@ function four7_required_plugins() {
 		array(
 			'name'               => 'Redux Framework',
 			'slug'               => 'redux-framework',
-			'required'           => false,
-			'force_activation'   => false,
+			'required'           => true,
+			'force_activation'   => true,
 		),
 	);
 

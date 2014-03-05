@@ -12,6 +12,8 @@ if ( ! class_exists( 'Four7_Header' ) ) {
 			add_filter( 'redux/options/' . FOUR7_OPT_NAME . '/sections', array( $this, 'options' ), 80 );
 			add_action( 'widgets_init',       array( $this, 'header_widgets_init' ), 30 );
 			add_action( 'four7_pre_wrap', array( $this, 'branding' ), 3 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 101 );
+
 		}
 		/*
 		 * The Header module options.
@@ -171,6 +173,47 @@ if ( ! class_exists( 'Four7_Header' ) ) {
 				}
 
 				echo '</div >';
+			}
+		}
+
+		/*
+		 * Any necessary extra CSS is generated here
+		 */
+		function css() {
+			global $fs_settings;
+
+			if ( is_array( $fs_settings['header_bg'] ) ) {
+				$bg = Four7_Color::sanitize_hex( $fs_settings['header_bg']['background-color'] );
+			} else {
+				$bg = Four7_Color::sanitize_hex( $fs_settings['header_bg'] );
+			}
+			$cl = Four7_Color::sanitize_hex( $fs_settings['header_color'] );
+
+			$header_margin_top    = $fs_settings['header_margin_top'];
+			$header_margin_bottom = $fs_settings['header_margin_bottom'];
+
+			$opacity  = ( intval( $fs_settings['header_bg_opacity'] ) ) / 100;
+
+			$rgb      = Four7_Color::get_rgb( $bg, true );
+
+			if ( $fs_settings['header_toggle'] == 1 ) {
+				$style = '.before-main-wrapper .header-wrapper{ color: ' . $cl . ';';
+
+				if ( $opacity < 1 && ! $fs_settings['header_bg']['background-image'] ) {
+					$style .= 'background: rgb(' . $rgb . '); background: rgba(' . $rgb . ', ' . $opacity . ');';
+				}
+
+				if ( $header_margin_top > 0 ) {
+					$style .= 'margin-top:' . $header_margin_top . 'px;';
+				}
+
+				if ( $header_margin_bottom > 0 ) {
+					$style .= 'margin-bottom:' . $header_margin_bottom . 'px;';
+				}
+
+				$style .= '}';
+
+				wp_add_inline_style( 'four7_css', $style );
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 if ( ! class_exists( 'Four7_Less_PHP' ) ) {
 
 	/**
-	* The Shoestrap Compiler
+	* The Four7 Compiler
 	*/
 	class Four7_Less_PHP {
 
@@ -60,32 +60,32 @@ if ( ! class_exists( 'Four7_Less_PHP' ) ) {
 
 			// If this is a multisite installation, append the blogid to the filename
 			$cssid           = ( is_multisite() && $blog_id > 1 ) ? '_id-' . $blog_id : null;
-			$file_name       = '/ss-style' . $cssid . '.css';
+			$file_name       = '/fs-style' . $cssid . '.css';
 
 			// The complete path to the file.
 			$file_path       = $folder_path . $file_name;
 
 			// Get the URL directory of the stylesheet
-			$cfs_uri_folder  = ( $folder_path == $upload_dir['basedir'] ) ? $upload_dir['baseurl'] : get_template_directory_uri() . '/assets/css';
+			$css_uri_folder  = ( $folder_path == $upload_dir['basedir'] ) ? $upload_dir['baseurl'] : get_template_directory_uri() . '/assets/css';
 
 			// If the CSS file does not exist, use the default file.
-			$cfs_uri  = ( file_exists( $file_path ) ) ? $cfs_uri_folder . $file_name : get_template_directory_uri() . '/assets/css/style-default.css';
+			$css_uri  = ( file_exists( $file_path ) ) ? $css_uri_folder . $file_name : get_template_directory_uri() . '/assets/css/style-default.css';
 
 			// If a style.css file exists in the assets/css folder, use that file instead.
 			// This is mostly for backwards-compatibility with previous versions.
 			// Also if the stylesheet is compiled using grunt, this will make sure the correct file is used.
 			if ( file_exists( $def_folder_path . $file_name) ) {
-				$cfs_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
+				$css_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
 				$file_path = $def_folder_path . '/style' . $cssid . '.css';
 			}
 
-			$cfs_path = $file_path;
+			$css_path = $file_path;
 
-			$value    = ( $target == 'url' ) ? $cfs_uri : $cfs_path;
+			$value    = ( $target == 'url' ) ? $css_uri : $css_path;
 
 			if ( $target == 'ver' ) {
 				if ( ! get_transient( 'four7_stylesheet_time' ) ) {
-					set_transient( 'four7_stylesheet_time', filemtime( $cfs_path ), 24 * 60 * 60 );
+					set_transient( 'four7_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
 				}
 
 				$value = get_transient( 'four7_stylesheet_time' );

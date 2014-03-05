@@ -3,7 +3,7 @@
 * Fix: Rename all `roots_*` functions to `four7_` for consistency
 * Fix: Use tabs for identation instead of 2 spaces from now on. Closer to WordPress Coding Standards.
 * Fix: Rename all `Roots_*` classes to `Four7_*`
-* Fix: Use a single translation domain: shoestrap for consistency. All strings that were using roots as a textdomain were switched to shoestrap.
+* Fix: Use a single translation domain: four7 for consistency. All strings that were using roots as a textdomain were switched to four7.
 * Fix: Use the "alternative" NavWalker as a default. Deprecating the default NavWalker
 * Fix: Move jQuery CDN to the "core" module instead of scripts.php
 * Fix: Move Analytics scripts etc to the advanced module and removed it from scripts.php and config.php

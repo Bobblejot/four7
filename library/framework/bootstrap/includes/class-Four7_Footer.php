@@ -3,7 +3,7 @@
 
 if( ! class_exists( 'Four7_Footer' ) ) {
 	/**
-	* Build the Shoestrap Footer module class.
+	* Build the Four7 Footer module class.
 	*/
 	class Four7_Footer {
 
@@ -15,7 +15,7 @@ if( ! class_exists( 'Four7_Footer' ) ) {
 		}
 
 		/*
-		 * The footer core options for the Shoestrap theme
+		 * The footer core options for the Four7 theme
 		 */
 		function options( $sections ) {
 
@@ -278,33 +278,23 @@ if( ! class_exists( 'Four7_Footer' ) ) {
 			do_action( 'four7_footer_before_copyright' );
 
 			echo '<div id="footer-copyright">';
+				echo $fs_framework->open_row( 'div' );
+					echo $fs_framework->open_col( 'div', array( 'large' => $width ), 'copyright-bar' ) . $ftext . '</div>';
 
-			echo $fs_framework->make_row( 'div' );
+						if ( $social && ! is_null( $networks ) && count( $networks ) > 0 ) {
+							echo $fs_framework->open_col( 'div', array( 'large' => $social_width ), 'footer_social_bar' );
 
-			echo $fs_framework->make_col( $element = 'div', array( 'large' => $width ), 'copyright-bar' );
-			echo $ftext;
-			echo '</div>';
+								foreach ( $networks as $network ) {
+									echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '"><span class="el-icon-' . $network['icon'] . '"></span></a>';
+								}
 
-			if ( isset( $social ) && ! isset( $networks ) && is_null( $networks ) && count( $networks ) > 0 ) {
-				echo $fs_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' );
+							echo $fs_framework->close_col( 'div' );
+						}
 
-				foreach ( $networks as $network ) {
-					if ( $network['url'] == '' ) {
-						continue;
-					}
+					echo $fs_framework->close_col( 'div' );
 
-					echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '">';
-					echo '<span class="el-icon-' . $network['icon'] . '"></span>';
-					echo '</a>';
-				}
-
-				echo '</div>';
-			}
-
-			echo '</div>';
-
-			echo $fs_framework->clearfix();
-
+					echo $fs_framework->clearfix();
+				echo $fs_framework->close_row( 'row' );
 			echo '</div>';
 		}
 	}

@@ -14,7 +14,7 @@ if ( !class_exists( 'Four7_Branding' ) ) {
 		}
 
 		/*
-		 * The branding core options for the Shoestrap theme
+		 * The branding core options for the Four7 theme
 		 */
 		function options( $sections ) {
 			$fields = array();

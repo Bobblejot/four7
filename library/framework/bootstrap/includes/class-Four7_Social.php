@@ -48,7 +48,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 		}
 
 		/*
-		 * The social core options for the Shoestrap theme
+		 * The social core options for the Four7 theme
 		 */
 		function options( $sections ) {
 
@@ -259,7 +259,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			$fields[] = array( 
 				'title'     => __( 'RSS', 'four7' ),
 				'desc'      => __( 'Provide the link you desire and the RSS icon will appear. To remove it, just leave it blank.', 'four7' ),
-				'id'        => 'rfs_link',
+				'id'        => 'rss_link',
 				'validate'  => 'url',
 				'default'   => '',
 				'type'      => 'text'
@@ -360,7 +360,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			$networks[] = array( 'url' => $fs_settings['myspace_link'],      'icon' => 'myspace',    'fullname' => 'Myspace' );
 			$networks[] = array( 'url' => $fs_settings['pinterest_link'],    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
 			$networks[] = array( 'url' => $fs_settings['reddit_link'],       'icon' => 'reddit',     'fullname' => 'Reddit' );
-			$networks[] = array( 'url' => $fs_settings['rfs_link'],          'icon' => 'rss',        'fullname' => 'RSS' );
+			$networks[] = array( 'url' => $fs_settings['rss_link'],          'icon' => 'rss',        'fullname' => 'RSS' );
 			$networks[] = array( 'url' => $fs_settings['skype_link'],        'icon' => 'skype',      'fullname' => 'Skype' );
 			$networks[] = array( 'url' => $fs_settings['soundcloud_link'],   'icon' => 'soundcloud', 'fullname' => 'SoundCloud' );
 			$networks[] = array( 'url' => $fs_settings['tumblr_link'],       'icon' => 'tumblr',     'fullname' => 'Tumblr' );
@@ -433,7 +433,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 				$networks['tumblr'] = array(
 					'icon'      => 'tumblr',
 					'fullname'  => 'Tumblr',
-					'url'       =>  'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title()) . "&amp;description=".urlencode(the_excerpt())
+					'url'       =>  'http://www.tumblr.com/share/link?url=' . urlencode( get_permalink() ) . '&amp;name=' . urlencode( get_the_title() ) . "&amp;description=" . urlencode( get_the_excerpt() )
 				);
 			}
 
@@ -485,7 +485,11 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			$show = false;
 
 			// Button class
-			$button_color = $fs_settings['social_sharing_button_class'];
+			if ( isset( $fs_settings['social_sharing_button_class'] ) && ! empty( $fs_settings['social_sharing_button_class'] ) ) {
+				$button_color = $fs_settings['social_sharing_button_class'];
+			} else {
+				$button_color = 'default';
+			}
 
 			// Button Text
 			$text = $fs_settings['social_sharing_text'];

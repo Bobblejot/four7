@@ -156,11 +156,9 @@ class Four7_Init {
 		
 		/* Load the core framework functions. */
 		require_once( trailingslashit( four7_CLASSES ) . 'class-TGM_Plugin_Activation.php' );
-	
-	    /* Load the core framework options functions. */
-	    if ( !class_exists( 'ReduxFramework' )) {
-        require_once( trailingslashit( four7_FRAMEWORK ) . '/redux-framework/ReduxCore/framework.php' );
-        }
+		
+		/* Load media-related functions. */
+		require_once( trailingslashit( four7_FUNCTIONS ) . 'dependencies.php' );
 		
 		/* Load the core framework functions. */
 		require_once( trailingslashit( four7_FRAMEWORK ) . 'framework.php' );

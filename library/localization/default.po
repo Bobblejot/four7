@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Shoestrap 3 v3.0.3.05\n"
+"Project-Id-Version: Four7 3 v3.0.3.05\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2014-01-16 14:26:33+0000\n"
@@ -21,27 +21,27 @@ msgstr ""
 "X-Textdomain-Support: yes"
 
 #: 404.php:4
-#@ shoestrap
+#@ four7
 msgid "Sorry, but the page you were trying to view does not exist."
 msgstr ""
 
 #: 404.php:7
-#@ shoestrap
+#@ four7
 msgid "It looks like this was the result of either:"
 msgstr ""
 
 #: 404.php:9
-#@ shoestrap
+#@ four7
 msgid "a mistyped address"
 msgstr ""
 
 #: 404.php:10
-#@ shoestrap
+#@ four7
 msgid "an out-of-date link"
 msgstr ""
 
 #: base.php:11
-#@ shoestrap
+#@ four7
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
@@ -132,7 +132,7 @@ msgstr ""
 #: lib/modules/core.menus/functions.navbar.php:20
 #: templates/searchform.php:6
 #@ bbpress
-#@ shoestrap
+#@ four7
 msgid "Search for:"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 #: lib/modules/core.menus/functions.navbar.php:21
 #: templates/searchform.php:5
 #@ bbpress
-#@ shoestrap
+#@ four7
 msgid "Search"
 msgstr ""
 
@@ -351,40 +351,40 @@ msgid "Edit"
 msgstr ""
 
 #: index.php:12
-#@ shoestrap
+#@ four7
 msgid "Sorry, no results were found."
 msgstr ""
 
 #: index.php:40
-#@ shoestrap
+#@ four7
 msgid "&larr; Older posts"
 msgstr ""
 
 #: index.php:41
-#@ shoestrap
+#@ four7
 msgid "Newer posts &rarr;"
 msgstr ""
 
 #: lib/activation.php:28
 #: lib/activation.php:29
-#@ shoestrap
+#@ four7
 msgid "Theme Activation"
 msgstr ""
 
 #: lib/activation.php:50
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "%s Theme Activation"
 msgstr ""
 
 #: lib/activation.php:52
-#@ shoestrap
+#@ four7
 msgid "These settings are optional and should usually be used only on a fresh installation"
 msgstr ""
 
 #: lib/activation.php:59
 #: lib/activation.php:62
-#@ shoestrap
+#@ four7
 msgid "Create static front page?"
 msgstr ""
 
@@ -392,7 +392,7 @@ msgstr ""
 #: lib/activation.php:76
 #: lib/activation.php:88
 #: lib/activation.php:100
-#@ shoestrap
+#@ four7
 msgid "Yes"
 msgstr ""
 
@@ -400,65 +400,65 @@ msgstr ""
 #: lib/activation.php:77
 #: lib/activation.php:89
 #: lib/activation.php:101
-#@ shoestrap
+#@ four7
 msgid "No"
 msgstr ""
 
 #: lib/activation.php:67
-#@ shoestrap
+#@ four7
 msgid "Create a page called Home and set it to be the static front page"
 msgstr ""
 
 #: lib/activation.php:71
-#@ shoestrap
+#@ four7
 msgid "Change permalink structure?"
 msgstr ""
 
 #: lib/activation.php:74
-#@ shoestrap
+#@ four7
 msgid "Update permalink structure?"
 msgstr ""
 
 #: lib/activation.php:79
-#@ shoestrap
+#@ four7
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr ""
 
 #: lib/activation.php:83
 #: lib/activation.php:86
-#@ shoestrap
+#@ four7
 msgid "Create navigation menu?"
 msgstr ""
 
 #: lib/activation.php:91
-#@ shoestrap
+#@ four7
 msgid "Create the Primary Navigation menu and set the location"
 msgstr ""
 
 #: lib/activation.php:95
 #: lib/activation.php:98
-#@ shoestrap
+#@ four7
 msgid "Add pages to menu?"
 msgstr ""
 
 #: lib/activation.php:103
-#@ shoestrap
+#@ four7
 msgid "Add all current published pages to the Primary Navigation"
 msgstr ""
 
 #: lib/cleanup.php:200
 #: lib/modules/core.advanced/module.php:42
-#@ shoestrap
+#@ four7
 msgid "Continued"
 msgstr ""
 
 #: lib/init.php:11
-#@ shoestrap
+#@ four7
 msgid "Primary Navigation"
 msgstr ""
 
 #: lib/init.php:12
-#@ shoestrap
+#@ four7
 msgid "Secondary Navigation"
 msgstr ""
 
@@ -498,7 +498,7 @@ msgid "None available"
 msgstr ""
 
 #: lib/modules/core/module.php:194
-#@ shoestrap
+#@ four7
 msgid "This post is password protected. To view it please enter your password below:"
 msgstr ""
 
@@ -508,12 +508,12 @@ msgstr ""
 #: lib/modules/core.jumbotron/module.php:35
 #: lib/modules/core.layout/module.php:23
 #: lib/modules/core.menus/module.php:22
-#@ shoestrap
+#@ four7
 msgid "Advanced"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:15
-#@ shoestrap
+#@ four7
 msgid "Advanced Options Mode"
 msgstr ""
 
@@ -521,7 +521,7 @@ msgstr ""
 #: lib/modules/core.jumbotron/module.php:30
 #: lib/modules/core.layout/module.php:18
 #: lib/modules/core.menus/module.php:17
-#@ shoestrap
+#@ four7
 msgid "Show or hide advanced options"
 msgstr ""
 
@@ -530,215 +530,215 @@ msgstr ""
 #: lib/modules/core.jumbotron/module.php:34
 #: lib/modules/core.layout/module.php:22
 #: lib/modules/core.menus/module.php:21
-#@ shoestrap
+#@ four7
 msgid "Simple"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:27
-#@ shoestrap
+#@ four7
 msgid "Post excerpt length"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:28
-#@ shoestrap
+#@ four7
 msgid "Choose how many words should be used for post excerpt. Default: 40"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:39
-#@ shoestrap
+#@ four7
 msgid "\"more\" text"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:40
-#@ shoestrap
+#@ four7
 msgid "Text to display in case of excerpt too long. Default: Continued"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:47
-#@ shoestrap
+#@ four7
 msgid "Select pagination style"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:48
-#@ shoestrap
+#@ four7
 msgid "Switch between default pager or default pagination. Default: Pager."
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:60
-#@ shoestrap
+#@ four7
 msgid "Enable Retina mode"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:61
-#@ shoestrap
+#@ four7
 msgid "By enabling your site's featured images will be retina ready. Requires images to be uploaded at 2x the typical size desired. Default: On"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:70
-#@ shoestrap
+#@ four7
 msgid "Dev mode"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:71
-#@ shoestrap
+#@ four7
 msgid "By enabling your admin panel will have a Dev Mode Info with an output of the options object for addition debugging. Default: Off"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:80
-#@ shoestrap
+#@ four7
 msgid "Google Analytics ID"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:81
-#@ shoestrap
+#@ four7
 msgid "Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y."
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:90
-#@ shoestrap
+#@ four7
 msgid "The following settings affect various areas of your site, most notably buttons."
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:96
-#@ shoestrap
+#@ four7
 msgid "Border-Radius"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:97
-#@ shoestrap
+#@ four7
 msgid "You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:110
-#@ shoestrap
+#@ four7
 msgid "Padding Base"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:111
-#@ shoestrap
+#@ four7
 msgid "You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:124
-#@ shoestrap
+#@ four7
 msgid "PJAX"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:125
-#@ shoestrap
+#@ four7
 msgid "Use <a href=\"https://github.com/defunkt/jquery-pjax\" target=\"_blank\">PJAX</a> in link tags inside NavBars, Sibebars & Breadcrumb. This cause a fast linear fadeToggle effect in main page. Default: OFF"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:133
-#@ shoestrap
+#@ four7
 msgid "Root Relative URLs"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:134
-#@ shoestrap
+#@ four7
 msgid "Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:141
-#@ shoestrap
+#@ four7
 msgid "Enable Nice Search"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:142
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Redirects /?s=query to /search/query/, convert %20 to +. Default: ON"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:149
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:762
-#@ shoestrap
+#@ four7
 #@ redux-framework-demo
 msgid "Custom CSS"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:150
-#@ shoestrap
+#@ four7
 msgid "You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page."
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:160
-#@ shoestrap
+#@ four7
 msgid "Custom LESS"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:161
-#@ shoestrap
+#@ four7
 msgid "You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header."
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:172
-#@ shoestrap
+#@ four7
 msgid "Custom JS"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:173
-#@ shoestrap
+#@ four7
 msgid "You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page."
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:183
-#@ shoestrap
+#@ four7
 msgid "Minimize CSS"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:184
-#@ shoestrap
+#@ four7
 msgid "Minimize the genearated CSS. This should be ON for production sites. Default: OFF."
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:194
-#@ shoestrap
+#@ four7
 msgid "Debug Hooks"
 msgstr ""
 
 #: lib/modules/core.advanced/module.php:195
-#@ shoestrap
+#@ four7
 msgid "Turn on very useful debug hooks. These will only be visible to admins. Default: Off."
 msgstr ""
 
 #: lib/modules/core.background/module.php:28
-#@ shoestrap
+#@ four7
 msgid "Background"
 msgstr ""
 
 #: lib/modules/core.background/module.php:33
-#@ shoestrap
+#@ four7
 msgid "General Background Color"
 msgstr ""
 
 #: lib/modules/core.background/module.php:34
-#@ shoestrap
+#@ four7
 msgid "Select a background color for your site. Default: #ffffff."
 msgstr ""
 
 #: lib/modules/core.background/module.php:43
-#@ shoestrap
+#@ four7
 msgid "Content Background Color"
 msgstr ""
 
 #: lib/modules/core.background/module.php:44
-#@ shoestrap
+#@ four7
 msgid "Select a background color for your site's content area. Default: #ffffff."
 msgstr ""
 
 #: lib/modules/core.background/module.php:54
-#@ shoestrap
+#@ four7
 msgid "Content Background Color Opacity"
 msgstr ""
 
 #: lib/modules/core.background/module.php:55
-#@ shoestrap
+#@ four7
 msgid "Select the opacity of your background color for the main content area so that background images and patterns will show through. Default: 100 (fully opaque)"
 msgstr ""
 
 #: lib/modules/core.background/module.php:68
-#@ shoestrap
+#@ four7
 msgid ""
 "If you want a background image, you can select one here.\n"
 "                    You can either upload a custom image, or use one of our pre-defined image patterns.\n"
@@ -749,69 +749,69 @@ msgstr ""
 
 #: lib/modules/core.background/module.php:77
 #: lib/modules/core.jumbotron/module.php:74
-#@ shoestrap
+#@ four7
 msgid "Use a Background Image"
 msgstr ""
 
 #: lib/modules/core.background/module.php:78
 #: lib/modules/core.jumbotron/module.php:75
-#@ shoestrap
+#@ four7
 msgid "Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF."
 msgstr ""
 
 #: lib/modules/core.background/module.php:85
 #: lib/modules/core.jumbotron/module.php:82
-#@ shoestrap
+#@ four7
 msgid "Upload a Custom Background Image"
 msgstr ""
 
 #: lib/modules/core.background/module.php:86
 #: lib/modules/core.jumbotron/module.php:83
-#@ shoestrap
+#@ four7
 msgid "Upload a Custom Background image using the media uploader, or define the URL directly."
 msgstr ""
 
 #: lib/modules/core.background/module.php:95
 #: lib/modules/core.jumbotron/module.php:64
-#@ shoestrap
+#@ four7
 msgid "Background position"
 msgstr ""
 
 #: lib/modules/core.background/module.php:96
 #: lib/modules/core.jumbotron/module.php:65
-#@ shoestrap
+#@ four7
 msgid "Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed."
 msgstr ""
 
 #: lib/modules/core.background/module.php:99
 #: lib/modules/core.jumbotron/module.php:68
 #: lib/modules/core.menus/module.php:127
-#@ shoestrap
+#@ four7
 msgid "Fixed"
 msgstr ""
 
 #: lib/modules/core.background/module.php:100
 #: lib/modules/core.jumbotron/module.php:69
 #: lib/modules/core.menus/module.php:128
-#@ shoestrap
+#@ four7
 msgid "Scroll"
 msgstr ""
 
 #: lib/modules/core.background/module.php:106
 #: lib/modules/core.jumbotron/module.php:92
-#@ shoestrap
+#@ four7
 msgid "Background Image Positioning"
 msgstr ""
 
 #: lib/modules/core.background/module.php:107
 #: lib/modules/core.jumbotron/module.php:93
-#@ shoestrap
+#@ four7
 msgid "Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width."
 msgstr ""
 
 #: lib/modules/core.background/module.php:111
 #: lib/modules/core.jumbotron/module.php:97
-#@ shoestrap
+#@ four7
 msgid "Custom"
 msgstr ""
 
@@ -819,57 +819,57 @@ msgstr ""
 #: lib/modules/core.images/module.php:40
 #: lib/modules/core.images/module.php:86
 #: lib/modules/core.jumbotron/module.php:98
-#@ shoestrap
+#@ four7
 msgid "Full Width"
 msgstr ""
 
 #: lib/modules/core.background/module.php:117
 #: lib/modules/core.jumbotron/module.php:103
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:136
-#@ shoestrap
+#@ four7
 #@ redux-framework
 msgid "Background Repeat"
 msgstr ""
 
 #: lib/modules/core.background/module.php:118
 #: lib/modules/core.jumbotron/module.php:104
-#@ shoestrap
+#@ four7
 msgid "Select how (or if) the selected background should be tiled. Default: Tile"
 msgstr ""
 
 #: lib/modules/core.background/module.php:124
 #: lib/modules/core.jumbotron/module.php:110
-#@ shoestrap
+#@ four7
 msgid "No Repeat"
 msgstr ""
 
 #: lib/modules/core.background/module.php:125
 #: lib/modules/core.jumbotron/module.php:111
-#@ shoestrap
+#@ four7
 msgid "Tile"
 msgstr ""
 
 #: lib/modules/core.background/module.php:126
 #: lib/modules/core.jumbotron/module.php:112
-#@ shoestrap
+#@ four7
 msgid "Tile Horizontally"
 msgstr ""
 
 #: lib/modules/core.background/module.php:127
 #: lib/modules/core.jumbotron/module.php:113
-#@ shoestrap
+#@ four7
 msgid "Tile Vertically"
 msgstr ""
 
 #: lib/modules/core.background/module.php:132
 #: lib/modules/core.jumbotron/module.php:118
-#@ shoestrap
+#@ four7
 msgid "Background Alignment"
 msgstr ""
 
 #: lib/modules/core.background/module.php:133
 #: lib/modules/core.jumbotron/module.php:119
-#@ shoestrap
+#@ four7
 msgid "Select how the selected background should be horizontally aligned. Default: Left"
 msgstr ""
 
@@ -877,7 +877,7 @@ msgstr ""
 #: lib/modules/core.jumbotron/module.php:125
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:146
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:170
-#@ shoestrap
+#@ four7
 #@ redux-framework
 msgid "Left"
 msgstr ""
@@ -886,91 +886,91 @@ msgstr ""
 #: lib/modules/core.jumbotron/module.php:126
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:132
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:156
-#@ shoestrap
+#@ four7
 #@ redux-framework
 msgid "Right"
 msgstr ""
 
 #: lib/modules/core.background/module.php:141
 #: lib/modules/core.jumbotron/module.php:127
-#@ shoestrap
+#@ four7
 msgid "Center"
 msgstr ""
 
 #: lib/modules/core.background/module.php:146
 #: lib/modules/core.jumbotron/module.php:132
-#@ shoestrap
+#@ four7
 msgid "Use a Background Pattern"
 msgstr ""
 
 #: lib/modules/core.background/module.php:147
 #: lib/modules/core.jumbotron/module.php:133
-#@ shoestrap
+#@ four7
 msgid "Select one of the already existing Background Patterns. Default: OFF."
 msgstr ""
 
 #: lib/modules/core.background/module.php:154
 #: lib/modules/core.jumbotron/module.php:140
-#@ shoestrap
+#@ four7
 msgid "Choose a Background Pattern"
 msgstr ""
 
 #: lib/modules/core.background/module.php:155
 #: lib/modules/core.jumbotron/module.php:141
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:381
-#@ shoestrap
+#@ four7
 #@ redux-framework-demo
 msgid "Select a background pattern."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:11
-#@ shoestrap
+#@ four7
 msgid "Branding"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:16
-#@ shoestrap
+#@ four7
 msgid "Branding Options Mode"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:17
 #: lib/modules/core.layout/module.php:93
-#@ shoestrap
+#@ four7
 msgid "Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 ( 4/12 ) of the total page width."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:28
-#@ shoestrap
+#@ four7
 msgid "Logo"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:29
-#@ shoestrap
+#@ four7
 msgid "Upload a logo image using the media uploader, or define the URL directly."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:45
-#@ shoestrap
+#@ four7
 msgid "Custom Favicon"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:46
-#@ shoestrap
+#@ four7
 msgid "Upload a favicon image using the media uploader, or define the URL directly."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:54
-#@ shoestrap
+#@ four7
 msgid "Apple Icon"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:55
-#@ shoestrap
+#@ four7
 msgid "This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:67
-#@ shoestrap
+#@ four7
 msgid ""
 "The primary color you select will also affect other elements on your site,\n"
 "                      such as table borders, widgets colors, input elements, dropdowns etc.\n"
@@ -980,319 +980,319 @@ msgid ""
 msgstr ""
 
 #: lib/modules/core.branding/module.php:76
-#@ shoestrap
+#@ four7
 msgid "Enable Gradients"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:77
-#@ shoestrap
+#@ four7
 msgid "Enable gradients for buttons and the navbar. Default: Off."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:87
-#@ shoestrap
+#@ four7
 msgid "Brand Colors: Primary"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:88
-#@ shoestrap
+#@ four7
 msgid "Select your primary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:98
-#@ shoestrap
+#@ four7
 msgid "Brand Colors: Success"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:99
-#@ shoestrap
+#@ four7
 msgid "Select your branding color for success messages etc. Default: #5cb85c."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:109
-#@ shoestrap
+#@ four7
 msgid "Brand Colors: Warning"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:110
-#@ shoestrap
+#@ four7
 msgid "Select your branding color for warning messages etc. Default: #f0ad4e."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:120
-#@ shoestrap
+#@ four7
 msgid "Brand Colors: Danger"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:121
-#@ shoestrap
+#@ four7
 msgid "Select your branding color for success messages etc. Default: #d9534f."
 msgstr ""
 
 #: lib/modules/core.branding/module.php:131
-#@ shoestrap
+#@ four7
 msgid "Brand Colors: Info"
 msgstr ""
 
 #: lib/modules/core.branding/module.php:132
-#@ shoestrap
+#@ four7
 msgid "Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an 'info' class. Default: #5bc0de."
 msgstr ""
 
 #: lib/modules/core.breadcrumbs/module.php:73
-#@ shoestrap
+#@ four7
 msgid "Search results for &ldquo;"
 msgstr ""
 
 #: lib/modules/core.breadcrumbs/module.php:140
-#@ shoestrap
+#@ four7
 msgid "Error 404"
 msgstr ""
 
 #: lib/modules/core.breadcrumbs/module.php:185
-#@ shoestrap
+#@ four7
 msgid "Author:"
 msgstr ""
 
 #: lib/modules/core.breadcrumbs/module.php:189
-#@ shoestrap
+#@ four7
 msgid "Page"
 msgstr ""
 
 #: lib/modules/core.compiler/includes/functions.core.php:59
-#@ shoestrap
+#@ four7
 msgid "The following file does not exist and must be so in order to utilise this theme. Please create this file."
 msgstr ""
 
 #: lib/modules/core.compiler/includes/functions.core.php:60
-#@ shoestrap
+#@ four7
 msgid "Try visiting the theme options and clicking the \"Reset All\" button to attempt automatically creating it."
 msgstr ""
 
 #: lib/modules/core.compiler/includes/functions.core.php:67
-#@ shoestrap
+#@ four7
 msgid "The following file is not writable and must be so in order to utilise this theme. Please update the permissions."
 msgstr ""
 
 #: lib/modules/core.entry-meta/functions.metaconfig.php:33
 #: lib/modules/core.entry-meta/functions.metaconfig.php:34
-#@ shoestrap
+#@ four7
 msgid ", "
 msgstr ""
 
 #: lib/modules/core.entry-meta/functions.metaconfig.php:53
-#@ shoestrap
+#@ four7
 msgid "Sticky"
 msgstr ""
 
 #: lib/modules/core.entry-meta/functions.metaconfig.php:60
 #, php-format
-#@ shoestrap
+#@ four7
 msgctxt "1: post format name. 2: date"
 msgid "%1$s on %2$s"
 msgstr ""
 
 #: lib/modules/core.entry-meta/functions.metaconfig.php:65
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Permalink to %s"
 msgstr ""
 
 #: lib/modules/core.entry-meta/functions.metaconfig.php:92
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "View all posts by %s"
 msgstr ""
 
 #: lib/modules/core.entry-meta/module.php:15
-#@ shoestrap
+#@ four7
 msgid "Post Meta"
 msgstr ""
 
 #: lib/modules/core.entry-meta/module.php:21
-#@ shoestrap
+#@ four7
 msgid "Activate and order elements"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:11
 #: lib/widgets.php:17
-#@ shoestrap
-#@ shoestrap
+#@ four7
+#@ four7
 msgid "Footer"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:16
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:672
-#@ shoestrap
+#@ four7
 #@ redux-framework-demo
 msgid "Footer Background Color"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:17
-#@ shoestrap
+#@ four7
 msgid "Select the background color for your footer. Default: #282a2b."
 msgstr ""
 
 #: lib/modules/core.footer/module.php:26
-#@ shoestrap
+#@ four7
 msgid "Footer Background Opacity"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:27
-#@ shoestrap
+#@ four7
 msgid "Select the opacity level for the footer bar. Default: 100%."
 msgstr ""
 
 #: lib/modules/core.footer/module.php:37
-#@ shoestrap
+#@ four7
 msgid "Footer Text Color"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:38
-#@ shoestrap
+#@ four7
 msgid "Select the text color for your footer. Default: #8C8989."
 msgstr ""
 
 #: lib/modules/core.footer/module.php:47
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:622
-#@ shoestrap
+#@ four7
 #@ redux-framework-demo
 msgid "Footer Text"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:48
-#@ shoestrap
+#@ four7
 msgid "The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:74
-#@ shoestrap
+#@ four7
 msgid "Footer Top Margin"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:75
-#@ shoestrap
+#@ four7
 msgid "Select the top margin of footer in pixels. Default: 0px."
 msgstr ""
 
 #: lib/modules/core.footer/module.php:85
-#@ shoestrap
+#@ four7
 msgid "Show social icons in footer"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:86
-#@ shoestrap
+#@ four7
 msgid "Show social icons in the footer. Default: On."
 msgstr ""
 
 #: lib/modules/core.footer/module.php:95
-#@ shoestrap
+#@ four7
 msgid "Footer social links column width"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:96
-#@ shoestrap
+#@ four7
 msgid "You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5."
 msgstr ""
 
 #: lib/modules/core.footer/module.php:108
-#@ shoestrap
+#@ four7
 msgid "Footer social icons open new window"
 msgstr ""
 
 #: lib/modules/core.footer/module.php:109
-#@ shoestrap
+#@ four7
 msgid "Social icons in footer will open a new window. Default: On."
 msgstr ""
 
 #: lib/modules/core.header/module.php:11
-#@ shoestrap
+#@ four7
 msgid "Extra Header"
 msgstr ""
 
 #: lib/modules/core.header/module.php:18
-#@ shoestrap
+#@ four7
 msgid "Extra Branding Area"
 msgstr ""
 
 #: lib/modules/core.header/module.php:26
-#@ shoestrap
+#@ four7
 msgid "Display the Header."
 msgstr ""
 
 #: lib/modules/core.header/module.php:27
-#@ shoestrap
+#@ four7
 msgid "Turn this ON to display the header. Default: OFF"
 msgstr ""
 
 #: lib/modules/core.header/module.php:36
-#@ shoestrap
+#@ four7
 msgid "Display branding on your Header."
 msgstr ""
 
 #: lib/modules/core.header/module.php:37
-#@ shoestrap
+#@ four7
 msgid "Turn this ON to display branding ( Sitename or Logo )on your Header. Default: ON"
 msgstr ""
 
 #: lib/modules/core.header/module.php:46
-#@ shoestrap
+#@ four7
 msgid "Header Background Color"
 msgstr ""
 
 #: lib/modules/core.header/module.php:47
-#@ shoestrap
+#@ four7
 msgid "Select the background color for your header. Default: #EEEEEE."
 msgstr ""
 
 #: lib/modules/core.header/module.php:57
-#@ shoestrap
+#@ four7
 msgid "Header Background Opacity"
 msgstr ""
 
 #: lib/modules/core.header/module.php:58
-#@ shoestrap
+#@ four7
 msgid "Select the background opacity for your header. Default: 100%."
 msgstr ""
 
 #: lib/modules/core.header/module.php:70
-#@ shoestrap
+#@ four7
 msgid "Header Text Color"
 msgstr ""
 
 #: lib/modules/core.header/module.php:71
-#@ shoestrap
+#@ four7
 msgid "Select the text color for your header. Default: #333333."
 msgstr ""
 
 #: lib/modules/core.header/module.php:81
-#@ shoestrap
+#@ four7
 msgid "Header Top Margin"
 msgstr ""
 
 #: lib/modules/core.header/module.php:82
-#@ shoestrap
+#@ four7
 msgid "Select the top margin of header in pixels. Default: 0px."
 msgstr ""
 
 #: lib/modules/core.header/module.php:92
-#@ shoestrap
+#@ four7
 msgid "Header Bottom Margin"
 msgstr ""
 
 #: lib/modules/core.header/module.php:93
-#@ shoestrap
+#@ four7
 msgid "Select the bottom margin of header in pixels. Default: 0px."
 msgstr ""
 
 #: lib/modules/core.images/module.php:11
 #: lib/modules/core.images/module.php:17
-#@ shoestrap
+#@ four7
 msgid "Featured Images"
 msgstr ""
 
 #: lib/modules/core.images/module.php:18
-#@ shoestrap
+#@ four7
 msgid ""
 "Here you can select if you want to display the featured images in post archives and individual posts.\n"
 "                    Please note that these apply to posts, pages, as well as custom post types.\n"
@@ -1300,192 +1300,192 @@ msgid ""
 msgstr ""
 
 #: lib/modules/core.images/module.php:25
-#@ shoestrap
+#@ four7
 msgid "Featured Images on Archives"
 msgstr ""
 
 #: lib/modules/core.images/module.php:26
-#@ shoestrap
+#@ four7
 msgid "Display featured Images on post archives ( such as categories, tags, month view etc ). Default: OFF."
 msgstr ""
 
 #: lib/modules/core.images/module.php:35
-#@ shoestrap
+#@ four7
 msgid "Width of Featured Images on Archives"
 msgstr ""
 
 #: lib/modules/core.images/module.php:36
-#@ shoestrap
+#@ four7
 msgid "Set dimensions of featured Images on Archives. Default: Full Width"
 msgstr ""
 
 #: lib/modules/core.images/module.php:41
 #: lib/modules/core.images/module.php:87
-#@ shoestrap
+#@ four7
 msgid "Custom Dimensions"
 msgstr ""
 
 #: lib/modules/core.images/module.php:47
-#@ shoestrap
+#@ four7
 msgid "Archives Featured Image Width"
 msgstr ""
 
 #: lib/modules/core.images/module.php:48
 #: lib/modules/core.images/module.php:95
-#@ shoestrap
+#@ four7
 msgid "Select the width of your featured images on single posts. Default: 550px"
 msgstr ""
 
 #: lib/modules/core.images/module.php:60
-#@ shoestrap
+#@ four7
 msgid "Archives Featured Image Height"
 msgstr ""
 
 #: lib/modules/core.images/module.php:61
-#@ shoestrap
+#@ four7
 msgid "Select the height of your featured images on post archives. Default: 300px"
 msgstr ""
 
 #: lib/modules/core.images/module.php:73
-#@ shoestrap
+#@ four7
 msgid "Featured Images on Posts"
 msgstr ""
 
 #: lib/modules/core.images/module.php:74
-#@ shoestrap
+#@ four7
 msgid "Display featured Images on posts. Default: OFF."
 msgstr ""
 
 #: lib/modules/core.images/module.php:82
-#@ shoestrap
+#@ four7
 msgid "Width of Featured Images on Posts"
 msgstr ""
 
 #: lib/modules/core.images/module.php:83
-#@ shoestrap
+#@ four7
 msgid "Set dimensions of featured Images on Posts. Default: Full Width"
 msgstr ""
 
 #: lib/modules/core.images/module.php:94
-#@ shoestrap
+#@ four7
 msgid "Posts Featured Image Width"
 msgstr ""
 
 #: lib/modules/core.images/module.php:107
-#@ shoestrap
+#@ four7
 msgid "Posts Featured Image Height"
 msgstr ""
 
 #: lib/modules/core.images/module.php:108
-#@ shoestrap
+#@ four7
 msgid "Select the height of your featured images on single posts. Default: 330px"
 msgstr ""
 
 #: lib/modules/core.images/module.php:128
-#@ shoestrap
+#@ four7
 msgid "Disable featured images on single post types"
 msgstr ""
 
 #: lib/modules/core.images/resize.php:43
 #: lib/modules/core.images/resize.php:181
-#@ shoestrap
+#@ four7
 msgid "No image URL has been entered."
 msgstr ""
 
 #: lib/modules/core.images/resize.php:243
-#@ shoestrap
+#@ four7
 msgid "Failed to get $file_path information using \"@getimagesize\"."
 msgstr ""
 
 #: lib/modules/core.images/resize.php:286
-#@ shoestrap
+#@ four7
 msgid "Resize path invalid (GIF)"
 msgstr ""
 
 #: lib/modules/core.images/resize.php:290
-#@ shoestrap
+#@ four7
 msgid "Resize path invalid (PNG)."
 msgstr ""
 
 #: lib/modules/core.images/resize.php:298
-#@ shoestrap
+#@ four7
 msgid "Resize path invalid (JPG)."
 msgstr ""
 
 #: lib/modules/core.images/resize.php:313
-#@ shoestrap
+#@ four7
 msgid "Failed to get $dest_file_name (resized image) info via @getimagesize"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:24
 #: lib/modules/core.jumbotron/module.php:43
 #: lib/modules/core.widgets/module.php:58
-#@ shoestrap
+#@ four7
 msgid "Jumbotron"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:29
-#@ shoestrap
+#@ four7
 msgid "Jumbotron Options Mode"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:53
-#@ shoestrap
+#@ four7
 msgid "Jumbotron Background Color"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:54
-#@ shoestrap
+#@ four7
 msgid "Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the 'Jumbotron' Widget Area. Default: #EEEEEE."
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:151
-#@ shoestrap
+#@ four7
 msgid "Display Jumbotron only on the Frontpage."
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:152
-#@ shoestrap
+#@ four7
 msgid "When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:160
-#@ shoestrap
+#@ four7
 msgid "Full-Width"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:161
-#@ shoestrap
+#@ four7
 msgid "When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF."
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:169
-#@ shoestrap
+#@ four7
 msgid "Use fittext script for the title."
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:170
-#@ shoestrap
+#@ four7
 msgid "Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:179
-#@ shoestrap
+#@ four7
 msgid "Center-align the content."
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:180
-#@ shoestrap
+#@ four7
 msgid "Turn this on to center-align the contents of the Jumbotron area. Default: OFF"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:189
-#@ shoestrap
+#@ four7
 msgid "Jumbotron Font"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:190
-#@ shoestrap
+#@ four7
 msgid "The font used in jumbotron."
 msgstr ""
 
@@ -1500,23 +1500,23 @@ msgstr ""
 #: lib/modules/core.typography/module.php:126
 #: lib/modules/core.typography/module.php:147
 #: lib/modules/core.typography/module.php:169
-#@ shoestrap
+#@ four7
 msgid "This is my preview text!"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:209
-#@ shoestrap
+#@ four7
 msgid "Jumbotron Header Overrides"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:210
 #: lib/modules/core.typography/module.php:39
-#@ shoestrap
+#@ four7
 msgid "By enabling this you can specify custom values for each <h*> tag. Default: Off"
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:220
-#@ shoestrap
+#@ four7
 msgid "Jumbotron Headers Font"
 msgstr ""
 
@@ -1528,299 +1528,299 @@ msgstr ""
 #: lib/modules/core.typography/module.php:114
 #: lib/modules/core.typography/module.php:135
 #: lib/modules/core.typography/module.php:156
-#@ shoestrap
+#@ four7
 msgid "The main font for your site."
 msgstr ""
 
 #: lib/modules/core.jumbotron/module.php:239
-#@ shoestrap
+#@ four7
 msgid "Select the border options for your Jumbotron"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:11
 #: lib/modules/core.layout/module.php:45
-#@ shoestrap
+#@ four7
 msgid "Layout"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:17
-#@ shoestrap
+#@ four7
 msgid "Layout Options Mode"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:29
-#@ shoestrap
+#@ four7
 msgid "Site Style"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:30
-#@ shoestrap
+#@ four7
 msgid "Select the default site layout. Default: Wide"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:36
-#@ shoestrap
+#@ four7
 msgid "Static (Non-Responsive)"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:37
-#@ shoestrap
+#@ four7
 msgid "Wide"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:38
-#@ shoestrap
+#@ four7
 msgid "Boxed"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:39
-#@ shoestrap
+#@ four7
 msgid "Fluid"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:46
-#@ shoestrap
+#@ four7
 msgid "Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:62
-#@ shoestrap
+#@ four7
 msgid "Custom Layouts per Post Type"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:63
-#@ shoestrap
+#@ four7
 msgid "Set a default layout for each post type on your site."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:74
-#@ shoestrap
+#@ four7
 msgid " Layout"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:75
-#@ shoestrap
+#@ four7
 msgid "Override your default stylings. Choose between 1, 2 or 3 column layout."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:92
-#@ shoestrap
+#@ four7
 msgid "Primary Sidebar Width"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:107
-#@ shoestrap
+#@ four7
 msgid "Secondary Sidebar Width"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:108
-#@ shoestrap
+#@ four7
 msgid "Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 ( 4/12 ) of the total page width."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:122
-#@ shoestrap
+#@ four7
 msgid "Show sidebars on the frontpage"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:123
-#@ shoestrap
+#@ four7
 msgid "OFF by default. If you want to display the sidebars in your frontpage, turn this ON."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:131
-#@ shoestrap
+#@ four7
 msgid "Margin from top ( Works only in 'Boxed' mode )"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:132
-#@ shoestrap
+#@ four7
 msgid "This will add a margin above the navbar. Useful if you've enabled the 'Boxed' mode above. Default: 0px"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:144
-#@ shoestrap
+#@ four7
 msgid "Widgets mode"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:145
-#@ shoestrap
+#@ four7
 msgid "How do you want your widgets to be displayed?"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:149
-#@ shoestrap
+#@ four7
 msgid "Panel"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:150
-#@ shoestrap
+#@ four7
 msgid "Well"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:151
-#@ shoestrap
+#@ four7
 msgid "None"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:158
-#@ shoestrap
+#@ four7
 msgid "Show Breadcrumbs"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:159
-#@ shoestrap
+#@ four7
 msgid "Display Breadcrumbs. Default: OFF."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:167
-#@ shoestrap
+#@ four7
 msgid "Body Top Margin"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:168
-#@ shoestrap
+#@ four7
 msgid "Select the top margin of body element in pixels. Default: 0px."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:178
-#@ shoestrap
+#@ four7
 msgid "Body Bottom Margin"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:179
-#@ shoestrap
+#@ four7
 msgid "Select the bottom margin of body element in pixels. Default: 0px."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:189
-#@ shoestrap
+#@ four7
 msgid "Custom Grid"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:190
-#@ shoestrap
+#@ four7
 msgid "CAUTION:"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:190
-#@ shoestrap
+#@ four7
 msgid "Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites."
 msgstr ""
 
 #: lib/modules/core.layout/module.php:198
-#@ shoestrap
+#@ four7
 msgid "Small Screen / Tablet view"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:199
-#@ shoestrap
+#@ four7
 msgid "The width of Tablet screens. Default: 768px"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:212
-#@ shoestrap
+#@ four7
 msgid "Desktop Container Width"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:213
-#@ shoestrap
+#@ four7
 msgid "The width of normal screens. Default: 992px"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:227
-#@ shoestrap
+#@ four7
 msgid "Large Desktop Container Width"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:228
-#@ shoestrap
+#@ four7
 msgid "The width of Large Desktop screens. Default: 1200px"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:241
-#@ shoestrap
+#@ four7
 msgid "Columns Gutter"
 msgstr ""
 
 #: lib/modules/core.layout/module.php:242
-#@ shoestrap
+#@ four7
 msgid "The space between the columns in your grid. Default: 30px"
 msgstr ""
 
 #: lib/modules/core.menus/functions.navlist.php:12
-#@ shoestrap
+#@ four7
 msgid "Use this widget to add one of your custom menus as a widget."
 msgstr ""
 
 #: lib/modules/core.menus/functions.navlist.php:13
-#@ shoestrap
+#@ four7
 msgid "Custom Menu"
 msgstr ""
 
 #: lib/modules/core.menus/functions.navlist.php:67
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr ""
 
 #: lib/modules/core.menus/functions.navlist.php:72
-#@ shoestrap
+#@ four7
 msgid "Title:"
 msgstr ""
 
 #: lib/modules/core.menus/functions.navlist.php:76
-#@ shoestrap
+#@ four7
 msgid "Select Menu:"
 msgstr ""
 
 #: lib/modules/core.menus/functions.slide-down.php:7
-#@ shoestrap
+#@ four7
 msgid "Navbar Slide-Down Top"
 msgstr ""
 
 #: lib/modules/core.menus/functions.slide-down.php:16
-#@ shoestrap
+#@ four7
 msgid "Navbar Slide-Down 1"
 msgstr ""
 
 #: lib/modules/core.menus/functions.slide-down.php:25
-#@ shoestrap
+#@ four7
 msgid "Navbar Slide-Down 2"
 msgstr ""
 
 #: lib/modules/core.menus/functions.slide-down.php:34
-#@ shoestrap
+#@ four7
 msgid "Navbar Slide-Down 3"
 msgstr ""
 
 #: lib/modules/core.menus/functions.slide-down.php:43
-#@ shoestrap
+#@ four7
 msgid "Navbar Slide-Down 4"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:11
-#@ shoestrap
+#@ four7
 msgid "Menus"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:16
-#@ shoestrap
+#@ four7
 msgid "Menus Options Mode"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:30
-#@ shoestrap
+#@ four7
 msgid "Advanced NavBar Options"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:39
-#@ shoestrap
+#@ four7
 msgid "Type of NavBar"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:40
-#@ shoestrap
+#@ four7
 msgid ""
 "Choose the type of Navbar you want.\n"
 "                        Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus.\n"
@@ -1828,69 +1828,69 @@ msgid ""
 msgstr ""
 
 #: lib/modules/core.menus/module.php:46
-#@ shoestrap
+#@ four7
 msgid "Off"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:47
-#@ shoestrap
+#@ four7
 msgid "Normal"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:48
-#@ shoestrap
+#@ four7
 msgid "Pills"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:49
-#@ shoestrap
+#@ four7
 msgid "Alternative"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:57
-#@ shoestrap
+#@ four7
 msgid "NavBar Styling Options"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:58
-#@ shoestrap
+#@ four7
 msgid "Customize the look and feel of your navbar below."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:63
-#@ shoestrap
+#@ four7
 msgid "NavBar Background Color"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:64
-#@ shoestrap
+#@ four7
 msgid "Pick a background color for the NavBar. Default: #eeeeee."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:74
-#@ shoestrap
+#@ four7
 msgid "NavBar Background Opacity"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:75
-#@ shoestrap
+#@ four7
 msgid "Pick a background opacity for the NavBar. Default: 100%."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:86
-#@ shoestrap
+#@ four7
 msgid "NavBar Menu Style"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:87
-#@ shoestrap
+#@ four7
 msgid "You can use an alternative menu style for your NavBars."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:93
 #: lib/modules/core.menus/module.php:294
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1492
-#@ shoestrap
+#@ four7
 #@ domain
 msgid "Default"
 msgstr ""
@@ -1902,56 +1902,56 @@ msgstr ""
 #: lib/modules/core.menus/module.php:98
 #: lib/modules/core.menus/module.php:99
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:190
-#@ shoestrap
+#@ four7
 #@ redux-framework
 msgid "Style"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:100
-#@ shoestrap
+#@ four7
 msgid "Metro"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:105
-#@ shoestrap
+#@ four7
 msgid "Display Branding ( Sitename or Logo ) on the NavBar"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:106
-#@ shoestrap
+#@ four7
 msgid "Default: ON"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:114
-#@ shoestrap
+#@ four7
 msgid "Use Logo ( if available ) for branding on the NavBar"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:115
-#@ shoestrap
+#@ four7
 msgid "If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:123
-#@ shoestrap
+#@ four7
 msgid "NavBar Positioning"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:124
 #: lib/modules/core.menus/module.php:134
-#@ shoestrap
+#@ four7
 msgid "Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the 'fixed' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:133
-#@ shoestrap
+#@ four7
 msgid "Fixed NavBar Position"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:138
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:139
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:163
-#@ shoestrap
+#@ four7
 #@ redux-framework
 msgid "Bottom"
 msgstr ""
@@ -1959,198 +1959,198 @@ msgstr ""
 #: lib/modules/core.menus/module.php:139
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:125
 #: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:149
-#@ shoestrap
+#@ four7
 #@ redux-framework
 msgid "Top"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:144
-#@ shoestrap
+#@ four7
 msgid "NavBar Height"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:145
-#@ shoestrap
+#@ four7
 msgid "Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you've added one."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:156
-#@ shoestrap
+#@ four7
 msgid "Navbar Font"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:157
-#@ shoestrap
+#@ four7
 msgid "The font used in navbars."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:174
-#@ shoestrap
+#@ four7
 msgid "Branding Font"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:175
-#@ shoestrap
+#@ four7
 msgid "The branding font for your site."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:192
-#@ shoestrap
+#@ four7
 msgid "NavBar Margin"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:193
-#@ shoestrap
+#@ four7
 msgid "Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar ( scroll condition ). Default: 0px."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:204
-#@ shoestrap
+#@ four7
 msgid "Display social links in the NavBar."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:205
-#@ shoestrap
+#@ four7
 msgid "Display social links in the NavBar. These can be setup in the 'Social' section on the left. Default: OFF"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:213
-#@ shoestrap
+#@ four7
 msgid "Display social links as a Dropdown list or an Inline list."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:214
-#@ shoestrap
+#@ four7
 msgid "How to display social links. Default: Dropdown list"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:218
-#@ shoestrap
+#@ four7
 msgid "Inline"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:219
-#@ shoestrap
+#@ four7
 msgid "Dropdown"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:225
-#@ shoestrap
+#@ four7
 msgid "Search form on the NavBar"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:226
-#@ shoestrap
+#@ four7
 msgid "Display a search form in the NavBar. Default: On"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:234
-#@ shoestrap
+#@ four7
 msgid "Float NavBar menu to the right"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:235
-#@ shoestrap
+#@ four7
 msgid "Floats the primary navigation to the right. Default: On"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:244
-#@ shoestrap
+#@ four7
 msgid "Secondary Navbar"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:245
-#@ shoestrap
+#@ four7
 msgid "The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:251
-#@ shoestrap
+#@ four7
 msgid "Enable the Secondary NavBar"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:252
-#@ shoestrap
+#@ four7
 msgid "Display a Secondary NavBar on top of the Main NavBar. Default: ON"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:261
-#@ shoestrap
+#@ four7
 msgid "Display social networks in the navbar"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:262
-#@ shoestrap
+#@ four7
 msgid "Enable this option to display your social networks as a dropdown menu on the seondary navbar."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:270
-#@ shoestrap
+#@ four7
 msgid "Secondary NavBar Margin"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:271
-#@ shoestrap
+#@ four7
 msgid "Select the top and bottom margin of header in pixels. Default: 0px."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:282
-#@ shoestrap
+#@ four7
 msgid "Sidebar Menus"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:283
-#@ shoestrap
+#@ four7
 msgid "If you're using the \"Custom Menu\" widgets in your sidebars, you can control their styling here"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:288
-#@ shoestrap
+#@ four7
 msgid "Color for sidebar menus"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:289
-#@ shoestrap
+#@ four7
 msgid "Select a style for menus added to your sidebars using the custom menu widget"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:295
-#@ shoestrap
+#@ four7
 msgid "Branding-Primary"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:296
-#@ shoestrap
+#@ four7
 msgid "Branding-Success"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:297
-#@ shoestrap
+#@ four7
 msgid "Branding-Warning"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:298
-#@ shoestrap
+#@ four7
 msgid "Branding-Info"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:299
-#@ shoestrap
+#@ four7
 msgid "Branding-Danger"
 msgstr ""
 
 #: lib/modules/core.menus/module.php:305
-#@ shoestrap
+#@ four7
 msgid "Inverse Sidebar_menus."
 msgstr ""
 
 #: lib/modules/core.menus/module.php:306
-#@ shoestrap
+#@ four7
 msgid "Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details"
 msgstr ""
 
 #: lib/modules/core.presets/module.php:10
-#@ shoestrap
+#@ four7
 msgid "Presets"
 msgstr ""
 
@@ -3081,7 +3081,7 @@ msgstr ""
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:531
 #: lib/modules/core.typography/module.php:11
 #@ redux-framework-demo
-#@ shoestrap
+#@ four7
 msgid "Typography"
 msgstr ""
 
@@ -3767,7 +3767,7 @@ msgstr ""
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1384
 #: lib/modules/core.redux/module.php:49
 #@ redux-framework-demo
-#@ shoestrap
+#@ four7
 msgid "Theme Information 1"
 msgstr ""
 
@@ -3775,21 +3775,21 @@ msgstr ""
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1391
 #: lib/modules/core.redux/module.php:50
 #@ redux-framework-demo
-#@ shoestrap
+#@ four7
 msgid "<p>This is the tab content, HTML is allowed.</p>"
 msgstr ""
 
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1390
 #: lib/modules/core.redux/module.php:54
 #@ redux-framework-demo
-#@ shoestrap
+#@ four7
 msgid "Theme Information 2"
 msgstr ""
 
 #: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1395
 #: lib/modules/core.redux/module.php:59
 #@ redux-framework-demo
-#@ shoestrap
+#@ four7
 msgid "<p>This is the sidebar content, HTML is allowed.</p>"
 msgstr ""
 
@@ -3816,593 +3816,593 @@ msgid "<p>This text is displayed below the options panel. It isn't required, but
 msgstr ""
 
 #: lib/modules/core.redux/module.php:40
-#@ shoestrap
+#@ four7
 msgid "Theme Options"
 msgstr ""
 
 #: lib/modules/core.redux/module.php:55
-#@ shoestrap
+#@ four7
 msgid "<p>This is the tab content, HTML is allowed. Tab2</p>"
 msgstr ""
 
 #: lib/modules/core.social/module.php:10
-#@ shoestrap
+#@ four7
 msgid "Social Sharing"
 msgstr ""
 
 #: lib/modules/core.social/module.php:16
-#@ shoestrap
+#@ four7
 msgid "General Options"
 msgstr ""
 
 #: lib/modules/core.social/module.php:21
-#@ shoestrap
+#@ four7
 msgid "Button Text"
 msgstr ""
 
 #: lib/modules/core.social/module.php:22
-#@ shoestrap
+#@ four7
 msgid "Select the text for the social sharing button."
 msgstr ""
 
 #: lib/modules/core.social/module.php:29
-#@ shoestrap
+#@ four7
 msgid "Button Location"
 msgstr ""
 
 #: lib/modules/core.social/module.php:30
-#@ shoestrap
+#@ four7
 msgid "Select between NONE, TOP, BOTTOM & BOTH. For archives, 'BOTH' fallbacks in 'BOTTOM' only."
 msgstr ""
 
 #: lib/modules/core.social/module.php:44
-#@ shoestrap
+#@ four7
 msgid "Button Styling"
 msgstr ""
 
 #: lib/modules/core.social/module.php:45
-#@ shoestrap
+#@ four7
 msgid "Select between standard Bootstrap's button classes"
 msgstr ""
 
 #: lib/modules/core.social/module.php:60
-#@ shoestrap
+#@ four7
 msgid "Show in Posts Archives"
 msgstr ""
 
 #: lib/modules/core.social/module.php:61
-#@ shoestrap
+#@ four7
 msgid "Show the sharing button in posts archives."
 msgstr ""
 
 #: lib/modules/core.social/module.php:68
-#@ shoestrap
+#@ four7
 msgid "Show in Single Post"
 msgstr ""
 
 #: lib/modules/core.social/module.php:69
-#@ shoestrap
+#@ four7
 msgid "Show the sharing button in single post."
 msgstr ""
 
 #: lib/modules/core.social/module.php:76
-#@ shoestrap
+#@ four7
 msgid "Show in Single Page"
 msgstr ""
 
 #: lib/modules/core.social/module.php:77
-#@ shoestrap
+#@ four7
 msgid "Show the sharing button in single page."
 msgstr ""
 
 #: lib/modules/core.social/module.php:85
-#@ shoestrap
+#@ four7
 msgid "Select Socials"
 msgstr ""
 
 #: lib/modules/core.social/module.php:90
 #: lib/modules/core.social/module.php:200
-#@ shoestrap
+#@ four7
 msgid "Facebook"
 msgstr ""
 
 #: lib/modules/core.social/module.php:91
-#@ shoestrap
+#@ four7
 msgid "Show the Facebook sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:98
 #: lib/modules/core.social/module.php:227
-#@ shoestrap
+#@ four7
 msgid "Google+"
 msgstr ""
 
 #: lib/modules/core.social/module.php:99
-#@ shoestrap
+#@ four7
 msgid "Show the Google+ sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:106
 #: lib/modules/core.social/module.php:236
-#@ shoestrap
+#@ four7
 msgid "LinkedIn"
 msgstr ""
 
 #: lib/modules/core.social/module.php:107
-#@ shoestrap
+#@ four7
 msgid "Show the LinkedIn sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:114
 #: lib/modules/core.social/module.php:254
-#@ shoestrap
+#@ four7
 msgid "Pinterest"
 msgstr ""
 
 #: lib/modules/core.social/module.php:115
-#@ shoestrap
+#@ four7
 msgid "Show the Pinterest sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:122
 #: lib/modules/core.social/module.php:263
-#@ shoestrap
+#@ four7
 msgid "Reddit"
 msgstr ""
 
 #: lib/modules/core.social/module.php:123
-#@ shoestrap
+#@ four7
 msgid "Show the Reddit sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:130
 #: lib/modules/core.social/module.php:299
-#@ shoestrap
+#@ four7
 msgid "Tumblr"
 msgstr ""
 
 #: lib/modules/core.social/module.php:131
-#@ shoestrap
+#@ four7
 msgid "Show the Tumblr sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:138
 #: lib/modules/core.social/module.php:308
-#@ shoestrap
+#@ four7
 msgid "Twitter"
 msgstr ""
 
 #: lib/modules/core.social/module.php:139
-#@ shoestrap
+#@ four7
 msgid "Show the Twitter sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:146
-#@ shoestrap
+#@ four7
 msgid "Email"
 msgstr ""
 
 #: lib/modules/core.social/module.php:147
-#@ shoestrap
+#@ four7
 msgid "Show the Email sharing icon in blog posts."
 msgstr ""
 
 #: lib/modules/core.social/module.php:158
-#@ shoestrap
+#@ four7
 msgid "Social Links"
 msgstr ""
 
 #: lib/modules/core.social/module.php:164
-#@ shoestrap
+#@ four7
 msgid "Blogger"
 msgstr ""
 
 #: lib/modules/core.social/module.php:165
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Blogger icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:173
-#@ shoestrap
+#@ four7
 msgid "DeviantART"
 msgstr ""
 
 #: lib/modules/core.social/module.php:174
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the DeviantART icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:182
-#@ shoestrap
+#@ four7
 msgid "Digg"
 msgstr ""
 
 #: lib/modules/core.social/module.php:183
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Digg icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:191
-#@ shoestrap
+#@ four7
 msgid "Dribbble"
 msgstr ""
 
 #: lib/modules/core.social/module.php:192
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Dribbble icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:201
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Facebook icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:209
-#@ shoestrap
+#@ four7
 msgid "Flickr"
 msgstr ""
 
 #: lib/modules/core.social/module.php:210
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Flickr icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:218
-#@ shoestrap
+#@ four7
 msgid "GitHub"
 msgstr ""
 
 #: lib/modules/core.social/module.php:219
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the GitHub icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:228
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Google+ icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:237
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the LinkedIn icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:245
-#@ shoestrap
+#@ four7
 msgid "MySpace"
 msgstr ""
 
 #: lib/modules/core.social/module.php:246
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the MySpace icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:255
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Pinterest icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:264
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:272
-#@ shoestrap
+#@ four7
 msgid "RSS"
 msgstr ""
 
 #: lib/modules/core.social/module.php:273
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the RSS icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:281
-#@ shoestrap
+#@ four7
 msgid "Skype"
 msgstr ""
 
 #: lib/modules/core.social/module.php:282
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Skype icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:290
-#@ shoestrap
+#@ four7
 msgid "SoundCloud"
 msgstr ""
 
 #: lib/modules/core.social/module.php:291
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:300
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Tumblr icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:309
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Twitter icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.social/module.php:317
-#@ shoestrap
+#@ four7
 msgid "Vimeo"
 msgstr ""
 
 #: lib/modules/core.social/module.php:318
-#@ shoestrap
+#@ four7
 msgid "Provide the link you desire and the Vimeo icon will appear. To remove it, just leave it blank."
 msgstr ""
 
 #: lib/modules/core.typography/module.php:16
-#@ shoestrap
+#@ four7
 msgid "Base Font"
 msgstr ""
 
 #: lib/modules/core.typography/module.php:38
-#@ shoestrap
+#@ four7
 msgid "Header Overrides"
 msgstr ""
 
 #: lib/modules/core.typography/module.php:49
-#@ shoestrap
+#@ four7
 msgid "H1 Font"
 msgstr ""
 
 #: lib/modules/core.typography/module.php:72
-#@ shoestrap
+#@ four7
 msgid "H2 Font"
 msgstr ""
 
 #: lib/modules/core.typography/module.php:93
-#@ shoestrap
+#@ four7
 msgid "H3 Font"
 msgstr ""
 
 #: lib/modules/core.typography/module.php:113
-#@ shoestrap
+#@ four7
 msgid "H4 Font"
 msgstr ""
 
 #: lib/modules/core.typography/module.php:134
-#@ shoestrap
+#@ four7
 msgid "H5 Font"
 msgstr ""
 
 #: lib/modules/core.typography/module.php:155
-#@ shoestrap
+#@ four7
 msgid "H6 Font"
 msgstr ""
 
 #: lib/modules/core.updater/module.php:21
-#@ shoestrap
+#@ four7
 msgid "Licencing"
 msgstr ""
 
 #: lib/modules/core.updater/module.php:28
 #@ redux-framework-demo
-msgid "Shoestrap Theme Licence"
+msgid "Four7 Theme Licence"
 msgstr ""
 
 #: lib/modules/core.updater/module.php:30
-#@ shoestrap
-msgid "The Shoestrap theme no longer requires a licence for theme updates because a default licence is included."
+#@ four7
+msgid "The Four7 theme no longer requires a licence for theme updates because a default licence is included."
 msgstr ""
 
 #: lib/modules/core.updater/module.php:30
-#@ shoestrap
+#@ four7
 msgid "If you want to use your own licence key, you can add this line in your <code>wp-config.php</code> file:"
 msgstr ""
 
 #: lib/modules/core.widgets/module.php:40
-#@ shoestrap
+#@ four7
 msgid "Primary Sidebar"
 msgstr ""
 
 #: lib/modules/core.widgets/module.php:49
-#@ shoestrap
+#@ four7
 msgid "Secondary Sidebar"
 msgstr ""
 
 #: lib/modules/core.widgets/module.php:67
-#@ shoestrap
+#@ four7
 msgid "Header Area"
 msgstr ""
 
 #: lib/modules/core.widgets/module.php:76
-#@ shoestrap
+#@ four7
 msgid "Footer Widget Area 1"
 msgstr ""
 
 #: lib/modules/core.widgets/module.php:85
-#@ shoestrap
+#@ four7
 msgid "Footer Widget Area 2"
 msgstr ""
 
 #: lib/modules/core.widgets/module.php:94
-#@ shoestrap
+#@ four7
 msgid "Footer Widget Area 3"
 msgstr ""
 
 #: lib/modules/core.widgets/module.php:103
-#@ shoestrap
+#@ four7
 msgid "Footer Widget Area 4"
 msgstr ""
 
 #: lib/titles.php:10
-#@ shoestrap
+#@ four7
 msgid "Latest Posts"
 msgstr ""
 
 #: lib/titles.php:19
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Daily Archives: %s"
 msgstr ""
 
 #: lib/titles.php:21
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Monthly Archives: %s"
 msgstr ""
 
 #: lib/titles.php:23
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Yearly Archives: %s"
 msgstr ""
 
 #: lib/titles.php:26
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Author Archives: %s"
 msgstr ""
 
 #: lib/titles.php:31
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Search Results for %s"
 msgstr ""
 
 #: lib/titles.php:33
-#@ shoestrap
+#@ four7
 msgid "Not Found"
 msgstr ""
 
 #: lib/widgets.php:8
-#@ shoestrap
+#@ four7
 msgid "Primary"
 msgstr ""
 
 #: lib/widgets.php:45
-#@ shoestrap
+#@ four7
 msgid "Use this widget to add a vCard"
 msgstr ""
 
 #: lib/widgets.php:47
-#@ shoestrap
-msgid "Shoestrap: vCard"
+#@ four7
+msgid "Four7: vCard"
 msgstr ""
 
 #: lib/widgets.php:74
-#@ shoestrap
+#@ four7
 msgid "vCard"
 msgstr ""
 
 #: templates/comment.php:4
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "%1$s"
 msgstr ""
 
 #: templates/comment.php:5
-#@ shoestrap
+#@ four7
 msgid "(Edit)"
 msgstr ""
 
 #: templates/comment.php:9
-#@ shoestrap
+#@ four7
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
 #: templates/comments.php:12
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "One Response to &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
 #: templates/comments.php:22
-#@ shoestrap
+#@ four7
 msgid "&larr; Older comments"
 msgstr ""
 
 #: templates/comments.php:25
-#@ shoestrap
+#@ four7
 msgid "Newer comments &rarr;"
 msgstr ""
 
 #: templates/comments.php:33
 #: templates/comments.php:42
-#@ shoestrap
+#@ four7
 msgid "Comments are closed."
 msgstr ""
 
 #: templates/comments.php:49
-#@ shoestrap
+#@ four7
 msgid "Leave a Reply"
 msgstr ""
 
 #: templates/comments.php:49
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Leave a Reply to %s"
 msgstr ""
 
 #: templates/comments.php:52
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
 #: templates/comments.php:57
 #, php-format
-#@ shoestrap
+#@ four7
 msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
 msgstr ""
 
 #: templates/comments.php:58
-#@ shoestrap
+#@ four7
 msgid "Log out of this account"
 msgstr ""
 
 #: templates/comments.php:58
-#@ shoestrap
+#@ four7
 msgid "Log out &raquo;"
 msgstr ""
 
 #: templates/comments.php:62
-#@ shoestrap
+#@ four7
 msgid "Name"
 msgstr ""
 
 #: templates/comments.php:62
 #: templates/comments.php:66
-#@ shoestrap
+#@ four7
 msgid " (required)"
 msgstr ""
 
 #: templates/comments.php:66
-#@ shoestrap
+#@ four7
 msgid "Email (will not be published)"
 msgstr ""
 
 #: templates/comments.php:70
-#@ shoestrap
+#@ four7
 msgid "Website"
 msgstr ""
 
 #: templates/comments.php:75
-#@ shoestrap
+#@ four7
 msgid "Comment"
 msgstr ""
 
 #: templates/comments.php:78
-#@ shoestrap
+#@ four7
 msgid "Submit Comment"
 msgstr ""
 
 #: templates/content-single.php:20
-#@ shoestrap
+#@ four7
 msgid "Pages:"
 msgstr ""
 
 #: templates/entry-meta.php:2
-#@ shoestrap
+#@ four7
 msgid "By"
 msgstr ""
 

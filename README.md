@@ -1,13 +1,13 @@
-# [Shoestrap](http://shoestrap.org): [Shoestrap](http://shoestrap.org) on steroids!
+# [Four7](http://four7.org): [Four7](http://four7.org) on steroids!
 
-Shoestrap started as a fork of the amazing [Roots](http://roots.io) theme.
+Four7 started as a fork of the amazing [Roots](http://roots.io) theme.
 We added lots of hooks, actions, rewrote various parts of the theme and made it completely extensible.
 You can use it as a standalone "core" theme and build on it using child themes or even plugins.
 Using the included admin options developers and site owners can create and prototype sites without any coding and with just a few clicks.
 
 ## Options Panel
 
-We have included the [ReduxFramework](http://reduxframework.com) into Shoestrap so you can easily customize all the aspects of this theme (props @[@dovy](https://twitter.com/simplerain)).
+We have included the [ReduxFramework](http://reduxframework.com) into Four7 so you can easily customize all the aspects of this theme (props @[@dovy](https://twitter.com/simplerain)).
 
 ## Automated Compiling
 
@@ -19,7 +19,7 @@ But that's not all, we also added many options to change the layout of your site
 
 ## Widget Areas
 
-We included a number of widget areas in the shoestrap theme. These include:
+We included a number of widget areas in the four7 theme. These include:
 * Primary Sidebar
 * Secondary Sidebar
 * Jumbotron
@@ -50,9 +50,9 @@ Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this proje
 * Reporting issues (please read [issue guidelines](https://github.com/necolas/issue-guidelines))
 * Suggesting new features
 * Writing or refactoring code
-* Fixing [issues](https://github.com/shoestrap/shoestrap/issues)
-* Replying to questions on the [forum](http://shoestrap.org/forums/forum/shoestrap/)
+* Fixing [issues](https://github.com/four7/four7/issues)
+* Replying to questions on the [forum](http://four7.org/forums/forum/four7/)
 
 ## Support
 
-Use the [Shoestrap Forums](http://shoestrap.org/forums/forum/shoestrap/) to ask questions and get support.
+Use the [Four7 Forums](http://four7.org/forums/forum/four7/) to ask questions and get support.

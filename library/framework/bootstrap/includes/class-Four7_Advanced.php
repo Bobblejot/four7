@@ -19,7 +19,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts'            ), 100 );
 
 			 // Toggle activation of the jQuery CDN
-			if ( $fs_settings['jquery_cdn_toggler'] == 1 ) {
+			if ( isset( $fs_settings['jquery_cdn_toggler'] ) && $fs_settings['jquery_cdn_toggler'] == 1 ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'jquery_cdn' ), 101 );
 				add_action( 'wp_head',            array( $this, 'jquery_local_fallback' ) );
 			}
@@ -70,7 +70,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		}
 
 		/**
-		 * The advanced core options for the Shoestrap theme
+		 * The advanced core options for the Four7 theme
 		 */
 		function options( $sections ) {
 
@@ -188,7 +188,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 			$fields[] = array(
 				'title'     => __( 'Toggle adminbar On/Off', 'four7' ),
 				'desc'      => __( 'Turn the admin bar On or Off on the frontend. Default: Off.', 'four7' ),
-				'id'        => 'advanced_wordprefs_disable_admin_bar_toggle',
+				'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
 				'default'   => 1,
 				'type'      => 'switch',
 			);
@@ -251,7 +251,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		 */
 		function admin_bar() {
 			$settings = get_option( FOUR7_OPT_NAME );
-			if ( $settings['advanced_wordprefs_disable_admin_bar_toggle'] == 0 ) {
+			if ( $settings['advanced_wordpress_disable_admin_bar_toggle'] == 0 ) {
 				return false;
 			} else {
 				return true;
@@ -293,7 +293,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		 * Root relative URLs
 		 *
 		 * WordPress likes to use absolute URLs on everything - let's clean that up.
-		 * Inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordprefs_urls_root_relative/
+		 * Inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 		 *
 		 * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
 		 */

@@ -14,7 +14,7 @@ if ( ! class_exists( 'Four7_Background' ) ) {
 		}
 
 		/*
-		 * The background core options for the Shoestrap theme
+		 * The background core options for the Four7 theme
 		 */
 		function options( $sections ) {
 			global $redux;

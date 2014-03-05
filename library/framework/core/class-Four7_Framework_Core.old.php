@@ -3,7 +3,7 @@
 /**
 * The Framework
 */
-class FOUR7_Framework_Core {
+class Four7_Framework_Core {
 
 	function __construct() {
 		do_action( 'four7_framework_include_modules' );

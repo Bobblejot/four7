@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Less PHP Compiler
-Plugin URI: http://shoestrap.org/
+Plugin URI: http://four7.org/
 Description: This plugin adds the less.php class and makes it available to other plugins and themes.
 Version: 1.6.3
 Author: Aristeides Stathopoulos

@@ -1,4 +1,4 @@
-<?php ss_get_template_part('templates/head'); ?>
+<?php fs_get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 <a href="#content" class="sr-only"><?php _e( 'Skip to main content', 'four7' ); ?></a>
 <?php global $fs_framework; ?>
@@ -9,16 +9,16 @@
 
 	<?php do_action( 'get_header' ); ?>
 
-	<?php ss_get_template_part( 'templates/top-bar' ); ?>
+	<?php fs_get_template_part( 'templates/top-bar' ); ?>
 
 	<?php do_action( 'four7_pre_wrap' ); ?>
 
-	<?php echo $fs_framework->make_container( 'div', 'wrap-main-section', 'wrap main-section' ); ?>
+	<?php echo $fs_framework->open_container( 'div', 'wrap-main-section', 'wrap main-section' ); ?>
 
 		<?php do_action('four7_pre_content'); ?>
 
 		<div id="content" class="content">
-			<?php echo $fs_framework->make_row( 'div', null, 'bg' ); ?>
+			<?php echo $fs_framework->open_row( 'div', null, 'bg' ); ?>
 
 				<?php do_action( 'four7_pre_main' ); ?>
 
@@ -45,16 +45,16 @@
 						<?php dynamic_sidebar( 'sidebar-secondary' ); ?>
 					</aside><!-- /.sidebar -->
 				<?php endif; ?>
-			</div>
+			<?php echo $fs_framework->close_row( 'div' ); ?>
 		</div><!-- /.content -->
 		<?php do_action('four7_after_content'); ?>
-	</div><!-- /.wrap -->
+	<?php echo $fs_framework->close_container( 'div' ); ?><!-- /.wrap -->
 	<?php
 
 	do_action('four7_pre_footer');
 
 	if ( ! has_action( 'four7_footer_override' ) ) {
-		ss_get_template_part( 'templates/footer' );
+		fs_get_template_part( 'templates/footer' );
 	} else {
 		do_action( 'four7_footer_override' );
 	}

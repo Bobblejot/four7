@@ -1,6 +1,6 @@
 <?php
 
-if ( ! class_exists( 'FOUR7_Framework' ) ) {
+if ( !class_exists( 'FOUR7_Framework' ) ) {
 
 	/**
 	* The "Advanced" module
@@ -152,6 +152,7 @@ if ( ! class_exists( 'FOUR7_Framework' ) ) {
 			$sections[] = $section;
 			return $sections;
 		}
+
 	}
 }
 

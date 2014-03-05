@@ -3,7 +3,6 @@
 global $fs_settings;
 
 require_once dirname( __FILE__ ) . '/class-FOUR7_Framework.php';
-
 do_action( 'four7_include_frameworks' );
 
 if ( ! defined( 'FOUR7_FRAMEWORK' ) ) {

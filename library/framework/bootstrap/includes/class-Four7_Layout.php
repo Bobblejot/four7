@@ -44,7 +44,7 @@ if ( ! class_exists( 'Four7_Layout' ) ) {
 		}
 
 		/*
-		 * The layout core options for the Shoestrap theme
+		 * The layout core options for the Four7 theme
 		 */
 		function options( $sections ) {
 			global $fs_settings;
@@ -483,7 +483,7 @@ if ( ! class_exists( 'Four7_Layout' ) ) {
 			}
 
 			// override if navbar module exists and 'navbar-toggle' is set to left.
-			if ( class_exists( 'ShoestrapMenus' ) ) {
+			if ( class_exists( 'Four7Menus' ) ) {
 				if ( $fs_settings['navbar_toggle'] == 'left' ) {
 					$class = 'fluid';
 				}

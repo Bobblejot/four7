@@ -228,7 +228,7 @@ if ( ! class_exists( 'Four7_Blog' ) ) {
 		 * Output of meta information for current post: categories, tags, permalink, author, and date.
 		 */
 		function meta_custom_render() {
-			global $fs_framework, $fs_settings;
+			global $fs_framework, $fs_settings, $post;
 
 			// get config and data
 			$metas = $fs_settings['four7_entry_meta_config'];
@@ -240,11 +240,27 @@ if ( ! class_exists( 'Four7_Blog' ) ) {
 			$i = 0;
 			if ( is_array( $metas ) ) {
 				foreach ( $metas as $meta => $value ) {
-					if ( $meta == 'sticky'   && is_sticky() )       $i++;
-					if ( $meta == 'date'     && ! empty( $value ) ) $i++;
-					if ( $meta == 'category' && ! empty( $value ) ) $i++;
-					if ( $meta == 'tags'     && ! empty( $value ) ) $i++;
-					if ( $meta == 'author'   && ! empty( $value ) ) $i++;
+					if ( $meta == 'sticky' ) {
+						if ( ! empty( $value ) && is_sticky() ) {
+							$i++;
+						}
+					} elseif ( $meta == 'date' ) {
+						if ( ! empty( $value ) ) {
+							$i++;
+						}
+					} elseif ( $meta == 'category' ) {
+						if ( ! empty( $value ) && has_category() ) {
+							$i++;
+						}
+					} elseif ( $meta == 'tags' ) {
+						if ( ! empty( $value ) && has_tag() ) {
+							$i++;
+						}
+					} elseif ( $meta == 'author' ) {
+						if ( ! empty( $value ) ) {
+							$i++;
+						}
+					}
 				}
 			}
 
@@ -255,7 +271,7 @@ if ( ! class_exists( 'Four7_Blog' ) ) {
 				foreach ( $metas as $meta => $value ) {
 					// output sticky element
 					if ( $meta == 'sticky' && ! empty( $value ) && is_sticky() ) {
-						$content .= $fs_framework->make_col( 'span', array( 'medium' => $col ), null, 'featured-post' ) . '<i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'four7' ) . '</span>';
+						$content .= $fs_framework->open_col( 'span', array( 'medium' => $col ), null, 'featured-post' ) . '<i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'four7' ) . $fs_framework->close_col( 'span' );
 					}
 
 					// output date element
@@ -272,7 +288,7 @@ if ( ! class_exists( 'Four7_Blog' ) ) {
 								$icon = "el-icon-time icon";
 							}
 
-							$content .= sprintf( $fs_framework->make_col( 'span', array( 'medium' => $col ), null, 'date' ) . '<i class="' . $icon . '"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+							$content .= sprintf( $fs_framework->open_col( 'span', array( 'medium' => $col ), null, 'date' ) . '<i class="' . $icon . '"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>' . $fs_framework->close_col( 'span' ),
 								esc_url( get_permalink() ),
 								esc_attr( sprintf( __( 'Permalink to %s', 'four7' ), the_title_attribute( 'echo=0' ) ) ),
 								esc_attr( get_the_date( 'c' ) ),
@@ -284,20 +300,20 @@ if ( ! class_exists( 'Four7_Blog' ) ) {
 					// output category element
 					if ( $meta == 'category' && ! empty( $value ) ) {
 						if ( $categories_list ) {
-							$content .= $fs_framework->make_col( 'span', array( 'medium' => $col ), null, 'categories-links' ) . '<i class="el-icon-folder-open icon"></i> ' . $categories_list . '</span>';
+							$content .= $fs_framework->open_col( 'span', array( 'medium' => $col ), null, 'categories-links' ) . '<i class="el-icon-folder-open icon"></i> ' . $categories_list . $fs_framework->close_col( 'span' );
 						}
 					}
 
 					// output tag element
 					if ( $meta == 'tags' && ! empty( $value ) ) {
 						if ( $tag_list ) {
-							$content .= $fs_framework->make_col( 'span', array( 'medium' => $col ), null, 'tags-links' ) . '<i class="el-icon-tags icon"></i> ' . $tag_list . '</span>';
+							$content .= $fs_framework->open_col( 'span', array( 'medium' => $col ), null, 'tags-links' ) . '<i class="el-icon-tags icon"></i> ' . $tag_list . $fs_framework->close_col( 'span' );
 						}
 					}
 
 					// output author element
 					if ( $meta == 'author' && ! empty( $value ) ) {
-						$content .= sprintf( $fs_framework->make_col( 'span', array( 'medium' => $col ), null, 'author vcard' ) . '<i class="el-icon-user icon"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+						$content .= sprintf( $fs_framework->open_col( 'span', array( 'medium' => $col ), null, 'author vcard' ) . '<i class="el-icon-user icon"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a>' . $fs_framework->close_col( 'span' ),
 							esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 							esc_attr( sprintf( __( 'View all posts by %s', 'four7' ), get_the_author() ) ),
 							get_the_author()
@@ -306,7 +322,7 @@ if ( ! class_exists( 'Four7_Blog' ) ) {
 
 					// Output author meta but do not display it if user has selected not to show it.
 					if ( $meta == 'author' && empty( $value ) ) {
-						$content .= sprintf( $fs_framework->make_col( 'span', array( 'medium' => $col ), null, 'author vcard' ) . '<a class="url fn n" href="%1$s" title="%2$s" rel="author" style="display:none;">%3$s</a></span>',
+						$content .= sprintf( $fs_framework->open_col( 'span', array( 'medium' => $col ), null, 'author vcard' ) . '<a class="url fn n" href="%1$s" title="%2$s" rel="author" style="display:none;">%3$s</a>' . $fs_framework->close_col( 'span' ),
 							esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 							esc_attr( sprintf( __( 'View all posts by %s', 'four7' ), get_the_author() ) ),
 							get_the_author()
@@ -316,7 +332,7 @@ if ( ! class_exists( 'Four7_Blog' ) ) {
 			}
 
 			if ( ! empty( $content ) ) {
-				echo $fs_framework->make_row( 'div', null, 'row-meta' ) . $content . '</div><hr>';
+				echo $fs_framework->open_row( 'div', null, 'row-meta' ) . $content . $fs_framework->close_row( 'div' );
 			}
 		}
 

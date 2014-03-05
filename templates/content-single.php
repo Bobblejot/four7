@@ -8,6 +8,7 @@ while ( have_posts() ) : the_post();
 		do_action( 'four7_single_top' );
 		four7_title_section();
 		do_action( 'four7_entry_meta' );
+		echo '<hr>';
 
 		echo '<div class="entry-content">';
 			do_action( 'four7_single_pre_content' );

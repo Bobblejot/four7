@@ -3,7 +3,7 @@
 
 if ( ! class_exists( 'Four7_Color' ) ) {
 	/**
-	* Color Calculations class for Shoestrap
+	* Color Calculations class for Four7
 	*/
 	class Four7_Color {
 

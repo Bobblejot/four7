@@ -13,7 +13,7 @@ if ( ! class_exists( 'Four7_Typography' ) ) {
 		}
 
 		/*
-		 * The typography core options for the Shoestrap theme
+		 * The typography core options for the Four7 theme
 		 */
 		function options( $sections ) {
 

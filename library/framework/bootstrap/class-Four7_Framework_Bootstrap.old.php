@@ -60,14 +60,15 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 		 */
 		public function __construct() {
 			global $fs_settings;
-
+			
 			parent::__construct();
+
 
 			if ( ! defined( 'FOUR7_FRAMEWORK_PATH' ) ) {
 				define( 'FOUR7_FRAMEWORK_PATH', dirname( __FILE__ ) );
 			}
 
-			if ( class_exists( 'ReduxFrameworkPlugin' ) ) {
+			if ( class_exists( 'ReduxFramework' ) ) {
 
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Advanced.php' );        // Advanced
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Background.php' );      // Background
@@ -85,6 +86,8 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Nav_Menu_Widget.php' ); // NavMenus
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Navlist_Walker.php' );  // NavLists
 
+                include_once( S3EWA_PLUGIN_DIR . 'includes/admin.php' );
+                include_once( S3EWA_PLUGIN_DIR . 'includes/functions.php' );
 
 				// instantiate the classes
 				global $fs_layout;
@@ -553,21 +556,21 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$link_hover_color = ( Four7_Color::get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
 			$brand_primary_brightness = Four7_Color::get_brightness( $brand_primary );
-			$brand_success_brightness = Four7_Color::get_brightness( $brand_success );
+			$brand_succefs_brightness = Four7_Color::get_brightness( $brand_success );
 			$brand_warning_brightness = Four7_Color::get_brightness( $brand_warning );
 			$brand_danger_brightness  = Four7_Color::get_brightness( $brand_danger );
 			$brand_info_brightness    = Four7_Color::get_brightness( $brand_info );
 
 			// Button text colors
 			$btn_primary_color  = $brand_primary_brightness < 195 ? '#fff' : '333';
-			$btn_success_color  = $brand_success_brightness < 195 ? '#fff' : '333';
+			$btn_succefs_color  = $brand_succefs_brightness < 195 ? '#fff' : '333';
 			$btn_warning_color  = $brand_warning_brightness < 195 ? '#fff' : '333';
 			$btn_danger_color   = $brand_danger_brightness  < 195 ? '#fff' : '333';
 			$btn_info_color     = $brand_info_brightness    < 195 ? '#fff' : '333';
 
 			// Button borders
 			$btn_primary_border = $brand_primary_brightness < 195 ? 'darken(@btn-primary-bg, 5%)' : 'lighten(@btn-primary-bg, 5%)';
-			$btn_success_border = $brand_success_brightness < 195 ? 'darken(@btn-success-bg, 5%)' : 'lighten(@btn-success-bg, 5%)';
+			$btn_succefs_border = $brand_succefs_brightness < 195 ? 'darken(@btn-success-bg, 5%)' : 'lighten(@btn-success-bg, 5%)';
 			$btn_warning_border = $brand_warning_brightness < 195 ? 'darken(@btn-warning-bg, 5%)' : 'lighten(@btn-warning-bg, 5%)';
 			$btn_danger_border  = $brand_danger_brightness  < 195 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
 			$btn_info_border    = $brand_info_brightness    < 195 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
@@ -611,12 +614,12 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				$variables .= '@btn-primary-border: ' . $btn_primary_border . ';';
 			}
 
-			if ( isset( $btn_success_color ) && ! empty( $btn_success_color ) ) {
-				$variables .= '@btn-success-color:  ' . $btn_success_color . ';';
+			if ( isset( $btn_succefs_color ) && ! empty( $btn_succefs_color ) ) {
+				$variables .= '@btn-success-color:  ' . $btn_succefs_color . ';';
 			}
 
-			if ( isset( $btn_success_border ) && ! empty( $btn_success_border ) ) {
-				$variables .= '@btn-success-border: ' . $btn_success_border . ';';
+			if ( isset( $btn_succefs_border ) && ! empty( $btn_succefs_border ) ) {
+				$variables .= '@btn-success-border: ' . $btn_succefs_border . ';';
 			}
 
 			if ( isset( $btn_info_color ) && ! empty( $btn_info_color ) ) {
@@ -662,13 +665,13 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			/**
 			 * JUMBOTRON
 			 */
-			$font_jumbotron         = four7_process_font( $fs_settings['font_jumbotron'] );
+			$font_jumbotron         = four7_procefs_font( $fs_settings['font_jumbotron'] );
 			$jumbotron_bg           = $fs_settings['jumbo_bg'];
 			$jumbotron_bg           = '#' . str_replace( '#', '', Four7_Color::sanitize_hex( $jumbotron_bg['background-color'] ) );
 			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
 			if ( $fs_settings['font_jumbotron_heading_custom'] == 1 ) {
-				$font_jumbotron_headers = four7_process_font( $fs_settings['font_jumbotron_headers'] );
+				$font_jumbotron_headers = four7_procefs_font( $fs_settings['font_jumbotron_headers'] );
 
 				$font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
 				$font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];
@@ -764,9 +767,9 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			/**
 			 * MENUS
 			 */
-			$font_brand        = four7_process_font( $fs_settings['font_brand'] );
+			$font_brand        = four7_procefs_font( $fs_settings['font_brand'] );
 
-			$font_navbar       = four7_process_font( $fs_settings['font_navbar'] );
+			$font_navbar       = four7_procefs_font( $fs_settings['font_navbar'] );
 			$navbar_bg         = '#' . str_replace( '#', '', Four7_Color::sanitize_hex( $fs_settings['navbar_bg'] ) );
 			$navbar_height     = filter_var( $fs_settings['navbar_height'], FILTER_SANITIZE_NUMBER_INT );
 			$navbar_text_color = '#' . str_replace( '#', '', $font_navbar['color'] );
@@ -912,11 +915,10 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$options = array( 'compress' => $compress );
 
 			$bootstrap_location = dirname( __FILE__ ) . '/assets/less/';
-			$webfont_location   = get_template_directory() . '/assets/fonts/elusive/';
+			$webfont_location   = get_template_directory() . '/assets/fonts/';
 			$bootstrap_uri      = '';
 			$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
-            
-            print_r($webfont_location);
+
 			$css = '';
 			try {
 
@@ -996,7 +998,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 		/**
 		 * Build the social links for the navbar
 		 */
-		public function navbar_social_links() {
+		static function navbar_social_links() {
 			global $fs_social;
 
 			// Get all the social networks the user is using

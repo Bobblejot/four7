@@ -92,7 +92,7 @@ class scssc {
 
 	protected $numberPrecision = 5;
 
-	protected $formatter = "scfs_formatter_nested";
+	protected $formatter = "scss_formatter_nested";
 
 	public function compile($code, $name=null) {
 		$this->indentLevel = -1;
@@ -104,7 +104,7 @@ class scssc {
 		setlocale(LC_NUMERIC, "C");
 
 		$this->parsedFiles = array();
-		$this->parser = new scfs_parser($name);
+		$this->parser = new scss_parser($name);
 		$tree = $this->parser->parse($code);
 
 		$this->formatter = new $this->formatter();
@@ -1530,7 +1530,7 @@ class scssc {
 			$tree = $this->importCache[$realPath];
 		} else {
 			$code = file_get_contents($path);
-			$parser = new scfs_parser($path, false);
+			$parser = new scss_parser($path, false);
 			$tree = $parser->parse($code);
 			$this->parsedFiles[] = $path;
 
@@ -2539,7 +2539,7 @@ class scssc {
  *
  * @author Leaf Corcoran <leafot@gmail.com>
  */
-class scfs_parser {
+class scss_parser {
 	static protected $precedence = array(
 		"or" => 0,
 		"and" => 1,
@@ -2586,7 +2586,7 @@ class scfs_parser {
 	}
 
 	static protected function makeOperatorStr($operators) {
-		return '('.implode('|', array_map(array('scfs_parser','preg_quote'),
+		return '('.implode('|', array_map(array('scss_parser','preg_quote'),
 			$operators)).')';
 	}
 
@@ -4027,7 +4027,7 @@ class scfs_parser {
  *
  * @author Leaf Corcoran <leafot@gmail.com>
  */
-class scfs_formatter {
+class scss_formatter {
 	public $indentChar = "  ";
 
 	public $break = "\n";
@@ -4094,7 +4094,7 @@ class scfs_formatter {
  *
  * @author Leaf Corcoran <leafot@gmail.com>
  */
-class scfs_formatter_nested extends scfs_formatter {
+class scss_formatter_nested extends scss_formatter {
 	public $close = " }";
 
 	// adjust the depths of all children, depth first
@@ -4185,7 +4185,7 @@ class scfs_formatter_nested extends scfs_formatter {
  *
  * @author Leaf Corcoran <leafot@gmail.com>
  */
-class scfs_formatter_compressed extends scfs_formatter {
+class scss_formatter_compressed extends scss_formatter {
 	public $open = "{";
 	public $tagSeparator = ",";
 	public $assignSeparator = ":";
@@ -4201,7 +4201,7 @@ class scfs_formatter_compressed extends scfs_formatter {
  *
  * @author Leaf Corcoran <leafot@gmail.com>
  */
-class scfs_server {
+class scss_server {
 	/**
 	 * Join path components
 	 *
@@ -4358,7 +4358,7 @@ class scfs_server {
 		$this->dir = $dir;
 
 		if (is_null($cacheDir)) {
-			$cacheDir = $this->join($dir, 'scfs_cache');
+			$cacheDir = $this->join($dir, 'scss_cache');
 		}
 
 		$this->cacheDir = $cacheDir;

@@ -17,7 +17,7 @@ class Four7_Vcard_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array( 'classname' => 'widget_four7_vcard', 'description' => __( 'Use this widget to add a vCard', 'four7' ) );
 
-		$this->WP_Widget( 'widget_four7_vcard', __( 'Shoestrap: vCard', 'four7' ), $widget_ops );
+		$this->WP_Widget( 'widget_four7_vcard', __( 'Four7: vCard', 'four7' ), $widget_ops );
 		$this->alt_option_name = 'widget_four7_vcard';
 
 		add_action( 'save_post', array( &$this, 'flush_widget_cache' ) );

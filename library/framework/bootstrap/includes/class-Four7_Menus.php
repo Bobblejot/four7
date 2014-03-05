@@ -16,14 +16,12 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			add_action( 'four7_inside_nav_begin', array( $this, 'navbar_pre_searchbox' ), 11 );
 			add_filter( 'four7_navbar_class',     array( $this, 'navbar_class' ) );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'navbar_css' ), 101 );
-			add_action( 'four7_do_navbar',        array( $this, 'do_navbar' ) );
 			add_filter( 'four7_navbar_brand',     array( $this, 'navbar_brand' ) );
 			add_filter( 'body_class',                 array( $this, 'navbar_body_class' ) );
 			add_action( 'widgets_init',               array( $this, 'sl_widgets_init' ), 40 );
 			add_action( 'four7_post_main_nav',    array( $this, 'navbar_sidebar' ) );
 			add_action( 'four7_pre_wrap',         array( $this, 'secondary_navbar' ) );
-			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init' ), 40 );
-			add_action( 'four7_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99 );
+			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init' ), 50 );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script' ), 200 );
 			add_action( 'four7_pre_wrap',         array( $this, 'content_wrapper_static_left_open' ) );
 			add_action( 'four7_after_footer',     array( $this, 'content_wrapper_static_left_close' ), 1 );
@@ -32,12 +30,15 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
 			}
 
-			$hook = ( $fs_settings['navbar_toggle'] == 'left' ) ? 'four7_do_navbar' : 'four7_inside_nav_begin';
-			add_action( $hook, array( $this, 'navbar_slidedown_toggle' ) );
+			$hook_navbar_slidedown_toggle = ( $fs_settings['navbar_toggle'] == 'left' ) ? 'four7_pre_content' : 'four7_inside_nav_begin';
+			add_action( $hook_navbar_slidedown_toggle, array( $this, 'navbar_slidedown_toggle' ) );
+
+			$hook_navbar_slidedown_content = ( $fs_settings['navbar_toggle'] == 'left' ) ? 'four7_pre_content' : 'four7_do_navbar';
+			add_action( $hook_navbar_slidedown_content, array( $this, 'navbar_slidedown_content' ), 99 );
 		}
 
 		/*
-		 * The header core options for the Shoestrap theme
+		 * The header core options for the Four7 theme
 		 */
 		function options( $sections ) {
 
@@ -444,57 +445,22 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 		}
 
 		/**
-		 * Will the sidebar be shown?
-		 * If yes, then which navbar?
-		 */
-		function do_navbar() {
-			global $fs_settings;
-
-			$navbar_toggle = $fs_settings['navbar_toggle'];
-
-			if ( $navbar_toggle != 'none' ) {
-				if ( $navbar_toggle != 'pills' ) {
-					if ( ! has_action( 'four7_header_top_navbar_override' ) ) {
-						require( 'header-top-navbar.php' );
-					} else {
-						do_action( 'four7_header_top_navbar_override' );
-					}
-				} else {
-					if ( ! has_action( 'four7_header_override' ) ) {
-						require( 'header.php' );
-					} else {
-						do_action( 'four7_header_override' );
-					}
-				}
-			} else {
-				return '';
-			}
-		}
-
-		/**
 		 * get the navbar branding options (if the branding module exists)
 		 * and then add the appropriate logo or sitename.
 		 */
 		function navbar_brand() {
-			// Make sure the branding module exists.
-			
-			    global $fs_settings, $fs_framework;
-			    
-				$logo           = $fs_settings['logo'];
-				$branding_class = ! empty( $logo['url'] ) ? 'logo' : 'text';
+			global $fs_settings, $fs_framework;
 
-				if ( $fs_settings['navbar_brand'] != 0 ) {
-					$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
-					$branding .= $fs_settings['navbar_logo'] == 1 ? $fs_framework->logo() : get_bloginfo( 'name' );
-					$branding .= '</a>';
-				} else {
-					$branding = '';
-				}
+			$logo           = $fs_settings['logo'];
+			$branding_class = ! empty( $logo['url'] ) ? 'logo' : 'text';
+
+			if ( $fs_settings['navbar_brand'] != 0 ) {
+				$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
+				$branding .= $fs_settings['navbar_logo'] == 1 ? $fs_framework->logo() : get_bloginfo( 'name' );
+				$branding .= '</a>';
 			} else {
-				// If the branding module does not exist, return the defaults.
 				$branding = '';
 			}
-
 			return $branding;
 		}
 
@@ -545,7 +511,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 
 			if ( has_nav_menu( 'secondary_navigation' ) ) : ?>
 
-				<?php echo $fs_framework->make_container( 'div' ); ?>
+				<?php echo $fs_framework->open_container( 'div' ); ?>
 					<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
 						<button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
 							<span class="icon-bar"></span>
@@ -560,7 +526,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 							<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => apply_filters( 'four7_nav_class', 'navbar-nav nav' ) ) ); ?>
 						</nav>
 					</header>
-				</div>
+				<?php echo $fs_framework->close_container( 'div' ); ?>
 
 			<?php endif;
 		}
@@ -632,15 +598,13 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 		 * Calculates the class of the widget areas based on a 12-column bootstrap grid.
 		 */
 		public static function navbar_widget_area_class() {
-			$str = '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-1' ) ) ? '1' : '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-2' ) ) ? '2' : '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-3' ) ) ? '3' : '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-4' ) ) ? '4' : '';
+			$str = 0;
+			if ( is_active_sidebar( 'navbar-slide-down-1' ) ) { $str++; }
+			if ( is_active_sidebar( 'navbar-slide-down-2' ) ) { $str++; }
+			if ( is_active_sidebar( 'navbar-slide-down-3' ) ) { $str++; }
+			if ( is_active_sidebar( 'navbar-slide-down-4' ) ) { $str++; }
 
-			$strlen = strlen( $str );
-
-			$colwidth = ( $strlen > 0 ) ? 12 / $strlen : 12;
+			$colwidth = ( $str > 0 ) ? 12 / $str : 12;
 
 			return $colwidth;
 		}
@@ -651,13 +615,15 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 		function navbar_slidedown_content() {
 			global $fs_settings;
 
-		//	if ( is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) || is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
+			if ( is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) || is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
 				<div class="before-main-wrapper">
 					<?php $megadrop_class = ( $fs_settings['site_style'] != 'fluid' ) ? 'top-megamenu container' : 'top-megamenu'; ?>
 					<div id="megaDrop" class="<?php echo $megadrop_class; ?>">
 						<?php $widgetareaclass = 'col-sm-' . self::navbar_widget_area_class(); ?>
-
-						<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
+						
+						<?php if ( is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
+							<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
+						<?php endif; ?>
 
 						<div class="row">
 							<?php if ( is_active_sidebar( 'navbar-slide-down-1' ) ) : ?>
@@ -686,8 +652,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 						</div>
 					</div>
 				</div>
-			<?php 
-			//endif;
+			<?php endif;
 		}
 
 		/**
@@ -709,7 +674,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			}
 
 			if ( isset( $fs_settings['navbar_toggle'] ) && $fs_settings['navbar_toggle'] == 'left' ) {
-				echo $fs_framework->make_col( 'div', array( $width => 12 - $fs_settings['layout_secondary_width'] ), 'content-wrapper-left', 'col-' . $breakpoint . '-offset-' . $fs_settings['layout_secondary_width'] );
+				echo $fs_framework->open_col( 'div', array( $width => 12 - $fs_settings['layout_secondary_width'] ), 'content-wrapper-left', 'col-' . $breakpoint . '-offset-' . $fs_settings['layout_secondary_width'] );
 			}
 		}
 
@@ -720,7 +685,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			global $fs_settings, $fs_framework;
 
 			if ( isset( $fs_settings['navbar_toggle'] ) && $fs_settings['navbar_toggle'] == 'left' ) {
-				echo '</div>';
+				echo $fs_framework->close_col( 'div' );
 			}
 		}
 

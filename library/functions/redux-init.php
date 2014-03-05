@@ -5,7 +5,7 @@
  * Also if running on windows you may have url problems, which can be fixed by defining the framework url first
  */
 
-if ( class_exists( 'ReduxFramework' ) ) :
+if ( class_exists( 'ReduxFrameworkPlugin' ) ) :
 function four7_redux_init() {
 
 	$args = array();
@@ -17,7 +17,7 @@ function four7_redux_init() {
 	 */
 	//Setup custom links in the footer for share icons
 	$args['share_icons'][] = array(
-		'url'   => 'https://github.com/shoestrap/shoestrap',
+		'url'   => 'https://github.com/four7/four7',
 		'title' => 'Fork Me on GitHub',
 		'icon'  => 'el-icon-github'
 	);

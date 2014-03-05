@@ -693,7 +693,7 @@
 						}, 500).css('z-index', '100');
 					}, 400);
 				}
-				jQuery('body').addClass('ss-open');
+				jQuery('body').addClass('fs-open');
 			}
 			setTimeout(function() {
 				jQuery('body').removeClass('header-aux-opening');
@@ -725,7 +725,7 @@
 					'opacity': 0
 				}, 500).css('z-index', '');
 			}
-			jQuery('body').removeClass('ss-open');
+			jQuery('body').removeClass('fs-open');
 		},
 		ajaxSearch: function(e) {			
 			var searchInput = jQuery(e.currentTarget),

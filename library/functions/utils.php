@@ -191,3 +191,20 @@ $desc = sprintf( '<%1$s class="site-description"><span>%2$s</span></%1$s>', tag_
 /* Display the site description and apply filters for developers to overwrite. */
 echo apply_atomic( 'site_description', $desc );
 }
+
+function four7_process_font( $font ) {
+
+	if ( empty( $font['font-weight'] ) ) {
+		$font['font-weight'] = "inherit";
+	}
+
+	if ( empty( $font['font-style'] ) ) {
+		$font['font-style'] = "inherit";
+	}
+
+	if ( isset( $font['font-size'] ) ) {
+		$font['font-size'] = filter_var( $font['font-size'], FILTER_SANITIZE_NUMBER_INT );
+	}
+
+	return $font;
+}
