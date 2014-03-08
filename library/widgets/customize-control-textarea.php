@@ -4,31 +4,30 @@
  * developers to create textarea settings within the WordPress theme customizer.
  *
  * @package    inevisys
- * @subpackage Classes
- * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2013, Justin Tadlock
- * @link       http://themeinevisys.com/inevisys-core
- * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @subpackage Widgets
+ * @author     Inevisys <gareth@inevisys.com>
+ * @copyright  Copyright (c) 2014, inevisys
+ * @link       http://inevisys.com/four7
  */
 
 /**
  * Textarea customize control class.
  *
- * @since 1.4.0
+ * @since 3.3.0
  */
 class four7_Customize_Control_Textarea extends WP_Customize_Control {
 
 	/**
 	 * The type of customize control being rendered.
 	 *
-	 * @since 1.4.0
+	 * @since 3.3.0
 	 */
 	public $type = 'textarea';
 
 	/**
 	 * Displays the textarea on the customize screen.
 	 *
-	 * @since 1.4.0
+	 * @since 3.3.0
 	 */
 	public function render_content() {
 		?>

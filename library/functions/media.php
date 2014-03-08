@@ -21,7 +21,7 @@ add_filter( 'stylesheet_uri', 'four7_debug_stylesheet', 10, 2 );
  * SCRIPT_DEBUG must be set to 'true' in the 'wp-config.php' file.  This will check if a 'style.dev.css'
  * file is present within the theme folder and use it if it exists.  Else, it defaults to 'style.css'.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 function four7_debug_stylesheet( $stylesheet_uri, $stylesheet_dir_uri ) {
 
@@ -53,7 +53,7 @@ function four7_debug_stylesheet( $stylesheet_uri, $stylesheet_dir_uri ) {
  * Ideally, all attachments would be appropriately handled within their templates. However, this could
  * lead to messy template files.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @uses  get_post_mime_type() Gets the mime type of the attachment.
  * @uses  wp_get_attachment_url() Gets the URL of the attachment file.
  */
@@ -78,7 +78,7 @@ function four7_attachment() {
  * Handles application attachments on their attachment pages.  Uses the <object> tag to embed media
  * on those pages.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param string $mime attachment mime type
  * @param string $file attachment file URL
@@ -98,7 +98,7 @@ function four7_application_attachment( $mime = '', $file = '' ) {
  * Handles text attachments on their attachment pages.  Uses the <object> element to embed media
  * in the pages.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param string $mime attachment mime type
  * @param string $file attachment file URL
@@ -120,7 +120,7 @@ function four7_text_attachment( $mime = '', $file = '' ) {
  *
  * @todo  Test out and support more audio types.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param string $mime attachment mime type
  * @param string $file attachment file URL
@@ -141,7 +141,7 @@ function four7_audio_attachment( $mime = '', $file = '' ) {
 /**
  * Handles video attachments on attachment pages.  Add other video types to the <object> element.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param string $mime attachment mime type
  * @param string $file attachment file URL

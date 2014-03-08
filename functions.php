@@ -31,7 +31,7 @@ add_action( 'after_setup_theme', 'four7_theme_setup' );
  * Theme setup function.  This function adds support for theme features and defines the default theme
  * actions and filters.
  *
- * @since 3.1.0
+ * @since 3.3.0
  */
 
 function four7_theme_setup() {
@@ -134,7 +134,7 @@ function four7_theme_setup() {
  * Wraps the output of the quote post format content in a <blockquote> element if the user hasn't added a
  * <blockquote> in the post editor.
  *
- * @since 0.1.0
+ * @since 3.3.0
  *
  * @param string $content The post content.
  *
@@ -157,7 +157,7 @@ function four7_quote_content( $content ) {
 /**
  * Returns the featured image for the image post format if the user didn't add any content to the post.
  *
- * @since 0.1.0
+ * @since 3.3.0
  *
  * @param string $content The post content.
  *
@@ -179,7 +179,7 @@ function four7_image_content( $content ) {
 /**
  * Returns the featured image for the image post format if the user didn't add any content to the post.
  *
- * @since 0.1.0
+ * @since 3.3.0
  *
  * @param string $content The post content.
  *
@@ -198,7 +198,7 @@ function four7_media_content( $content ) {
  * Grabs the first URL from the post content of the current post.  This is meant to be used with the link post
  * format to easily find the link for the post.
  *
- * @since     0.1.0
+ * @since 3.3.0
  * @return string The link if found.  Otherwise, the permalink to the post.
  *
  * @note      This is a modified version of the twentyeleven_url_grabber() function in the TwentyEleven theme.
@@ -218,7 +218,7 @@ function four7_url_grabber() {
 /**
  * Adds 'class="prev" to the previous comments link.
  *
- * @since 0.1.0
+ * @since 3.3.0
  *
  * @param string $attributes The previous comments link attributes.
  *
@@ -231,7 +231,7 @@ function four7_previous_comments_link_attributes( $attributes ) {
 /**
  * Adds 'class="next" to the next comments link.
  *
- * @since 0.1.0
+ * @since 3.3.0
  *
  * @param string $attributes The next comments link attributes.
  *
@@ -244,7 +244,7 @@ function four7_next_comments_link_attributes( $attributes ) {
 /**
  * Returns the number of images attached to the current post in the loop.
  *
- * @since 0.1.0
+ * @since 3.3.0
  * @return int
  */
 function four7_get_image_attachment_count() {
@@ -256,7 +256,7 @@ function four7_get_image_attachment_count() {
 /**
  * Returns a set of image attachment links based on size.
  *
- * @since 0.1.0
+ * @since 3.3.0
  * @return string Links to various image sizes for the image attachment.
  */
 function four7_get_image_size_links() {
@@ -297,7 +297,7 @@ function four7_get_image_size_links() {
  * Fix for four7 Core until version 3.1.0 is released.  This adds the '.custom-background' class to the <body>
  * element for the WordPress custom background feature.
  *
- * @since 3.1.0
+ * @since 3.3.0
  * @todo  Remove once theme is upgraded to four7 Core 1.3.0.
  * @link  http://core.trac.wordpress.org/ticket/18698
  */
@@ -317,7 +317,7 @@ function four7_fe_body_class( $classes ) {
 /**
  * Removes 'post-format-' from the taxonomy template name for post formats.
  *
- * @since 0.1.0
+ * @since 3.3.0
  * @todo  Remove once theme is upgraded to four7 Core 1.3.0.
  */
 function four7_fe_taxonomy_template( $template ) {
@@ -341,7 +341,7 @@ function four7_fe_taxonomy_template( $template ) {
 /**
  * Add functionality to four7 Core 1.3.0.
  *
- * @since 0.1.0
+ * @since 3.3.0
  * @todo  Remove once theme is upgraded to four7 Core 1.3.0.
  */
 function four7_clean_post_format_slug( $slug ) {
@@ -587,7 +587,7 @@ function string_limit_words( $string, $word_limit ) {
 /**
  * Replaces the standard Wordpress login logo.
  *
- * @since 0.1.0
+ * @since 3.3.0
  */
 function four7_login_head() {
 	echo "

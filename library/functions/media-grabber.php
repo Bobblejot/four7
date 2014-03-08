@@ -28,7 +28,7 @@
 /**
  * Wrapper function for the four7_Media_Grabber class.  Returns the HTML output for the found media.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access public
  *
  * @param  array
@@ -45,7 +45,7 @@ function four7_media_grabber( $args = array() ) {
 /**
  * Grabs media related to the post.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access public
  * @return void
  */
@@ -54,7 +54,7 @@ class four7_Media_Grabber {
 	/**
 	 * The HTML version of the media to return.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @var    string
 	 */
@@ -63,7 +63,7 @@ class four7_Media_Grabber {
 	/**
 	 * The original media taken from the post content.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @var    string
 	 */
@@ -72,7 +72,7 @@ class four7_Media_Grabber {
 	/**
 	 * The type of media to get.  Current supported types are 'audio' and 'video'.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @var    string
 	 */
@@ -81,7 +81,7 @@ class four7_Media_Grabber {
 	/**
 	 * Arguments passed into the class and parsed with the defaults.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @var    array
 	 */
@@ -90,7 +90,7 @@ class four7_Media_Grabber {
 	/**
 	 * The content to search for embedded media within.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @var    string
 	 */
@@ -99,7 +99,7 @@ class four7_Media_Grabber {
 	/**
 	 * Constructor method.  Sets up the media grabber.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @global object $wp_embed
 	 * @global int    $content_width
@@ -137,7 +137,7 @@ class four7_Media_Grabber {
 	/**
 	 * Destructor method.  Removes filters we needed to add.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @return void
 	 */
@@ -148,7 +148,7 @@ class four7_Media_Grabber {
 	/**
 	 * Basic method for returning the media found.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @return string
 	 */
@@ -159,7 +159,7 @@ class four7_Media_Grabber {
 	/**
 	 * Tries several methods to find media related to the post.  Returns the found media.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @return void
 	 */
@@ -211,7 +211,7 @@ class four7_Media_Grabber {
 	 * method figures out the shortcode used in the content.  Once it's found, the appropriate method for
 	 * the shortcode is executed.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @return void
 	 */
@@ -237,7 +237,7 @@ class four7_Media_Grabber {
 	/**
 	 * Handles the HTML when the [embed] shortcode is used.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 *
 	 * @param  array $shortcode
@@ -257,7 +257,7 @@ class four7_Media_Grabber {
 	/**
 	 * Handles the HTML when the [audio] shortcode is used.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 *
 	 * @param  array $shortcode
@@ -274,7 +274,7 @@ class four7_Media_Grabber {
 	/**
 	 * Handles the HTML when the [video] shortcode is used.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 *
 	 * @param  array $shortcode
@@ -292,7 +292,7 @@ class four7_Media_Grabber {
 	/**
 	 * Uses WordPress' autoembed feature to automatically handle media that's just input as a URL.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @return void
 	 */
@@ -321,7 +321,7 @@ class four7_Media_Grabber {
 	 * Grabs media embbeded into the content within <iframe>, <object>, <embed>, and other HTML methods for
 	 * embedding media.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @return void
 	 */
@@ -338,7 +338,7 @@ class four7_Media_Grabber {
 	 * Gets media attached to the post.  Then, uses the WordPress [audio] or [video] shortcode to handle
 	 * the HTML output of the media.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 * @return void
 	 */
@@ -365,7 +365,7 @@ class four7_Media_Grabber {
 	 * Removes the found media from the content.  The purpose of this is so that themes can retrieve the
 	 * media from the content and display it elsewhere on the page based on its design.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 *
 	 * @param  string $content
@@ -383,7 +383,7 @@ class four7_Media_Grabber {
 	 * Method for filtering the media's 'width' and 'height' attributes so that the theme can handle the
 	 * dimensions how it sees fit.
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 *
 	 * @param  string $html
@@ -456,7 +456,7 @@ class four7_Media_Grabber {
 	 * with custom-sized embeds.  So, we need to adjust this the best we can.  Right now, the only
 	 * embed size that works for full-width embeds is the "compact" player (height of 80).
 	 *
-	 * @since  1.0.0
+	 * @since 3.3.0
 	 * @access public
 	 *
 	 * @param  array $media_atts

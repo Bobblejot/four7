@@ -16,7 +16,7 @@ module.exports = function (grunt) {
 				'library/assets/js/responsive/*.js',
 				'!library/assets/js/history/ajaxify-html5.js',
 				'!library/assets/js/history/history.js',
-				'!library/assets/js/scripts.min.js'
+				'!library/assets/js/scripts.js'
 			]
 		},
 		recess : {
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
 				file     : 'library/functions/scripts.php',
 				css      : 'library/assets/css/main.min.css',
 				cssHandle: 'fourseven_main',
-				js       : 'library/assets/js/scripts.min.js',
+				js       : 'library/assets/js/scripts.js',
 				jsHandle : 'fourseven_scripts'
 			}
 		},
@@ -91,7 +91,7 @@ module.exports = function (grunt) {
 				},
 				files  : [
 					'library/assets/css/main.min.css',
-					'library/assets/js/scripts.min.js',
+					'library/assets/js/scripts.js',
 					'templates/*.php',
 					'*.php'
 				]
@@ -100,7 +100,7 @@ module.exports = function (grunt) {
 		clean  : {
 			dist: [
 				'library/assets/css/main.min.css',
-				'library/assets/js/scripts.min.js'
+				'library/assets/js/scripts.js'
 			]
 		}
 	});

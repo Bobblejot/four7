@@ -18,10 +18,12 @@
  * a text string with the given domain.  The purpose of this function is to simply check if the translation files
  * are loaded.
  *
- * @since  1.0.0
+ * @since  3.3.0
  * @access private This is only used internally by the framework for checking translations.
  *
  * @param string $domain The textdomain to check translations for.
+ *
+ * @return bool
  */
 function four7_is_textdomain_loaded( $domain ) {
 	global $four7;
@@ -34,7 +36,7 @@ function four7_is_textdomain_loaded( $domain ) {
  * has the translation files housed in their '/localization' folder.  If not, it sets the translation file the the
  * framework '/localization' folder.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access private
  * @uses   load_textdomain() Loads an MO file into the domain for the framework.
  *
@@ -65,7 +67,7 @@ function four7_load_framework_textdomain( $domain ) {
  * Important! Do not use this for translation functions in your theme.  Hardcode your textdomain string.  Your
  * theme's textdomain should match your theme's folder name.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access private
  * @uses   get_template() Defines the theme textdomain based on the template directory.
  * @global object $four7 The global four7 object.
@@ -91,7 +93,7 @@ function four7_get_parent_textdomain() {
  * Important! Do not use this for translation functions in your theme.  Hardcode your textdomain string.  Your
  * theme's textdomain should match your theme's folder name.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access private
  * @uses   get_stylesheet() Defines the child theme textdomain based on the stylesheet directory.
  * @global object $four7 The global four7 object.
@@ -120,7 +122,7 @@ function four7_get_child_textdomain() {
  * of the mofile for translations.  This allows child themes to have a folder called /localization with translations
  * of their parent theme so that the translations aren't lost on a parent theme upgrade.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access private
  *
  * @param string $mofile File name of the .mo file.
@@ -152,7 +154,7 @@ function four7_load_textdomain_mofile( $mofile, $domain ) {
  * Filters 'gettext' to change the translations used for the 'four7-core' textdomain.  This filter makes it possible
  * for the theme's MO file to translate the framework's text strings.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access private
  *
  * @param string $translated The translated text.
@@ -180,7 +182,7 @@ function four7_gettext( $translated, $text, $domain ) {
  * Filters 'gettext' to change the translations used for the each of the extensions' textdomains.  This filter
  * makes it possible for the theme's MO file to translate the framework's extensions.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access private
  *
  * @param string $translated The translated text.

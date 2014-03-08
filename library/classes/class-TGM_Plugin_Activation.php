@@ -36,7 +36,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 	 * The plugins can be either pre-packaged, downloaded from the WordPress
 	 * Plugin Repository or downloaded from a private repository.
 	 *
-	 * @since   1.0.0
+	 * @since   3.3.0
 	 *
 	 * @package TGM-Plugin-Activation
 	 * @author  Thomas Griffin <thomas@thomasgriffinmedia.com>
@@ -47,7 +47,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Holds a copy of itself, so it can be referenced by the class name.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @var TGM_Plugin_Activation
 		 */
@@ -56,7 +56,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Holds arrays of plugin details.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @var array
 		 */
@@ -65,7 +65,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Parent menu slug for plugins page.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @var string Parent menu slug. Defaults to 'themes.php'.
 		 */
@@ -77,7 +77,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * This is useful if you want to place the custom plugins page as a
 		 * submenu item under a custom parent menu.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @var string Parent URL slug. Defaults to 'themes.php'.
 		 */
@@ -86,7 +86,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Name of the querystring argument for the admin page.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @var string
 		 */
@@ -95,7 +95,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Text domain for localization support.
 		 *
-		 * @since 1.1.0
+		 * @since 3.3.0
 		 *
 		 * @var string
 		 */
@@ -104,7 +104,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Default absolute path to folder containing pre-packaged plugin zip files.
 		 *
-		 * @since 2.0.0
+		 * @since 3.3.0
 		 *
 		 * @var string Absolute path prefix to packaged zip file location. Default is empty string.
 		 */
@@ -113,7 +113,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Flag to show admin notices or not.
 		 *
-		 * @since 2.1.0
+		 * @since 3.3.0
 		 *
 		 * @var boolean
 		 */
@@ -122,7 +122,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Flag to set automatic activation of plugins. Off by default.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @var boolean
 		 */
@@ -131,7 +131,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Optional message to display before the plugins table.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @var string Message filtered by wp_kses_post(). Default is empty string.
 		 */
@@ -142,7 +142,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 *
 		 * Default values are added in the constructor.
 		 *
-		 * @since 2.0.0
+		 * @since 3.3.0
 		 *
 		 * @var array
 		 */
@@ -152,7 +152,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * Adds a reference of this object to $instance, populates default strings,
 		 * does the tgmpa_init action hook, and hooks in the interactions to init.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @see   TGM_Plugin_Activation::init()
 		 */
@@ -193,7 +193,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 *
 		 * Hooks in three new methods for the class: admin_menu, notices and styles.
 		 *
-		 * @since 2.0.0
+		 * @since 3.3.0
 		 *
 		 * @see   TGM_Plugin_Activation::admin_menu()
 		 * @see   TGM_Plugin_Activation::notices()
@@ -266,7 +266,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 *
 		 * Down right easy once you know how...
 		 *
-		 * @since 2.1.0
+		 * @since 3.3.0
 		 *
 		 * @global string $tab     Used as iframe div class names, helps with styling
 		 * @global string $body_id Used as the iframe body ID, helps with styling
@@ -302,7 +302,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * Thickbox is only loaded if the user has not dismissed the admin
 		 * notice or if there are any plugins left to install and activate.
 		 *
-		 * @since 2.1.0
+		 * @since 3.3.0
 		 */
 		public function thickbox() {
 
@@ -320,7 +320,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 *
 		 * This page disappears once the plugin has been installed and activated.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @see   TGM_Plugin_Activation::init()
 		 * @see   TGM_Plugin_Activation::install_plugins_page()
@@ -356,7 +356,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * This method is the callback for the admin_menu method function.
 		 * This displays the admin page and form area where the user can select to install and activate the plugin.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @return null Aborts early if we're processing a plugin installation action
 		 */
@@ -401,7 +401,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * Uses WP_Filesystem to process and handle the plugin installation
 		 * method.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @uses  WP_Filesystem
 		 * @uses  WP_Error
@@ -568,7 +568,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * their theme. If appropriate, it includes a link to the form page where
 		 * users can install and activate the plugin.
 		 *
-		 * @since 1.0.0
+		 * @since 3.3.0
 		 *
 		 * @global object $current_screen
 		 * @return null Returns early if we're on the Install page
@@ -737,7 +737,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 *
 		 * Appends a link to the admin nag messages. If clicked, the admin notice disappears and no longer is visible to users.
 		 *
-		 * @since 2.1.0
+		 * @since 3.3.0
 		 */
 		public function dismiss() {
 
@@ -752,7 +752,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 *
 		 * If the required keys are not set, the plugin is not added.
 		 *
-		 * @since 2.0.0
+		 * @since 3.3.0
 		 *
 		 * @param array $plugin Array of plugin arguments.
 		 */
@@ -769,7 +769,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Amend default configuration settings.
 		 *
-		 * @since 2.0.0
+		 * @since 3.3.0
 		 *
 		 * @param array $config
 		 */
@@ -794,7 +794,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Amend action link after plugin installation.
 		 *
-		 * @since 2.0.0
+		 * @since 3.3.0
 		 *
 		 * @param array $install_actions Existing array of actions
 		 *
@@ -814,7 +814,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		/**
 		 * Set file_path key for each installed plugin.
 		 *
-		 * @since 2.1.0
+		 * @since 3.3.0
 		 */
 		public function populate_file_path() {
 
@@ -829,7 +829,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * Helper function to extract the file path of the plugin file from the
 		 * plugin slug, if the plugin is installed.
 		 *
-		 * @since 2.0.0
+		 * @since 3.3.0
 		 *
 		 * @param string $slug Plugin slug (typically folder name) as provided by the developer
 		 *
@@ -855,7 +855,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * Loops through the registered plugins looking for $name. If it finds it,
 		 * it returns the $data from that plugin. Otherwise, returns false.
 		 *
-		 * @since 2.1.0
+		 * @since 3.3.0
 		 *
 		 * @param string $name Name of the plugin, as it was registered
 		 * @param string $data Optional. Array key of plugin data to return. Default is slug
@@ -881,7 +881,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * conditional when it isn't (like when displaying the plugin information
 		 * thickbox).
 		 *
-		 * @since 2.1.0
+		 * @since 3.3.0
 		 *
 		 * @global object $current_screen
 		 * @return boolean True when on the TGMPA page, false otherwise.
@@ -908,7 +908,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * This ensures that the user is again reminded via nag of required
 		 * and/or recommended plugins if they re-activate the theme.
 		 *
-		 * @since 2.1.1
+		 * @since 3.3.0
 		 */
 		public function update_dismiss() {
 
@@ -928,7 +928,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * to true will not allow the specified plugin to be deactivated unless
 		 * the user switches themes.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 */
 		public function force_activation() {
 
@@ -959,7 +959,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 * Please take special care when using this parameter as it has the
 		 * potential to be harmful if not used correctly.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 */
 		public function force_deactivation() {
 
@@ -985,7 +985,7 @@ if ( ! function_exists( 'tgmpa' ) ) {
 	/**
 	 * Helper function to register a collection of required plugins.
 	 *
-	 * @since 2.0.0
+	 * @since 3.3.0
 	 * @api
 	 *
 	 * @param array $plugins An array of plugin arrays
@@ -1008,7 +1008,7 @@ if ( ! function_exists( 'tgmpa' ) ) {
  * WP_List_Table isn't always available. If it isn't available,
  * we load it here.
  *
- * @since 2.2.0
+ * @since 3.3.0
  */
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
@@ -1026,7 +1026,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 	 *
 	 * This class also allows for the bulk install of plugins.
 	 *
-	 * @since   2.2.0
+	 * @since   3.3.0
 	 *
 	 * @package TGM-Plugin-Activation
 	 * @author  Thomas Griffin <thomas@thomasgriffinmedia.com>
@@ -1040,7 +1040,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * The constructor also grabs a copy of $instance from the TGMPA class
 		 * and stores it in the global object TGM_Plugin_Activation::$instance.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @global unknown $status
 		 * @global string  $page
@@ -1063,7 +1063,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * Gathers and renames all of our plugin information to be used by
 		 * WP_List_Table to create our table.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @return array $table_data Information for use in table
 		 */
@@ -1178,7 +1178,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * Loops through the registered plugins looking for $name. If it finds it,
 		 * it returns the $data from that plugin. Otherwise, returns false.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @param string $name Name of the plugin, as it was registered
 		 * @param string $data Optional. Array key of plugin data to return. Default is slug
@@ -1201,7 +1201,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * Create default columns to display important plugin information
 		 * like type, action and status.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @param array  $item
 		 * @param string $column_name
@@ -1221,7 +1221,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * Create default title column along with action links of 'Install'
 		 * and 'Activate'.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @param array $item
 		 *
@@ -1287,7 +1287,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 *
 		 * Adds a checkbox for each plugin.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @param array $item
 		 *
@@ -1308,7 +1308,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * Hides the menu item to prevent the user from clicking and
 		 * getting a permissions error.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 */
 		public function no_items() {
 
@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		/**
 		 * Output all the column information within the table.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @return array $columns The column names
 		 */
@@ -1342,7 +1342,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * Defines all types of bulk actions for handling
 		 * registered plugins.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 *
 		 * @return array $actions The bulk actions for the plugin install table
 		 */
@@ -1364,7 +1364,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * information or for the plugin info within the $_GET variable if
 		 * a user has to use WP_Filesystem to enter their credentials.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 */
 		public function procefs_bulk_actions() {
 
@@ -1608,7 +1608,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		/**
 		 * Prepares all of our information to be outputted into a usable table.
 		 *
-		 * @since 2.2.0
+		 * @since 3.3.0
 		 */
 		public function prepare_items() {
 
@@ -1637,7 +1637,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
  * doesn't try to re-include the class when processing upgrades or installs outside
  * of the class.
  *
- * @since 2.2.0
+ * @since 3.3.0
  */
 if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] ) && TGM_Plugin_Activation::$instance->menu = $_GET[sanitize_key( 'page' )] ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -1649,7 +1649,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 		 * Extends WP_Upgrader and customizes to suit the installation of multiple
 		 * plugins.
 		 *
-		 * @since   2.2.0
+		 * @since   3.3.0
 		 *
 		 * @package TGM-Plugin-Activation
 		 * @author  Thomas Griffin <thomas@thomasgriffinmedia.com>
@@ -1660,7 +1660,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Holds result of bulk plugin installation.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @var string
 			 */
@@ -1669,7 +1669,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Flag to check if bulk installation is occurring or not.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @var boolean
 			 */
@@ -1678,7 +1678,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Processes the bulk installation of plugins.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @param array $packages The plugin sources needed for installation
 			 *
@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			 * This method also activates the plugin in the automatic flag has been
 			 * set to true for the TGMPA class.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @param array $options The installation cofig options
 			 *
@@ -1881,7 +1881,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Sets the correct install strings for the installer skin to use.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function install_strings() {
 
@@ -1897,7 +1897,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Sets the correct activation strings for the installer skin to use.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function activate_strings() {
 
@@ -1909,7 +1909,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Grabs the plugin file from an installed plugin.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @return string|boolean Return plugin file on success, false on failure
 			 */
@@ -1946,7 +1946,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 		 * Extends Bulk_Upgrader_Skin and customizes to suit the installation of multiple
 		 * plugins.
 		 *
-		 * @since   2.2.0
+		 * @since   3.3.0
 		 *
 		 * @package TGM-Plugin-Activation
 		 * @author  Thomas Griffin <thomas@thomasgriffinmedia.com>
@@ -1957,7 +1957,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Holds plugin info for each individual plugin installation.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @var array
 			 */
@@ -1966,7 +1966,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Holds names of plugins that are undergoing bulk installations.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @var array
 			 */
@@ -1975,7 +1975,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Integer to use for iteration through each plugin installation.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @var integer
 			 */
@@ -1984,7 +1984,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Constructor. Parses default args with new ones and extracts them for use.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 *
 			 * @param array $args Arguments to pass for use within the class
 			 */
@@ -2008,7 +2008,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			 * Checks to see if the automatic activation flag is set and uses the
 			 * the proper strings accordingly.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function add_strings() {
 
@@ -2033,7 +2033,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Outputs the header strings and necessary JS before each plugin installation.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function before( $title = '' ) {
 
@@ -2055,7 +2055,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			 * Checks for any errors and outputs them if they exist, else output
 			 * success strings.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function after( $title = '' ) {
 
@@ -2088,7 +2088,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Outputs links after bulk plugin installation is complete.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function bulk_footer() {
 
@@ -2125,7 +2125,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			/**
 			 * Flush header output buffer.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function before_flush_output() {
 
@@ -2138,7 +2138,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
 			 * Flush footer output buffer and iterate $this->i to make sure the
 			 * installation strings reference the correct plugin.
 			 *
-			 * @since 2.2.0
+			 * @since 3.3.0
 			 */
 			public function after_flush_output() {
 

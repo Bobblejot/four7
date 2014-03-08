@@ -24,7 +24,7 @@ add_action( 'wp_head', 'four7_meta_keywords', 1 );
  * Sets the default meta robots setting.  If private, don't send meta info to the header.  Runs the
  * four7_meta_robots filter hook at the end.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 function four7_meta_robots() {
 
@@ -43,7 +43,7 @@ function four7_meta_robots() {
  * Generates the meta author.  For singular posts, it uses the post author's display name.  For user/author
  * archives, it uses the user's display name.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 function four7_meta_author() {
 
@@ -73,7 +73,7 @@ function four7_meta_author() {
  * Add the meta tag for copyright information to the header.  Singular posts display the date the post was
  * published.  All other pages will show the current year.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 function four7_meta_copyright() {
 
@@ -97,7 +97,7 @@ function four7_meta_copyright() {
 /**
  * Add the revised meta tag on the singular view of posts.  This shows the last time the post was modified.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 function four7_meta_revised() {
 
@@ -115,7 +115,7 @@ function four7_meta_revised() {
 /**
  * Generates the meta description based on either metadata or the description for the object.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 function four7_meta_description() {
 
@@ -180,7 +180,7 @@ function four7_meta_description() {
 /**
  * Generates meta keywords/tags for the site.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 function four7_meta_keywords() {
 

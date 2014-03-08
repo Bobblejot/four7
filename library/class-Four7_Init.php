@@ -31,7 +31,7 @@
  * the 'after_setup_theme' hook with a priority of 11.  This allows the class to load theme-supported features
  * at the appropriate time, which is on the 'after_setup_theme' hook with a priority of 12.
  *
- * @since 0.7.0
+ * @since 3.3.0
  */
 class Four7_Init {
 
@@ -40,7 +40,7 @@ class Four7_Init {
 	 * specific hooks within WordPress.  It controls the load order of the required files for running
 	 * the framework.
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 	function __construct() {
 
@@ -80,7 +80,7 @@ class Four7_Init {
 	 * Constants prefixed with 'four7_' are for use only within the core framework and don't
 	 * reference other areas of the parent or child theme.
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 	function constants() {
 
@@ -153,7 +153,7 @@ class Four7_Init {
 	 * Loads the core framework functions.  These files are needed before loading anything else in the
 	 * framework because they have required functions for use.
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 	function core() {
 
@@ -189,7 +189,7 @@ class Four7_Init {
 	 * framework will fall back on the theme root folder if necessary.  Translation files are expected
 	 * to be prefixed with the template or stylesheet path (example: 'templatename-en_US.mo').
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 	function i18n() {
 		global $four7;
@@ -223,7 +223,7 @@ class Four7_Init {
 	 * Removes theme supported features from themes in the case that a user has a plugin installed
 	 * that handles the functionality.
 	 *
-	 * @since 1.3.0
+	 * @since 3.3.0
 	 */
 	function theme_support() {
 
@@ -243,7 +243,7 @@ class Four7_Init {
 	 * Loads the framework functions.  Many of these functions are needed to properly run the
 	 * framework.  Some components are only loaded if the theme supports them.
 	 *
-	 * @since 0.7.0
+	 * @since 3.3.0
 	 */
 	function functions() {
 
@@ -317,7 +317,7 @@ class Four7_Init {
 	 * framework.  Themes must use add_theme_support( $extension ) to use a specific extension
 	 * within the theme.  This should be declared on 'after_setup_theme' no later than a priority of 11.
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 	function extensions() {
 
@@ -342,7 +342,7 @@ class Four7_Init {
 	/**
 	 * Load admin files for the framework.
 	 *
-	 * @since 0.7.0
+	 * @since 3.3.0
 	 */
 	function admin() {
 
@@ -360,7 +360,7 @@ class Four7_Init {
 	/**
 	 * Adds the default framework actions and filters.
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 	function default_filters() {
 

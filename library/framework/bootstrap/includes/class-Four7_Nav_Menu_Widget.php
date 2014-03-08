@@ -4,7 +4,7 @@
 /**
  * Navigation Menu widget class
  *
- * @since 3.0.0
+ * @since 3.3.0
  */
 class Four7_Nav_Menu_Widget extends WP_Widget {
 

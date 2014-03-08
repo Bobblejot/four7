@@ -11,27 +11,27 @@
 /**
  * Calendar Widget Class
  *
- * @since 0.6.0
+ * @since 3.3.0
  * @link  http://codex.wordpress.org/Function_Reference/get_calendar
- * @link  http://themeinevisys.com/themes/inevisys/widgets
+ * @link  http://inevisys.com/four7/widgets
  */
 class four7_Widget_Calendar extends WP_Widget {
 
 	/**
 	 * Prefix for the widget.
-	 * @since 0.7.0
+	 * @since 3.3.0
 	 */
 	var $prefix;
 
 	/**
 	 * Textdomain for the widget.
-	 * @since 0.7.0
+	 * @since 3.3.0
 	 */
 	var $textdomain;
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
-	 * @since 1.2.0
+	 * @since 3.3.0
 	 */
 	function __construct() {
 
@@ -64,7 +64,7 @@ class four7_Widget_Calendar extends WP_Widget {
 
 	/**
 	 * Outputs the widget based on the arguments input through the widget controls.
-	 * @since 0.6.0
+	 * @since 3.3.0
 	 */
 	function widget( $args, $instance ) {
 		extract( $args );
@@ -91,7 +91,7 @@ class four7_Widget_Calendar extends WP_Widget {
 
 	/**
 	 * Updates the widget control options for the particular instance of the widget.
-	 * @since 0.6.0
+	 * @since 3.3.0
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
@@ -106,7 +106,7 @@ class four7_Widget_Calendar extends WP_Widget {
 
 	/**
 	 * Displays the widget control options in the Widgets admin screen.
-	 * @since 0.6.0
+	 * @since 3.3.0
 	 */
 	function form( $instance ) {
 

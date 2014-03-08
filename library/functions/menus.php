@@ -19,7 +19,7 @@ add_action( 'init', 'four7_register_menus' );
 /**
  * Registers the the framework's default menus based on the menus the theme has registered support for.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @uses  register_nav_menu() Registers a nav menu with WordPress.
  * @link  http://codex.wordpress.org/Function_Reference/register_nav_menu
  */

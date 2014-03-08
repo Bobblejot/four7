@@ -18,7 +18,7 @@ add_action( 'init', 'four7_register_meta' );
 /**
  * Registers the framework's custom metadata keys and sets up the sanitize callback function.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @return void
  *
  */
@@ -57,7 +57,7 @@ function four7_register_meta() {
  * If a developer wants to set up a custom method for sanitizing the data, they should use the
  * "sanitize_{$meta_type}_meta_{$meta_key}" filter hook to do so.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param mixed  $meta_value The value of the data to sanitize.
  * @param string $meta_key   The meta key name.

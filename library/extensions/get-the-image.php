@@ -40,7 +40,7 @@ add_action( 'added_post_meta', 'get_the_image_delete_cache_by_meta', 10, 2 );
  * will no longer look for images.  The check order is 'meta_key', 'the_post_thumbnail', 'attachment',
  * 'image_scan', 'callback', and 'default_image'.
  *
- * @since  0.1.0
+ * @since  3.3.0
  * @access public
  * @global      $post The current post's database object.
  *
@@ -238,7 +238,7 @@ function get_the_image( $args = array() ) {
  * Calls images by custom field key.  Script loops through multiple custom field keys.  If that particular
  * key is found, $image is set and the loop breaks.  If an image is found, it is returned.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param array $args Arguments for how to load and display the image.
@@ -277,7 +277,7 @@ function get_the_image_by_meta_key( $args = array() ) {
  * If an image is found, return it and the $post_thumbnail_id.  The WordPress function's other filters are
  * later added in the display_the_image() function.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param array $args Arguments for how to load and display the image.
@@ -315,7 +315,7 @@ function get_the_image_by_post_thumbnail( $args = array() ) {
  * Check for attachment images.  Uses get_children() to check if the post has images attached.  If image
  * attachments are found, loop through each.  The loop only breaks once $order_of_image is reached.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param array $args Arguments for how to load and display the image.
@@ -397,7 +397,7 @@ function get_the_image_by_attachment( $args = array() ) {
  * Scans the post for images within the content.  Not called by default with get_the_image().  Shouldn't use
  * if using large images within posts, better to use the other options.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param array $args Arguments for how to load and display the image.
@@ -421,7 +421,7 @@ function get_the_image_by_scan( $args = array() ) {
  * Used for setting a default image.  The function simply returns the image URL it was given in an array.
  * Not used with get_the_image() by default.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param array $args Arguments for how to load and display the image.
@@ -436,7 +436,7 @@ function get_the_image_by_default( $args = array() ) {
  * Formats an image with appropriate alt text and class.  Adds a link to the post if argument is set.  Should
  * only be called if there is an image to display, but will handle it if not.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param array $args  Arguments for how to load and display the image.
@@ -511,7 +511,7 @@ function get_the_image_format( $args = array(), $image = false ) {
  * for their image.  By doing this, users can trim off database queries when grabbing attachments or get rid
  * of expensive scans of the content when using the image scan feature.
  *
- * @since  0.6.0
+ * @since 3.3.0
  * @access private
  *
  * @param array $args  Arguments for how to load and display the image.
@@ -539,7 +539,7 @@ function get_the_image_meta_key_save( $args = array(), $image = array() ) {
 /**
  * Deletes the image cache for the specific post when the 'save_post' hook is fired.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param int $post_id The ID of the post to delete the cache for.
@@ -554,7 +554,7 @@ function get_the_image_delete_cache_by_post( $post_id ) {
  * Deletes the image cache for a specific post when the 'added_post_meta', 'deleted_post_meta',
  * or 'updated_post_meta' hooks are called.
  *
- * @since  0.7.0
+ * @since 3.3.0
  * @access private
  *
  * @param int $meta_id The ID of the metadata being updated.
@@ -567,7 +567,7 @@ function get_the_image_delete_cache_by_meta( $meta_id, $post_id ) {
 }
 
 /**
- * @since      0.1.0
+ * @since      3.3.0
  * @deprecated 0.3.0
  */
 function get_the_image_link( $deprecated = '', $deprecated_2 = '', $deprecated_3 = '' ) {
@@ -575,7 +575,7 @@ function get_the_image_link( $deprecated = '', $deprecated_2 = '', $deprecated_3
 }
 
 /**
- * @since      0.3.0
+ * @since      3.3.0
  * @deprecated 0.7.0
  */
 function image_by_custom_field( $args = array() ) {
@@ -583,7 +583,7 @@ function image_by_custom_field( $args = array() ) {
 }
 
 /**
- * @since      0.4.0
+ * @since      3.3.0
  * @deprecated 0.7.0
  */
 function image_by_the_post_thumbnail( $args = array() ) {
@@ -591,7 +591,7 @@ function image_by_the_post_thumbnail( $args = array() ) {
 }
 
 /**
- * @since      0.3.0
+ * @since      3.3.0
  * @deprecated 0.7.0
  */
 function image_by_attachment( $args = array() ) {
@@ -599,7 +599,7 @@ function image_by_attachment( $args = array() ) {
 }
 
 /**
- * @since      0.3.0
+ * @since      3.3.0
  * @deprecated 0.7.0
  */
 function image_by_scan( $args = array() ) {
@@ -607,7 +607,7 @@ function image_by_scan( $args = array() ) {
 }
 
 /**
- * @since      0.3.0
+ * @since      3.3.0
  * @deprecated 0.7.0
  */
 function image_by_default( $args = array() ) {
@@ -615,7 +615,7 @@ function image_by_default( $args = array() ) {
 }
 
 /**
- * @since      0.1.0
+ * @since      3.3.0
  * @deprecated 0.7.0
  */
 function display_the_image( $args = array(), $image = false ) {
@@ -623,7 +623,7 @@ function display_the_image( $args = array(), $image = false ) {
 }
 
 /**
- * @since      0.5.0
+ * @since      3.3.0
  * @deprecated 0.7.0 Replaced by cache delete functions specifically for the post ID.
  */
 function get_the_image_delete_cache() {

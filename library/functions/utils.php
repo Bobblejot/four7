@@ -128,7 +128,7 @@ add_filter( 'init', 'four7_init_filesystem' );
  *
  * Falls back to the post permalink if no URL is found in the post.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @return string The Link format URL.
  */
 
@@ -144,7 +144,7 @@ function four7_get_link_url() {
  * name and version from style.css.  In 0.6, added the fourseven_meta_template
  * filter hook.
  *
- * @since 1.0.0
+ * @since 3.3.0
  */
 
 function four7_meta_template() {
@@ -157,7 +157,7 @@ function four7_meta_template() {
  * Dynamic element to wrap the site title in.  If it is the front page, wrap it in an <h1> element.  One other
  * pages, wrap it in a <div> element.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access public
  * @return void
  */
@@ -180,7 +180,7 @@ function four7_site_title() {
  * Dynamic element to wrap the site description in.  If it is the front page, wrap it in an <h2> element.
  * On other pages, wrap it in a <div> element.
  *
- * @since  1.0.0
+ * @since 3.3.0
  * @access public
  * @return void
  */

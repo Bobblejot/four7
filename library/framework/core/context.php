@@ -23,7 +23,7 @@
  * based archives depending on several factors.  For example, one could load an archive for a specific
  * second during a specific minute within a specific hour on a specific day and so on.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @global $wp_query The current page's query object.
  * @global $four7    The global four7 object.
  * @return array $four7->context Several contexts based on the current page.
@@ -115,7 +115,7 @@ function four7_get_context() {
  * 'hentry'. Posts are given category, tag, and author classes. Alternate post classes of odd,
  * even, and alt are added.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @global             $post  The current post's DB object.
  *
  * @param string|array $class Additional classes for more control.
@@ -202,7 +202,7 @@ function four7_entry_class( $class = '', $post_id = null ) {
  * and reader classes. Needs more work because WP, by default, assigns even/odd backwards
  * (Odd should come first, even second).
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @global $wpdb    WordPress DB access object.
  * @global $comment The current comment's DB object.
  */
@@ -259,7 +259,7 @@ function four7_comment_class( $class = '' ) {
 /**
  * Provides classes for the <body> element depending on page context.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @uses  $wp_query
  *
  * @param string|array $class Additional classes for more control.
@@ -365,7 +365,7 @@ function four7_context_body_class( $class = '' ) {
  * Function for handling what the browser/search engine title should be. Attempts to handle every
  * possible situation WordPress throws at it for the best optimization.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @global $wp_query
  */
 function four7_document_title() {

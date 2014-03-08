@@ -272,7 +272,7 @@ add_filter( 'post_thumbnail_html', 'four7_remove_self_closing_tags' ); // <img /
  * It is possible to add query vars to the link by using the 'add_args' argument
  * and see {@link add_query_arg()} for more information.
  *
- * @since 2.1.0
+ * @since 3.3.0
  *
  * @param string|array $args Optional. Override defaults.
  *

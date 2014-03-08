@@ -17,7 +17,7 @@
  * "special".
  *
  * @uses  locate_template()
- * @since 3.0.0
+ * @since 3.3.0
  * @uses  do_action() Calls 'get_template_part_{$slug}' action.
  *
  * @param string $slug The slug name for the generic template.
@@ -43,7 +43,7 @@ function fs_get_template_part( $slug, $name = null ) {
  * Searches in the FOUR7_FRAMEWORK before STYLESHEETPATH and then on TEMPLATEPATH so that themes which
  * inherit from a parent theme can just overload one file.
  *
- * @since 2.7.0
+ * @since 3.3.0
  *
  * @param string|array $template_names Template file(s) to search for, in order.
  * @param bool         $load           If true the template file will be loaded if it is found.

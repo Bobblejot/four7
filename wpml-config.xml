@@ -1,6 +1,6 @@
 <wpml-config>
 	<admin-texts>
-		<key name="fourseven_options">
+		<key name="four7_options">
 			<key name="rss_feed_url"/>
 			<key name="tb_left_text"/>
 			<key name="tb_right_text"/>

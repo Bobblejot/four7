@@ -17,7 +17,7 @@ add_action( 'admin_menu', 'four7_admin_setup' );
 /**
  * Sets up the adminstration functionality for the framework and themes.
  *
- * @since 1.3.0
+ * @since 3.3.0
  * @return void
  */
 function four7_admin_setup() {
@@ -37,7 +37,7 @@ function four7_admin_setup() {
  * Loads the core post meta box files on the 'load-post.php' action hook.  Each meta box file is only loaded if
  * the theme declares support for the feature.
  *
- * @since 1.2.0
+ * @since 3.3.0
  * @return void
  */
 function four7_admin_load_post_meta_boxes() {
@@ -53,7 +53,7 @@ function four7_admin_load_post_meta_boxes() {
  * Registers the framework's 'admin.css' stylesheet file.  The function does not load the stylesheet.  It merely
  * registers it with WordPress.
  *
- * @since 1.2.0
+ * @since 3.3.0
  * @return void
  */
 function four7_admin_register_styles() {
@@ -67,7 +67,10 @@ function four7_admin_register_styles() {
 /**
  * Loads the admin.css stylesheet for admin-related features.
  *
- * @since 1.2.0
+ * @since 3.3.0
+ *
+ * @param $hook_suffix
+ *
  * @return void
  */
 function four7_admin_enqueue_styles( $hook_suffix ) {
@@ -82,7 +85,7 @@ function four7_admin_enqueue_styles( $hook_suffix ) {
  * would be used to grab custom singular post (any post type) templates.  It is a recreation of the WordPress
  * page templates function because it doesn't allow for other types of templates.
  *
- * @since 0.7.0
+ * @since 3.3.0
  *
  * @param string $post_type The name of the post type to get templates for.
  *

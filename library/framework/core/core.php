@@ -18,7 +18,7 @@
  * plugin to make it easier to use hooks across multiple themes without having to figure out
  * each theme's hooks (assuming other themes used the same system).
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @uses  get_template() Defines the theme prefix based on the theme directory.
  * @global object $four7 The global four7 object.
  * @return string $four7->prefix The prefix of the theme.
@@ -42,7 +42,7 @@ function four7_get_prefix() {
  * give extra hooks such as 'four7_singular_header', 'four7_singular-post_header', and
  * 'four7_singular-post-ID_header'.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @uses  four7_get_prefix() Gets the theme prefix.
  * @uses  four7_get_context() Gets the context of the current page.
  *
@@ -78,7 +78,7 @@ function do_atomic( $tag = '', $arg = '' ) {
  * that to give extra hooks such as 'four7_singular_entry_meta', 'four7_singular-post_entry_meta',
  * and 'four7_singular-post-ID_entry_meta'.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @uses  four7_get_prefix() Gets the theme prefix.
  * @uses  four7_get_context() Gets the context of the current page.
  *
@@ -118,7 +118,7 @@ function apply_atomic( $tag = '', $value = '' ) {
  * context-aware functionality alongside shortcodes. Rather than adding a lot of code to the
  * function itself, developers can create individual functions to handle shortcodes.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param string $tag   Usually the location of the hook but defines what the base hook is.
  * @param mixed  $value The value to be filtered.
@@ -133,7 +133,7 @@ function apply_atomic_shortcode( $tag = '', $value = '' ) {
  * The theme can save multiple things in a transient to help speed up page load times. We're
  * setting a default of 12 hours or 43,200 seconds (60 * 60 * 12).
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @return int Transient expiration time in seconds.
  */
 function four7_get_transient_expiration() {
@@ -144,7 +144,7 @@ function four7_get_transient_expiration() {
  * Function for formatting a hook name if needed. It automatically adds the theme's prefix to
  * the hook, and it will add a context (or any variable) if it's given.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param string $tag     The basic name of the hook (e.g., 'before_header').
  * @param string $context A specific context/value to be added to the hook.
@@ -157,7 +157,7 @@ function four7_format_hook( $tag, $context = '' ) {
  * Function for setting the content width of a theme.  This does not check if a content width has been set; it
  * simply overwrites whatever the content width is.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @global int $content_width The width for the theme's content area.
  *
  * @param int  $width         Numeric value of the width to set.
@@ -171,7 +171,7 @@ function four7_set_content_width( $width = '' ) {
 /**
  * Function for getting the theme's content width.
  *
- * @since 1.0.0
+ * @since 3.3.0
  * @global int $content_width The width for the theme's content area.
  * @return int $content_width
  */
@@ -185,7 +185,7 @@ function four7_get_content_width() {
  * Gets theme data and stores it in the global $four7 variable.  By storing it, it can be accessed quickly without
  * having to run through the get_theme_data() function again.
  *
- * @since 1.0.0
+ * @since 3.3.0
  *
  * @param string $path Whether to use the template (parent theme) or stylesheet (child theme) path.
  */

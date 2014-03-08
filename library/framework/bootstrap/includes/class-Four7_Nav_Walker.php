@@ -13,10 +13,11 @@ class Four7_Nav_Walker extends Walker_Nav_Menu {
 
 	/**
 	 * @see   Walker::start_lvl()
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int    $depth  Depth of page. Used for padding.
+	 * @param array  $args
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
@@ -25,13 +26,15 @@ class Four7_Nav_Walker extends Walker_Nav_Menu {
 
 	/**
 	 * @see   Walker::start_el()
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 *
-	 * @param string $output       Passed by reference. Used to append additional content.
-	 * @param object $item         Menu item data object.
-	 * @param int    $depth        Depth of menu item. Used for padding.
-	 * @param int    $current_page Menu item ID.
-	 * @param object $args
+	 * @param string       $output Passed by reference. Used to append additional content.
+	 * @param object       $item   Menu item data object.
+	 * @param int          $depth  Depth of menu item. Used for padding.
+	 * @param array|object $args
+	 * @param int          $id
+	 *
+	 * @internal param int $current_page Menu item ID.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -138,7 +141,7 @@ class Four7_Nav_Walker extends Walker_Nav_Menu {
 	 * This method shouldn't be called directly, use the walk() method instead.
 	 *
 	 * @see   Walker::start_el()
-	 * @since 2.5.0
+	 * @since 3.3.0
 	 *
 	 * @param object $element           Data object
 	 * @param array  $children_elements List of elements to continue traversing.

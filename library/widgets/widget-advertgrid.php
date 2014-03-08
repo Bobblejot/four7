@@ -12,7 +12,7 @@
 /**
  * Archives widget class.
  *
- * @since 0.6.0
+ * @since 3.3.0
  * @link  http://codex.wordpress.org/Template_Tags/wp_get_archives
  * @link  http://inevisys.com/themes/inevisys/widgets
  */
