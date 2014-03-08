@@ -69,6 +69,9 @@ class Four7_Init {
 
 		/* Load the framework extensions. */
 		add_action( 'after_setup_theme', array( &$this, 'extensions' ), 14 );
+		
+		/* Load admin files. */
+		add_action( 'wp_loaded', array( &$this, 'admin' ) );
 
 	}
 
@@ -82,7 +85,7 @@ class Four7_Init {
 	function constants() {
 
 		/* Sets the framework version number. */
-		define( 'four7_VERSION', '3.0.0' );
+		define( 'four7_VERSION', '3.3.0' );
 
 		/* Sets the path to the parent theme directory. */
 		define( 'THEME_DIR', get_template_directory() );
@@ -101,6 +104,12 @@ class Four7_Init {
 
 		/* Sets the path to the core framework directory URI. */
 		define( 'four7_URI', trailingslashit( THEME_URI ) . basename( dirname( __FILE__ ) ) );
+		
+		/* Sets the path to the core framework classes directory. */
+		define( 'four7_ADMIN', trailingslashit( four7_DIR ) . 'admin' );
+		
+		/* Sets the path to the core framework classes directory. */
+		define( 'four7_ADMIN_ASSETS', trailingslashit( four7_URI ) . 'admin/assets' );
 		
 		/* Sets the path to the core framework classes directory. */
 		define( 'four7_FRAMEWORK', trailingslashit( four7_DIR ) . 'framework' );
@@ -268,6 +277,10 @@ class Four7_Init {
 		
 		/* Load the template functions. */
 		require_once( trailingslashit( four7_FUNCTIONS ) . 'footer.php' );
+		
+		/* Load the template functions. */
+		require_once( trailingslashit( four7_FUNCTIONS ) . 'post-formats.php' );
+
         
         /* Load the menus functions if supported. */
 		require_if_theme_supports( 'four7-bbpress', trailingslashit( four7_FUNCTIONS ) . 'bbpress.php' );
@@ -322,6 +335,23 @@ class Four7_Init {
 	//	require_if_theme_supports( 'pages', trailingslashit( four7_EXTENSIONS ) . 'pages-walker.php' );
 	}
 
+    /**
+	 * Load admin files for the framework.
+	 *
+	 * @since 0.7.0
+	 */
+	function admin() {
+
+		/* Check if in the WordPress admin. */
+		if ( is_admin() ) {
+
+			/* Load the main admin file. */
+			require_once( trailingslashit( four7_ADMIN ) . 'admin.php' );
+
+			/* Load the theme settings feature if supported. */
+		//	require_if_theme_supports( 'hybrid-core-theme-settings', trailingslashit( four7_ADMIN ) . 'theme-settings.php' );
+		}
+	}
 	
 	/**
 	 * Adds the default framework actions and filters.

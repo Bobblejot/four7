@@ -44,7 +44,7 @@ function four7_title() {
  * Includes a <head> element and link.
  */
 function four7_title_section( $header = true, $element = 'h1', $link = false, $class = 'entry-title' ) {
-	$content  = $header ? '<header>' : '';
+	$content  = $header ? '<header class="entry-header">' : '';
 	$content .= '<title>' . get_the_title() . '</title>';
 	$content .= '<' . $element . ' class="' . $class . '">';
 	$content .= $link ? '<a href="' . get_permalink() . '">' : '';

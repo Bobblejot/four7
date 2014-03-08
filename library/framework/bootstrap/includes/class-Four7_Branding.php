@@ -21,7 +21,7 @@ if ( !class_exists( 'Four7_Branding' ) ) {
 			// Branding Options
 			$section = array(
 				'title' => __( 'Colors', 'four7' ),
-				'icon' => 'el-icon-certificate'
+				'icon' => 'fa fa-certificate'
 			);
 
 			$fields[] = array( 

@@ -1,0 +1,1 @@
+var Four7Module = angular.module("Four7App", ['ui.bootstrap']);

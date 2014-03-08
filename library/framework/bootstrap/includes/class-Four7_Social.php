@@ -11,7 +11,9 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			global $fs_settings;
 
 			add_filter( 'redux/options/' . FOUR7_OPT_NAME . '/sections', array( $this, 'options' ), 140 );
-
+            
+            add_action( 'wp_enqueue_scripts', array( $this, 'social_css'                    ), 101 );
+            
 			$social_sharing_location = $fs_settings['social_sharing_location'];
 
 			// Social Share select
@@ -54,7 +56,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 
 			$section = array(
 				'title'     => __( 'Social', 'four7' ),
-				'icon'      => 'el-icon-group',
+				'icon'      => 'fa fa-users',
 			);
 
 			$fields[] = array( 
@@ -84,6 +86,37 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 					'both'    =>'Both',
 				)
 			);
+			
+			$fields[] = array( 
+				'title'     => __( 'Button Alignment', 'four7' ),
+				'desc'      => __( 'Select between Left, Center, Right. fallbacks to "Left" only.', 'four7' ),
+				'id'        => 'social_sharing_alignment',
+				'default'   => 'left',
+				'type'      => 'select',
+				'options'   => array( 
+					'left'     =>'Left',
+					'center'  =>'Center',
+					'right'    =>'Right',
+				)
+			);
+			
+			$fields[] = array(
+				'title'     => 'Button Container Border',
+				'desc'      => __( 'Select the border options for your Button', 'four7' ),
+				'id'        => 'social_sharing_border',
+				'type'      => 'border',
+				'all'       => false, 
+				'left'      => false, 
+				'top'       => true, 
+				'right'     => false,
+				'bottom'    => true,
+				'default'   => array(
+					'border-top'      => '0',
+					'border-bottom'   => '0',
+					'border-style'    => 'solid',
+					'border-color'    => '#DDDDDD',
+				),
+			);
 
 			$fields[] = array( 
 				'title'     => __( 'Button Styling', 'four7' ),
@@ -97,6 +130,21 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 					'success'    => 'Success',
 					'warning'    => 'Warning',
 					'danger'     => 'Danger',
+				)
+			);
+			
+			$fields[] = array( 
+				'title'     => __( 'Button Size', 'four7' ),
+				'desc'      => __( 'Select between standard Bootstrap\'s button sizes', 'four7' ),
+				'id'        => 'social_sharing_button_size',
+				'default'   => 'default',
+				'type'      => 'select',
+				'options'   => array( 
+					'extra-small'    => 'Extra-Small',
+					'small'    => 'Small',
+					'medium'    => 'Medium',
+					'large'    => 'Large',
+					'danger'     => 'Extra-Large',
 				)
 			);
 
@@ -135,7 +183,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 					'gp'    => __( 'Google+', 'four7' ),
 					'li'    => __( 'LinkedIn', 'four7' ),
 					'pi'    => __( 'Pinterest', 'four7' ),
-					'rd'    => __( 'Reddit', 'four7' ),
+				//	'rd'    => __( 'Reddit', 'four7' ),
 					'tu'    => __( 'Tumblr', 'four7' ),
 					'tw'    => __( 'Twitter', 'four7' ),
 					'em'    => __( 'Email', 'four7' ),
@@ -230,15 +278,6 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			);
 
 			$fields[] = array( 
-				'title'     => __( 'MySpace', 'four7' ),
-				'desc'      => __( 'Provide the link you desire and the MySpace icon will appear. To remove it, just leave it blank.', 'four7' ),
-				'id'        => 'myspace_link',
-				'validate'  => 'url',
-				'default'   => '',
-				'type'      => 'text'
-			);
-
-			$fields[] = array( 
 				'title'     => __( 'Pinterest', 'four7' ),
 				'desc'      => __( 'Provide the link you desire and the Pinterest icon will appear. To remove it, just leave it blank.', 'four7' ),
 				'id'        => 'pinterest_link',
@@ -247,10 +286,19 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 				'type'      => 'text'
 			);
 
+		//	$fields[] = array( 
+		//		'title'     => __( 'Reddit', 'four7' ),
+		//		'desc'      => __( 'Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank.', 'four7' ),
+		//		'id'        => 'reddit_link',
+		//		'validate'  => 'url',
+		//		'default'   => '',
+		//		'type'      => 'text'
+		//	);
+			
 			$fields[] = array( 
-				'title'     => __( 'Reddit', 'four7' ),
-				'desc'      => __( 'Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank.', 'four7' ),
-				'id'        => 'reddit_link',
+				'title'     => __( 'RenRen', 'four7' ),
+				'desc'      => __( 'Provide the link you desire and the RenRen icon will appear. To remove it, just leave it blank.', 'four7' ),
+				'id'        => 'renren_link',
 				'validate'  => 'url',
 				'default'   => '',
 				'type'      => 'text'
@@ -274,14 +322,14 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
-				'title'     => __( 'SoundCloud', 'four7' ),
-				'desc'      => __( 'Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank.', 'four7' ),
-				'id'        => 'soundcloud_link',
-				'validate'  => 'url',
-				'default'   => '',
-				'type'      => 'text'
-			);
+	//		$fields[] = array( 
+	//			'title'     => __( 'SoundCloud', 'four7' ),
+	//			'desc'      => __( 'Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank.', 'four7' ),
+	//			'id'        => 'soundcloud_link',
+	//			'validate'  => 'url',
+	//			'default'   => '',
+	//			'type'      => 'text'
+	//		);
 
 			$fields[] = array( 
 				'title'     => __( 'Tumblr', 'four7' ),
@@ -315,6 +363,15 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 				'title'     => 'Vkontakte',
 				'desc'      => 'Provide the link you desire and the Vkontakte icon will appear. To remove it, just leave it blank.',
 				'id'        => 'vkontakte_link',
+				'validate'  => 'url',
+				'default'   => '',
+				'type'      => 'text'
+			);
+			
+			$fields[] = array( 
+				'title'     => 'Weibo',
+				'desc'      => 'Provide the link you desire and the Weibo icon will appear. To remove it, just leave it blank.',
+				'id'        => 'weibo_link',
 				'validate'  => 'url',
 				'default'   => '',
 				'type'      => 'text'
@@ -355,20 +412,21 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			$networks[] = array( 'url' => $fs_settings['facebook_link'],     'icon' => 'facebook',   'fullname' => 'Facebook' );
 			$networks[] = array( 'url' => $fs_settings['flickr_link'],       'icon' => 'flickr',     'fullname' => 'Flickr' );
 			$networks[] = array( 'url' => $fs_settings['github_link'],       'icon' => 'github',     'fullname' => 'GitHub' );
-			$networks[] = array( 'url' => $fs_settings['google_plus_link'],  'icon' => 'googleplus', 'fullname' => 'Google+' );
+			$networks[] = array( 'url' => $fs_settings['google_plus_link'],  'icon' => 'google-plus', 'fullname' => 'Google+' );
 			$networks[] = array( 'url' => $fs_settings['linkedin_link'],     'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
-			$networks[] = array( 'url' => $fs_settings['myspace_link'],      'icon' => 'myspace',    'fullname' => 'Myspace' );
 			$networks[] = array( 'url' => $fs_settings['pinterest_link'],    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
-			$networks[] = array( 'url' => $fs_settings['reddit_link'],       'icon' => 'reddit',     'fullname' => 'Reddit' );
+	//		$networks[] = array( 'url' => $fs_settings['reddit_link'],       'icon' => 'reddit',     'fullname' => 'Reddit' );
+			$networks[] = array( 'url' => $fs_settings['renren_link'],       'icon' => 'renren',     'fullname' => 'RenRen' );
 			$networks[] = array( 'url' => $fs_settings['rss_link'],          'icon' => 'rss',        'fullname' => 'RSS' );
 			$networks[] = array( 'url' => $fs_settings['skype_link'],        'icon' => 'skype',      'fullname' => 'Skype' );
-			$networks[] = array( 'url' => $fs_settings['soundcloud_link'],   'icon' => 'soundcloud', 'fullname' => 'SoundCloud' );
+	//		$networks[] = array( 'url' => $fs_settings['soundcloud_link'],   'icon' => 'soundcloud', 'fullname' => 'SoundCloud' );
 			$networks[] = array( 'url' => $fs_settings['tumblr_link'],       'icon' => 'tumblr',     'fullname' => 'Tumblr' );
 			$networks[] = array( 'url' => $fs_settings['twitter_link'],      'icon' => 'twitter',    'fullname' => 'Twitter' );
-			$networks[] = array( 'url' => $fs_settings['vimeo_link'],        'icon' => 'vimeo',      'fullname' => 'Vimeo' );
-			$networks[] = array( 'url' => $fs_settings['vkontakte_link'],         'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
+			$networks[] = array( 'url' => $fs_settings['vimeo_link'],        'icon' => 'vimeo-square',      'fullname' => 'Vimeo' );
+			$networks[] = array( 'url' => $fs_settings['vkontakte_link'],    'icon' => 'vk',  'fullname' => 'Vkontakte' );
+			$networks[] = array( 'url' => $fs_settings['weibo_link'],    'icon' => 'weibo',  'fullname' => 'Weibo' );
 			$networks[] = array( 'url' => $fs_settings['youtube_link'],      'icon' => 'youtube',    'fullname' => 'YouTube' );
-
+            
 			return $networks;
 		}
 
@@ -405,13 +463,13 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 				}
 			}
 
-			if ( isset( $nets['rd'] ) ) {
-				$networks['reddit'] = array(
-					'icon'      => 'reddit',
-					'fullname'  => 'Reddit',
-					'url'       => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . get_the_title()
-				);
-			}
+//			if ( isset( $nets['rd'] ) ) {
+//				$networks['reddit'] = array(
+//					'icon'      => 'reddit',
+//					'fullname'  => 'Reddit',
+//					'url'       => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . get_the_title()
+//				);
+//			}
 
 			if ( isset( $nets['li'] ) ) {
 				$networks['linkedin'] = array(
@@ -423,7 +481,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 
 			if ( isset( $nets['gp'] ) ) {
 				$networks['googleplus'] = array(
-					'icon'      => 'googleplus',
+					'icon'      => 'google-plus',
 					'fullname'  => 'Google+',
 					'url'       => 'https://plus.google.com/share?url=' . get_permalink()
 				);
@@ -479,7 +537,7 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			global $fs_framework, $fs_settings;
 
 			// The base class for icons that will be used
-			$baseclass  = 'icon el-icon-';
+			$baseclass  = 'icon fa fa-';
 
 			// Don't show by default
 			$show = false;
@@ -490,12 +548,21 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 			} else {
 				$button_color = 'default';
 			}
+			
+			// Button size
+			if ( isset( $fs_settings['social_sharing_button_size'] ) && ! empty( $fs_settings['social_sharing_button_size'] ) ) {
+				$button_size = $fs_settings['social_sharing_button_size'];
+			} else {
+				$button_size = 'medium';
+			}
 
 			// Button Text
 			$text = $fs_settings['social_sharing_text'];
 
 			// Build the content
-			$content  = '<div class="' . $fs_framework->button_group_classes( 'small', null, 'social-share' ) . '">';
+			$content = '<div class="row-social">';
+			$content .= '<div class="row-social-inner">';
+			$content .= '<div class="' . $fs_framework->button_group_classes( $button_size, null, 'social-share' ) . '">';
 			$content .= '<button class="' . $fs_framework->button_classes( $button_color, null, null, 'social-share-main' ) . '">' . $text . '</button>';
 
 			// An array of the available networks
@@ -508,11 +575,49 @@ if ( ! class_exists( 'Four7_Social' ) ) {
 				$content .= '</a>';
 			}
 			$content .= '</div>';
+			$content .= '</div>';
+			$content .= '</div>';
+			$content .= '<div class="clearfix"></div>';
 
 			// If at least ONE social share option is enabled then echo the content
 			if ( ! empty( $networks ) ) {
 				echo $content;
 			}
+		}
+		
+		/**
+		 * AnySocial-specific CSS that can't be added in the .less stylesheet is calculated here.
+		 */
+		function social_css() {
+			global $fs_settings;
+
+			$alignment = $fs_settings['social_sharing_alignment'];
+			$border = $fs_settings['social_sharing_border'];
+
+			$style = '';
+
+			if ( $alignment == 'left' ) {
+				$style .= 'text-align: left;';
+			} else if ( $alignment == 'center' ) {
+    			$style .= 'text-align: center;';
+			} else if ( $alignment == 'right' ) {
+    			$style .= 'text-align: right;';
+			}
+			
+
+			if ( ! empty( $border ) && $border['border-bottom'] > 0 && ! empty( $border['border-color'] ) ) {
+				$style .= 'border-bottom:' . $border['border-bottom'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
+			}
+			
+			if ( ! empty( $border ) && $border['border-top'] > 0 && ! empty( $border['border-color'] ) ) {
+				$style .= 'border-top:' . $border['border-top'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
+			}
+
+			$style .= 'margin-bottom: 0px;';
+
+			$theCSS = '.row-social-inner {' . trim( $style ) . '}';
+
+			wp_add_inline_style( 'four7_css', $theCSS );
 		}
 	}
 }

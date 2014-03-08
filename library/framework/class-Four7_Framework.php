@@ -94,7 +94,7 @@ if ( ! class_exists( 'FOUR7_Framework' ) ) {
 			// Blog Options
 			$section = array(
 				'title' => __( 'General', 'four7' ),
-				'icon'  => 'el-icon-website',
+				'icon'  => 'fa fa-globe',
 			);
 
 			if ( ! defined( 'FOUR7_FRAMEWORK' ) ) {

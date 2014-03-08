@@ -19,7 +19,7 @@ function four7_redux_init() {
 	$args['share_icons'][] = array(
 		'url'   => 'https://github.com/four7/four7',
 		'title' => 'Fork Me on GitHub',
-		'icon'  => 'el-icon-github'
+		'icon'  => 'fa fa-github'
 	);
 
 	// Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
@@ -68,6 +68,22 @@ function four7_redux_init() {
 add_action('init', 'four7_redux_init');
 endif;
 
+function newIconFont() {
+    // Uncomment this to remove elusive icon from the panel completely
+    //wp_deregister_style( 'redux-elusive-icon' );
+    //wp_deregister_style( 'redux-elusive-icon-ie7' );
+
+    wp_register_style(
+        'redux-font-awesome',
+        '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css',
+        array(),
+        time(),
+        'all'
+    );  
+    wp_enqueue_style( 'redux-font-awesome' );
+}
+// This example assumes the opt_name is set to redux_demo.  Please replace it with your opt_name value.
+add_action( 'redux/page/' . FOUR7_OPT_NAME . '/enqueue', 'newIconFont' );
 
 /**
  * Remove the demo link and the notice of integrated demo from the redux-framework plugin

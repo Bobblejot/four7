@@ -20,7 +20,7 @@ if ( ! class_exists( 'Four7_Typography' ) ) {
 			// Typography Options
 			$section = array(
 				'title'   => __( 'Typography', 'four7' ),
-				'icon'    => 'el-icon-font',
+				'icon'    => 'fa fa-font',
 			);
 
 			$fields[] = array(

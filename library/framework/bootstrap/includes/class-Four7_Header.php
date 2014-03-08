@@ -24,7 +24,7 @@ if ( ! class_exists( 'Four7_Header' ) ) {
 			// Jumbotron Options
 			$section = array(
 				'title' => __( 'Header', 'four7'),
-				'icon'  => 'el-icon-eye-open'
+				'icon'  => 'fa fa-eye'
 			);
 
 			$fields[] = array( 

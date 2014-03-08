@@ -18,7 +18,7 @@ var Four7 = {
   // All pages
   common: {
     init: function() {
-      // JavaScript to be fired on all pages
+      
     }
   },
   // Home page

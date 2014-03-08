@@ -25,7 +25,7 @@ if ( ! class_exists( 'Four7_Jumbotron' ) ) {
 			// Jumbotron Options
 			$section = array(
 				'title' => __( 'Jumbotron', 'four7'),
-				'icon'  => 'el-icon-bullhorn'
+				'icon'  => 'fa fa-bullhorn'
 			);
 
 			$fields[] = array(

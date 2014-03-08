@@ -67,24 +67,27 @@ function four7_sanitize_meta( $meta_value, $meta_key, $meta_type ) {
 	return strip_tags( $meta_value );
 }
 
-function four7_meta( $context = 'tags' ) {
+function four7_meta( $class, $context = 'tags' ) {
 	global $fs_framework;
 
-	$panel_open = $fs_framework->make_panel( 'post-meta-' . $context );
-	$panel_head = $fs_framework->make_panel_heading();
-	$tags_label = '<i class="el-icon-tags"></i> ' . __( 'Tags:', 'four7' );
-	$cats_label = '<i class="el-icon-tag"></i> ' . __( 'Categories:', 'four7' );
-	$panel_body = $fs_framework->make_panel_body();
-	$label_def  = '<span class="label label-tag">';
+	$panel_open       = $fs_framework->open_panel( 'panel-' . $class . ' post-meta-' . $context );
+	$panel_close      = $fs_framework->close_panel();
+	$panel_head_open  = $fs_framework->open_panel_heading();
+	$panel_head_close = $fs_framework->close_panel_heading();
+	$tags_label       = '<i class="fa fa-tags"></i> ' . __( 'Tags:', 'four7' );
+	$cats_label       = '<i class="fa fa-tag"></i> ' . __( 'Categories:', 'four7' );
+	$panel_body_open  = $fs_framework->open_panel_body();
+	$panel_body_close = $fs_framework->close_panel_body();
+	$label_def        = '<span class="label label-tag">';
 
 	if ( $context == 'tags' && get_the_tag_list() ) {
-		echo apply_filters( 'four7_the_tags', get_the_tag_list( $panel_open . $panel_head . $tags_label . '</div>' . $panel_body . $label_def,
+		echo apply_filters( 'four7_the_tags', get_the_tag_list( $panel_open . $panel_head_open . $tags_label . $panel_head_close . $panel_body_open . $label_def,
 			'</span> ' . $label_def,
-			'</span></div></div>'
+			'</span>' . $panel_body_close . $panel_close
 		) );
 	}
 
 	if ( $context == 'cats' && get_the_category_list() ) {
-		echo apply_filters( 'four7_the_cats', $panel_open . $panel_head . $cats_label . '</div>' . $panel_body . $label_def . get_the_category_list( '</span> ' . $label_def ) . '</span></div></div>' );
+		echo apply_filters( 'four7_the_cats', $panel_open . $panel_head_open . $cats_label . $panel_head_close . $panel_body_open . $label_def . get_the_category_list( '</span> ' . $label_def ) . '</span>' . $panel_body_close . $panel_close );
 	}
 }

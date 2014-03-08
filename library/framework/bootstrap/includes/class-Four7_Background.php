@@ -23,7 +23,7 @@ if ( ! class_exists( 'Four7_Background' ) ) {
 			// Blog Options
 			$section = array(
 				'title' => __( 'Background', 'four7' ),
-				'icon'  => 'el-icon-photo',
+				'icon'  => 'fa fa-picture-o',
 			);   
 
 			$fields[] = array(

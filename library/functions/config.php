@@ -99,7 +99,11 @@ function four7_section_class( $target, $echo = false ) {
 	} else {
 		$class = apply_filters( 'four7_section_class_main', $main );
 	}
-
+    
+    if ( is_array( $class ) ) {
+		$class = implode( ' ', $class );
+	}
+	
 	// echo or return the result.
 	if ( $echo ) {
 		echo $class;

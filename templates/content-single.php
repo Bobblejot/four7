@@ -1,6 +1,6 @@
 <?php
 
-global $fs_framework;
+global $fs_framework, $fs_settings;
 
 while ( have_posts() ) : the_post();
 
@@ -18,8 +18,9 @@ while ( have_posts() ) : the_post();
 		echo '</div>';
 
 		echo '<footer>';
-			four7_meta( 'cats' );
-			four7_meta( 'tags' );
+			four7_meta( $fs_settings['single_meta_cats_panel_class'], 'cats' );
+			four7_meta( $fs_settings['single_meta_tags_panel_class'], 'tags' );
+			do_action( 'four7_entry_author' );
 			wp_link_pages( array(
 				'before' => '<nav class="page-nav"><p>' . __('Pages:', 'four7'),
 				'after'  => '</p></nav>'

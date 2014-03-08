@@ -77,7 +77,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 			// Advanced Settings
 			$section = array(
 				'title'   => __( 'Advanced', 'four7' ),
-				'icon'    => 'el-icon-cogs'
+				'icon'    => 'fa fa-gears'
 			);
 
 			$fields[] = array(

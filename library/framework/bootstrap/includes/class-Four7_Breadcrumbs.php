@@ -50,7 +50,7 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 			$links = array(
 				array(
 					'url'  => get_home_url(),
-					'text' => '<i class="el-icon-home"></i>'
+					'text' => '<i class="fa fa-home"></i>'
 				)
 			);
 

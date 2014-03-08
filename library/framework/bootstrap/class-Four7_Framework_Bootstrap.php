@@ -53,6 +53,9 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 
 			// Miscelaneous
 			'clearfix' => '<div class="clearfix"></div>',
+			
+			// Forms
+			'form-input' => 'form-control',
 		);
 
 		/**
@@ -74,6 +77,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Branding.php' );        // Branding
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Blog.php' );            // Blog
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Breadcrumbs.php' );     // Breadcrumbs
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Author_Box.php' );     // Author Box
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Header.php' );          // Header
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Typography.php' );      // Typography
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Footer.php' );          // Footer
@@ -85,23 +89,43 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Nav_Menu_Widget.php' ); // NavMenus
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Navlist_Walker.php' );  // NavLists
 
-
+								
 				// instantiate the classes
 				global $fs_layout;
 				$fs_layout      = new Four7_Layout();
 
-				$background     = new Four7_Background();
-				$advanced       = new Four7_Advanced();
-				$branding       = new Four7_Branding();
-				$blog           = new Four7_Blog();
-				$footer         = new Four7_Footer();
-				$headers        = new Four7_Header();
-				$jumbotron      = new Four7_Jumbotron();
-				$menus          = new Four7_Menus();
-				$typography     = new Four7_Typography();
+				global $fs_background;
+				$fs_background  = new Four7_Background();
+
+				global $fs_advanced;
+				$fs_advanced    = new Four7_Advanced();
+
+				global $fs_branding;
+				$fs_branding    = new Four7_Branding();
+
+				global $fs_blog;
+				$fs_blog        = new Four7_Blog();
+
+				global $fs_footer;
+				$fs_footer      = new Four7_Footer();
+
+				global $fs_headers;
+				$fs_headers     = new Four7_Header();
+
+				global $fs_jumbotron;
+				$fs_jumbotron   = new Four7_Jumbotron();
+
+				global $fs_menus;
+				$fs_menus       = new Four7_Menus();
+
+				global $fs_typography;
+				$fs_typography  = new Four7_Typography();
 
 				global $fs_breadcrumbs;
 				$fs_breadcrumbs = new Four7_Breadcrumbs();
+				
+				global $fs_authorbox;
+				$fs_authorbox = new Four7_Author_Box();
 
 				global $fs_social;
 				$fs_social      = new Four7_Social();
@@ -126,6 +150,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				add_filter( 'nav_menu_item_id',   '__return_null' );
 			}
 			add_action( 'four7_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
+			add_action( 'four7_entry_author', array( $this, 'authorbox' ));
 			add_filter( 'wp_nav_menu_args',   array( $this, 'nav_menu_args' ) );
 		}
 
@@ -208,13 +233,42 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				echo '</div>';
 			}
 		}
+		
+		/**
+		 * Template tag for breadcrumbs.
+		 *
+		 * @param string $before  What to show before the breadcrumb.
+		 * @param string $after   What to show after the breadcrumb.
+		 * @param bool   $display Whether to display the breadcrumb (true) or return it (false).
+		 * @return string
+		 */
+		function authorbox() {
+			global $fs_settings, $fs_authorbox;
+
+			if ( is_single() && ( isset( $fs_settings['authorbox'] ) && $fs_settings['authorbox'] == 0 ) ) {
+				return;
+			}
+
+
+			if ( class_exists( 'Four7_Author_Box' ) ) {
+			    echo '<div class="author-profile vcard">';
+				echo $fs_authorbox->single_author( false );
+				echo '</div>';
+				
+			}
+		}
+
 
 		/**
 		 * Enqueue scripts and stylesheets
 		 */
 		function enqueue_scripts() {
-			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/bootstrap.min.js',              false, null, true  );
+		    wp_register_script( 'angular-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/angular.min.js',              false, null, false  );
+			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/ui-bootstrap-tpls-0.10.0.min.js',              false, null, false  );
+			wp_register_script( 'app-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/app.js',              false, null, false  );
+			wp_enqueue_script( 'angular-min' );
 			wp_enqueue_script( 'bootstrap-min' );
+			wp_enqueue_script( 'app-min' );
 		}
 
 		/**
@@ -236,7 +290,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 
 		}
 
-		public function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
+		public function button_group_classes( $size = 'default', $type = null, $extra_classes = null ) {
 
 			$classes = array();
 
@@ -760,6 +814,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			if ( isset( $font_jumbotron_headers_face ) && ! empty( $font_jumbotron_headers_face ) ) {
 				$variables .= '@jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';';
 			}
+			
 
 			/**
 			 * MENUS
@@ -912,11 +967,12 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$options = array( 'compress' => $compress );
 
 			$bootstrap_location = dirname( __FILE__ ) . '/assets/less/';
-			$webfont_location   = get_template_directory() . '/assets/fonts/elusive/';
+		//	$webfont_location   = get_template_directory() . '/assets/fonts/elusive/less/';
+			$webfont_location   = get_template_directory() . '/assets/fonts/fontawesome/less/';
 			$bootstrap_uri      = '';
 			$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
             
-            print_r($webfont_location);
+           // print_r($webfont_location);
 			$css = '';
 			try {
 
@@ -926,7 +982,10 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				$parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
 
 				// Include the Elusive Icons
-				$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
+			//	$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
+				
+				// Include the Fontawesome Icons
+				$parser->parseFile( $webfont_location . 'font-awesome.less', $bootstrap_uri );
 
 				// Enable gradients
 				if ( $fs_settings['gradients_toggle'] == 1 ) {
@@ -972,7 +1031,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$networks = $fs_social->get_social_links();
 
 			// The base class for icons that will be used
-			$baseclass  = 'icon el-icon-';
+			$baseclass  = 'icon fa fa-';
 
 			// Build the content
 			$content = '';
@@ -1003,7 +1062,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$networks = $fs_social->get_social_links();
 
 			// The base class for icons that will be used
-			$baseclass  = 'el-icon-';
+			$baseclass  = 'fa fa-';
 
 			// Build the content
 			$content = '';

@@ -52,7 +52,7 @@ if ( ! class_exists( 'Four7_Layout' ) ) {
 			// Layout Settings
 			$section = array( 
 				'title'       => __( 'Layout', 'four7' ),
-				'icon'        => 'el-icon-screen',
+				'icon'        => 'fa fa-columns',
 				'description' => '<p>In this area you can select your site\'s layout, the width of your sidebars, as well as other, more advanced options.</p>',
 			);
 

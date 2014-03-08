@@ -22,7 +22,7 @@ if( ! class_exists( 'Four7_Footer' ) ) {
 			// Branding Options
 			$section = array(
 				'title' => __( 'Footer', 'four7' ),
-				'icon' => 'el-icon-caret-down'
+				'icon' => 'fa fa-caret-square-o-down'
 			);
 
 			$fields[] = array( 
@@ -285,7 +285,9 @@ if( ! class_exists( 'Four7_Footer' ) ) {
 							echo $fs_framework->open_col( 'div', array( 'large' => $social_width ), 'footer_social_bar' );
 
 								foreach ( $networks as $network ) {
-									echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '"><span class="el-icon-' . $network['icon'] . '"></span></a>';
+								    if ( strlen( $network['url'] ) > 7 ) {
+									echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '"><span class="fa fa-' . $network['icon'] . '"></span></a>';
+									}
 								}
 
 							echo $fs_framework->close_col( 'div' );

@@ -63,13 +63,12 @@ function four7_theme_setup() {
 	================================================== */ 
 	add_theme_support( 'four7-core-seo' );
     add_theme_support( 'four7-gallery' );  // Enable Bootstrap's thumbnails component on [gallery]
-    add_theme_support( 'nice-search' );    // Enable /?s= to /search/ redirect
-    add_theme_support( 'jquery-cdn' );     // Enable to load jQuery from the Google CDN
     
 	/* Add theme support for framework extensions.
 	================================================== */ 
 	add_theme_support( 'gallery' );
 	add_theme_support( 'comments' );
+	add_theme_support( 'get-the-image' );
 //	add_theme_support( 'pages' );
 
     /* Add theme support for bbPress.
@@ -78,16 +77,16 @@ function four7_theme_setup() {
 
 	/* Add theme support for WordPress features.
 	================================================== */ 
-	add_theme_support( 'structured-post-formats', array('audio', 'gallery', 'image', 'link', 'video') );
-	add_theme_support( 'post-formats', array('aside', 'chat', 'quote', 'status') );
+	add_theme_support( 'post-formats', array('audio', 'gallery', 'image', 'link','aside', 'chat', 'quote', 'status', 'video') );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'woocommerce' );
 	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list') );
-	add_theme_support( 'post-thumbnails' );      // wp thumbnails (sizes handled in functions.php)
-    
+	    
     /* THUMBNAIL SIZES
     ================================================== */  	
+    add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 220, 150, true);
+
     add_image_size( 'widget-image', 94, 70, true);
     add_image_size( 'thumb-square', 250, 250, true);
     add_image_size( 'thumb-image', 600, 450, true);
@@ -112,6 +111,10 @@ function four7_theme_setup() {
 	/* Adds the featured image to image posts if no content is found.
 	================================================== */  
 	add_filter( 'the_content', 'four7_image_content' );
+	
+	/* Adds the featured image to image posts if no content is found.
+	================================================== */  
+	add_filter( 'the_content', 'four7_media_content' );
 
 	/* Add custom <body> classes.
 	================================================== */  
@@ -125,6 +128,26 @@ function four7_theme_setup() {
 	================================================== */  
 	add_editor_style('library/assets/css/editor-style.css');	
 	
+}
+
+/**
+ * Wraps the output of the quote post format content in a <blockquote> element if the user hasn't added a 
+ * <blockquote> in the post editor.
+ *
+ * @since 0.1.0
+ * @param string $content The post content.
+ * @return string $content
+ */
+function four7_quote_content( $content ) {
+
+	if ( has_post_format( 'quote' ) ) {
+		preg_match( '/<blockquote.*?>/', $content, $matches );
+
+		if ( empty( $matches ) )
+			$content = "<blockquote>{$content}</blockquote>";
+	}
+
+	return $content;
 }
 
 
@@ -142,6 +165,22 @@ function four7_image_content( $content ) {
 			$content = get_the_image( array( 'size' => 'full', 'meta_key' => false, 'link_to_post' => false ) );
 		else
 			$content = get_the_image( array( 'size' => 'full', 'meta_key' => false ) );
+	}
+
+	return $content;
+}
+
+/**
+ * Returns the featured image for the image post format if the user didn't add any content to the post.
+ *
+ * @since 0.1.0
+ * @param string $content The post content.
+ * @return string $content
+ */
+function four7_media_content( $content ) {
+
+	if ( has_post_format( 'video' ) || has_post_format( 'audio' ) && '' == $content ) {
+			$content = four7_media_grabber();
 	}
 
 	return $content;
@@ -370,26 +409,6 @@ function four7_hex2rgb($hex) {
    return $rgb; // returns an array with the rgb values
 }
 
-/**
- * Wraps the output of the quote post format content in a <blockquote> element if the user hasn't added a 
- * <blockquote> in the post editor.
- *
- * @since 0.1.0
- * @param string $content The post content.
- * @return string $content
- */
-function four7_quote_content( $content ) {
-
-	if ( has_post_format( 'quote' ) ) {
-		preg_match( '/<blockquote.*?>/', $content, $matches );
-
-		if ( empty( $matches ) )
-			$content = "<blockquote>{$content}</blockquote>";
-	}
-
-	return $content;
-}
-
 
 
 function get_related_posts($post_id) {
@@ -439,6 +458,17 @@ function get_related_projects($post_id) {
     
     return $query;
 }
+
+function four7_modify_contact_methods($profile_fields) {
+
+	// Add new fields
+	$profile_fields['twitter'] = 'Twitter Username';
+	$profile_fields['facebook'] = 'Facebook URL';
+	$profile_fields['google_plus'] = 'Google+ URL';
+
+	return $profile_fields;
+}
+add_filter('user_contactmethods', 'four7_modify_contact_methods');
 
 function four7_pagination($pages = '', $range = 2)
 {
@@ -532,7 +562,7 @@ function string_limit_words($string, $word_limit)
 
 
 /**
- * Replaces the standard wordpress login logo.
+ * Replaces the standard Wordpress login logo.
  *
  * @since 0.1.0
  */
