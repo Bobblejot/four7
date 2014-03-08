@@ -3,7 +3,7 @@
 /**
  * Single Topic Content Part
  *
- * @package bbPress
+ * @package    bbPress
  * @subpackage Theme
  */
 
@@ -25,7 +25,7 @@
 
 		if ( bbp_has_replies() ) :
 			bbp_get_template_part( 'pagination', 'replies' );
-			bbp_get_template_part( 'loop',       'replies' );
+			bbp_get_template_part( 'loop', 'replies' );
 			bbp_get_template_part( 'pagination', 'replies' );
 		endif;
 

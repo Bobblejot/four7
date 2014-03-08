@@ -3,8 +3,8 @@
 if ( ! class_exists( 'FOUR7_Framework' ) ) {
 
 	/**
-	* The "Advanced" module
-	*/
+	 * The "Advanced" module
+	 */
 	class FOUR7_Framework {
 
 		/**
@@ -33,7 +33,7 @@ if ( ! class_exists( 'FOUR7_Framework' ) ) {
 			$recIterator  = new RecursiveIteratorIterator( $modules_path );
 			$regex        = new RegexIterator( $recIterator, '/\/framework.php$/i' );
 
-			foreach( $regex as $item ) {
+			foreach ( $regex as $item ) {
 				require_once $item->getPathname();
 			}
 
@@ -43,7 +43,7 @@ if ( ! class_exists( 'FOUR7_Framework' ) ) {
 			// Return the classname of the active framework.
 			foreach ( $frameworks as $framework ) {
 				if ( $active_framework == $framework['shortname'] ) {
-					$active   = $framework['classname'];
+					$active = $framework['classname'];
 
 					if ( isset( $framework['compiler'] ) ) {
 						$compiler = $framework['compiler'];
@@ -86,7 +86,7 @@ if ( ! class_exists( 'FOUR7_Framework' ) ) {
 
 			foreach ( $frameworks as $framework ) {
 				$frameworks_select[$framework['shortname']] = $framework['name'];
-				$frameworks_shortlist[] = $framework['shortname'];
+				$frameworks_shortlist[]                     = $framework['shortname'];
 			}
 
 			$frameworks_shortlist = implode( ', ', $frameworks_shortlist );
@@ -100,56 +100,57 @@ if ( ! class_exists( 'FOUR7_Framework' ) ) {
 			if ( ! defined( 'FOUR7_FRAMEWORK' ) ) {
 
 				$fields[] = array(
-					'title'     => __( 'Framework Locking', 'four7' ),
-					'desc'      => __( 'You can select a framework here. Keep in mind that if you reset your options, this option will also be reset and you will lose all your settings. When changing frameworks, your settings are also reset.
+					'title'    => __( 'Framework Locking', 'four7' ),
+					'desc'     => __( 'You can select a framework here. Keep in mind that if you reset your options, this option will also be reset and you will lose all your settings. When changing frameworks, your settings are also reset.
 						<br>If you want to lock your site to a specific framework, then please define it in your wp-config.php file like this:', 'four7' ) . ' <code>define( "FOUR7_Framework", "foundation" );</code><br>' . __( 'Accepted values: ', 'four7' ) . $frameworks_shortlist . '</p>',
-					'id'        => 'framework_lock_help',
-					'type'      => 'info',
-					'options'   => $frameworks_select,
-					'compiler'  => false,
+					'id'       => 'framework_lock_help',
+					'type'     => 'info',
+					'options'  => $frameworks_select,
+					'compiler' => false,
 				);
 
 
 				$fields[] = array(
-					'title'     => __( 'Framework Select', 'four7' ),
-					'desc'      => __( 'Select a framework.', 'four7' ),
-					'id'        => 'framework',
-					'default'   => 'bootstrap',
-					'type'      => 'select',
-					'options'   => $frameworks_select,
-					'compiler'  => false,
+					'title'    => __( 'Framework Select', 'four7' ),
+					'desc'     => __( 'Select a framework.', 'four7' ),
+					'id'       => 'framework',
+					'default'  => 'bootstrap',
+					'type'     => 'select',
+					'options'  => $frameworks_select,
+					'compiler' => false,
 				);
 			}
 
-			$fields[] = array( 
-				'title'       => __( 'Logo', 'four7' ),
-				'desc'        => __( 'Upload a logo image using the media uploader, or define the URL directly.', 'four7' ),
-				'id'          => 'logo',
-				'default'     => '',
-				'type'        => 'media',
+			$fields[] = array(
+				'title'   => __( 'Logo', 'four7' ),
+				'desc'    => __( 'Upload a logo image using the media uploader, or define the URL directly.', 'four7' ),
+				'id'      => 'logo',
+				'default' => '',
+				'type'    => 'media',
 			);
 
-			$fields[] = array( 
-				'title'       => __( 'Custom Favicon', 'four7' ),
-				'desc'        => __( 'Upload a favicon image using the media uploader, or define the URL directly.', 'four7' ),
-				'id'          => 'favicon',
-				'default'     => '',
-				'type'        => 'media',
+			$fields[] = array(
+				'title'   => __( 'Custom Favicon', 'four7' ),
+				'desc'    => __( 'Upload a favicon image using the media uploader, or define the URL directly.', 'four7' ),
+				'id'      => 'favicon',
+				'default' => '',
+				'type'    => 'media',
 			);
 
-			$fields[] = array( 
-				'title'       => __( 'Apple Icon', 'four7' ),
-				'desc'        => __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'four7' ),
-				'id'          => 'apple_icon',
-				'default'     => '',
-				'type'        => 'media',
+			$fields[] = array(
+				'title'   => __( 'Apple Icon', 'four7' ),
+				'desc'    => __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'four7' ),
+				'id'      => 'apple_icon',
+				'default' => '',
+				'type'    => 'media',
 			);
 
 			$section['fields'] = $fields;
 
 			do_action( 'four7_module_layout_options_modifier' );
-			
+
 			$sections[] = $section;
+
 			return $sections;
 		}
 	}

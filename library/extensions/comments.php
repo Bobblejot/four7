@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Use Bootstrap's media object for listing comments
  *
@@ -8,7 +9,7 @@ class Four7_Walker_Comment extends Walker_Comment {
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$GLOBALS['comment_depth'] = $depth + 1; ?>
 		<ul <?php comment_class( 'media list-unstyled comment-' . get_comment_ID() ); ?>>
-		<?php
+	<?php
 	}
 
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
@@ -17,12 +18,13 @@ class Four7_Walker_Comment extends Walker_Comment {
 	}
 
 	function start_el( &$output, $comment, $depth = 0, $args = array(), $id = 0 ) {
-		$depth++;
+		$depth ++;
 		$GLOBALS['comment_depth'] = $depth;
-		$GLOBALS['comment'] = $comment;
+		$GLOBALS['comment']       = $comment;
 
 		if ( ! empty( $args['callback'] ) ) {
 			call_user_func( $args['callback'], $comment, $args, $depth );
+
 			return;
 		}
 
@@ -36,6 +38,7 @@ class Four7_Walker_Comment extends Walker_Comment {
 	function end_el( &$output, $comment, $depth = 0, $args = array() ) {
 		if ( ! empty( $args['end-callback'] ) ) {
 			call_user_func( $args['end-callback'], $comment, $args, $depth );
+
 			return;
 		}
 		echo "</div></li>\n";
@@ -43,9 +46,13 @@ class Four7_Walker_Comment extends Walker_Comment {
 }
 
 function four7_get_avatar( $avatar, $type ) {
-	if ( ! is_object( $type ) ) { return $avatar; }
+	if ( ! is_object( $type ) ) {
+		return $avatar;
+	}
 
 	$avatar = str_replace( "class='avatar", "class='avatar pull-left media-object", $avatar );
+
 	return $avatar;
 }
+
 add_filter( 'get_avatar', 'four7_get_avatar', 10, 2 );

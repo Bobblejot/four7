@@ -46,6 +46,7 @@ function four7_post_formats() {
 		}
 	}
 }
+
 add_action( 'wp', 'four7_post_formats' );
 
 

@@ -1,74 +1,74 @@
 // Some general UI pack related JS
 // Extend JS String with repeat method
-String.prototype.repeat = function(num) {
-    return new Array(num + 1).join(this);
+String.prototype.repeat = function (num) {
+	return new Array(num + 1).join(this);
 };
 
-(function($) {
+(function ($) {
 
-  // Add segments to a slider
-  $.fn.addSliderSegments = function (amount) {
-    return this.each(function () {
-      var segmentGap = 100 / (amount - 1) + "%"
-        , segment = "<div class='ui-slider-segment' style='margin-left: " + segmentGap + ";'></div>";
-      $(this).prepend(segment.repeat(amount - 2));
-    });
-  };
+	// Add segments to a slider
+	$.fn.addSliderSegments = function (amount) {
+		return this.each(function () {
+			var segmentGap = 100 / (amount - 1) + "%"
+				, segment = "<div class='ui-slider-segment' style='margin-left: " + segmentGap + ";'></div>";
+			$(this).prepend(segment.repeat(amount - 2));
+		});
+	};
 
-  $(function() {
-  
-    // Todo list
-    $(".todo li").click(function() {
-        $(this).toggleClass("todo-done");
-    });
+	$(function () {
 
-    // Custom Selects
-    $("select[name='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-    $("select[name='herolist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
-    $("select[name='info']").selectpicker({style: 'btn-info'});
+		// Todo list
+		$(".todo li").click(function () {
+			$(this).toggleClass("todo-done");
+		});
 
-    // Tooltips
-    $("[data-toggle=tooltip]").tooltip("show");
-    
-    jQuery("[data-toggle=popover]").popover();
-    
-    jQuery('#myTab a:first').tab('show');
+		// Custom Selects
+		$("select[name='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+		$("select[name='herolist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+		$("select[name='info']").selectpicker({style: 'btn-info'});
 
-    // Tags Input
-    $(".tagsinput").tagsInput();
+		// Tooltips
+		$("[data-toggle=tooltip]").tooltip("show");
 
-    // jQuery UI Sliders
-    var $slider = $("#slider");
-    if ($slider.length) {
-      $slider.slider({
-        min: 1,
-        max: 5,
-        value: 2,
-        orientation: "horizontal",
-        range: "min"
-      }).addSliderSegments($slider.slider("option").max);
-    }
+		jQuery("[data-toggle=popover]").popover();
 
-    // Placeholders for input/textarea
-    $("input, textarea").placeholder();
+		jQuery('#myTab a:first').tab('show');
 
-    // Make pagination demo work
-    $(".pagination a").on('click', function() {
-      $(this).parent().siblings("li").removeClass("active").end().addClass("active");
-    });
+		// Tags Input
+		$(".tagsinput").tagsInput();
 
-    $(".btn-group a").on('click', function() {
-      $(this).siblings().removeClass("active").end().addClass("active");
-    });
+		// jQuery UI Sliders
+		var $slider = $("#slider");
+		if ($slider.length) {
+			$slider.slider({
+				min        : 1,
+				max        : 5,
+				value      : 2,
+				orientation: "horizontal",
+				range      : "min"
+			}).addSliderSegments($slider.slider("option").max);
+		}
 
-    // Disable link clicks to prevent page scrolling
-    $('a[href="#fakelink"]').on('click', function (e) {
-      e.preventDefault();
-    });
+		// Placeholders for input/textarea
+		$("input, textarea").placeholder();
 
-    // Switch
-    $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
-    
-  });
-  
+		// Make pagination demo work
+		$(".pagination a").on('click', function () {
+			$(this).parent().siblings("li").removeClass("active").end().addClass("active");
+		});
+
+		$(".btn-group a").on('click', function () {
+			$(this).siblings().removeClass("active").end().addClass("active");
+		});
+
+		// Disable link clicks to prevent page scrolling
+		$('a[href="#fakelink"]').on('click', function (e) {
+			e.preventDefault();
+		});
+
+		// Switch
+		$("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
+
+	});
+
 })(jQuery);

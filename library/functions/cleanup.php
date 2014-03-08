@@ -43,6 +43,7 @@ function four7_rel_canonical() {
 	$link = get_permalink( $id );
 	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
+
 add_action( 'init', 'four7_head_cleanup' );
 
 /**
@@ -51,13 +52,13 @@ add_action( 'init', 'four7_head_cleanup' );
 add_filter( 'the_generator', '__return_false' );
 
 /**
-  * Remove WP version info
-  */
-function hide_wp_vers()
-{
-    return '';
+ * Remove WP version info
+ */
+function hide_wp_vers() {
+	return '';
 }
-add_filter('the_generator','hide_wp_vers');
+
+add_filter( 'the_generator', 'hide_wp_vers' );
 
 /**
  * Clean up language_attributes() used in <html> tag
@@ -66,7 +67,7 @@ add_filter('the_generator','hide_wp_vers');
  */
 function four7_language_attributes() {
 	$attributes = array();
-	$output = '';
+	$output     = '';
 
 	if ( is_rtl() ) {
 		$attributes[] = 'dir="rtl"';
@@ -83,6 +84,7 @@ function four7_language_attributes() {
 
 	return $output;
 }
+
 add_filter( 'language_attributes', 'four7_language_attributes' );
 
 /**
@@ -97,6 +99,7 @@ function four7_wp_title( $title ) {
 
 	return $title;
 }
+
 add_filter( 'wp_title', 'four7_wp_title', 10 );
 
 /**
@@ -109,8 +112,8 @@ function four7_body_class( $classes ) {
 	}
 
 	// Remove unnecessary classes
-	$home_id_class = 'page-id-' . get_option( 'page_on_front' );
-	$remove_classes = array( 
+	$home_id_class  = 'page-id-' . get_option( 'page_on_front' );
+	$remove_classes = array(
 		'page-template-default',
 		$home_id_class
 	);
@@ -119,6 +122,7 @@ function four7_body_class( $classes ) {
 
 	return $classes;
 }
+
 add_filter( 'body_class', 'four7_body_class' );
 
 /**
@@ -132,6 +136,7 @@ function four7_remove_dashboard_widgets() {
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
 	remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
 }
+
 add_action( 'admin_init', 'four7_remove_dashboard_widgets' );
 
 
@@ -144,6 +149,7 @@ add_action( 'admin_init', 'four7_remove_dashboard_widgets' );
 function four7_embed_wrap( $cache, $url, $attr = '', $post_ID = '' ) {
 	return '<div class="entry-content-asset">' . $cache . '</div>';
 }
+
 add_filter( 'embed_oembed_html', 'four7_embed_wrap', 10, 4 );
 
 /**
@@ -157,7 +163,7 @@ function four7_caption( $output, $attr, $content ) {
 		return $output;
 	}
 
-	$defaults = array( 
+	$defaults = array(
 		'id'      => '',
 		'align'   => 'alignnone',
 		'width'   => '',
@@ -172,17 +178,18 @@ function four7_caption( $output, $attr, $content ) {
 	}
 
 	// Set up the attributes for the caption <figure>
-	$attributes  = ( ! empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
+	$attributes = ( ! empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
 	$attributes .= ' class="thumbnail wp-caption ' . esc_attr( $attr['align'] ) . '"';
 	$attributes .= ' style="width: ' . ( esc_attr( $attr['width'] ) + 10 ) . 'px"';
 
-	$output  = '<figure' . $attributes .'>';
+	$output = '<figure' . $attributes . '>';
 	$output .= do_shortcode( $content );
 	$output .= '<figcaption class="caption wp-caption-text">' . $attr['caption'] . '</figcaption>';
 	$output .= '</figure>';
 
 	return $output;
 }
+
 add_filter( 'img_caption_shortcode', 'four7_caption', 10, 3 );
 
 /**
@@ -198,6 +205,7 @@ function four7_request_filter( $query_vars ) {
 
 	return $query_vars;
 }
+
 add_filter( 'request', 'four7_request_filter' );
 
 /**
@@ -206,8 +214,10 @@ add_filter( 'request', 'four7_request_filter' );
 function four7_get_search_form( $form ) {
 	$form = '';
 	fs_locate_template( '/templates/searchform.php', true, false );
+
 	return $form;
 }
+
 add_filter( 'get_search_form', 'four7_get_search_form' );
 
 
@@ -217,8 +227,9 @@ add_filter( 'get_search_form', 'four7_get_search_form' );
 function four7_remove_self_closing_tags( $input ) {
 	return str_replace( ' />', '>', $input );
 }
-add_filter( 'get_avatar',          'four7_remove_self_closing_tags' ); // <img />
-add_filter( 'comment_id_fields',   'four7_remove_self_closing_tags' ); // <input />
+
+add_filter( 'get_avatar', 'four7_remove_self_closing_tags' ); // <img />
+add_filter( 'comment_id_fields', 'four7_remove_self_closing_tags' ); // <input />
 add_filter( 'post_thumbnail_html', 'four7_remove_self_closing_tags' ); // <img />
 
 /**
@@ -264,6 +275,7 @@ add_filter( 'post_thumbnail_html', 'four7_remove_self_closing_tags' ); // <img /
  * @since 2.1.0
  *
  * @param string|array $args Optional. Override defaults.
+ *
  * @return array|string String of page links or array of page links.
  */
 function four7_paginate_links( $args = '' ) {
@@ -294,14 +306,14 @@ function four7_paginate_links( $args = '' ) {
 		return;
 	}
 
-	$current  = (int) $current;
-	$end_size = 0  < (int) $end_size ? (int) $end_size : 1; // Out of bounds?  Make it the default.
-	$mid_size = 0 <= (int) $mid_size ? (int) $mid_size : 2;
-	$add_args = is_array($add_args) ? $add_args : false;
-	$r = '';
+	$current    = (int) $current;
+	$end_size   = 0 < (int) $end_size ? (int) $end_size : 1; // Out of bounds?  Make it the default.
+	$mid_size   = 0 <= (int) $mid_size ? (int) $mid_size : 2;
+	$add_args   = is_array( $add_args ) ? $add_args : false;
+	$r          = '';
 	$page_links = array();
-	$n = 0;
-	$dots = false;
+	$n          = 0;
+	$dots       = false;
 
 	if ( $prev_next && $current && 1 < $current ) {
 		$link = str_replace( '%_%', 2 == $current ? '' : $format, $base );
@@ -312,32 +324,33 @@ function four7_paginate_links( $args = '' ) {
 		$link .= $add_fragment;
 		$page_links[] = '<li><a class="prev page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '">' . $prev_text . '</a></li>';
 	}
-	for ( $n = 1; $n <= $total; $n++ ) {
-		$n_display = number_format_i18n($n);
+	for ( $n = 1; $n <= $total; $n ++ ) {
+		$n_display = number_format_i18n( $n );
 		if ( $n == $current ) {
 			$page_links[] = "<li class='active current'><span class='page-numbers current'>$n_display</span></li>";
-			$dots = true;
+			$dots         = true;
 		} else {
 			if ( $show_all || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) {
-				$link = str_replace('%_%', 1 == $n ? '' : $format, $base);
-				$link = str_replace('%#%', $n, $link);
+				$link = str_replace( '%_%', 1 == $n ? '' : $format, $base );
+				$link = str_replace( '%#%', $n, $link );
 
-				if ( $add_args )
+				if ( $add_args ) {
 					$link = add_query_arg( $add_args, $link );
+				}
 
 				$link .= $add_fragment;
 				$page_links[] = "<li><a class='page-numbers' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>$n_display</a></li>";
-				$dots = true;
+				$dots         = true;
 			} elseif ( $dots && ! $show_all ) {
 				$page_links[] = '<li><span class="page-numbers dots">' . __( '&hellip;' ) . '</span></li>';
-				$dots = false;
+				$dots         = false;
 			}
 		}
 	}
 
-	if ( $prev_next && $current && ( $current < $total || -1 == $total ) ) {
-		$link = str_replace('%_%', $format, $base);
-		$link = str_replace('%#%', $current + 1, $link);
+	if ( $prev_next && $current && ( $current < $total || - 1 == $total ) ) {
+		$link = str_replace( '%_%', $format, $base );
+		$link = str_replace( '%#%', $current + 1, $link );
 
 		if ( $add_args ) {
 			$link = add_query_arg( $add_args, $link );
@@ -356,9 +369,10 @@ function four7_paginate_links( $args = '' ) {
 			$r .= '</ul>';
 			break;
 		default :
-			$r = join( '', $page_links);
+			$r = join( '', $page_links );
 			break;
 	endswitch;
+
 	return $r;
 }
 
@@ -372,12 +386,12 @@ function four7_pagination_toggler() {
 		return;
 	}
 
-	$nav  = '<hr><nav class="pagination">';
+	$nav = '<hr><nav class="pagination">';
 	$nav .= four7_paginate_links(
 		apply_filters( 'pagination_args', array(
 			'base'      => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
 			'format'    => '',
-			'current'   => max( 1, get_query_var('paged') ),
+			'current'   => max( 1, get_query_var( 'paged' ) ),
 			'total'     => $wp_query->max_num_pages,
 			'prev_text' => '<i class="fa fa-chevron-left"></i>',
 			'next_text' => '<i class="fa fa-chevron-right"></i>',

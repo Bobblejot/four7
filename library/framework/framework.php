@@ -24,7 +24,7 @@ $frameworks = apply_filters( 'four7_frameworks_array', array() );
 // Return the classname of the active framework.
 foreach ( $frameworks as $framework ) {
 	if ( $active_framework == $framework['shortname'] ) {
-		$active   = $framework['classname'];
+		$active = $framework['classname'];
 	}
 }
 

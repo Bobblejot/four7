@@ -2,178 +2,175 @@
 
 
 class four7_Widget_Tweets extends WP_Widget {
-	
-	function four7_Widget_Tweets()
-	{
-		$widget_ops = array('classname' => 'tweets', 'description' => 'your recent tweets');
 
-		$control_ops = array('id_base' => 'four7_Tweets-widget');
+	function four7_Widget_Tweets() {
+		$widget_ops = array( 'classname' => 'tweets', 'description' => 'your recent tweets' );
 
-		$this->WP_Widget('four7_Tweets-widget', 'LMC: Twitter', $widget_ops, $control_ops);
+		$control_ops = array( 'id_base' => 'four7_Tweets-widget' );
+
+		$this->WP_Widget( 'four7_Tweets-widget', 'LMC: Twitter', $widget_ops, $control_ops );
 	}
-	
-	function widget($args, $instance)
-	{
-		extract($args);
-		$title = apply_filters('widget_title', $instance['title']);
-		$consumer_key = $instance['consumer_key'];
-		$consumer_secret = $instance['consumer_secret'];
-		$access_token = $instance['access_token'];
+
+	function widget( $args, $instance ) {
+		extract( $args );
+		$title               = apply_filters( 'widget_title', $instance['title'] );
+		$consumer_key        = $instance['consumer_key'];
+		$consumer_secret     = $instance['consumer_secret'];
+		$access_token        = $instance['access_token'];
 		$access_token_secret = $instance['access_token_secret'];
-		$twitter_id = $instance['twitter_id'];
-		$count = (int) $instance['count'];
+		$twitter_id          = $instance['twitter_id'];
+		$count               = (int) $instance['count'];
 
 		echo $before_widget;
-		
-		if($title) {
-			echo $before_title.$title.$after_title;
+
+		if ( $title ) {
+			echo $before_title . $title . $after_title;
 		}
 
-		if($twitter_id && $consumer_key && $consumer_secret && $access_token && $access_token_secret && $count) { 
-		$transName = 'list_tweets_'.$args['widget_id'];
-		$cacheTime = 10;
-		if(false === ($twitterData = get_transient($transName))) {
-		     // require the twitter auth class
-		     @require_once 'twitteroauth/twitteroauth.php';
-		     $twitterConnection = new TwitterOAuth(
-							$consumer_key,	// Consumer Key
-							$consumer_secret,   	// Consumer secret
-							$access_token,       // Access token
-							$access_token_secret    	// Access token secret
-							);
-		    $twitterData = $twitterConnection->get(
-							  'statuses/user_timeline',
-							  array(
-							    'screen_name'     => $twitter_id,
-							    'count'           => $count,
-							    'exclude_replies' => false,
-							    'include_rts' => true
-							  )
-							);
-		     if($twitterConnection->http_code != 200)
-		     {
-		          $twitterData = get_transient($transName);
-		     }
+		if ( $twitter_id && $consumer_key && $consumer_secret && $access_token && $access_token_secret && $count ) {
+			$transName = 'list_tweets_' . $args['widget_id'];
+			$cacheTime = 10;
+			if ( false === ( $twitterData = get_transient( $transName ) ) ) {
+				// require the twitter auth class
+				@require_once 'twitteroauth/twitteroauth.php';
+				$twitterConnection = new TwitterOAuth(
+					$consumer_key, // Consumer Key
+					$consumer_secret, // Consumer secret
+					$access_token, // Access token
+					$access_token_secret // Access token secret
+				);
+				$twitterData       = $twitterConnection->get(
+					'statuses/user_timeline',
+					array(
+						'screen_name'     => $twitter_id,
+						'count'           => $count,
+						'exclude_replies' => false,
+						'include_rts'     => true
+					)
+				);
+				if ( $twitterConnection->http_code != 200 ) {
+					$twitterData = get_transient( $transName );
+				}
 
-		     // Save our new transient.
-		     set_transient($transName, $twitterData, 60 * $cacheTime);
-		};
-		$twitter = get_transient($transName);
-		if($twitter && is_array($twitter)) {
-			//var_dump($twitter);
-		?>
-		<div class="twitter-box">
-			<div class="twitter-holder">
-				<div class="b">
-					<div class="tweets-container" id="tweets_<?php echo $args['widget_id']; ?>">
-						<ul id="jtwt">
-							<?php foreach($twitter as $tweet): ?>
-							<li class="jtwt_tweet">
-								<p class="jtwt_tweet_text">
-								<?php
-								$latestTweet = $tweet->text;
-								$latestTweet = preg_replace('/http:\/\/([a-z0-9_\.\-\+\&\!\#\~\/\,]+)/i', '&nbsp;<a href="http://$1" target="_blank">http://$1</a>&nbsp;', $latestTweet);
-								$latestTweet = preg_replace('/@([a-z0-9_]+)/i', '&nbsp;<a href="http://twitter.com/$1" target="_blank">@$1</a>&nbsp;', $latestTweet);
-								echo $latestTweet;
-								?>
-								</p>
-								<?php
-								$twitterTime = strtotime($tweet->created_at);
-								$timeAgo = $this->ago($twitterTime);
-								?>
-								<a href="http://twitter.com/<?php echo $tweet->user->screen_name; ?>/statuses/<?php echo $tweet->id_str; ?>" class="jtwt_date"><?php echo $timeAgo; ?></a>
-							</li>
-							<?php endforeach; ?>
-						</ul>
+				// Save our new transient.
+				set_transient( $transName, $twitterData, 60 * $cacheTime );
+			};
+			$twitter = get_transient( $transName );
+			if ( $twitter && is_array( $twitter ) ) {
+				//var_dump($twitter);
+				?>
+				<div class="twitter-box">
+					<div class="twitter-holder">
+						<div class="b">
+							<div class="tweets-container" id="tweets_<?php echo $args['widget_id']; ?>">
+								<ul id="jtwt">
+									<?php foreach ( $twitter as $tweet ): ?>
+										<li class="jtwt_tweet">
+											<p class="jtwt_tweet_text">
+												<?php
+												$latestTweet = $tweet->text;
+												$latestTweet = preg_replace( '/http:\/\/([a-z0-9_\.\-\+\&\!\#\~\/\,]+)/i', '&nbsp;<a href="http://$1" target="_blank">http://$1</a>&nbsp;', $latestTweet );
+												$latestTweet = preg_replace( '/@([a-z0-9_]+)/i', '&nbsp;<a href="http://twitter.com/$1" target="_blank">@$1</a>&nbsp;', $latestTweet );
+												echo $latestTweet;
+												?>
+											</p>
+											<?php
+											$twitterTime = strtotime( $tweet->created_at );
+											$timeAgo = $this->ago( $twitterTime );
+											?>
+											<a href="http://twitter.com/<?php echo $tweet->user->screen_name; ?>/statuses/<?php echo $tweet->id_str; ?>" class="jtwt_date"><?php echo $timeAgo; ?></a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+						</div>
 					</div>
+					<span class="arrow"></span>
 				</div>
-			</div>
-			<span class="arrow"></span>
-		</div>
-		<?php }}
-		
+			<?php
+			}
+		}
+
 		echo $after_widget;
 	}
-	
-	function ago($time)
-	{
-	   $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
-	   $lengths = array("60","60","24","7","4.35","12","10");
 
-	   $now = time();
+	function ago( $time ) {
+		$periods = array( "second", "minute", "hour", "day", "week", "month", "year", "decade" );
+		$lengths = array( "60", "60", "24", "7", "4.35", "12", "10" );
 
-	       $difference     = $now - $time;
-	       $tense         = "ago";
+		$now = time();
 
-	   for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
-	       $difference /= $lengths[$j];
-	   }
+		$difference = $now - $time;
+		$tense      = "ago";
 
-	   $difference = round($difference);
+		for ( $j = 0; $difference >= $lengths[$j] && $j < count( $lengths ) - 1; $j ++ ) {
+			$difference /= $lengths[$j];
+		}
 
-	   if($difference != 1) {
-	       $periods[$j].= "s";
-	   }
+		$difference = round( $difference );
 
-	   return "$difference $periods[$j] ago ";
+		if ( $difference != 1 ) {
+			$periods[$j] .= "s";
+		}
+
+		return "$difference $periods[$j] ago ";
 	}
 
-	function update($new_instance, $old_instance)
-	{
+	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['consumer_key'] = $new_instance['consumer_key'];
-		$instance['consumer_secret'] = $new_instance['consumer_secret'];
-		$instance['access_token'] = $new_instance['access_token'];
+		$instance['title']               = strip_tags( $new_instance['title'] );
+		$instance['consumer_key']        = $new_instance['consumer_key'];
+		$instance['consumer_secret']     = $new_instance['consumer_secret'];
+		$instance['access_token']        = $new_instance['access_token'];
 		$instance['access_token_secret'] = $new_instance['access_token_secret'];
-		$instance['twitter_id'] = $new_instance['twitter_id'];
-		$instance['count'] = $new_instance['count'];
+		$instance['twitter_id']          = $new_instance['twitter_id'];
+		$instance['count']               = $new_instance['count'];
 
 		return $instance;
 	}
 
-	function form($instance)
-	{
-		$defaults = array('title' => 'Recent Tweets', 'twitter_id' => '', 'count' => 3);
-		$instance = wp_parse_args((array) $instance, $defaults); ?>
-		
+	function form( $instance ) {
+		$defaults = array( 'title' => 'Recent Tweets', 'twitter_id' => '', 'count' => 3 );
+		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+
 		<p><a href="http://dev.twitter.com/apps">Find or Create your Twitter App</a></p>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
+			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id('consumer_key'); ?>">Consumer Key:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('consumer_key'); ?>" name="<?php echo $this->get_field_name('consumer_key'); ?>" value="<?php echo $instance['consumer_key']; ?>" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id('consumer_secret'); ?>">Consumer Secret:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('consumer_secret'); ?>" name="<?php echo $this->get_field_name('consumer_secret'); ?>" value="<?php echo $instance['consumer_secret']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'consumer_key' ); ?>">Consumer Key:</label>
+			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id( 'consumer_key' ); ?>" name="<?php echo $this->get_field_name( 'consumer_key' ); ?>" value="<?php echo $instance['consumer_key']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id('access_token'); ?>">Access Token:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('access_token'); ?>" name="<?php echo $this->get_field_name('access_token'); ?>" value="<?php echo $instance['access_token']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'consumer_secret' ); ?>">Consumer Secret:</label>
+			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id( 'consumer_secret' ); ?>" name="<?php echo $this->get_field_name( 'consumer_secret' ); ?>" value="<?php echo $instance['consumer_secret']; ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id('access_token_secret'); ?>">Access Token Secret:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('access_token_secret'); ?>" name="<?php echo $this->get_field_name('access_token_secret'); ?>" value="<?php echo $instance['access_token_secret']; ?>" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id('twitter_id'); ?>">Twitter ID:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'access_token' ); ?>">Access Token:</label>
+			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id( 'access_token' ); ?>" name="<?php echo $this->get_field_name( 'access_token' ); ?>" value="<?php echo $instance['access_token']; ?>" />
 		</p>
 
-			<label for="<?php echo $this->get_field_id('count'); ?>">Number of Tweets:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" value="<?php echo $instance['count']; ?>" />
+		<p>
+			<label for="<?php echo $this->get_field_id( 'access_token_secret' ); ?>">Access Token Secret:</label>
+			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id( 'access_token_secret' ); ?>" name="<?php echo $this->get_field_name( 'access_token_secret' ); ?>" value="<?php echo $instance['access_token_secret']; ?>" />
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'twitter_id' ); ?>">Twitter ID:</label>
+			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id( 'twitter_id' ); ?>" name="<?php echo $this->get_field_name( 'twitter_id' ); ?>" value="<?php echo $instance['twitter_id']; ?>" />
+		</p>
+
+		<label for="<?php echo $this->get_field_id( 'count' ); ?>">Number of Tweets:</label>
+		<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" value="<?php echo $instance['count']; ?>" />
 		</p>
 
 	<?php
 	}
 }
+
 ?>

@@ -3,7 +3,7 @@
 /**
  * Archive Forum Content Part
  *
- * @package bbPress
+ * @package    bbPress
  * @subpackage Theme
  */
 
@@ -21,13 +21,13 @@
 	<?php do_action( 'bbp_template_before_forums_index' ); ?>
 
 	<?php
-		if ( bbp_has_forums() ) :
-			bbp_get_template_part( 'loop',     'forums'    );
-		else :
-			bbp_get_template_part( 'feedback', 'no-forums' );
-		endif;
+	if ( bbp_has_forums() ) :
+		bbp_get_template_part( 'loop', 'forums' );
+	else :
+		bbp_get_template_part( 'feedback', 'no-forums' );
+	endif;
 
-		do_action( 'bbp_template_after_forums_index' );
+	do_action( 'bbp_template_after_forums_index' );
 	?>
 
 </div>

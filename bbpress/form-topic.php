@@ -3,11 +3,11 @@
 /**
  * New/Edit Topic
  *
- * @package bbPress
+ * @package    bbPress
  * @subpackage Theme
  */
 
-if ( !bbp_is_single_forum() ) :
+if ( ! bbp_is_single_forum() ) :
 	echo '<div id="bbpress-forums">';
 	bbp_breadcrumb();
 endif;
@@ -25,14 +25,15 @@ endif;
 			<fieldset class="bbp-form">
 				<legend>
 					<?php
-						if ( bbp_is_topic_edit() )
-							printf( __( 'Now Editing &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_topic_title() );
-						else
-							bbp_is_single_forum() ? printf( __( 'Create New Topic in &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_forum_title() ) : _e( 'Create New Topic', 'bbpress' );
+					if ( bbp_is_topic_edit() )
+						printf( __( 'Now Editing &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_topic_title() );
+					else {
+						bbp_is_single_forum() ? printf( __( 'Create New Topic in &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_forum_title() ) : _e( 'Create New Topic', 'bbpress' );
+					}
 					?>
 				</legend>
 				<?php do_action( 'bbp_theme_before_topic_form_notices' ); ?>
-				<?php if ( !bbp_is_topic_edit() && bbp_is_forum_closed() ) : ?>
+				<?php if ( ! bbp_is_topic_edit() && bbp_is_forum_closed() ) : ?>
 					<div class="bbp-template-notice">
 						<p><?php _e( 'This forum is marked as closed to new topics, however your posting capabilities still allow you to do so.', 'bbpress' ); ?></p>
 					</div>
@@ -60,7 +61,7 @@ endif;
 
 					<?php if ( ! ( bbp_use_wp_editor() || current_user_can( 'unfiltered_html' ) ) ) : ?>
 						<p class="form-allowed-tags">
-							<label><?php _e( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:','bbpress' ); ?></label><br />
+							<label><?php _e( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'bbpress' ); ?></label><br />
 							<code><?php bbp_allowed_tags(); ?></code>
 						</p>
 					<?php endif; ?>
@@ -74,15 +75,15 @@ endif;
 						<?php do_action( 'bbp_theme_after_topic_form_tags' ); ?>
 					<?php endif; ?>
 
-					<?php if ( !bbp_is_single_forum() ) : ?>
+					<?php if ( ! bbp_is_single_forum() ) : ?>
 						<?php do_action( 'bbp_theme_before_topic_form_forum' ); ?>
 						<div class="form-group">
 							<label for="bbp_forum_id"><?php _e( 'Forum:', 'bbpress' ); ?></label><br />
 							<?php
-								bbp_dropdown( array(
-									'show_none' => __( '(No Forum)', 'bbpress' ),
-									'selected'  => bbp_get_form_topic_forum()
-								) );
+							bbp_dropdown( array(
+								'show_none' => __( '(No Forum)', 'bbpress' ),
+								'selected'  => bbp_get_form_topic_forum()
+							) );
 							?>
 						</div>
 						<?php do_action( 'bbp_theme_after_topic_form_forum' ); ?>
@@ -103,7 +104,7 @@ endif;
 						<?php do_action( 'bbp_theme_after_topic_form_status' ); ?>
 					<?php endif; ?>
 
-					<?php if ( bbp_is_subscriptions_active() && !bbp_is_anonymous() && ( !bbp_is_topic_edit() || ( bbp_is_topic_edit() && !bbp_is_topic_anonymous() ) ) ) : ?>
+					<?php if ( bbp_is_subscriptions_active() && ! bbp_is_anonymous() && ( ! bbp_is_topic_edit() || ( bbp_is_topic_edit() && ! bbp_is_topic_anonymous() ) ) ) : ?>
 						<?php do_action( 'bbp_theme_before_topic_form_subscriptions' ); ?>
 						<p>
 							<input name="bbp_topic_subscription" id="bbp_topic_subscription" type="checkbox" value="bbp_subscribe" <?php bbp_form_topic_subscribed(); ?> tabindex="<?php bbp_tab_index(); ?>" />
@@ -159,7 +160,8 @@ endif;
 			<p><?php printf( __( 'The forum &#8216;%s&#8217; is closed to new topics and replies.', 'bbpress' ), bbp_get_forum_title() ); ?></p>
 		</div>
 	</div>
-<?php else : ?>
+<?php
+else : ?>
 	<div id="no-topic-<?php bbp_topic_id(); ?>" class="bbp-no-topic">
 		<div class="bbp-template-notice">
 			<p><?php is_user_logged_in() ? _e( 'You cannot create new topics.', 'bbpress' ) : _e( 'You must be logged in to create new topics.', 'bbpress' ); ?></p>
@@ -168,6 +170,6 @@ endif;
 <?php endif; ?>
 
 <?php
-if ( !bbp_is_single_forum() ) :
+if ( ! bbp_is_single_forum() ) :
 	echo '</div>';
 endif;

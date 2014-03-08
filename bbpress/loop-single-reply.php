@@ -3,7 +3,7 @@
 /**
  * Replies Loop - Single Reply
  *
- * @package bbPress
+ * @package    bbPress
  * @subpackage Theme
  */
 
@@ -22,7 +22,8 @@
 		<?php do_action( 'bbp_theme_before_reply_admin_links' ); ?>
 		<?php bbp_reply_admin_links(); ?>
 		<?php do_action( 'bbp_theme_after_reply_admin_links' ); ?>
-	</div><!-- .bbp-meta -->
+	</div>
+	<!-- .bbp-meta -->
 </div><!-- #post-<?php bbp_reply_id(); ?> -->
 
 <div <?php bbp_reply_class(); ?>>
@@ -35,10 +36,12 @@
 			<?php do_action( 'bbp_theme_after_reply_author_admin_details' ); ?>
 		<?php endif; ?>
 		<?php do_action( 'bbp_theme_after_reply_author_details' ); ?>
-	</div><!-- .bbp-reply-author -->
+	</div>
+	<!-- .bbp-reply-author -->
 	<div class="bbp-reply-content col-md-10">
 		<?php do_action( 'bbp_theme_before_reply_content' ); ?>
 		<?php bbp_reply_content(); ?>
 		<?php do_action( 'bbp_theme_after_reply_content' ); ?>
-	</div><!-- .bbp-reply-content -->
+	</div>
+	<!-- .bbp-reply-content -->
 </div><!-- .reply -->

@@ -1,10 +1,10 @@
 <?php
 /**
- * The calendar widget was created to give users the ability to show a post calendar for their blog 
+ * The calendar widget was created to give users the ability to show a post calendar for their blog
  * using all the available options given in the get_calendar() function. It replaces the default WordPress
  * calendar widget.
  *
- * @package inevisys
+ * @package    inevisys
  * @subpackage Classes
  */
 
@@ -12,8 +12,8 @@
  * Calendar Widget Class
  *
  * @since 0.6.0
- * @link http://codex.wordpress.org/Function_Reference/get_calendar
- * @link http://themeinevisys.com/themes/inevisys/widgets
+ * @link  http://codex.wordpress.org/Function_Reference/get_calendar
+ * @link  http://themeinevisys.com/themes/inevisys/widgets
  */
 class four7_Widget_Calendar extends WP_Widget {
 
@@ -43,22 +43,22 @@ class four7_Widget_Calendar extends WP_Widget {
 
 		/* Set up the widget options. */
 		$widget_options = array(
-			'classname' => 'calendar',
+			'classname'   => 'calendar',
 			'description' => esc_html__( 'An advanced widget that gives you total control over the output of your calendar.', $this->textdomain )
 		);
 
 		/* Set up the widget control options. */
 		$control_options = array(
-			'width' => 200,
+			'width'  => 200,
 			'height' => 350
 		);
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'inevisys-calendar',			// $this->id_base
-			__( 'Calendar', $this->textdomain ),	// $this->name
-			$widget_options,			// $this->widget_options
-			$control_options			// $this->control_options
+			'inevisys-calendar', // $this->id_base
+			__( 'Calendar', $this->textdomain ), // $this->name
+			$widget_options, // $this->widget_options
+			$control_options // $this->control_options
 		);
 	}
 
@@ -70,18 +70,19 @@ class four7_Widget_Calendar extends WP_Widget {
 		extract( $args );
 
 		/* Get the $initial argument. */
-		$initial = !empty( $instance['initial'] ) ? true : false;
+		$initial = ! empty( $instance['initial'] ) ? true : false;
 
 		/* Output the theme's widget wrapper. */
 		echo $before_widget;
 
 		/* If a title was input by the user, display it. */
-		if ( !empty( $instance['title'] ) )
-			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
+		if ( ! empty( $instance['title'] ) ) {
+			echo $before_title . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $after_title;
+		}
 
 		/* Display the calendar. */
 		echo '<div class="calendar-wrap">';
-			echo str_replace( array( "\r", "\n", "\t" ), '', get_calendar( $initial, false ) );
+		echo str_replace( array( "\r", "\n", "\t" ), '', get_calendar( $initial, false ) );
 		echo '</div><!-- .calendar-wrap -->';
 
 		/* Close the theme's widget wrapper. */
@@ -97,7 +98,7 @@ class four7_Widget_Calendar extends WP_Widget {
 
 		$instance = $new_instance;
 
-		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['title']   = strip_tags( $new_instance['title'] );
 		$instance['initial'] = ( isset( $new_instance['initial'] ) ? 1 : 0 );
 
 		return $instance;
@@ -111,7 +112,7 @@ class four7_Widget_Calendar extends WP_Widget {
 
 		/* Set up the default form values. */
 		$defaults = array(
-			'title' => esc_attr__( 'Calendar', $this->textdomain ),
+			'title'   => esc_attr__( 'Calendar', $this->textdomain ),
 			'initial' => false
 		);
 
@@ -119,14 +120,16 @@ class four7_Widget_Calendar extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<div class="inevisys-widget-controls columns-1">
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', $this->textdomain ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
-		</p>
-		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" /> 
-			<label for="<?php echo $this->get_field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', $this->textdomain ); ?> <code>initial</code></label>
-		</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', $this->textdomain ); ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</p>
+
+			<p>
+				<input class="checkbox" type="checkbox" <?php checked( $instance['initial'], true ); ?> id="<?php echo $this->get_field_id( 'initial' ); ?>" name="<?php echo $this->get_field_name( 'initial' ); ?>" />
+				<label for="<?php echo $this->get_field_id( 'initial' ); ?>"><?php _e( 'One-letter abbreviation?', $this->textdomain ); ?>
+					<code>initial</code></label>
+			</p>
 		</div>
 	<?php
 	}

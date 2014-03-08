@@ -3,7 +3,7 @@
 /**
  * New/Edit Reply
  *
- * @package bbPress
+ * @package    bbPress
  * @subpackage Theme
  */
 
@@ -16,7 +16,7 @@
 			<fieldset class="bbp-form">
 				<legend class="alert alert-info"><?php printf( __( 'Reply To: %s', 'bbpress' ), bbp_get_topic_title() ); ?></legend>
 				<?php do_action( 'bbp_theme_before_reply_form_notices' ); ?>
-				<?php if ( !bbp_is_topic_open() && !bbp_is_reply_edit() ) : ?>
+				<?php if ( ! bbp_is_topic_open() && ! bbp_is_reply_edit() ) : ?>
 					<p class="alert alert-warning"><?php _e( 'This topic is marked as closed to new replies, however your posting capabilities still allow you to do so.', 'bbpress' ); ?></p>
 				<?php endif; ?>
 
@@ -33,11 +33,11 @@
 					<?php do_action( 'bbp_theme_after_reply_form_content' ); ?>
 					<?php if ( ! ( bbp_use_wp_editor() || current_user_can( 'unfiltered_html' ) ) ) : ?>
 						<p class="form-allowed-tags">
-							<label><?php _e( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:','bbpress' ); ?></label><br />
+							<label><?php _e( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'bbpress' ); ?></label><br />
 							<code><?php bbp_allowed_tags(); ?></code>
 						</p>
 					<?php endif; ?>
-					
+
 					<?php if ( bbp_allow_topic_tags() && current_user_can( 'assign_topic_tags' ) ) : ?>
 						<?php do_action( 'bbp_theme_before_reply_form_tags' ); ?>
 						<div class="form-group">
@@ -48,7 +48,7 @@
 						<?php do_action( 'bbp_theme_after_reply_form_tags' ); ?>
 					<?php endif; ?>
 
-					<?php if ( bbp_is_subscriptions_active() && !bbp_is_anonymous() && ( !bbp_is_reply_edit() || ( bbp_is_reply_edit() && !bbp_is_reply_anonymous() ) ) ) : ?>
+					<?php if ( bbp_is_subscriptions_active() && ! bbp_is_anonymous() && ( ! bbp_is_reply_edit() || ( bbp_is_reply_edit() && ! bbp_is_reply_anonymous() ) ) ) : ?>
 						<?php do_action( 'bbp_theme_before_reply_form_subscription' ); ?>
 						<p>
 							<input name="bbp_topic_subscription" id="bbp_topic_subscription" type="checkbox" value="bbp_subscribe"<?php bbp_form_topic_subscribed(); ?> tabindex="<?php bbp_tab_index(); ?>" />
@@ -96,11 +96,13 @@
 	<div id="no-reply-<?php bbp_topic_id(); ?>" class="bbp-no-reply">
 		<p class="alert alert-danger"><?php printf( __( 'The topic &#8216;%s&#8217; is closed to new replies.', 'bbpress' ), bbp_get_topic_title() ); ?></p>
 	</div>
-<?php elseif ( bbp_is_forum_closed( bbp_get_topic_forum_id() ) ) : ?>
+<?php
+elseif ( bbp_is_forum_closed( bbp_get_topic_forum_id() ) ) : ?>
 	<div id="no-reply-<?php bbp_topic_id(); ?>" class="bbp-no-reply">
 		<p class="alert alert-danger"><?php printf( __( 'The forum &#8216;%s&#8217; is closed to new topics and replies.', 'bbpress' ), bbp_get_forum_title( bbp_get_topic_forum_id() ) ); ?></p>
 	</div>
-<?php else : ?>
+<?php
+else : ?>
 	<div id="no-reply-<?php bbp_topic_id(); ?>" class="bbp-no-reply">
 		<p class="alert alert-danger"><?php is_user_logged_in() ? _e( 'You cannot reply to this topic.', 'bbpress' ) : _e( 'You must be logged in to reply to this topic.', 'bbpress' ); ?></p>
 	</div>

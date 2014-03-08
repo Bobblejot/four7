@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Metadata functions used in the core framework.  This file registers meta keys for use in WordPress 
+ * Metadata functions used in the core framework.  This file registers meta keys for use in WordPress
  * in a safe manner by setting up a custom sanitize callback.
  *
- * @package four7 Framework
+ * @package    four7 Framework
  * @subpackage Functions
- * @author inevisys
- * @copyright Copyright (c) 2013 - 2014, inevisys
- * @link http://inevisys.com/fourseven
+ * @author     inevisys
+ * @copyright  Copyright (c) 2013 - 2014, inevisys
+ * @link       http://inevisys.com/fourseven
  *
  */
 
@@ -22,7 +22,7 @@ add_action( 'init', 'four7_register_meta' );
  * @return void
  *
  */
- 
+
 function four7_register_meta() {
 
 	/* Register meta if the theme supports the 'fourseven-core-seo' feature. */
@@ -45,21 +45,24 @@ function four7_register_meta() {
 		$post_types = get_post_types( array( 'public' => true ) );
 
 		foreach ( $post_types as $post_type ) {
-			if ( 'page' !== $post_type )
+			if ( 'page' !== $post_type ) {
 				register_meta( 'post', "_wp_{$post_type}_template", 'four7_sanitize_meta' );
+			}
 		}
 	}
 }
 
 /**
- * Callback function for sanitizing meta when add_metadata() or update_metadata() is called by WordPress. 
- * If a developer wants to set up a custom method for sanitizing the data, they should use the 
+ * Callback function for sanitizing meta when add_metadata() or update_metadata() is called by WordPress.
+ * If a developer wants to set up a custom method for sanitizing the data, they should use the
  * "sanitize_{$meta_type}_meta_{$meta_key}" filter hook to do so.
  *
  * @since 1.0.0
- * @param mixed $meta_value The value of the data to sanitize.
- * @param string $meta_key The meta key name.
- * @param string $meta_type The type of metadata (post, comment, user, etc.)
+ *
+ * @param mixed  $meta_value The value of the data to sanitize.
+ * @param string $meta_key   The meta key name.
+ * @param string $meta_type  The type of metadata (post, comment, user, etc.)
+ *
  * @return mixed $meta_value
  *
  */

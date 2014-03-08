@@ -12,6 +12,7 @@
  *   <li class="menu-home"><a href="/">Home</a></li>
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  */
+
 class Four7_Navlist_Walker extends Walker_Nav_Menu {
 	function check_current( $classes ) {
 		return preg_match( '/(current[-_])|active/', $classes );

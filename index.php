@@ -14,7 +14,7 @@ if ( ! have_posts() ) {
 }
 
 if ( ! has_action( 'four7_override_index_loop' ) ) {
-	while (have_posts()) : the_post();
+	while ( have_posts() ) : the_post();
 		do_action( 'four7_in_loop_start' );
 
 		if ( ! has_action( 'four7_content_override' ) ) {

@@ -4,7 +4,8 @@ global $fs_settings;
 $navbar_toggle = $fs_settings['navbar_toggle'];
 
 if ( $navbar_toggle != 'none' ) {
-	if ( ! has_action( 'four7_header_top_navbar_override' ) ) { ?>
+	if ( ! has_action( 'four7_header_top_navbar_override' ) ) {
+		?>
 
 		<header id="banner-header" class="banner <?php echo apply_filters( 'four7_navbar_class', 'navbar navbar-default' ); ?>" role="banner">
 			<div class="<?php echo apply_filters( 'four7_navbar_container_class', 'container' ); ?>">
@@ -16,7 +17,7 @@ if ( $navbar_toggle != 'none' ) {
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>' ); ?>
-					<?php echo apply_filters( 'four7_navbar_brand', '<a class="navbar-brand text" href="' . home_url('/') . '">' . get_bloginfo( 'name' ) . '</a>' ); ?>
+					<?php echo apply_filters( 'four7_navbar_brand', '<a class="navbar-brand text" href="' . home_url( '/' ) . '">' . get_bloginfo( 'name' ) . '</a>' ); ?>
 				</div>
 				<?php if ( has_action( 'four7_pre_main_nav' ) ) : ?>
 					<div class="nav-extras">
@@ -26,8 +27,9 @@ if ( $navbar_toggle != 'none' ) {
 				<nav class="nav-main navbar-collapse collapse" role="navigation">
 					<?php
 					do_action( 'four7_inside_nav_begin' );
-					if ( has_nav_menu( 'primary_navigation' ) )
+					if ( has_nav_menu( 'primary_navigation' ) ) {
 						wp_nav_menu( array( 'theme_location' => 'primary_navigation', 'menu_class' => apply_filters( 'four7_nav_class', 'navbar-nav nav' ) ) );
+					}
 
 					do_action( 'four7_inside_nav_end' );
 					?>
@@ -37,7 +39,7 @@ if ( $navbar_toggle != 'none' ) {
 		</header>
 		<?php do_action( 'four7_do_navbar' ); ?>
 
-<?php
+	<?php
 	} else {
 		do_action( 'four7_header_top_navbar_override' );
 	}

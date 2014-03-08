@@ -3,7 +3,7 @@
 /**
  * Forums Loop - Single Forum
  *
- * @package bbPress
+ * @package    bbPress
  * @subpackage Theme
  */
 
@@ -39,5 +39,6 @@
 			</p>
 		</li>
 
-	</ul><!-- #bbp-forum-<?php bbp_forum_id(); ?> -->
+	</ul>
+	<!-- #bbp-forum-<?php bbp_forum_id(); ?> -->
 </li>

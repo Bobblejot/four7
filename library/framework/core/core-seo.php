@@ -1,15 +1,15 @@
 <?php
 /**
- * SEO and header functions.  Not all things in this file are strictly for search engine optimization.  Many 
- * of the functions handle basic <meta> elements for the <head> area of the site.  This file is a catchall file 
+ * SEO and header functions.  Not all things in this file are strictly for search engine optimization.  Many
+ * of the functions handle basic <meta> elements for the <head> area of the site.  This file is a catchall file
  * for adding these types of things to themes.
  *
- * @package four7 Framework
+ * @package    four7 Framework
  * @subpackage Core
- * @author inevisys
- * @copyright Copyright (c) 2013 - 2014, inevisys
- * @link http://inevisys.com/four7
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @author     inevisys
+ * @copyright  Copyright (c) 2013 - 2014, inevisys
+ * @link       http://inevisys.com/four7
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
 /* Add <meta> elements to the <head> area. */
@@ -21,7 +21,7 @@ add_action( 'wp_head', 'four7_meta_description', 1 );
 add_action( 'wp_head', 'four7_meta_keywords', 1 );
 
 /**
- * Sets the default meta robots setting.  If private, don't send meta info to the header.  Runs the 
+ * Sets the default meta robots setting.  If private, don't send meta info to the header.  Runs the
  * four7_meta_robots filter hook at the end.
  *
  * @since 1.0.0
@@ -29,8 +29,9 @@ add_action( 'wp_head', 'four7_meta_keywords', 1 );
 function four7_meta_robots() {
 
 	/* If the blog is set to private, don't show anything. */
-	if ( !get_option( 'blog_public' ) )
+	if ( ! get_option( 'blog_public' ) ) {
 		return;
+	}
 
 	/* Create the HTML for the robots meta tag. */
 	$robots = '<meta name="robots" content="index,follow" />' . "\n";
@@ -39,7 +40,7 @@ function four7_meta_robots() {
 }
 
 /**
- * Generates the meta author.  For singular posts, it uses the post author's display name.  For user/author 
+ * Generates the meta author.  For singular posts, it uses the post author's display name.  For user/author
  * archives, it uses the user's display name.
  *
  * @since 1.0.0
@@ -53,23 +54,24 @@ function four7_meta_author() {
 	$object = get_queried_object();
 
 	/* If viewing a singular post, get the post author's display name. */
-	if ( is_singular() )
+	if ( is_singular() ) {
 		$author = get_the_author_meta( 'display_name', $object->post_author );
-
-	/* If viewing a user/author archive, get the user's display name. */
-	elseif ( is_author() )
+	} /* If viewing a user/author archive, get the user's display name. */
+	elseif ( is_author() ) {
 		$author = get_the_author_meta( 'display_name', get_queried_object_id() );
+	}
 
 	/* If an author was found, wrap it in the proper HTML and escape the author name. */
-	if ( !empty( $author ) )
+	if ( ! empty( $author ) ) {
 		$author = '<meta name="author" content="' . esc_attr( $author ) . '" />' . "\n";
+	}
 
 	echo apply_atomic( 'meta_author', $author );
 }
 
 /**
- * Add the meta tag for copyright information to the header.  Singular posts display the date the post was 
- * published.  All other pages will show the current year. 
+ * Add the meta tag for copyright information to the header.  Singular posts display the date the post was
+ * published.  All other pages will show the current year.
  *
  * @since 1.0.0
  */
@@ -79,12 +81,12 @@ function four7_meta_copyright() {
 	$domain = four7_get_parent_textdomain();
 
 	/* If viewing a singular post, get the post month and year. */
-	if ( is_singular() )
+	if ( is_singular() ) {
 		$date = get_the_time( esc_attr__( 'F Y', $domain ) );
-
-	/* For all other views, get the current year. */
-	else
+	} /* For all other views, get the current year. */
+	else {
 		$date = date( esc_attr__( 'Y', $domain ) );
+	}
 
 	/* Create the HTML for the copyright meta tag. */
 	$copyright = '<meta name="copyright" content="' . sprintf( esc_attr__( 'Copyright (c) %1$s', $domain ), $date ) . '" />' . "\n";
@@ -93,7 +95,7 @@ function four7_meta_copyright() {
 }
 
 /**
- * Add the revised meta tag on the singular view of posts.  This shows the last time the post was modified. 
+ * Add the revised meta tag on the singular view of posts.  This shows the last time the post was modified.
  *
  * @since 1.0.0
  */
@@ -103,8 +105,9 @@ function four7_meta_revised() {
 	$revised = '';
 
 	/* If viewing a singular post, get the last modified date/time to use in the revised meta tag. */
-	if ( is_singular() )
+	if ( is_singular() ) {
 		$revised = '<meta name="revised" content="' . get_the_modified_time( esc_attr__( 'l, F jS, Y, g:i a', four7_get_parent_textdomain() ) ) . '" />' . "\n";
+	}
 
 	echo apply_atomic( 'meta_revised', $revised );
 }
@@ -122,24 +125,20 @@ function four7_meta_description() {
 	/* If viewing the home/posts page, get the site's description. */
 	if ( is_home() ) {
 		$description = get_bloginfo( 'description' );
-	}
-
-	/* If viewing a singular post. */
+	} /* If viewing a singular post. */
 	elseif ( is_singular() ) {
 
 		/* Get the meta value for the 'Description' meta key. */
 		$description = get_post_meta( get_queried_object_id(), 'Description', true );
 
 		/* If no description was found and viewing the site's front page, use the site's description. */
-		if ( empty( $description ) && is_front_page() )
+		if ( empty( $description ) && is_front_page() ) {
 			$description = get_bloginfo( 'description' );
-
-		/* For all other singular views, get the post excerpt. */
-		elseif ( empty( $description ) )
+		} /* For all other singular views, get the post excerpt. */
+		elseif ( empty( $description ) ) {
 			$description = get_post_field( 'post_excerpt', get_queried_object_id() );
-	}
-
-	/* If viewing an archive page. */
+		}
+	} /* If viewing an archive page. */
 	elseif ( is_archive() ) {
 
 		/* If viewing a user/author archive. */
@@ -149,13 +148,13 @@ function four7_meta_description() {
 			$description = get_user_meta( get_query_var( 'author' ), 'Description', true );
 
 			/* If no description was found, get the user's description (biographical info). */
-			if ( empty( $description ) )
+			if ( empty( $description ) ) {
 				$description = get_the_author_meta( 'description', get_query_var( 'author' ) );
-		}
-
-		/* If viewing a taxonomy term archive, get the term's description. */
-		elseif ( is_category() || is_tag() || is_tax() )
+			}
+		} /* If viewing a taxonomy term archive, get the term's description. */
+		elseif ( is_category() || is_tag() || is_tax() ) {
 			$description = term_description( '', get_query_var( 'taxonomy' ) );
+		}
 
 		/* If viewing a custom post type archive. */
 		elseif ( is_post_type_archive() ) {
@@ -164,14 +163,16 @@ function four7_meta_description() {
 			$post_type = get_post_type_object( get_query_var( 'post_type' ) );
 
 			/* If a description was set for the post type, use it. */
-			if ( isset( $post_type->description ) )
+			if ( isset( $post_type->description ) ) {
 				$description = $post_type->description;
+			}
 		}
 	}
 
 	/* Format the meta description. */
-	if ( !empty( $description ) )
+	if ( ! empty( $description ) ) {
 		$description = '<meta name="description" content="' . str_replace( array( "\r", "\n", "\t" ), '', esc_attr( strip_tags( $description ) ) ) . '" />' . "\n";
+	}
 
 	echo apply_atomic( 'meta_description', $description );
 }
@@ -187,7 +188,7 @@ function four7_meta_keywords() {
 	$keywords = '';
 
 	/* If on a singular post and not a preview. */
-	if ( is_singular() && !is_preview() ) {
+	if ( is_singular() && ! is_preview() ) {
 
 		/* Get the queried post. */
 		$post = get_queried_object();
@@ -207,18 +208,18 @@ function four7_meta_keywords() {
 				/* Loop through the taxonomies, getting the terms for the current post. */
 				foreach ( $taxonomies as $tax ) {
 
-					if ( $terms = get_the_term_list( get_queried_object_id(), $tax, '', ', ', '' ) )
+					if ( $terms = get_the_term_list( get_queried_object_id(), $tax, '', ', ', '' ) ) {
 						$keywords[] = $terms;
+					}
 				}
 
 				/* If keywords were found, join the array into a comma-separated string. */
-				if ( !empty( $keywords ) )
+				if ( ! empty( $keywords ) ) {
 					$keywords = join( ', ', $keywords );
+				}
 			}
 		}
-	}
-
-	/* If on a user/author archive page, check for user meta. */
+	} /* If on a user/author archive page, check for user meta. */
 	elseif ( is_author() ) {
 
 		/* Get the meta value for the 'Keywords' user meta key. */
@@ -226,8 +227,9 @@ function four7_meta_keywords() {
 	}
 
 	/* If we have keywords, format for output. */
-	if ( !empty( $keywords ) )
+	if ( ! empty( $keywords ) ) {
 		$keywords = '<meta name="keywords" content="' . esc_attr( strip_tags( $keywords ) ) . '" />' . "\n";
+	}
 
 	echo apply_atomic( 'meta_keywords', $keywords );
 }

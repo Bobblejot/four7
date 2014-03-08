@@ -1,21 +1,21 @@
 <?php
 /**
- * Functions for making various theme elements context-aware.  Controls things such as the smart 
- * and logical body, post, and comment CSS classes as well as context-based action and filter hooks.  
- * The functions also integrate with WordPress' implementations of body_class, post_class, and 
+ * Functions for making various theme elements context-aware.  Controls things such as the smart
+ * and logical body, post, and comment CSS classes as well as context-based action and filter hooks.
+ * The functions also integrate with WordPress' implementations of body_class, post_class, and
  * comment_class, so your theme won't have any trouble with plugin integration.
  *
- * @package four7 Framework
+ * @package    four7 Framework
  * @subpackage Core
- * @author inevisys
- * @copyright Copyright (c) 2013 - 2014, inevisys
- * @link http://inevisys.com/four7
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @author     inevisys
+ * @copyright  Copyright (c) 2013 - 2014, inevisys
+ * @link       http://inevisys.com/four7
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
 /**
- * four7's main contextual function.  This allows code to be used more than once without running 
- * hundreds of conditional checks within the theme.  It returns an array of contexts based on what 
+ * four7's main contextual function.  This allows code to be used more than once without running
+ * hundreds of conditional checks within the theme.  It returns an array of contexts based on what
  * page a visitor is currently viewing on the site.  This function is useful for making dynamic/contextual
  * classes, action and filter hooks, and handling the templating system.
  *
@@ -25,39 +25,37 @@
  *
  * @since 1.0.0
  * @global $wp_query The current page's query object.
- * @global $four7 The global four7 object.
+ * @global $four7    The global four7 object.
  * @return array $four7->context Several contexts based on the current page.
  */
- 
+
 function four7_get_context() {
 	global $four7;
 
 	/* If $four7->context has been set, don't run through the conditionals again. Just return the variable. */
-	if ( isset( $four7->context ) )
+	if ( isset( $four7->context ) ) {
 		return $four7->context;
+	}
 
 	/* Set some variables for use within the function. */
 	$four7->context = array();
-	$object = get_queried_object();
-	$object_id = get_queried_object_id();
+	$object         = get_queried_object();
+	$object_id      = get_queried_object_id();
 
 	/* Front page of the site. */
-	if ( is_front_page() )
+	if ( is_front_page() ) {
 		$four7->context[] = 'home';
+	}
 
 	/* Blog page. */
 	if ( is_home() ) {
 		$four7->context[] = 'blog';
-	}
-
-	/* Singular views. */
+	} /* Singular views. */
 	elseif ( is_singular() ) {
 		$four7->context[] = 'singular';
 		$four7->context[] = "singular-{$object->post_type}";
 		$four7->context[] = "singular-{$object->post_type}-{$object_id}";
-	}
-
-	/* Archive views. */
+	} /* Archive views. */
 	elseif ( is_archive() ) {
 		$four7->context[] = 'archive';
 
@@ -66,49 +64,45 @@ function four7_get_context() {
 			$four7->context[] = 'taxonomy';
 			$four7->context[] = "taxonomy-{$object->taxonomy}";
 			$four7->context[] = "taxonomy-{$object->taxonomy}-" . sanitize_html_class( $object->slug, $object->term_id );
-		}
-
-		/* Post type archives. */
+		} /* Post type archives. */
 		elseif ( is_post_type_archive() ) {
-			$post_type = get_post_type_object( get_query_var( 'post_type' ) );
+			$post_type        = get_post_type_object( get_query_var( 'post_type' ) );
 			$four7->context[] = "archive-{$post_type->name}";
-		}
-
-		/* User/author archives. */
+		} /* User/author archives. */
 		elseif ( is_author() ) {
 			$four7->context[] = 'user';
 			$four7->context[] = 'user-' . sanitize_html_class( get_the_author_meta( 'user_nicename', $object_id ), $object_id );
-		}
-
-		/* Time/Date archives. */
+		} /* Time/Date archives. */
 		else {
 			if ( is_date() ) {
 				$four7->context[] = 'date';
-				if ( is_year() )
+				if ( is_year() ) {
 					$four7->context[] = 'year';
-				if ( is_month() )
+				}
+				if ( is_month() ) {
 					$four7->context[] = 'month';
-				if ( get_query_var( 'w' ) )
+				}
+				if ( get_query_var( 'w' ) ) {
 					$four7->context[] = 'week';
-				if ( is_day() )
+				}
+				if ( is_day() ) {
 					$four7->context[] = 'day';
+				}
 			}
 			if ( is_time() ) {
 				$four7->context[] = 'time';
-				if ( get_query_var( 'hour' ) )
+				if ( get_query_var( 'hour' ) ) {
 					$four7->context[] = 'hour';
-				if ( get_query_var( 'minute' ) )
+				}
+				if ( get_query_var( 'minute' ) ) {
 					$four7->context[] = 'minute';
+				}
 			}
 		}
-	}
-
-	/* Search results. */
+	} /* Search results. */
 	elseif ( is_search() ) {
 		$four7->context[] = 'search';
-	}
-
-	/* Error 404 pages. */
+	} /* Error 404 pages. */
 	elseif ( is_404() ) {
 		$four7->context[] = 'error-404';
 	}
@@ -117,13 +111,15 @@ function four7_get_context() {
 }
 
 /**
- * Creates a set of classes for each site entry upon display. Each entry is given the class of 
- * 'hentry'. Posts are given category, tag, and author classes. Alternate post classes of odd, 
+ * Creates a set of classes for each site entry upon display. Each entry is given the class of
+ * 'hentry'. Posts are given category, tag, and author classes. Alternate post classes of odd,
  * even, and alt are added.
  *
  * @since 1.0.0
- * @global $post The current post's DB object.
+ * @global             $post  The current post's DB object.
+ *
  * @param string|array $class Additional classes for more control.
+ *
  * @return string $class
  */
 function four7_entry_class( $class = '', $post_id = null ) {
@@ -132,7 +128,7 @@ function four7_entry_class( $class = '', $post_id = null ) {
 	$post = get_post( $post_id );
 
 	/* Make sure we have a real post first. */
-	if ( !empty( $post ) ) {
+	if ( ! empty( $post ) ) {
 
 		$post_id = $post->ID;
 
@@ -147,21 +143,24 @@ function four7_entry_class( $class = '', $post_id = null ) {
 		$classes[] = 'author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
 
 		/* Sticky class (only on home/blog page). */
-		if ( is_home() && is_sticky() && !is_paged() )
+		if ( is_home() && is_sticky() && ! is_paged() ) {
 			$classes[] = 'sticky';
+		}
 
 		/* Password-protected posts. */
-		if ( post_password_required() )
+		if ( post_password_required() ) {
 			$classes[] = 'protected';
+		}
 
 		/* Has excerpt. */
-		if ( has_excerpt() )
+		if ( has_excerpt() ) {
 			$classes[] = 'has-excerpt';
+		}
 
 		/* Post format. */
 		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
 			$post_format = get_post_format( $post_id );
-			$classes[] = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? 'format-standard' : "format-{$post_format}" );
+			$classes[]   = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? 'format-standard' : "format-{$post_format}" );
 		}
 
 		/* Add category and post tag terms as classes. */
@@ -169,23 +168,23 @@ function four7_entry_class( $class = '', $post_id = null ) {
 
 			foreach ( array( 'category', 'post_tag' ) as $tax ) {
 
-				foreach ( (array)get_the_terms( $post->ID, $tax ) as $term ) {
-					if ( !empty( $term->slug ) )
+				foreach ( (array) get_the_terms( $post->ID, $tax ) as $term ) {
+					if ( ! empty( $term->slug ) ) {
 						$classes[] = $tax . '-' . sanitize_html_class( $term->slug, $term->term_id );
+					}
 				}
 			}
 		}
-	}
-
-	/* If not a post. */
+	} /* If not a post. */
 	else {
 		$classes = array( 'hentry', 'error' );
 	}
 
 	/* User-created classes. */
-	if ( !empty( $class ) ) {
-		if ( !is_array( $class ) )
+	if ( ! empty( $class ) ) {
+		if ( ! is_array( $class ) ) {
 			$class = preg_split( '#\s+#', $class );
+		}
 		$classes = array_merge( $classes, $class );
 	}
 
@@ -199,12 +198,12 @@ function four7_entry_class( $class = '', $post_id = null ) {
 }
 
 /**
- * Sets a class for each comment. Sets alt, odd/even, and author/user classes. Adds author, user, 
- * and reader classes. Needs more work because WP, by default, assigns even/odd backwards 
+ * Sets a class for each comment. Sets alt, odd/even, and author/user classes. Adds author, user,
+ * and reader classes. Needs more work because WP, by default, assigns even/odd backwards
  * (Odd should come first, even second).
  *
  * @since 1.0.0
- * @global $wpdb WordPress DB access object.
+ * @global $wpdb    WordPress DB access object.
  * @global $comment The current comment's DB object.
  */
 function four7_comment_class( $class = '' ) {
@@ -224,31 +223,32 @@ function four7_comment_class( $class = '' ) {
 
 		/* Set a class with the user's role. */
 		if ( is_array( $user->roles ) ) {
-			foreach ( $user->roles as $role )
+			foreach ( $user->roles as $role ) {
 				$classes[] = "role-{$role}";
+			}
 		}
 
 		/* Set a class with the user's name. */
 		$classes[] = 'user-' . sanitize_html_class( $user->user_nicename, $user->ID );
-	}
-
-	/* If not a registered user */
+	} /* If not a registered user */
 	else {
 		$classes[] = 'reader';
 	}
 
 	/* Comment by the entry/post author. */
 	if ( $post = get_post( $post_id ) ) {
-		if ( $comment->user_id === $post->post_author )
+		if ( $comment->user_id === $post->post_author ) {
 			$classes[] = 'entry-author';
+		}
 	}
 
 	/* Get comment types that are allowed to have an avatar. */
 	$avatar_comment_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
 
 	/* If avatars are enabled and the comment types can display avatars, add the 'has-avatar' class. */
-	if ( get_option( 'show_avatars' ) && in_array( $comment->comment_type, $avatar_comment_types ) )
+	if ( get_option( 'show_avatars' ) && in_array( $comment->comment_type, $avatar_comment_types ) ) {
 		$classes[] = 'has-avatar';
+	}
 
 	/* Join all the classes into one string and echo them. */
 	$class = join( ' ', $classes );
@@ -260,8 +260,10 @@ function four7_comment_class( $class = '' ) {
  * Provides classes for the <body> element depending on page context.
  *
  * @since 1.0.0
- * @uses $wp_query
+ * @uses  $wp_query
+ *
  * @param string|array $class Additional classes for more control.
+ *
  * @return string
  */
 function four7_context_body_class( $class = '' ) {
@@ -272,19 +274,23 @@ function four7_context_body_class( $class = '' ) {
 
 	/* Check if the current theme is a parent or child theme. */
 	$classes[] = ( is_child_theme() ? 'child-theme' : 'parent-theme' );
-    
-    if ( !is_multi_author() )
-    		$classes[] = 'single-author';
-    
-    	if ( is_active_sidebar( 'sidebar-2' ) && !is_attachment() && !is_404() )
-    		$classes[] = 'sidebar';
-    
-    	if ( !get_option( 'show_avatars' ) )
-    		$classes[] = 'no-avatars';
-    
-    	if ( has_nav_menu( 'top_nav' ) )
-    		$classes[] = 'top-nav-fixed';
-    		
+
+	if ( ! is_multi_author() ) {
+		$classes[] = 'single-author';
+	}
+
+	if ( is_active_sidebar( 'sidebar-2' ) && ! is_attachment() && ! is_404() ) {
+		$classes[] = 'sidebar';
+	}
+
+	if ( ! get_option( 'show_avatars' ) ) {
+		$classes[] = 'no-avatars';
+	}
+
+	if ( has_nav_menu( 'top_nav' ) ) {
+		$classes[] = 'top-nav-fixed';
+	}
+
 	/* Multisite check adds the 'multisite' class and the blog ID. */
 	if ( is_multisite() ) {
 		$classes[] = 'multisite';
@@ -292,15 +298,16 @@ function four7_context_body_class( $class = '' ) {
 	}
 
 	/* Date classes. */
-	$time = time() + ( get_option( 'gmt_offset' ) * 3600 );
+	$time      = time() + ( get_option( 'gmt_offset' ) * 3600 );
 	$classes[] = strtolower( gmdate( '\yY \mm \dd \hH l', $time ) );
 
 	/* Is the current user logged in. */
 	$classes[] = ( is_user_logged_in() ) ? 'logged-in' : 'logged-out';
 
 	/* WP admin bar. */
-	if ( is_admin_bar_showing() )
+	if ( is_admin_bar_showing() ) {
 		$classes[] = 'admin-bar';
+	}
 
 	/* Merge base contextual classes with $classes. */
 	$classes = array_merge( $classes, four7_get_context() );
@@ -312,31 +319,35 @@ function four7_context_body_class( $class = '' ) {
 		$post = get_queried_object();
 
 		/* Checks for custom template. */
-		$template = str_replace( array ( "{$post->post_type}-template-", "{$post->post_type}-", '.php' ), '', get_post_meta( get_queried_object_id(), "_wp_{$post->post_type}_template", true ) );
-		if ( !empty( $template ) )
+		$template = str_replace( array( "{$post->post_type}-template-", "{$post->post_type}-", '.php' ), '', get_post_meta( get_queried_object_id(), "_wp_{$post->post_type}_template", true ) );
+		if ( ! empty( $template ) ) {
 			$classes[] = "{$post->post_type}-template-{$template}";
+		}
 
 		/* Post format. */
 		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
 			$post_format = get_post_format( get_queried_object_id() );
-			$classes[] = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? "{$post->post_type}-format-standard" : "{$post->post_type}-format-{$post_format}" );
+			$classes[]   = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? "{$post->post_type}-format-standard" : "{$post->post_type}-format-{$post_format}" );
 		}
 
 		/* Attachment mime types. */
 		if ( is_attachment() ) {
-			foreach ( explode( '/', get_post_mime_type() ) as $type )
+			foreach ( explode( '/', get_post_mime_type() ) as $type ) {
 				$classes[] = "attachment-{$type}";
+			}
 		}
 	}
 
 	/* Paged views. */
-	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
+	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 ) {
 		$classes[] = 'paged paged-' . intval( $page );
+	}
 
 	/* Input class. */
-	if ( !empty( $class ) ) {
-		if ( !is_array( $class ) )
+	if ( ! empty( $class ) ) {
+		if ( ! is_array( $class ) ) {
 			$class = preg_split( '#\s+#', $class );
+		}
 		$classes = array_merge( $classes, $class );
 	}
 
@@ -351,7 +362,7 @@ function four7_context_body_class( $class = '' ) {
 }
 
 /**
- * Function for handling what the browser/search engine title should be. Attempts to handle every 
+ * Function for handling what the browser/search engine title should be. Attempts to handle every
  * possible situation WordPress throws at it for the best optimization.
  *
  * @since 1.0.0
@@ -361,89 +372,73 @@ function four7_document_title() {
 	global $wp_query;
 
 	/* Set up some default variables. */
-	$domain = four7_get_parent_textdomain();
-	$doctitle = '';
+	$domain    = four7_get_parent_textdomain();
+	$doctitle  = '';
 	$separator = ':';
 
 	/* If viewing the front page and posts page of the site. */
-	if ( is_front_page() && is_home() )
+	if ( is_front_page() && is_home() ) {
 		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
-
-	/* If viewing the posts page or a singular post. */
+	} /* If viewing the posts page or a singular post. */
 	elseif ( is_home() || is_singular() ) {
 
 		$doctitle = get_post_meta( get_queried_object_id(), 'Title', true );
 
-		if ( empty( $doctitle ) && is_front_page() )
+		if ( empty( $doctitle ) && is_front_page() ) {
 			$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
-
-		elseif ( empty( $doctitle ) )
+		} elseif ( empty( $doctitle ) ) {
 			$doctitle = single_post_title( '', false );
-	}
-
-	/* If viewing any type of archive page. */
+		}
+	} /* If viewing any type of archive page. */
 	elseif ( is_archive() ) {
 
 		/* If viewing a taxonomy term archive. */
 		if ( is_category() || is_tag() || is_tax() ) {
 			$doctitle = single_term_title( '', false );
-		}
-
-		/* If viewing a post type archive. */
+		} /* If viewing a post type archive. */
 		elseif ( is_post_type_archive() ) {
 			$post_type = get_post_type_object( get_query_var( 'post_type' ) );
-			$doctitle = $post_type->labels->name;
-		}
-
-		/* If viewing an author/user archive. */
+			$doctitle  = $post_type->labels->name;
+		} /* If viewing an author/user archive. */
 		elseif ( is_author() ) {
 			$doctitle = get_user_meta( get_query_var( 'author' ), 'Title', true );
 
-			if ( empty( $doctitle ) )
+			if ( empty( $doctitle ) ) {
 				$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
-		}
-
-		/* If viewing a date-/time-based archive. */
-		elseif ( is_date () ) {
-			if ( get_query_var( 'minute' ) && get_query_var( 'hour' ) )
+			}
+		} /* If viewing a date-/time-based archive. */
+		elseif ( is_date() ) {
+			if ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ) {
 				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'g:i a', $domain ) ) );
-
-			elseif ( get_query_var( 'minute' ) )
+			} elseif ( get_query_var( 'minute' ) ) {
 				$doctitle = sprintf( __( 'Archive for minute %1$s', $domain ), get_the_time( __( 'i', $domain ) ) );
-
-			elseif ( get_query_var( 'hour' ) )
+			} elseif ( get_query_var( 'hour' ) ) {
 				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'g a', $domain ) ) );
-
-			elseif ( is_day() )
+			} elseif ( is_day() ) {
 				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'F jS, Y', $domain ) ) );
-
-			elseif ( get_query_var( 'w' ) )
+			} elseif ( get_query_var( 'w' ) ) {
 				$doctitle = sprintf( __( 'Archive for week %1$s of %2$s', $domain ), get_the_time( __( 'W', $domain ) ), get_the_time( __( 'Y', $domain ) ) );
-
-			elseif ( is_month() )
-				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), single_month_title( ' ', false) );
-
-			elseif ( is_year() )
+			} elseif ( is_month() ) {
+				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), single_month_title( ' ', false ) );
+			} elseif ( is_year() ) {
 				$doctitle = sprintf( __( 'Archive for %1$s', $domain ), get_the_time( __( 'Y', $domain ) ) );
-		}
-
-		/* For any other archives. */
+			}
+		} /* For any other archives. */
 		else {
 			$doctitle = __( 'Archives', $domain );
 		}
+	} /* If viewing a search results page. */
+	elseif ( is_search() ) {
+		$doctitle = sprintf( __( 'Search results for &quot;%1$s&quot;', $domain ), esc_attr( get_search_query() ) );
+	} /* If viewing a 404 not found page. */
+	elseif ( is_404() ) {
+		$doctitle = __( '404 Not Found', $domain );
 	}
 
-	/* If viewing a search results page. */
-	elseif ( is_search() )
-		$doctitle = sprintf( __( 'Search results for &quot;%1$s&quot;', $domain ), esc_attr( get_search_query() ) );
-
-	/* If viewing a 404 not found page. */
-	elseif ( is_404() )
-		$doctitle = __( '404 Not Found', $domain );
-
 	/* If the current page is a paged page. */
-	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
+	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 ) {
 		$doctitle = sprintf( __( '%1$s Page %2$s', $domain ), $doctitle . $separator, number_format_i18n( $page ) );
+	}
 
 	/* Apply the wp_title filters so we're compatible with plugins. */
 	$doctitle = apply_filters( 'wp_title', $doctitle, $separator, '' );

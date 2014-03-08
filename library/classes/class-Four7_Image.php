@@ -3,8 +3,8 @@
 if ( ! class_exists( 'Four7_Image' ) ) {
 
 	/**
-	* The Image handling class
-	*/
+	 * The Image handling class
+	 */
 	class Four7_Image {
 
 		function __construct() {
@@ -23,8 +23,8 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 			$image = wp_get_attachment_image_src( $img['id'], 'full' );
 
 			$img['url'] = $image[0];
-			
-			$img['width'] = $image[1];
+
+			$img['width']  = $image[1];
 			$img['height'] = $image[2];
 
 			return four7_image_resize( $img );
@@ -33,12 +33,12 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 		public static function image_resize( $data ) {
 
 			$defaults = array(
-				"url"       => "",
-				"width"     => "",
-				"height"    => "",
-				"crop"      => true,
-				"retina"    => "",
-				"resize"    => true,
+				"url"    => "",
+				"width"  => "",
+				"height" => "",
+				"crop"   => true,
+				"retina" => "",
+				"resize" => true,
 			);
 
 			$settings = wp_parse_args( $data, $defaults );
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 				$results['retina'] = self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], true );
 			}
 
-			return self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], false );    
+			return self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], false );
 		}
 
 		/**
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 			}
 
 			// Get default size from database
-			$width  = ( $width )  ? $width  : get_option( 'thumbnail_size_w' );
+			$width  = ( $width ) ? $width : get_option( 'thumbnail_size_w' );
 			$height = ( $height ) ? $height : get_option( 'thumbnail_size_h' );
 
 			// Allow for different retina sizes
@@ -87,12 +87,12 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 			$suffix_width  = ( $dest_width / $retina );
 			$suffix_height = ( $dest_height / $retina );
 			$suffix_retina = ( $retina != 1 ) ? '@' . $retina . 'x' : NULL;
-			$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
+			$suffix        = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
 
 			// Some additional info about the image
 			$info = pathinfo( $file_path );
-			$dir = $info['dirname'];
-			$ext = "";
+			$dir  = $info['dirname'];
+			$ext  = "";
 
 			if ( ! empty( $info['extension'] ) ) {
 				$ext = $info['extension'];
@@ -104,7 +104,7 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 			$suffix_width  = ( $dest_width / $retina );
 			$suffix_height = ( $dest_height / $retina );
 			$suffix_retina = ( $retina != 1 ) ? '@' . $retina . 'x' : NULL;
-			$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
+			$suffix        = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
 
 			// Get the destination file name
 			$dest_file_name = "{$dir}/{$name}-{$suffix}.{$ext}";
@@ -128,7 +128,7 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 				}
 
 				// Get the original image size
-				$size = $editor->get_size();
+				$size        = $editor->get_size();
 				$orig_width  = $size['width'];
 				$orig_height = $size['height'];
 
@@ -166,7 +166,7 @@ if ( ! class_exists( 'Four7_Image' ) ) {
 				// Add the resized dimensions to original image metadata (so we can delete our resized images when the original image is delete from the Media Library)
 				$metadata = wp_get_attachment_metadata( $get_attachment[0]->ID );
 				if ( isset( $metadata['image_meta'] ) ) {
-					$metadata['image_meta']['resized_images'][] = $resized_width .'x'. $resized_height;
+					$metadata['image_meta']['resized_images'][] = $resized_width . 'x' . $resized_height;
 					wp_update_attachment_metadata( $get_attachment[0]->ID, $metadata );
 				}
 

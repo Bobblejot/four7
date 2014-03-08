@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Determines whether or not to display the sidebar based on an array of conditional tags or page templates.
  *

@@ -13,10 +13,10 @@ function four7_required_plugins() {
 	 */
 	$plugins = array(
 		array(
-			'name'               => 'Redux Framework',
-			'slug'               => 'redux-framework',
-			'required'           => true,
-			'force_activation'   => true,
+			'name'             => 'Redux Framework',
+			'slug'             => 'redux-framework',
+			'required'         => true,
+			'force_activation' => true,
 		),
 	);
 

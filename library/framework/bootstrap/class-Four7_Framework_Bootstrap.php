@@ -3,38 +3,38 @@
 if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 
 	/**
-	* The Bootstrap Framework module
-	*/
+	 * The Bootstrap Framework module
+	 */
 	class FOUR7_Framework_Bootstrap extends FOUR7_Framework_Core {
 
 		var $defines = array(
 			// Layout
-			'container'  => 'container',
-			'row'        => 'row',
-			'col-mobile' => 'col-xs',
-			'col-tablet' => 'col-sm',
-			'col-medium' => 'col-md',
-			'col-large'  => 'col-lg',
+			'container'                => 'container',
+			'row'                      => 'row',
+			'col-mobile'               => 'col-xs',
+			'col-tablet'               => 'col-sm',
+			'col-medium'               => 'col-md',
+			'col-large'                => 'col-lg',
 
 			// Buttons
-			'button'         => 'btn',
-			'button-default' => 'btn-default',
-			'button-primary' => 'btn-primary',
-			'button-success' => 'btn-success',
-			'button-info'    => 'btn-info',
-			'button-warning' => 'btn-warning',
-			'button-danger'  => 'btn-danger',
-			'button-link'    => 'btn-link',
+			'button'                   => 'btn',
+			'button-default'           => 'btn-default',
+			'button-primary'           => 'btn-primary',
+			'button-success'           => 'btn-success',
+			'button-info'              => 'btn-info',
+			'button-warning'           => 'btn-warning',
+			'button-danger'            => 'btn-danger',
+			'button-link'              => 'btn-link',
 
-			'button-extra-small' => 'btn-xs',
-			'button-small'       => 'btn-sm',
-			'button-medium'      => null,
-			'button-large'       => 'btn-lg',
-			'button-extra-large' => 'btn-lg',
+			'button-extra-small'       => 'btn-xs',
+			'button-small'             => 'btn-sm',
+			'button-medium'            => null,
+			'button-large'             => 'btn-lg',
+			'button-extra-large'       => 'btn-lg',
 
-			'button-block'    => 'btn-block',
-			'button-radius'   => null,
-			'button-round'    => null,
+			'button-block'             => 'btn-block',
+			'button-radius'            => null,
+			'button-round'             => null,
 
 			// Button-Groups
 			'button-group'             => 'btn-group',
@@ -45,17 +45,17 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			'button-group-extra-large' => 'btn-group-lg',
 
 			// Alerts
-			'alert'         => 'alert',
-			'alert-success' => 'alert-success',
-			'alert-info'    => 'alert-info',
-			'alert-warning' => 'alert-warning',
-			'alert-danger'  => 'alert-danger',
+			'alert'                    => 'alert',
+			'alert-success'            => 'alert-success',
+			'alert-info'               => 'alert-info',
+			'alert-warning'            => 'alert-warning',
+			'alert-danger'             => 'alert-danger',
 
 			// Miscelaneous
-			'clearfix' => '<div class="clearfix"></div>',
-			
+			'clearfix'                 => '<div class="clearfix"></div>',
+
 			// Forms
-			'form-input' => 'form-control',
+			'form-input'               => 'form-control',
 		);
 
 		/**
@@ -72,63 +72,63 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 
 			if ( class_exists( 'ReduxFrameworkPlugin' ) ) {
 
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Advanced.php' );        // Advanced
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Background.php' );      // Background
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Branding.php' );        // Branding
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Blog.php' );            // Blog
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Breadcrumbs.php' );     // Breadcrumbs
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Author_Box.php' );     // Author Box
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Header.php' );          // Header
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Typography.php' );      // Typography
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Footer.php' );          // Footer
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Social.php' );          // Social
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Layout.php' );          // layout
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Jumbotron.php' );       // Jumbotron
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Menus.php' );           // Menus
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Nav_Walker.php' );      // NavWalker
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Advanced.php' ); // Advanced
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Background.php' ); // Background
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Branding.php' ); // Branding
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Blog.php' ); // Blog
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Breadcrumbs.php' ); // Breadcrumbs
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Author_Box.php' ); // Author Box
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Header.php' ); // Header
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Typography.php' ); // Typography
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Footer.php' ); // Footer
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Social.php' ); // Social
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Layout.php' ); // layout
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Jumbotron.php' ); // Jumbotron
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Menus.php' ); // Menus
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Nav_Walker.php' ); // NavWalker
 				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Nav_Menu_Widget.php' ); // NavMenus
-				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Navlist_Walker.php' );  // NavLists
+				include_once( FOUR7_FRAMEWORK_PATH . '/includes/class-Four7_Navlist_Walker.php' ); // NavLists
 
-								
+
 				// instantiate the classes
 				global $fs_layout;
-				$fs_layout      = new Four7_Layout();
+				$fs_layout = new Four7_Layout();
 
 				global $fs_background;
-				$fs_background  = new Four7_Background();
+				$fs_background = new Four7_Background();
 
 				global $fs_advanced;
-				$fs_advanced    = new Four7_Advanced();
+				$fs_advanced = new Four7_Advanced();
 
 				global $fs_branding;
-				$fs_branding    = new Four7_Branding();
+				$fs_branding = new Four7_Branding();
 
 				global $fs_blog;
-				$fs_blog        = new Four7_Blog();
+				$fs_blog = new Four7_Blog();
 
 				global $fs_footer;
-				$fs_footer      = new Four7_Footer();
+				$fs_footer = new Four7_Footer();
 
 				global $fs_headers;
-				$fs_headers     = new Four7_Header();
+				$fs_headers = new Four7_Header();
 
 				global $fs_jumbotron;
-				$fs_jumbotron   = new Four7_Jumbotron();
+				$fs_jumbotron = new Four7_Jumbotron();
 
 				global $fs_menus;
-				$fs_menus       = new Four7_Menus();
+				$fs_menus = new Four7_Menus();
 
 				global $fs_typography;
-				$fs_typography  = new Four7_Typography();
+				$fs_typography = new Four7_Typography();
 
 				global $fs_breadcrumbs;
 				$fs_breadcrumbs = new Four7_Breadcrumbs();
-				
+
 				global $fs_authorbox;
 				$fs_authorbox = new Four7_Author_Box();
 
 				global $fs_social;
-				$fs_social      = new Four7_Social();
+				$fs_social = new Four7_Social();
 
 				add_filter( 'four7_compiler', array( $this, 'styles_filter' ) );
 
@@ -145,13 +145,13 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				}
 
 				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 110 );
-				add_action( 'widgets_init',       array( $this, 'navlist_widget_init' ), 1 );
+				add_action( 'widgets_init', array( $this, 'navlist_widget_init' ), 1 );
 				add_filter( 'nav_menu_css_class', array( $this, 'nav_menu_css_class' ), 10, 2 );
-				add_filter( 'nav_menu_item_id',   '__return_null' );
+				add_filter( 'nav_menu_item_id', '__return_null' );
 			}
 			add_action( 'four7_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
-			add_action( 'four7_entry_author', array( $this, 'authorbox' ));
-			add_filter( 'wp_nav_menu_args',   array( $this, 'nav_menu_args' ) );
+			add_action( 'four7_entry_author', array( $this, 'authorbox' ) );
+			add_filter( 'wp_nav_menu_args', array( $this, 'nav_menu_args' ) );
 		}
 
 		/*
@@ -167,7 +167,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 		 * Return 'menu-slug' for nav menu classes
 		 */
 		function nav_menu_css_class( $classes, $item ) {
-			$slug = sanitize_title( $item->title );
+			$slug    = sanitize_title( $item->title );
 			$classes = preg_replace( '/( current( -menu-|[-_]page[-_] )( item|parent|ancestor ) )/', 'active', $classes );
 			$classes = preg_replace( '/^( ( menu|page )[-_\w+]+ )+/', '', $classes );
 
@@ -212,6 +212,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 		 * @param string $before  What to show before the breadcrumb.
 		 * @param string $after   What to show after the breadcrumb.
 		 * @param bool   $display Whether to display the breadcrumb (true) or return it (false).
+		 *
 		 * @return string
 		 */
 		function breadcrumbs() {
@@ -233,13 +234,14 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				echo '</div>';
 			}
 		}
-		
+
 		/**
 		 * Template tag for breadcrumbs.
 		 *
 		 * @param string $before  What to show before the breadcrumb.
 		 * @param string $after   What to show after the breadcrumb.
 		 * @param bool   $display Whether to display the breadcrumb (true) or return it (false).
+		 *
 		 * @return string
 		 */
 		function authorbox() {
@@ -251,10 +253,10 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 
 
 			if ( class_exists( 'Four7_Author_Box' ) ) {
-			    echo '<div class="author-profile vcard">';
+				echo '<div class="author-profile vcard">';
 				echo $fs_authorbox->single_author( false );
 				echo '</div>';
-				
+
 			}
 		}
 
@@ -263,9 +265,9 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 		 * Enqueue scripts and stylesheets
 		 */
 		function enqueue_scripts() {
-		    wp_register_script( 'angular-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/angular.min.js',              false, null, false  );
-			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/ui-bootstrap-tpls-0.10.0.min.js',              false, null, false  );
-			wp_register_script( 'app-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/app.js',              false, null, false  );
+			wp_register_script( 'angular-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/angular.min.js', false, null, false );
+			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/ui-bootstrap-tpls-0.10.0.min.js', false, null, false );
+			wp_register_script( 'app-min', get_template_directory_uri() . '/library/framework/bootstrap/assets/js/app.js', false, null, false );
 			wp_enqueue_script( 'angular-min' );
 			wp_enqueue_script( 'bootstrap-min' );
 			wp_enqueue_script( 'app-min' );
@@ -377,7 +379,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			return '<div class="' . $classes . '"' . $id . '>' . $dismiss . $content . '</div>';
 		}
 
-		public function make_panel( $extra_classes = null, $id = null  ) {
+		public function make_panel( $extra_classes = null, $id = null ) {
 
 			$classes = array();
 
@@ -411,9 +413,9 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			 * BACKGROUND
 			 */
 			if ( isset( $fs_settings['body_bg']['background-color'] ) && ! empty( $fs_settings['body_bg']['background-color'] ) ) {
-				$bg  = $fs_settings['body_bg']['background-color'];
+				$bg = $fs_settings['body_bg']['background-color'];
 			} else {
-				$bg  = '#ffffff';
+				$bg = '#ffffff';
 			}
 			$body_bg = '#' . str_replace( '#', '', Four7_Color::sanitize_hex( $bg ) );
 
@@ -435,11 +437,11 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 
 			$bg_brightness = Four7_Color::get_brightness( $body_bg );
 
-			$table_bg_accent      = $bg_brightness > 50 ? 'darken(@body-bg, 2.5%)'    : 'lighten(@body-bg, 2.5%)';
-			$table_bg_hover       = $bg_brightness > 50 ? 'darken(@body-bg, 4%)'      : 'lighten(@body-bg, 4%)';
-			$table_border_color   = $bg_brightness > 50 ? 'darken(@body-bg, 13.35%)'  : 'lighten(@body-bg, 13.35%)';
-			$input_border         = $bg_brightness > 50 ? 'darken(@body-bg, 20%)'     : 'lighten(@body-bg, 20%)';
-			$dropdown_divider_top = $bg_brightness > 50 ? 'darken(@body-bg, 10.2%)'   : 'lighten(@body-bg, 10.2%)';
+			$table_bg_accent      = $bg_brightness > 50 ? 'darken(@body-bg, 2.5%)' : 'lighten(@body-bg, 2.5%)';
+			$table_bg_hover       = $bg_brightness > 50 ? 'darken(@body-bg, 4%)' : 'lighten(@body-bg, 4%)';
+			$table_border_color   = $bg_brightness > 50 ? 'darken(@body-bg, 13.35%)' : 'lighten(@body-bg, 13.35%)';
+			$input_border         = $bg_brightness > 50 ? 'darken(@body-bg, 20%)' : 'lighten(@body-bg, 20%)';
+			$dropdown_divider_top = $bg_brightness > 50 ? 'darken(@body-bg, 10.2%)' : 'lighten(@body-bg, 10.2%)';
 
 			$variables = '';
 
@@ -552,8 +554,8 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			}
 
 			if ( isset( $fs_settings['layout_gutter'] ) && ! empty( $fs_settings['layout_gutter'] ) ) {
-				$gutter    = filter_var( $fs_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
-				$gutter    = ( $gutter < 2 ) ? 2 : $gutter;
+				$gutter = filter_var( $fs_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
+				$gutter = ( $gutter < 2 ) ? 2 : $gutter;
 			}
 
 			if ( isset( $fs_settings['site_style'] ) && ! empty( $fs_settings['site_style'] ) ) {
@@ -596,9 +598,9 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$variables .= '@panel-body-padding: @modal-title-padding;';
 
 			if ( isset( $gutter ) && ! empty( $gutter ) ) {
-				$variables .= '@container-tablet:        ' . ( $screen_sm - ( $gutter / 2 ) ). 'px;';
-				$variables .= '@container-desktop:       ' . ( $screen_md - ( $gutter / 2 ) ). 'px;';
-				$variables .= '@container-large-desktop: ' . ( $screen_lg - $gutter ). 'px;';
+				$variables .= '@container-tablet:        ' . ( $screen_sm - ( $gutter / 2 ) ) . 'px;';
+				$variables .= '@container-desktop:       ' . ( $screen_md - ( $gutter / 2 ) ) . 'px;';
+				$variables .= '@container-large-desktop: ' . ( $screen_lg - $gutter ) . 'px;';
 			}
 
 			if ( isset( $gutter ) && ! empty( $gutter ) && $site_style == 'static' ) {
@@ -626,18 +628,18 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$brand_info_brightness    = Four7_Color::get_brightness( $brand_info );
 
 			// Button text colors
-			$btn_primary_color  = $brand_primary_brightness < 195 ? '#fff' : '333';
-			$btn_success_color  = $brand_success_brightness < 195 ? '#fff' : '333';
-			$btn_warning_color  = $brand_warning_brightness < 195 ? '#fff' : '333';
-			$btn_danger_color   = $brand_danger_brightness  < 195 ? '#fff' : '333';
-			$btn_info_color     = $brand_info_brightness    < 195 ? '#fff' : '333';
+			$btn_primary_color = $brand_primary_brightness < 195 ? '#fff' : '333';
+			$btn_success_color = $brand_success_brightness < 195 ? '#fff' : '333';
+			$btn_warning_color = $brand_warning_brightness < 195 ? '#fff' : '333';
+			$btn_danger_color  = $brand_danger_brightness < 195 ? '#fff' : '333';
+			$btn_info_color    = $brand_info_brightness < 195 ? '#fff' : '333';
 
 			// Button borders
 			$btn_primary_border = $brand_primary_brightness < 195 ? 'darken(@btn-primary-bg, 5%)' : 'lighten(@btn-primary-bg, 5%)';
 			$btn_success_border = $brand_success_brightness < 195 ? 'darken(@btn-success-bg, 5%)' : 'lighten(@btn-success-bg, 5%)';
 			$btn_warning_border = $brand_warning_brightness < 195 ? 'darken(@btn-warning-bg, 5%)' : 'lighten(@btn-warning-bg, 5%)';
-			$btn_danger_border  = $brand_danger_brightness  < 195 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
-			$btn_info_border    = $brand_info_brightness    < 195 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
+			$btn_danger_border  = $brand_danger_brightness < 195 ? 'darken(@btn-danger-bg, 5%)' : 'lighten(@btn-danger-bg, 5%)';
+			$btn_info_border    = $brand_info_brightness < 195 ? 'darken(@btn-info-bg, 5%)' : 'lighten(@btn-info-bg, 5%)';
 
 			$input_border_focus = ( Four7_Color::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
 			$navbar_border      = ( Four7_Color::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
@@ -729,10 +731,10 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			/**
 			 * JUMBOTRON
 			 */
-			$font_jumbotron         = four7_process_font( $fs_settings['font_jumbotron'] );
-			$jumbotron_bg           = $fs_settings['jumbo_bg'];
-			$jumbotron_bg           = '#' . str_replace( '#', '', Four7_Color::sanitize_hex( $jumbotron_bg['background-color'] ) );
-			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
+			$font_jumbotron       = four7_process_font( $fs_settings['font_jumbotron'] );
+			$jumbotron_bg         = $fs_settings['jumbo_bg'];
+			$jumbotron_bg         = '#' . str_replace( '#', '', Four7_Color::sanitize_hex( $jumbotron_bg['background-color'] ) );
+			$jumbotron_text_color = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
 			if ( $fs_settings['font_jumbotron_heading_custom'] == 1 ) {
 				$font_jumbotron_headers = four7_process_font( $fs_settings['font_jumbotron_headers'] );
@@ -765,13 +767,13 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				$variables .= '@jumbotron-font-size:     ' . $font_jumbotron['font-size'] . 'px;';
 			}
 
-			if ( isset( $fs_settings['padding_base'] ) && !empty( $fs_settings['padding_base'] ) ) {
-				$padding_base  = intval( $fs_settings['padding_base'] );
+			if ( isset( $fs_settings['padding_base'] ) && ! empty( $fs_settings['padding_base'] ) ) {
+				$padding_base = intval( $fs_settings['padding_base'] );
 			} else {
 				$padding_base = 6;
 			}
 
-			if ( isset( $fs_settings['general_border_radius'] ) && !empty( $fs_settings['general_border_radius'] ) ) {
+			if ( isset( $fs_settings['general_border_radius'] ) && ! empty( $fs_settings['general_border_radius'] ) ) {
 				$border_radius = filter_var( $fs_settings['general_border_radius'], FILTER_SANITIZE_NUMBER_INT );
 				$border_radius = ( strlen( $border_radius ) < 1 ) ? 0 : $border_radius;
 			} else {
@@ -827,12 +829,12 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			if ( isset( $font_jumbotron_headers_face ) && ! empty( $font_jumbotron_headers_face ) ) {
 				$variables .= '@jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';';
 			}
-			
+
 
 			/**
 			 * MENUS
 			 */
-			$font_brand        = four7_process_font( $fs_settings['font_brand'] );
+			$font_brand = four7_process_font( $fs_settings['font_brand'] );
 
 			$font_navbar       = four7_process_font( $fs_settings['font_navbar'] );
 			$navbar_bg         = '#' . str_replace( '#', '', Four7_Color::sanitize_hex( $fs_settings['navbar_bg'] ) );
@@ -840,7 +842,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$navbar_text_color = '#' . str_replace( '#', '', $font_navbar['color'] );
 			$brand_text_color  = '#' . str_replace( '#', '', $font_brand['color'] );
 			$navbar_border     = ( Four7_Color::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
-			$gfb = $fs_settings['grid_float_breakpoint'];
+			$gfb               = $fs_settings['grid_float_breakpoint'];
 
 			if ( Four7_Color::get_brightness( $navbar_bg ) < 165 ) {
 				$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
@@ -854,13 +856,13 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				$navbar_brand_hover_color   = 'lighten(@navbar-default-brand-color, 10%)';
 			}
 
-			$grid_float_breakpoint = ( isset( $gfb ) )           ? $gfb             : '@screen-sm-min';
-			$grid_float_breakpoint = ( $gfb == 'min' )           ? '10px'           : $grid_float_breakpoint;
+			$grid_float_breakpoint = ( isset( $gfb ) ) ? $gfb : '@screen-sm-min';
+			$grid_float_breakpoint = ( $gfb == 'min' ) ? '10px' : $grid_float_breakpoint;
 			$grid_float_breakpoint = ( $gfb == 'screen_xs_min' ) ? '@screen-xs-min' : $grid_float_breakpoint;
 			$grid_float_breakpoint = ( $gfb == 'screen_sm_min' ) ? '@screen-sm-min' : $grid_float_breakpoint;
 			$grid_float_breakpoint = ( $gfb == 'screen_md_min' ) ? '@screen-md-min' : $grid_float_breakpoint;
 			$grid_float_breakpoint = ( $gfb == 'screen_lg_min' ) ? '@screen-lg-min' : $grid_float_breakpoint;
-			$grid_float_breakpoint = ( $gfb == 'max' )           ? '9999px'         : $grid_float_breakpoint;
+			$grid_float_breakpoint = ( $gfb == 'max' ) ? '9999px' : $grid_float_breakpoint;
 
 			$grid_float_breakpoint = ( $gfb == 'screen-lg-min' ) ? '0 !important' : $grid_float_breakpoint;
 
@@ -980,12 +982,12 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$options = array( 'compress' => $compress );
 
 			$bootstrap_location = dirname( __FILE__ ) . '/assets/less/';
-		//	$webfont_location   = get_template_directory() . '/assets/fonts/elusive/less/';
-			$webfont_location   = get_template_directory() . '/assets/fonts/fontawesome/less/';
-			$bootstrap_uri      = '';
-			$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
-            
-           // print_r($webfont_location);
+			//	$webfont_location   = get_template_directory() . '/assets/fonts/elusive/less/';
+			$webfont_location = get_template_directory() . '/assets/fonts/fontawesome/less/';
+			$bootstrap_uri    = '';
+			$custom_less_file = get_stylesheet_directory() . '/assets/less/custom.less';
+
+			// print_r($webfont_location);
 			$css = '';
 			try {
 
@@ -995,8 +997,8 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 				$parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
 
 				// Include the Elusive Icons
-			//	$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
-				
+				//	$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
+
 				// Include the Fontawesome Icons
 				$parser->parseFile( $webfont_location . 'font-awesome.less', $bootstrap_uri );
 
@@ -1024,7 +1026,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 
 				$css = $parser->getCss();
 
-			} catch( Exception $e ) {
+			} catch ( Exception $e ) {
 				$error_message = $e->getMessage();
 			}
 
@@ -1044,7 +1046,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$networks = $fs_social->get_social_links();
 
 			// The base class for icons that will be used
-			$baseclass  = 'icon fa fa-';
+			$baseclass = 'icon fa fa-';
 
 			// Build the content
 			$content = '';
@@ -1054,8 +1056,8 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			foreach ( $networks as $network ) {
 				if ( strlen( $network['url'] ) > 7 ) {
 					// add the $show variable to check if the user has actually entered a url in any of the available networks
-					$show     = true;
-					$content .= '<a class="btn btn-link navbar-btn" href="' . $network['url'] . '" target="_blank" title="'. $network['icon'] .'">';
+					$show = true;
+					$content .= '<a class="btn btn-link navbar-btn" href="' . $network['url'] . '" target="_blank" title="' . $network['icon'] . '">';
 					$content .= '<i class="' . $baseclass . $network['icon'] . '"></i> ';
 					$content .= '</a>';
 				}
@@ -1075,7 +1077,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			$networks = $fs_social->get_social_links();
 
 			// The base class for icons that will be used
-			$baseclass  = 'fa fa-';
+			$baseclass = 'fa fa-';
 
 			// Build the content
 			$content = '';
@@ -1091,7 +1093,7 @@ if ( ! class_exists( 'FOUR7_Framework_Bootstrap' ) ) {
 			foreach ( $networks as $network ) {
 				if ( strlen( $network['url'] ) > 7 ) {
 					// add the $show variable to check if the user has actually entered a url in any of the available networks
-					$show     = true;
+					$show = true;
 					$content .= '<li>';
 					$content .= '<a href="' . $network['url'] . '" target="_blank">';
 					$content .= '<i class="' . $baseclass . $network['icon'] . '"></i> ';

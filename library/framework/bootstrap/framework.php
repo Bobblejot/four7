@@ -32,4 +32,5 @@ function four7_add_framework_bootstrap( $frameworks ) {
 
 	return $frameworks;
 }
+
 add_filter( 'four7_frameworks_array', 'four7_add_framework_bootstrap' );

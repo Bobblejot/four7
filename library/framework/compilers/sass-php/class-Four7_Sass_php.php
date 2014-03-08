@@ -3,8 +3,8 @@
 if ( ! class_exists( 'Four7_Sass_PHP' ) ) {
 
 	/**
-	* The Four7 Compiler
-	*/
+	 * The Four7 Compiler
+	 */
 	class Four7_Sass_PHP {
 
 		function __construct() {
@@ -17,7 +17,7 @@ if ( ! class_exists( 'Four7_Sass_PHP' ) ) {
 
 			add_filter( 'four7_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
 			add_filter( 'four7_main_stylesheet_ver', array( $this, 'stylesheet_ver' ) );
-			add_action( 'admin_notices',                 array( $this, 'file_nag'       ) );
+			add_action( 'admin_notices', array( $this, 'file_nag' ) );
 
 			// If the Custom LESS exists and has changed after the last compilation, trigger the compiler.
 			if ( is_writable( get_stylesheet_directory() . '/assets/less/custom.scss' ) ) {
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Four7_Sass_PHP' ) ) {
 
 			// Saving functions on import, etc
 			// If a compiler field was altered or import or reset defaults
-			add_action( 'redux/options/' . FOUR7_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
+			add_action( 'redux/options/' . FOUR7_OPT_NAME . '/compiler', array( $this, 'makecss' ) );
 		}
 
 		/*
@@ -42,12 +42,12 @@ if ( ! class_exists( 'Four7_Sass_PHP' ) ) {
 			global $blog_id;
 
 			// Get the upload directory for this site.
-			$upload_dir      = wp_upload_dir();
+			$upload_dir = wp_upload_dir();
 			// Hack to strip protocol
 			if ( strpos( $upload_dir['basedir'], 'https' ) !== false ) {
-			  $upload_dir = str_replace( 'https:', '', $upload_dir );
+				$upload_dir = str_replace( 'https:', '', $upload_dir );
 			} else {
-		  	  $upload_dir = str_replace( 'http:', '', $upload_dir );
+				$upload_dir = str_replace( 'http:', '', $upload_dir );
 			}
 
 			// Define a default folder for the stylesheets.
@@ -56,32 +56,32 @@ if ( ! class_exists( 'Four7_Sass_PHP' ) ) {
 			// We try to first write to the uploads folder.
 			// If we can write there, then use that folder for the stylesheet.
 			// This helps so that the stylesheets don't get overwritten when the theme gets updated.
-			$folder_path     = ( is_writable( $upload_dir['basedir'] ) ) ? $upload_dir['basedir'] : $def_folder_path;
+			$folder_path = ( is_writable( $upload_dir['basedir'] ) ) ? $upload_dir['basedir'] : $def_folder_path;
 
 			// If this is a multisite installation, append the blogid to the filename
-			$cssid           = ( is_multisite() && $blog_id > 1 ) ? '_id-' . $blog_id : null;
-			$file_name       = '/fs-style' . $cssid . '.css';
+			$cssid     = ( is_multisite() && $blog_id > 1 ) ? '_id-' . $blog_id : null;
+			$file_name = '/fs-style' . $cssid . '.css';
 
 			// The complete path to the file.
-			$file_path       = $folder_path . $file_name;
+			$file_path = $folder_path . $file_name;
 
 			// Get the URL directory of the stylesheet
-			$css_uri_folder  = ( $folder_path == $upload_dir['basedir'] ) ? $upload_dir['baseurl'] : get_template_directory_uri() . '/assets/css';
+			$css_uri_folder = ( $folder_path == $upload_dir['basedir'] ) ? $upload_dir['baseurl'] : get_template_directory_uri() . '/assets/css';
 
 			// If the CSS file does not exist, use the default file.
-			$css_uri  = ( file_exists( $file_path ) ) ? $css_uri_folder . $file_name : get_template_directory_uri() . '/assets/css/style-default.css';
+			$css_uri = ( file_exists( $file_path ) ) ? $css_uri_folder . $file_name : get_template_directory_uri() . '/assets/css/style-default.css';
 
 			// If a style.css file exists in the assets/css folder, use that file instead.
 			// This is mostly for backwards-compatibility with previous versions.
 			// Also if the stylesheet is compiled using grunt, this will make sure the correct file is used.
-			if ( file_exists( $def_folder_path . $file_name) ) {
+			if ( file_exists( $def_folder_path . $file_name ) ) {
 				$css_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
 				$file_path = $def_folder_path . '/style' . $cssid . '.css';
 			}
 
 			$css_path = $file_path;
 
-			$value    = ( $target == 'url' ) ? $css_uri : $css_path;
+			$value = ( $target == 'url' ) ? $css_uri : $css_path;
 
 			if ( $target == 'ver' ) {
 				if ( ! get_transient( 'four7_stylesheet_time' ) ) {
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Four7_Sass_PHP' ) ) {
 
 			if ( $current_screen->parent_base == 'themes' ) {
 				$filename = self::file();
-				$url = self::stylesheet_url( 'url' );
+				$url      = self::stylesheet_url( 'url' );
 
 				if ( ! file_exists( $filename ) ) {
 					if ( ! $wp_filesystem->put_contents( $filename, ' ', FS_CHMOD_FILE ) ) {

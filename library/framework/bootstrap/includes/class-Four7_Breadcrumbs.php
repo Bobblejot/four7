@@ -19,6 +19,7 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 		 * Get a term's parents.
 		 *
 		 * @param object $term Term to get the parents for
+		 *
 		 * @return array
 		 */
 		function get_term_parents( $term ) {
@@ -28,6 +29,7 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 				$term      = get_term( $term->parent, $tax );
 				$parents[] = $term;
 			}
+
 			return array_reverse( $parents );
 		}
 
@@ -37,6 +39,7 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 		 * @param string $before  The prefix for the breadcrumb, usually something like "You're here".
 		 * @param string $after   The suffix for the breadcrumb.
 		 * @param bool   $display When true, echo the breadcrumb, if not, return it as a string.
+		 *
 		 * @return string
 		 */
 		function breadcrumb( $display = true ) {
@@ -68,7 +71,7 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 					foreach ( $taxonomy_names as $taxonomy_name ) {
 						if ( ! $hierarchical ) {
 							$hierarchical = ( is_taxonomy_hierarchical( $taxonomy_name ) ) ? true : $hierarchical;
-							$tn = $taxonomy_name;
+							$tn           = $taxonomy_name;
 						}
 					}
 					$main_tax = isset( $tn ) ? $tn : 'category';
@@ -85,37 +88,37 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 						}
 
 						// As we could still have two subcategories, from different parent categories, let's pick the one with the lowest ordered ancestor.
-                        $parents_count = 0;
-                        $term_order    = 9999; //because ASC
-                        reset( $terms_by_id );
-                        $deepest_term  = current($terms_by_id);
-                        foreach ( $terms_by_id as $term ) {
-                            $parents   = $this->get_term_parents( $term );
+						$parents_count = 0;
+						$term_order    = 9999; //because ASC
+						reset( $terms_by_id );
+						$deepest_term = current( $terms_by_id );
+						foreach ( $terms_by_id as $term ) {
+							$parents = $this->get_term_parents( $term );
 
-                            if ( sizeof( $parents ) >= $parents_count ) {
-                                $parents_count = sizeof( $parents );
+							if ( sizeof( $parents ) >= $parents_count ) {
+								$parents_count = sizeof( $parents );
 
-                                //if higher count
-                                if ( sizeof( $parents ) > $parents_count ) {
-                                    //reset order
-                                    $term_order = 9999;
-                                }
+								//if higher count
+								if ( sizeof( $parents ) > $parents_count ) {
+									//reset order
+									$term_order = 9999;
+								}
 
-                                $parent_order = 9999; //set default order
-                                foreach ( $parents as $parent ) {
-                                    if ( $parent->parent == 0 && isset( $parent->term_order ) ) {
-                                        $parent_order = $parent->term_order;
-                                    }
-                                }
+								$parent_order = 9999; //set default order
+								foreach ( $parents as $parent ) {
+									if ( $parent->parent == 0 && isset( $parent->term_order ) ) {
+										$parent_order = $parent->term_order;
+									}
+								}
 
-                                //check if parent has lowest order
-                                if ( $parent_order < $term_order ) {
-                                    $term_order = $parent_order;
+								//check if parent has lowest order
+								if ( $parent_order < $term_order ) {
+									$term_order = $parent_order;
 
-                                    $deepest_term = $term;
-                                }
-                            }
-                        }
+									$deepest_term = $term;
+								}
+							}
+						}
 
 						if ( is_taxonomy_hierarchical( $main_tax ) && $deepest_term->parent != 0 ) {
 							foreach ( $this->get_term_parents( $deepest_term ) as $parent_term ) {
@@ -146,69 +149,80 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 			} else {
 				if ( is_post_type_archive() ) {
 					$links[] = array( 'post_type_archive' => $wp_query->query['post_type'] );
-				} else if ( is_tax() || is_tag() || is_category() ) {
-					$term = $wp_query->get_queried_object();
+				} else {
+					if ( is_tax() || is_tag() || is_category() ) {
+						$term = $wp_query->get_queried_object();
 
-					if ( is_taxonomy_hierarchical( $term->taxonomy ) && $term->parent != 0 ) {
-						foreach ( $this->get_term_parents( $term ) as $parent_term ) {
-							$links[] = array( 'term' => $parent_term );
-						}
-					}
-
-					$links[] = array( 'term' => $term );
-				} else if ( is_date() ) {
-					$bc = __( 'Archives for', 'four7' );
-
-					if ( is_day() ) {
-						global $wp_locale;
-						$links[] = array(
-							'url'  => get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) ),
-							'text' => $wp_locale->get_month( get_query_var( 'monthnum' ) ) . ' ' . get_query_var( 'year' )
-						);
-						$links[] = array( 'text' => $bc . " " . get_the_date() );
-					} else if ( is_month() ) {
-						$links[] = array( 'text' => $bc . " " . single_month_title( ' ', false ) );
-					} else if ( is_year() ) {
-						$links[] = array( 'text' => $bc . " " . get_query_var( 'year' ) );
-					}
-				} elseif ( is_author() ) {
-					$bc      = __( 'Archives for', 'four7' );
-					$user    = $wp_query->get_queried_object();
-					$links[] = array( 'text' => $bc . " " . esc_html( $user->display_name ) );
-				} elseif ( is_search() ) {
-					$bc      = __( 'You searched for', 'four7' );
-					$links[] = array( 'text' => $bc . ' "' . esc_html( get_search_query() ) . '"' );
-				} elseif ( is_404() ) {
-
-					if ( 0 !== get_query_var( 'year' ) || ( 0 !== get_query_var( 'monthnum' ) || 0 !== get_query_var( 'day' ) ) ) {
-						
-						if ( 'page' == $on_front && ! is_home() ) {
-							$links[] = array( 'id' => $blog_page );
+						if ( is_taxonomy_hierarchical( $term->taxonomy ) && $term->parent != 0 ) {
+							foreach ( $this->get_term_parents( $term ) as $parent_term ) {
+								$links[] = array( 'term' => $parent_term );
+							}
 						}
 
-						$bc = __( 'Archives for', 'four7' );
+						$links[] = array( 'term' => $term );
+					} else {
+						if ( is_date() ) {
+							$bc = __( 'Archives for', 'four7' );
+
+							if ( is_day() ) {
+								global $wp_locale;
+								$links[] = array(
+									'url'  => get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) ),
+									'text' => $wp_locale->get_month( get_query_var( 'monthnum' ) ) . ' ' . get_query_var( 'year' )
+								);
+								$links[] = array( 'text' => $bc . " " . get_the_date() );
+							} else {
+								if ( is_month() ) {
+									$links[] = array( 'text' => $bc . " " . single_month_title( ' ', false ) );
+								} else {
+									if ( is_year() ) {
+										$links[] = array( 'text' => $bc . " " . get_query_var( 'year' ) );
+									}
+								}
+							}
+						} elseif ( is_author() ) {
+							$bc      = __( 'Archives for', 'four7' );
+							$user    = $wp_query->get_queried_object();
+							$links[] = array( 'text' => $bc . " " . esc_html( $user->display_name ) );
+						} elseif ( is_search() ) {
+							$bc      = __( 'You searched for', 'four7' );
+							$links[] = array( 'text' => $bc . ' "' . esc_html( get_search_query() ) . '"' );
+						} elseif ( is_404() ) {
+
+							if ( 0 !== get_query_var( 'year' ) || ( 0 !== get_query_var( 'monthnum' ) || 0 !== get_query_var( 'day' ) ) ) {
+
+								if ( 'page' == $on_front && ! is_home() ) {
+									$links[] = array( 'id' => $blog_page );
+								}
+
+								$bc = __( 'Archives for', 'four7' );
 
 
-						if ( 0 !== get_query_var( 'day' ) ) {
-							$links[] = array(
-								'url'  => get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) ),
-								'text' => $GLOBALS['wp_locale']->get_month( get_query_var( 'monthnum' ) ) . ' ' . get_query_var( 'year' )
-							);
-							global $post;
-							$original_p = $post;
-							$post->post_date = sprintf( "%04d-%02d-%02d 00:00:00", get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) );
-							$links[] = array( 'text' => $bc . ' ' . get_the_date() );
-							$post = $original_p;
+								if ( 0 !== get_query_var( 'day' ) ) {
+									$links[] = array(
+										'url'  => get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) ),
+										'text' => $GLOBALS['wp_locale']->get_month( get_query_var( 'monthnum' ) ) . ' ' . get_query_var( 'year' )
+									);
+									global $post;
+									$original_p      = $post;
+									$post->post_date = sprintf( "%04d-%02d-%02d 00:00:00", get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) );
+									$links[]         = array( 'text' => $bc . ' ' . get_the_date() );
+									$post            = $original_p;
 
-						} else if ( 0 !== get_query_var( 'monthnum' ) ) {
-							$links[] = array( 'text' => $bc . ' ' . single_month_title( ' ', false ) );
-						} else if ( 0 !== get_query_var( 'year' ) ) {
-							$links[] = array( 'text' => $bc . ' ' . get_query_var( 'year' ) );
+								} else {
+									if ( 0 !== get_query_var( 'monthnum' ) ) {
+										$links[] = array( 'text' => $bc . ' ' . single_month_title( ' ', false ) );
+									} else {
+										if ( 0 !== get_query_var( 'year' ) ) {
+											$links[] = array( 'text' => $bc . ' ' . get_query_var( 'year' ) );
+										}
+									}
+								}
+							} else {
+								$crumb404 = __( 'Error 404: Page not found', 'four7' );
+								$links[]  = array( 'text' => $crumb404 );
+							}
 						}
-					}
-					else {
-						$crumb404 = __( 'Error 404: Page not found', 'four7' );
-						$links[] = array( 'text' => $crumb404 );
 					}
 				}
 			}
@@ -217,6 +231,7 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 
 			if ( $display ) {
 				echo $output;
+
 				return true;
 			} else {
 				return $output;
@@ -237,6 +252,7 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 		 * @param array  $links   The links that should be contained in the breadcrumb.
 		 * @param string $wrapper The wrapping element for the entire breadcrumb path.
 		 * @param string $element The wrapping element for each individual link.
+		 *
 		 * @return string
 		 */
 		function create_breadcrumbs_string( $links, $wrapper = 'span', $element = 'span' ) {
@@ -260,12 +276,12 @@ if ( ! class_exists( 'Four7_Breadcrumbs' ) ) {
 
 				if ( isset( $link['post_type_archive'] ) ) {
 					/* @todo add something along the lines of the below to make it work with WooCommerce.. ?
-					if( false === $link['post_type_archive'] && true === is_post_type_archive( 'product' ) ) {
-						$link['post_type_archive'] = 'product'; // translate ?
-					}*/
+					 * if( false === $link['post_type_archive'] && true === is_post_type_archive( 'product' ) ) {
+					 * $link['post_type_archive'] = 'product'; // translate ?
+					 * }*/
 					$post_type_obj = get_post_type_object( $link['post_type_archive'] );
 
-					if( isset( $post_type_obj->label ) && $post_type_obj->label !== '' ) {
+					if ( isset( $post_type_obj->label ) && $post_type_obj->label !== '' ) {
 						$archive_title = $post_type_obj->label;
 					} else {
 						$archive_title = $post_type_obj->labels->menu_name;

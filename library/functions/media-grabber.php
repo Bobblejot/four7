@@ -2,26 +2,26 @@
 /**
  * four7 Media Grabber - A script for grabbing media related to a post.
  *
- * four7 Media Grabber is a script for pulling media either from the post content or attached to the 
- * post.  It's an attempt to consolidate the various methods that users have used over the years to 
- * embed media into their posts.  This script was written so that theme developers could grab that 
- * media and use it in interesting ways within their themes.  For example, a theme could get a video 
- * and display it on archive pages alongside the post excerpt or pull it out of the content to display 
+ * four7 Media Grabber is a script for pulling media either from the post content or attached to the
+ * post.  It's an attempt to consolidate the various methods that users have used over the years to
+ * embed media into their posts.  This script was written so that theme developers could grab that
+ * media and use it in interesting ways within their themes.  For example, a theme could get a video
+ * and display it on archive pages alongside the post excerpt or pull it out of the content to display
  * it above the post on single post views.
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
- * General Public License as published by the Free Software Foundation; either version 2 of the License, 
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License as published by the Free Software Foundation; either version 2 of the License,
  * or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @package four7 Framework
+ * @package    four7 Framework
  * @subpackage Functions
- * @author inevisys
- * @copyright Copyright (c) 2013 - 2014, inevisys
- * @link http://inevisys.com/four7
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @author     inevisys
+ * @copyright  Copyright (c) 2013 - 2014, inevisys
+ * @link       http://inevisys.com/four7
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  */
 
@@ -30,7 +30,9 @@
  *
  * @since  1.0.0
  * @access public
+ *
  * @param  array
+ *
  * @return string
  */
 function four7_media_grabber( $args = array() ) {
@@ -108,18 +110,18 @@ class four7_Media_Grabber {
 
 		/* Use WP's embed functionality to handle the [embed] shortcode and autoembeds. */
 		add_filter( 'four7_media_grabber_embed_shortcode_media', array( $wp_embed, 'run_shortcode' ) );
-		add_filter( 'four7_media_grabber_autoembed_media',       array( $wp_embed, 'autoembed' ) );
+		add_filter( 'four7_media_grabber_autoembed_media', array( $wp_embed, 'autoembed' ) );
 
 		/* Don't return a link if embeds don't work. Need media or nothing at all. */
 		add_filter( 'embed_maybe_make_link', '__return_false' );
 
 		/* Set up the default arguments. */
 		$defaults = array(
-			'post_id'     => get_the_ID(),   // post ID (assumes within The Loop by default)
-			'type'        => 'video',        // audio|video
-			'before'      => '',             // HTML before the output
-			'after'       => '',             // HTML after the output
-			'split_media' => false,          // Splits the media from the post content
+			'post_id'     => get_the_ID(), // post ID (assumes within The Loop by default)
+			'type'        => 'video', // audio|video
+			'before'      => '', // HTML before the output
+			'after'       => '', // HTML after the output
+			'split_media' => false, // Splits the media from the post content
 			'width'       => $content_width, // Custom width. Defaults to the theme's content width.
 		);
 
@@ -167,31 +169,37 @@ class four7_Media_Grabber {
 		$this->do_shortcode_media();
 
 		/* If no media is found and autoembeds are enabled, check for autoembeds. */
-		if ( empty( $this->media ) && get_option( 'embed_autourls' ) )
+		if ( empty( $this->media ) && get_option( 'embed_autourls' ) ) {
 			$this->do_autoembed_media();
+		}
 
 		/* If no media is found, check for media HTML within the post content. */
-		if ( empty( $this->media ) )
+		if ( empty( $this->media ) ) {
 			$this->do_embedded_media();
+		}
 
 		/* If no media is found, check for media attached to the post. */
-		if ( empty( $this->media ) )
+		if ( empty( $this->media ) ) {
 			$this->do_attached_media();
+		}
 
 		/* If media is found, let's run a few things. */
-		if ( !empty( $this->media ) ) {
+		if ( ! empty( $this->media ) ) {
 
 			/* Add the before HTML. */
-			if ( isset( $this->args['before'] ) )
+			if ( isset( $this->args['before'] ) ) {
 				$this->media = $this->args['before'] . $this->media;
+			}
 
 			/* Add the after HTML. */
-			if ( isset( $this->args['after'] ) )
+			if ( isset( $this->args['after'] ) ) {
 				$this->media .= $this->args['after'];
+			}
 
 			/* Split the media from the content. */
-			if ( true === $this->args['split_media'] && !empty( $this->original_media ) )
+			if ( true === $this->args['split_media'] && ! empty( $this->original_media ) ) {
 				add_filter( 'the_content', array( $this, 'split_media' ), 5 );
+			}
 
 			/* Filter the media dimensions. */
 			$this->media = $this->filter_dimensions( $this->media );
@@ -199,8 +207,8 @@ class four7_Media_Grabber {
 	}
 
 	/**
-	 * WordPress has a few shortcodes for handling embedding media:  [audio], [video], and [embed].  This 
-	 * method figures out the shortcode used in the content.  Once it's found, the appropriate method for 
+	 * WordPress has a few shortcodes for handling embedding media:  [audio], [video], and [embed].  This
+	 * method figures out the shortcode used in the content.  Once it's found, the appropriate method for
 	 * the shortcode is executed.
 	 *
 	 * @since  1.0.0
@@ -213,7 +221,7 @@ class four7_Media_Grabber {
 		preg_match_all( '/' . get_shortcode_regex() . '/s', $this->content, $matches, PREG_SET_ORDER );
 
 		/* If matches are found, loop through them and check if they match one of WP's media shortcodes. */
-		if ( !empty( $matches ) ) {
+		if ( ! empty( $matches ) ) {
 
 			foreach ( $matches as $shortcode ) {
 
@@ -231,7 +239,9 @@ class four7_Media_Grabber {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  array  $shortcode
+	 *
+	 * @param  array $shortcode
+	 *
 	 * @return void
 	 */
 	public function do_embed_shortcode_media( $shortcode ) {
@@ -249,7 +259,9 @@ class four7_Media_Grabber {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  array  $shortcode
+	 *
+	 * @param  array $shortcode
+	 *
 	 * @return void
 	 */
 	public function do_audio_shortcode_media( $shortcode ) {
@@ -264,7 +276,9 @@ class four7_Media_Grabber {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  array  $shortcode
+	 *
+	 * @param  array $shortcode
+	 *
 	 * @return void
 	 */
 	public function do_video_shortcode_media( $shortcode ) {
@@ -294,9 +308,9 @@ class four7_Media_Grabber {
 				/* Let WP work its magic with the 'autoembed' method. */
 				$embed = trim( apply_filters( 'four7_media_grabber_autoembed_media', $value[0] ) );
 
-				if ( !empty( $embed ) ) {
+				if ( ! empty( $embed ) ) {
 					$this->original_media = $value[0];
-					$this->media = $embed;
+					$this->media          = $embed;
 					break;
 				}
 			}
@@ -304,7 +318,7 @@ class four7_Media_Grabber {
 	}
 
 	/**
-	 * Grabs media embbeded into the content within <iframe>, <object>, <embed>, and other HTML methods for 
+	 * Grabs media embbeded into the content within <iframe>, <object>, <embed>, and other HTML methods for
 	 * embedding media.
 	 *
 	 * @since  1.0.0
@@ -315,12 +329,13 @@ class four7_Media_Grabber {
 
 		$embedded_media = get_media_embedded_in_content( $this->content );
 
-		if ( !empty( $embedded_media ) )
+		if ( ! empty( $embedded_media ) ) {
 			$this->media = $this->original_media = array_shift( $embedded_media );
+		}
 	}
 
 	/**
-	 * Gets media attached to the post.  Then, uses the WordPress [audio] or [video] shortcode to handle 
+	 * Gets media attached to the post.  Then, uses the WordPress [audio] or [video] shortcode to handle
 	 * the HTML output of the media.
 	 *
 	 * @since  1.0.0
@@ -333,7 +348,7 @@ class four7_Media_Grabber {
 		$attached_media = get_attached_media( $this->type, $this->args['post_id'] );
 
 		/* If media is found. */
-		if ( !empty( $attached_media ) ) {
+		if ( ! empty( $attached_media ) ) {
 
 			/* Get the first attachment/post object found for the post. */
 			$post = array_shift( $attached_media );
@@ -347,12 +362,14 @@ class four7_Media_Grabber {
 	}
 
 	/**
-	 * Removes the found media from the content.  The purpose of this is so that themes can retrieve the 
+	 * Removes the found media from the content.  The purpose of this is so that themes can retrieve the
 	 * media from the content and display it elsewhere on the page based on its design.
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string  $content
+	 *
+	 * @param  string $content
+	 *
 	 * @return string
 	 */
 	public function split_media( $content ) {
@@ -363,12 +380,14 @@ class four7_Media_Grabber {
 	}
 
 	/**
-	 * Method for filtering the media's 'width' and 'height' attributes so that the theme can handle the 
+	 * Method for filtering the media's 'width' and 'height' attributes so that the theme can handle the
 	 * dimensions how it sees fit.
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string  $html
+	 *
+	 * @param  string $html
+	 *
 	 * @return string
 	 */
 	public function filter_dimensions( $html ) {
@@ -377,12 +396,14 @@ class four7_Media_Grabber {
 		$atts = wp_kses_hair( $html, array( 'http', 'https' ) );
 
 		/* Loop through the media attributes and add them in key/value pairs. */
-		foreach ( $atts as $att )
-			$media_atts[ $att['name'] ] = $att['value'];
+		foreach ( $atts as $att ) {
+			$media_atts[$att['name']] = $att['value'];
+		}
 
 		/* If no dimensions are found, just return the HTML. */
-		if ( empty( $media_atts ) || !isset( $media_atts['width'] ) || !isset( $media_atts['height'] ) )
+		if ( empty( $media_atts ) || ! isset( $media_atts['width'] ) || ! isset( $media_atts['height'] ) ) {
 			return $html;
+		}
 
 		/* Set the max width. */
 		$max_width = $this->args['width'];
@@ -391,23 +412,24 @@ class four7_Media_Grabber {
 		$max_height = round( $max_width / ( $media_atts['width'] / $media_atts['height'] ) );
 
 		/* Fix for Spotify embeds. */
-		if ( !empty( $media_atts['src'] ) && preg_match( '#https?://(embed)\.spotify\.com/.*#i', $media_atts['src'], $matches ) )
+		if ( ! empty( $media_atts['src'] ) && preg_match( '#https?://(embed)\.spotify\.com/.*#i', $media_atts['src'], $matches ) ) {
 			list( $max_width, $max_height ) = $this->spotify_dimensions( $media_atts );
+		}
 
 		/* Calculate new media dimensions. */
-		$dimensions = wp_expand_dimensions( 
-			$media_atts['width'], 
-			$media_atts['height'], 
+		$dimensions = wp_expand_dimensions(
+			$media_atts['width'],
+			$media_atts['height'],
 			$max_width,
 			$max_height
 		);
 
 		/* Allow devs to filter the final width and height of the media. */
-		list( $width, $height ) = apply_filters( 
-			'four7_media_grabber_dimensions', 
-			$dimensions,                       // width/height array
-			$media_atts,                       // media HTML attributes
-			$this                              // media grabber object
+		list( $width, $height ) = apply_filters(
+			'four7_media_grabber_dimensions',
+			$dimensions, // width/height array
+			$media_atts, // media HTML attributes
+			$this // media grabber object
 		);
 
 		/* Set up the patterns for the 'width' and 'height' attributes. */
@@ -425,17 +447,20 @@ class four7_Media_Grabber {
 		);
 
 		/* Filter the dimensions and return the media HTML. */
+
 		return preg_replace( $patterns, $replacements, $html );
 	}
 
 	/**
-	 * Fix for Spotify embeds because they're the only embeddable service that doesn't work that well 
-	 * with custom-sized embeds.  So, we need to adjust this the best we can.  Right now, the only 
+	 * Fix for Spotify embeds because they're the only embeddable service that doesn't work that well
+	 * with custom-sized embeds.  So, we need to adjust this the best we can.  Right now, the only
 	 * embed size that works for full-width embeds is the "compact" player (height of 80).
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  array   $media_atts
+	 *
+	 * @param  array $media_atts
+	 *
 	 * @return array
 	 */
 	public function spotify_dimensions( $media_atts ) {
@@ -443,8 +468,9 @@ class four7_Media_Grabber {
 		$max_width  = $media_atts['width'];
 		$max_height = $media_atts['height'];
 
-		if ( 80 == $media_atts['height'] )
-			$max_width  = $this->args['width'];
+		if ( 80 == $media_atts['height'] ) {
+			$max_width = $this->args['width'];
+		}
 
 		return array( $max_width, $max_height );
 	}

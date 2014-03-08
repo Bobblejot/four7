@@ -4,27 +4,27 @@
 if ( ! class_exists( 'Four7_Menus' ) ) {
 
 	/**
-	* The "Menus" module
-	*/
+	 * The "Menus" module
+	 */
 	class Four7_Menus {
 
 		function __construct() {
 			global $fs_settings;
 
 			add_filter( 'redux/options/' . FOUR7_OPT_NAME . '/sections', array( $this, 'options' ), 60 );
-			add_filter( 'four7_nav_class',        array( $this, 'nav_class' ) );
+			add_filter( 'four7_nav_class', array( $this, 'nav_class' ) );
 			add_action( 'four7_inside_nav_begin', array( $this, 'navbar_pre_searchbox' ), 11 );
-			add_filter( 'four7_navbar_class',     array( $this, 'navbar_class' ) );
-			add_action( 'wp_enqueue_scripts',         array( $this, 'navbar_css' ), 101 );
-			add_filter( 'four7_navbar_brand',     array( $this, 'navbar_brand' ) );
-			add_filter( 'body_class',                 array( $this, 'navbar_body_class' ) );
-			add_action( 'widgets_init',               array( $this, 'sl_widgets_init' ), 40 );
-			add_action( 'four7_post_main_nav',    array( $this, 'navbar_sidebar' ) );
-			add_action( 'four7_pre_wrap',         array( $this, 'secondary_navbar' ) );
-			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init' ), 50 );
-			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script' ), 200 );
-			add_action( 'four7_pre_wrap',         array( $this, 'content_wrapper_static_left_open' ) );
-			add_action( 'four7_after_footer',     array( $this, 'content_wrapper_static_left_close' ), 1 );
+			add_filter( 'four7_navbar_class', array( $this, 'navbar_class' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'navbar_css' ), 101 );
+			add_filter( 'four7_navbar_brand', array( $this, 'navbar_brand' ) );
+			add_filter( 'body_class', array( $this, 'navbar_body_class' ) );
+			add_action( 'widgets_init', array( $this, 'sl_widgets_init' ), 40 );
+			add_action( 'four7_post_main_nav', array( $this, 'navbar_sidebar' ) );
+			add_action( 'four7_pre_wrap', array( $this, 'secondary_navbar' ) );
+			add_action( 'widgets_init', array( $this, 'slidedown_widgets_init' ), 50 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'megadrop_script' ), 200 );
+			add_action( 'four7_pre_wrap', array( $this, 'content_wrapper_static_left_open' ) );
+			add_action( 'four7_after_footer', array( $this, 'content_wrapper_static_left_close' ), 1 );
 
 			if ( $fs_settings['secondary_navbar_margin'] != 0 ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
@@ -49,32 +49,32 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			);
 
 			$fields[] = array(
-				'id'          => 'help7',
-				'title'       => __( 'Advanced NavBar Options', 'four7' ),
-				'desc'        => __( "You can activate or deactivate your Primary NavBar here, and define its properties. Please note that you might have to manually create a menu if it doesn't already exist.", 'four7' ),
-				'type'        => 'info'
+				'id'    => 'help7',
+				'title' => __( 'Advanced NavBar Options', 'four7' ),
+				'desc'  => __( "You can activate or deactivate your Primary NavBar here, and define its properties. Please note that you might have to manually create a menu if it doesn't already exist.", 'four7' ),
+				'type'  => 'info'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Type of NavBar', 'four7' ),
-				'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details.', 'four7' ) . '<br>' . __( '<strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'four7' ),
-				'id'          => 'navbar_toggle',
-				'default'     => 'normal',
-				'options'     => array(
-					'none'    => __( 'Off', 'four7' ),
-					'normal'  => __( 'Normal', 'four7' ),
+				'title'   => __( 'Type of NavBar', 'four7' ),
+				'desc'    => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details.', 'four7' ) . '<br>' . __( '<strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'four7' ),
+				'id'      => 'navbar_toggle',
+				'default' => 'normal',
+				'options' => array(
+					'none'   => __( 'Off', 'four7' ),
+					'normal' => __( 'Normal', 'four7' ),
 					// 'pills'   => __( 'Pills', 'four7' ),
-					'full'    => __( 'Full-Width', 'four7' ),
-					'left'    => __( 'Static-Left', 'four7' ),
+					'full'   => __( 'Full-Width', 'four7' ),
+					'left'   => __( 'Static-Left', 'four7' ),
 				),
-				'type'        => 'button_set'
+				'type'    => 'button_set'
 			);
 
 			$fields[] = array(
-				'id'          => 'helpnavbarbg',
-				'title'       => __( 'NavBar Styling Options', 'four7' ),
-				'desc'   	  => __( 'Customize the look and feel of your navbar below.', 'four7' ),
-				'type'        => 'info'
+				'id'    => 'helpnavbarbg',
+				'title' => __( 'NavBar Styling Options', 'four7' ),
+				'desc'  => __( 'Customize the look and feel of your navbar below.', 'four7' ),
+				'type'  => 'info'
 			);
 
 			$fields[] = array(
@@ -88,43 +88,43 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			);
 
 			$fields[] = array(
-				'title'       => __( 'NavBar Background Opacity', 'four7' ),
-				'desc'        => __( 'Pick a background opacity for the NavBar. Default: 100%.', 'four7' ),
-				'id'          => 'navbar_bg_opacity',
-				'default'     => 100,
-				'min'         => 1,
-				'step'        => 1,
-				'max'         => 100,
-				'type'        => 'slider',
+				'title'   => __( 'NavBar Background Opacity', 'four7' ),
+				'desc'    => __( 'Pick a background opacity for the NavBar. Default: 100%.', 'four7' ),
+				'id'      => 'navbar_bg_opacity',
+				'default' => 100,
+				'min'     => 1,
+				'step'    => 1,
+				'max'     => 100,
+				'type'    => 'slider',
 			);
-			
+
 			$fields[] = array(
-				'title'     => 'Navbar Container Border',
-				'desc'      => __( 'Select the border options for your Navbar', 'four7' ),
-				'id'        => 'navbar_border',
-				'type'      => 'border',
-				'all'       => false, 
-				'left'      => true, 
-				'top'       => true, 
-				'right'     => true,
-				'bottom'    => true,
-				'default'   => array(
-					'border-top'      => '0',
-					'border-left'     => '0',
-					'border-bottom'   => '0',
-					'border-right'    => '0',
-					'border-style'    => 'solid',
-					'border-color'    => '#DDDDDD',
+				'title'   => 'Navbar Container Border',
+				'desc'    => __( 'Select the border options for your Navbar', 'four7' ),
+				'id'      => 'navbar_border',
+				'type'    => 'border',
+				'all'     => false,
+				'left'    => true,
+				'top'     => true,
+				'right'   => true,
+				'bottom'  => true,
+				'default' => array(
+					'border-top'    => '0',
+					'border-left'   => '0',
+					'border-bottom' => '0',
+					'border-right'  => '0',
+					'border-style'  => 'solid',
+					'border-color'  => '#DDDDDD',
 				),
 			);
 
 			$fields[] = array(
-				'title'       => __( 'NavBar Menu Style', 'four7' ),
-				'desc'        => __( 'You can use an alternative menu style for your NavBars.', 'four7' ),
-				'id'          => 'navbar_style',
-				'default'     => 'default',
-				'type'        => 'select',
-				'options'     => array(
+				'title'   => __( 'NavBar Menu Style', 'four7' ),
+				'desc'    => __( 'You can use an alternative menu style for your NavBars.', 'four7' ),
+				'id'      => 'navbar_style',
+				'default' => 'default',
+				'type'    => 'select',
+				'options' => array(
 					'default' => __( 'Default', 'four7' ),
 					'style1'  => __( 'Style', 'four7' ) . ' 1',
 					'style2'  => __( 'Style', 'four7' ) . ' 2',
@@ -135,118 +135,118 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 					'metro'   => __( 'Metro', 'four7' ),
 				)
 			);
-			
+
 			$fields[] = array(
-				'title'       => __( 'NavBar Action', 'four7' ),
-				'desc'        => __( 'Using this option you can set the navbar links to either open on Click or Hover. Default: Click', 'four7' ),
-				'id'          => 'navbar_action',
-				'default'     => 0,
-				'on'          => __( 'Hover', 'four7' ),
-				'off'         => __( 'Click', 'four7' ),
-				'type'        => 'switch'
-			);
-			
-			$fields[] = array(
-				'title'       => __( 'NavBar Dropdown Slide Action', 'four7' ),
-				'desc'        => __( 'Using this option you can set the navbar links to slide open. Default: Off', 'four7' ),
-				'id'          => 'navbar_slide_action',
-				'default'     => 0,
-				'on'          => __( 'On', 'four7' ),
-				'off'         => __( 'Off', 'four7' ),
-				'type'        => 'switch'
+				'title'   => __( 'NavBar Action', 'four7' ),
+				'desc'    => __( 'Using this option you can set the navbar links to either open on Click or Hover. Default: Click', 'four7' ),
+				'id'      => 'navbar_action',
+				'default' => 0,
+				'on'      => __( 'Hover', 'four7' ),
+				'off'     => __( 'Click', 'four7' ),
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'four7' ),
-				'desc'        => __( 'Default: ON', 'four7' ),
-				'id'          => 'navbar_brand',
-				'default'     => 1,
-				'type'        => 'switch'
+				'title'   => __( 'NavBar Dropdown Slide Action', 'four7' ),
+				'desc'    => __( 'Using this option you can set the navbar links to slide open. Default: Off', 'four7' ),
+				'id'      => 'navbar_slide_action',
+				'default' => 0,
+				'on'      => __( 'On', 'four7' ),
+				'off'     => __( 'Off', 'four7' ),
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Use Logo ( if available ) for branding on the NavBar', 'four7' ),
-				'desc'        => __( 'If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON', 'four7' ),
-				'id'          => 'navbar_logo',
-				'default'     => 1,
-				'type'        => 'switch'
+				'title'   => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'four7' ),
+				'desc'    => __( 'Default: ON', 'four7' ),
+				'id'      => 'navbar_brand',
+				'default' => 1,
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'NavBar Positioning', 'four7' ),
-				'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'four7' ),
-				'id'          => 'navbar_fixed',
-				'default'     => 0,
-				'on'          => __( 'Fixed', 'four7' ),
-				'off'         => __( 'Scroll', 'four7' ),
-				'type'        => 'switch'
+				'title'   => __( 'Use Logo ( if available ) for branding on the NavBar', 'four7' ),
+				'desc'    => __( 'If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON', 'four7' ),
+				'id'      => 'navbar_logo',
+				'default' => 1,
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Fixed NavBar Position', 'four7' ),
-				'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'four7' ),
-				'id'          => 'navbar_fixed_position',
-				'required'    => array('navbar_fixed','=',array('1')),
-				'default'     => 0,
-				'on'          => __( 'Bottom', 'four7' ),
-				'off'         => __( 'Top', 'four7' ),
-				'type'        => 'switch'
+				'title'   => __( 'NavBar Positioning', 'four7' ),
+				'desc'    => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'four7' ),
+				'id'      => 'navbar_fixed',
+				'default' => 0,
+				'on'      => __( 'Fixed', 'four7' ),
+				'off'     => __( 'Scroll', 'four7' ),
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'NavBar Height', 'four7' ),
-				'desc'        => __( 'Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you\'ve added one.', 'four7' ),
-				'id'          => 'navbar_height',
-				'default'     => 50,
-				'min'         => 38,
-				'step'        => 1,
-				'max'         => 200,
-				'compiler'    => true,
-				'type'        => 'slider'
+				'title'    => __( 'Fixed NavBar Position', 'four7' ),
+				'desc'     => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'four7' ),
+				'id'       => 'navbar_fixed_position',
+				'required' => array( 'navbar_fixed', '=', array( '1' ) ),
+				'default'  => 0,
+				'on'       => __( 'Bottom', 'four7' ),
+				'off'      => __( 'Top', 'four7' ),
+				'type'     => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Navbar Font', 'four7' ),
-				'desc'        => __( 'The font used in navbars.', 'four7' ),
-				'id'          => 'font_navbar',
-				'compiler'    => true,
-				'default'     => array(
+				'title'    => __( 'NavBar Height', 'four7' ),
+				'desc'     => __( 'Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you\'ve added one.', 'four7' ),
+				'id'       => 'navbar_height',
+				'default'  => 50,
+				'min'      => 38,
+				'step'     => 1,
+				'max'      => 200,
+				'compiler' => true,
+				'type'     => 'slider'
+			);
+
+			$fields[] = array(
+				'title'    => __( 'Navbar Font', 'four7' ),
+				'desc'     => __( 'The font used in navbars.', 'four7' ),
+				'id'       => 'font_navbar',
+				'compiler' => true,
+				'default'  => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
 					'font-size'   => 14,
 					'color'       => '#333333',
 					'google'      => 'false',
 				),
-				'preview'     => array(
-					'text'    => __( 'This is my preview text!', 'four7' ), //this is the text from preview box
-					'size'    => 30 //this is the text size from preview box
+				'preview'  => array(
+					'text' => __( 'This is my preview text!', 'four7' ), //this is the text from preview box
+					'size' => 30 //this is the text size from preview box
 				),
-				'type'        => 'typography',
+				'type'     => 'typography',
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Branding Font', 'four7' ),
-				'desc'        => __( 'The branding font for your site.', 'four7' ),
-				'id'          => 'font_brand',
-				'compiler'    => true,
-				'default'     => array(
+				'title'    => __( 'Branding Font', 'four7' ),
+				'desc'     => __( 'The branding font for your site.', 'four7' ),
+				'id'       => 'font_brand',
+				'compiler' => true,
+				'default'  => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
 					'font-size'   => 18,
 					'google'      => 'false',
 					'color'       => '#333333',
 				),
-				'preview'     => array(
-					'text'    => __( 'This is my preview text!', 'four7' ), //this is the text from preview box
-					'size'    => 30 //this is the text size from preview box
+				'preview'  => array(
+					'text' => __( 'This is my preview text!', 'four7' ), //this is the text from preview box
+					'size' => 30 //this is the text size from preview box
 				),
-				'type'        => 'typography',
+				'type'     => 'typography',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Responsive NavBar Threshold', 'four7' ),
-				'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'four7' ),
-				'id'        => 'grid_float_breakpoint',
-				'type'      => 'button_set',
-				'options'   => array(
+				'title'    => __( 'Responsive NavBar Threshold', 'four7' ),
+				'desc'     => __( 'Point at which the navbar becomes uncollapsed', 'four7' ),
+				'id'       => 'grid_float_breakpoint',
+				'type'     => 'button_set',
+				'options'  => array(
 					'min'           => __( 'Never', 'four7' ),
 					'screen_xs_min' => __( 'Extra Small', 'four7' ),
 					'screen_sm_min' => __( 'Small', 'four7' ),
@@ -254,115 +254,115 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 					'screen_lg_min' => __( 'Large Desktop', 'four7' ),
 					'max'           => __( 'Always', 'four7' ),
 				),
-				'default'   => 'screen_sm_min',
-				'compiler'  => true,
+				'default'  => 'screen_sm_min',
+				'compiler' => true,
 			);
 
 			$fields[] = array(
-				'title'       => __( 'NavBar Margin', 'four7' ),
-				'desc'        => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar ( scroll condition ). Default: 0px.', 'four7' ),
-				'id'          => 'navbar_margin',
-				'default'     => 0,
-				'min'         => 0,
-				'step'        => 1,
-				'max'         => 200,
-				'type'        => 'slider',
+				'title'   => __( 'NavBar Margin', 'four7' ),
+				'desc'    => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar ( scroll condition ). Default: 0px.', 'four7' ),
+				'id'      => 'navbar_margin',
+				'default' => 0,
+				'min'     => 0,
+				'step'    => 1,
+				'max'     => 200,
+				'type'    => 'slider',
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Display social links in the NavBar.', 'four7' ),
-				'desc'        => __( 'Display social links in the NavBar. These can be setup in the \'Social\' section on the left. Default: OFF', 'four7' ),
-				'id'          => 'navbar_social',
-				'default'     => 0,
-				'type'        => 'switch'
+				'title'   => __( 'Display social links in the NavBar.', 'four7' ),
+				'desc'    => __( 'Display social links in the NavBar. These can be setup in the \'Social\' section on the left. Default: OFF', 'four7' ),
+				'id'      => 'navbar_social',
+				'default' => 0,
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Display social links as a Dropdown list or an Inline list.', 'four7' ),
-				'desc'        => __( 'How to display social links. Default: Dropdown list', 'four7' ),
-				'id'          => 'navbar_social_style',
-				'default'     => 0,
-				'on'          => __( 'Inline', 'four7' ),
-				'off'         => __( 'Dropdown', 'four7' ),
-				'type'        => 'switch',
-				'required'    => array('navbar_social','=',array('1')),
+				'title'    => __( 'Display social links as a Dropdown list or an Inline list.', 'four7' ),
+				'desc'     => __( 'How to display social links. Default: Dropdown list', 'four7' ),
+				'id'       => 'navbar_social_style',
+				'default'  => 0,
+				'on'       => __( 'Inline', 'four7' ),
+				'off'      => __( 'Dropdown', 'four7' ),
+				'type'     => 'switch',
+				'required' => array( 'navbar_social', '=', array( '1' ) ),
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Search form on the NavBar', 'four7' ),
-				'desc'        => __( 'Display a search form in the NavBar. Default: On', 'four7' ),
-				'id'          => 'navbar_search',
-				'default'     => 1,
-				'type'        => 'switch'
+				'title'   => __( 'Search form on the NavBar', 'four7' ),
+				'desc'    => __( 'Display a search form in the NavBar. Default: On', 'four7' ),
+				'id'      => 'navbar_search',
+				'default' => 1,
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Float NavBar menu to the right', 'four7' ),
-				'desc'        => __( 'Floats the primary navigation to the right. Default: On', 'four7' ),
-				'id'          => 'navbar_nav_right',
-				'default'     => 1,
-				'type'        => 'switch'
+				'title'   => __( 'Float NavBar menu to the right', 'four7' ),
+				'desc'    => __( 'Floats the primary navigation to the right. Default: On', 'four7' ),
+				'id'      => 'navbar_nav_right',
+				'default' => 1,
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'id'          => 'help9',
-				'title'       => __( 'Secondary Navbar', 'four7' ),
-				'desc'        => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'four7' ),
-				'type'        => 'info',
+				'id'    => 'help9',
+				'title' => __( 'Secondary Navbar', 'four7' ),
+				'desc'  => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'four7' ),
+				'type'  => 'info',
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Display social networks in the secondary navigation bar.', 'four7' ),
-				'desc'        => __( 'Enable this option to display your social networks as a dropdown menu on the seondary navbar.', 'four7' ),
-				'id'          => 'navbar_secondary_social',
-				'default'     => 0,
-				'type'        => 'switch',
+				'title'   => __( 'Display social networks in the secondary navigation bar.', 'four7' ),
+				'desc'    => __( 'Enable this option to display your social networks as a dropdown menu on the seondary navbar.', 'four7' ),
+				'id'      => 'navbar_secondary_social',
+				'default' => 0,
+				'type'    => 'switch',
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Secondary NavBar Margin', 'four7' ),
-				'desc'        => __( 'Select the top and bottom margin of header in pixels. Default: 0px.', 'four7' ),
-				'id'          => 'secondary_navbar_margin',
-				'default'     => 0,
-				'min'         => 0,
-				'max'         => 200,
-				'type'        => 'slider',
+				'title'   => __( 'Secondary NavBar Margin', 'four7' ),
+				'desc'    => __( 'Select the top and bottom margin of header in pixels. Default: 0px.', 'four7' ),
+				'id'      => 'secondary_navbar_margin',
+				'default' => 0,
+				'min'     => 0,
+				'max'     => 200,
+				'type'    => 'slider',
 			);
-			
+
 			$fields[] = array(
-				'title'     => 'Secondary NavBar Container Border',
-				'desc'      => __( 'Select the border options for your Secondary Navbar', 'four7' ),
-				'id'        => 'secondary_navbar_border',
-				'type'      => 'border',
-				'all'       => false, 
-				'left'      => true, 
-				'top'       => true, 
-				'right'     => true,
-				'bottom'    => true,
-				'default'   => array(
-					'border-top'      => '0',
-					'border-left'     => '0',
-					'border-bottom'   => '0',
-					'border-right'    => '0',
-					'border-style'    => 'solid',
-					'border-color'    => '#DDDDDD',
+				'title'   => 'Secondary NavBar Container Border',
+				'desc'    => __( 'Select the border options for your Secondary Navbar', 'four7' ),
+				'id'      => 'secondary_navbar_border',
+				'type'    => 'border',
+				'all'     => false,
+				'left'    => true,
+				'top'     => true,
+				'right'   => true,
+				'bottom'  => true,
+				'default' => array(
+					'border-top'    => '0',
+					'border-left'   => '0',
+					'border-bottom' => '0',
+					'border-right'  => '0',
+					'border-style'  => 'solid',
+					'border-color'  => '#DDDDDD',
 				),
 			);
 
 			$fields[] = array(
-				'id'          => 'helpsidebarmenus',
-				'title'       => __( 'Sidebar Menus', 'four7' ),
-				'desc'        => __( 'If you\'re using the "Custom Menu" widgets in your sidebars, you can control their styling here', 'four7' ),
-				'type'        => 'info',
+				'id'    => 'helpsidebarmenus',
+				'title' => __( 'Sidebar Menus', 'four7' ),
+				'desc'  => __( 'If you\'re using the "Custom Menu" widgets in your sidebars, you can control their styling here', 'four7' ),
+				'type'  => 'info',
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Color for sidebar menus', 'four7' ),
-				'desc'        => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'four7' ),
-				'id'          => 'menus_class',
-				'default'     => 1,
-				'type'        => 'select',
-				'options'     => array(
+				'title'   => __( 'Color for sidebar menus', 'four7' ),
+				'desc'    => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'four7' ),
+				'id'      => 'menus_class',
+				'default' => 1,
+				'type'    => 'select',
+				'options' => array(
 					'default' => __( 'Default', 'four7' ),
 					'primary' => __( 'Branding-Primary', 'four7' ),
 					'success' => __( 'Branding-Success', 'four7' ),
@@ -373,11 +373,11 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			);
 
 			$fields[] = array(
-				'title'       => __( 'Inverse Sidebar_menus.', 'four7' ),
-				'desc'        => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'four7' ),
-				'id'          => 'inverse_navlist',
-				'default'     => 0,
-				'type'        => 'switch',
+				'title'   => __( 'Inverse Sidebar_menus.', 'four7' ),
+				'desc'    => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'four7' ),
+				'id'      => 'inverse_navlist',
+				'default' => 0,
+				'type'    => 'switch',
 			);
 
 			$section['fields'] = $fields;
@@ -385,6 +385,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			$section = apply_filters( 'four7_module_menus_options_modifier', $section );
 
 			$sections[] = $section;
+
 			return $sections;
 
 		}
@@ -411,9 +412,11 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 
 			$show_searchbox = $fs_settings['navbar_search'];
 			if ( $show_searchbox == '1' ) : ?>
-				<form role="search" method="get" id="searchform" class="form-search pull-right navbar-form" action="<?php echo home_url('/'); ?>">
-					<label class="hide" for="s"><?php _e('Search for:', 'four7'); ?></label>
-					<input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'four7'); ?> <?php bloginfo('name'); ?>">
+				<form role="search" method="get" id="searchform" class="form-search pull-right navbar-form" action="<?php echo home_url( '/' ); ?>">
+					<label class="hide" for="s"><?php _e( 'Search for:', 'four7' ); ?></label>
+					<input type="text" value="<?php if ( is_search() ) {
+						echo get_search_query();
+					} ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e( 'Search', 'four7' ); ?> <?php bloginfo( 'name' ); ?>">
 				</form>
 			<?php endif;
 		}
@@ -421,7 +424,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 		/**
 		 * Modify the navbar class.
 		 */
-		public static function navbar_class( $navbar = 'main') {
+		public static function navbar_class( $navbar = 'main' ) {
 			global $fs_settings;
 
 			$fixed    = $fs_settings['navbar_fixed'];
@@ -443,8 +446,8 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			$class = $defaults . $class;
 
 			if ( $left ) {
-				$extra_classes = 'navbar navbar-default static-left ' . $bp .  ' col-' . $bp . '-' . $fs_settings['layout_secondary_width'];
-				$class = $extra_classes;
+				$extra_classes = 'navbar navbar-default static-left ' . $bp . ' col-' . $bp . '-' . $fs_settings['layout_secondary_width'];
+				$class         = $extra_classes;
 			}
 
 			if ( $navbar != 'secondary' ) {
@@ -460,11 +463,11 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 		public static function sl_breakpoint() {
 			global $fs_settings;
 
-			$break    = $fs_settings['grid_float_breakpoint'];
+			$break = $fs_settings['grid_float_breakpoint'];
 
 			$bp = ( $break == 'min' || $break == 'screen_xs_min' ) ? 'xs' : 'xs';
-			$bp = ( $break == 'screen_sm_min' )                    ? 'sm' : $bp;
-			$bp = ( $break == 'screen_md_min' )                    ? 'md' : $bp;
+			$bp = ( $break == 'screen_sm_min' ) ? 'sm' : $bp;
+			$bp = ( $break == 'screen_md_min' ) ? 'md' : $bp;
 			$bp = ( $break == 'screen_lg_min' || $break == 'max' ) ? 'lg' : $bp;
 
 			return $bp;
@@ -477,18 +480,18 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			global $fs_settings;
 
 			$navbar_bg_opacity = $fs_settings['navbar_bg_opacity'];
-			$style = '';
+			$style             = '';
 
 			$opacity = ( $navbar_bg_opacity == '' ) ? '0' : ( intval( $navbar_bg_opacity ) ) / 100;
 
 			if ( $opacity != 1 && $opacity != '' ) {
-				$bg  = str_replace( '#', '', $fs_settings['navbar_bg'] );
-				$rgb = Four7_Color::get_rgb( $bg, true );
+				$bg        = str_replace( '#', '', $fs_settings['navbar_bg'] );
+				$rgb       = Four7_Color::get_rgb( $bg, true );
 				$opacityie = str_replace( '0.', '', $opacity );
 
 				$style .= '.navbar, .navbar-default {';
 
-				if ( $opacity != 1 && $opacity != '') {
+				if ( $opacity != 1 && $opacity != '' ) {
 					$style .= 'background: transparent; background: rgba(' . $rgb . ', ' . $opacity . '); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#' . $opacityie . $bg . ',endColorstr=#' . $opacityie . $bg . '); ;';
 				} else {
 					$style .= 'background: #' . $bg . ';';
@@ -498,31 +501,31 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			}
 
 			if ( $fs_settings['navbar_margin'] != 1 ) {
-				$style .= '.navbar-static-top { margin-top:'. $fs_settings['navbar_margin'] . 'px; margin-bottom:' . $fs_settings['navbar_margin'] . 'px; }';
+				$style .= '.navbar-static-top { margin-top:' . $fs_settings['navbar_margin'] . 'px; margin-bottom:' . $fs_settings['navbar_margin'] . 'px; }';
 			}
-			
-			
+
+
 			if ( $fs_settings['navbar_action'] == 1 ) {
-			$style .=  '@media (min-width:769px) {.dropdown { -webkit-transition: all .3s ease-in-out;
+				$style .= '@media (min-width:769px) {.dropdown { -webkit-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; transition: all .3s ease-in-out;} .dropdown:hover .dropdown-menu {display: block;}}';
-            }
-            
-            if ( $fs_settings['navbar_slide_action'] == 1 ) {
-            $style .=  '.open > .dropdown-menu {-webkit-transform: scale(1, 1);transform: scale(1, 1);}';
-            
-           // $style .= '.open > .dropdown-menu li a {color: #000;}';
-            
-          //  $style .= '.dropdown-menu li a{color: #fff;}';
-            
-            $style .= '.dropdown-menu {-webkit-transform-origin: top;transform-origin: top;-webkit-animation-fill-mode: forwards;animation-fill-mode: forwards;-webkit-transform: scale(1, 0);transition: all 0.2s ease-out;-webkit-transition: all 0.2s ease-out;}';
-            
-            $style .= '.dropup .dropdown-menu {-webkit-transform-origin: bottom;transform-origin: bottom;}';
-             
-            $style .= '.navbar .nav > li > .dropdown-menu:after {}';
-            
-            $style .= ' .dropup > .dropdown-menu:after { border-bottom: 0; border-top: 6px solid rgba(39, 45, 51, 0.9); top: auto; display: inline-block; bottom: -6px; content: ; position: absolute; left: 50%; border-right: 6px solid transparent;border-left: 6px solid transparent; }';
-            }
-            
+			}
+
+			if ( $fs_settings['navbar_slide_action'] == 1 ) {
+				$style .= '.open > .dropdown-menu {-webkit-transform: scale(1, 1);transform: scale(1, 1);}';
+
+				// $style .= '.open > .dropdown-menu li a {color: #000;}';
+
+				//  $style .= '.dropdown-menu li a{color: #fff;}';
+
+				$style .= '.dropdown-menu {-webkit-transform-origin: top;transform-origin: top;-webkit-animation-fill-mode: forwards;animation-fill-mode: forwards;-webkit-transform: scale(1, 0);transition: all 0.2s ease-out;-webkit-transition: all 0.2s ease-out;}';
+
+				$style .= '.dropup .dropdown-menu {-webkit-transform-origin: bottom;transform-origin: bottom;}';
+
+				$style .= '.navbar .nav > li > .dropdown-menu:after {}';
+
+				$style .= ' .dropup > .dropdown-menu:after { border-bottom: 0; border-top: 6px solid rgba(39, 45, 51, 0.9); top: auto; display: inline-block; bottom: -6px; content: ; position: absolute; left: 50%; border-right: 6px solid transparent;border-left: 6px solid transparent; }';
+			}
+
 			wp_add_inline_style( 'four7_css', $style );
 		}
 
@@ -537,12 +540,13 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			$branding_class = ! empty( $logo['url'] ) ? 'logo' : 'text';
 
 			if ( $fs_settings['navbar_brand'] != 0 ) {
-				$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
+				$branding = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url( '/' ) . '">';
 				$branding .= $fs_settings['navbar_logo'] == 1 ? $fs_framework->logo() : get_bloginfo( 'name' );
 				$branding .= '</a>';
 			} else {
 				$branding = '';
 			}
+
 			return $branding;
 		}
 
@@ -594,20 +598,20 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			if ( has_nav_menu( 'secondary_navigation' ) ) : ?>
 
 				<?php echo $fs_framework->open_container( 'div' ); ?>
-					<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
-						<button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<?php
-						if ( $fs_settings['navbar_secondary_social'] != 0 ) {
-							$fs_framework->navbar_social_links();
-						} ?>
-						<nav class="nav-secondary navbar-collapse collapse" role="navigation">
-							<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => apply_filters( 'four7_nav_class', 'navbar-nav nav' ) ) ); ?>
-						</nav>
-					</header>
+				<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
+					<button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<?php
+					if ( $fs_settings['navbar_secondary_social'] != 0 ) {
+						$fs_framework->navbar_social_links();
+					} ?>
+					<nav class="nav-secondary navbar-collapse collapse" role="navigation">
+						<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => apply_filters( 'four7_nav_class', 'navbar-nav nav' ) ) ); ?>
+					</nav>
+				</header>
 				<?php echo $fs_framework->close_container( 'div' ); ?>
 
 			<?php endif;
@@ -620,7 +624,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 			global $fs_settings;
 
 			$secondary_navbar_margin = $fs_settings['secondary_navbar_margin'];
-			$style = '.secondary { margin-top:' . $secondary_navbar_margin . 'px !important; margin-bottom:'. $secondary_navbar_margin .'px !important; }';
+			$style                   = '.secondary { margin-top:' . $secondary_navbar_margin . 'px !important; margin-bottom:' . $secondary_navbar_margin . 'px !important; }';
 
 			wp_add_inline_style( 'four7_css', $style );
 		}
@@ -681,10 +685,18 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 		 */
 		public static function navbar_widget_area_class() {
 			$str = 0;
-			if ( is_active_sidebar( 'navbar-slide-down-1' ) ) { $str++; }
-			if ( is_active_sidebar( 'navbar-slide-down-2' ) ) { $str++; }
-			if ( is_active_sidebar( 'navbar-slide-down-3' ) ) { $str++; }
-			if ( is_active_sidebar( 'navbar-slide-down-4' ) ) { $str++; }
+			if ( is_active_sidebar( 'navbar-slide-down-1' ) ) {
+				$str ++;
+			}
+			if ( is_active_sidebar( 'navbar-slide-down-2' ) ) {
+				$str ++;
+			}
+			if ( is_active_sidebar( 'navbar-slide-down-3' ) ) {
+				$str ++;
+			}
+			if ( is_active_sidebar( 'navbar-slide-down-4' ) ) {
+				$str ++;
+			}
 
 			$colwidth = ( $str > 0 ) ? 12 / $str : 12;
 
@@ -702,7 +714,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 					<?php $megadrop_class = ( $fs_settings['site_style'] != 'fluid' ) ? 'top-megamenu container' : 'top-megamenu'; ?>
 					<div id="megaDrop" class="<?php echo $megadrop_class; ?>">
 						<?php $widgetareaclass = 'col-sm-' . self::navbar_widget_area_class(); ?>
-						
+
 						<?php if ( is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
 							<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
 						<?php endif; ?>
@@ -779,7 +791,7 @@ if ( ! class_exists( 'Four7_Menus' ) ) {
 
 			$navbar_color = $fs_settings['navbar_bg'];
 			$navbar_mode  = $fs_settings['navbar_toggle'];
-			$trigger = (
+			$trigger      = (
 				is_active_sidebar( 'navbar-slide-down-top' ) ||
 				is_active_sidebar( 'navbar-slide-down-1' ) ||
 				is_active_sidebar( 'navbar-slide-down-2' ) ||

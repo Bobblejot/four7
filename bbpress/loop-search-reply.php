@@ -3,7 +3,7 @@
 /**
  * Search Loop - Single Reply
  *
- * @package bbPress
+ * @package    bbPress
  * @subpackage Theme
  */
 
@@ -13,11 +13,14 @@
 	<div class="bbp-meta well well-sm">
 		<span class="bbp-reply-post-date"><?php bbp_reply_post_date(); ?></span>
 		<a href="<?php bbp_reply_url(); ?>" class="bbp-reply-permalink pull-right">#<?php bbp_reply_id(); ?></a>
-	</div><!-- .bbp-meta -->
+	</div>
+	<!-- .bbp-meta -->
 	<div class="bbp-reply-title">
 		<h3><?php _e( 'In reply to: ', 'bbpress' ); ?>
-		<a class="bbp-topic-permalink" href="<?php bbp_topic_permalink( bbp_get_reply_topic_id() ); ?>"><?php bbp_topic_title( bbp_get_reply_topic_id() ); ?></a></h3>
-	</div><!-- .bbp-reply-title -->
+			<a class="bbp-topic-permalink" href="<?php bbp_topic_permalink( bbp_get_reply_topic_id() ); ?>"><?php bbp_topic_title( bbp_get_reply_topic_id() ); ?></a>
+		</h3>
+	</div>
+	<!-- .bbp-reply-title -->
 </div><!-- .bbp-reply-header -->
 
 <div id="post-<?php bbp_reply_id(); ?>" <?php bbp_reply_class(); ?>>
@@ -30,11 +33,13 @@
 			<?php do_action( 'bbp_theme_after_reply_author_admin_details' ); ?>
 		<?php endif; ?>
 		<?php do_action( 'bbp_theme_after_reply_author_details' ); ?>
-	</div><!-- .bbp-reply-author -->
+	</div>
+	<!-- .bbp-reply-author -->
 	<div class="bbp-reply-content col-md-10">
 		<?php do_action( 'bbp_theme_before_reply_content' ); ?>
 		<?php bbp_reply_content(); ?>
 		<?php do_action( 'bbp_theme_after_reply_content' ); ?>
-	</div><!-- .bbp-reply-content -->
+	</div>
+	<!-- .bbp-reply-content -->
 </div><!-- #post-<?php bbp_reply_id(); ?> -->
 

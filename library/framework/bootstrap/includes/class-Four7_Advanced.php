@@ -1,27 +1,27 @@
 <?php
 
 
-if ( !class_exists( 'Four7_Advanced' ) ) {
+if ( ! class_exists( 'Four7_Advanced' ) ) {
 
 	/**
-	* The "Advanced" module
-	*/
+	 * The "Advanced" module
+	 */
 	class Four7_Advanced {
 
 		function __construct() {
 			global $fs_settings;
 
 			add_filter( 'redux/options/' . FOUR7_OPT_NAME . '/sections', array( $this, 'options' ), 150 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'user_css'           ), 101 );
-			add_action( 'wp_footer',          array( $this, 'user_js'            ), 200 );
-			add_filter( 'show_admin_bar',     array( $this, 'admin_bar'          )      );
-			add_action( 'wp_footer',          array( $this, 'google_analytics'   ), 20  );
-			add_action( 'wp_enqueue_scripts', array( $this, 'scripts'            ), 100 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'user_css' ), 101 );
+			add_action( 'wp_footer', array( $this, 'user_js' ), 200 );
+			add_filter( 'show_admin_bar', array( $this, 'admin_bar' ) );
+			add_action( 'wp_footer', array( $this, 'google_analytics' ), 20 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
 
-			 // Toggle activation of the jQuery CDN
+			// Toggle activation of the jQuery CDN
 			if ( isset( $fs_settings['jquery_cdn_toggler'] ) && $fs_settings['jquery_cdn_toggler'] == 1 ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'jquery_cdn' ), 101 );
-				add_action( 'wp_head',            array( $this, 'jquery_local_fallback' ) );
+				add_action( 'wp_head', array( $this, 'jquery_local_fallback' ) );
 			}
 
 			if ( $fs_settings['nice_search'] == 1 ) {
@@ -61,10 +61,10 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		}
 
 		/**
-		* Utility function
-		*/
+		 * Utility function
+		 */
 		public static function add_filters( $tags, $function ) {
-			foreach( $tags as $tag ) {
+			foreach ( $tags as $tag ) {
 				add_filter( $tag, $function );
 			}
 		}
@@ -76,139 +76,139 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 
 			// Advanced Settings
 			$section = array(
-				'title'   => __( 'Advanced', 'four7' ),
-				'icon'    => 'fa fa-gears'
+				'title' => __( 'Advanced', 'four7' ),
+				'icon'  => 'fa fa-gears'
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Enable Retina mode', 'four7' ),
-				'desc'      => __( 'By enabling your site\'s featured images will be retina ready. Requires images to be uploaded at 2x the typical size desired. Default: On', 'four7' ),
-				'id'        => 'retina_toggle',
-				'default'   => 1,
-				'type'      => 'switch',
+				'title'   => __( 'Enable Retina mode', 'four7' ),
+				'desc'    => __( 'By enabling your site\'s featured images will be retina ready. Requires images to be uploaded at 2x the typical size desired. Default: On', 'four7' ),
+				'id'      => 'retina_toggle',
+				'default' => 1,
+				'type'    => 'switch',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Google Analytics ID', 'four7' ),
-				'desc'      => __( 'Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y.', 'four7' ),
-				'id'        => 'analytics_id',
-				'default'   => '',
-				'type'      => 'text',
+				'title'   => __( 'Google Analytics ID', 'four7' ),
+				'desc'    => __( 'Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y.', 'four7' ),
+				'id'      => 'analytics_id',
+				'default' => '',
+				'type'    => 'text',
 			);
 
 			$fields[] = array(
-				'title'     => 'Border-Radius and Padding Base',
-				'id'        => 'help2',
-				'desc'      => __( 'The following settings affect various areas of your site, most notably buttons.', 'four7' ),
-				'type'      => 'info',
+				'title' => 'Border-Radius and Padding Base',
+				'id'    => 'help2',
+				'desc'  => __( 'The following settings affect various areas of your site, most notably buttons.', 'four7' ),
+				'type'  => 'info',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Border-Radius', 'four7' ),
-				'desc'      => __( 'You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4', 'four7' ),
-				'id'        => 'general_border_radius',
-				'default'   => 4,
-				'min'       => 0,
-				'step'      => 1,
-				'max'       => 50,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider',
+				'title'    => __( 'Border-Radius', 'four7' ),
+				'desc'     => __( 'You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4', 'four7' ),
+				'id'       => 'general_border_radius',
+				'default'  => 4,
+				'min'      => 0,
+				'step'     => 1,
+				'max'      => 50,
+				'advanced' => true,
+				'compiler' => true,
+				'type'     => 'slider',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Padding Base', 'four7' ),
-				'desc'      => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'four7' ),
-				'id'        => 'padding_base',
-				'default'   => 6,
-				'min'       => 0,
-				'step'      => 1,
-				'max'       => 20,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider',
+				'title'    => __( 'Padding Base', 'four7' ),
+				'desc'     => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'four7' ),
+				'id'       => 'padding_base',
+				'default'  => 6,
+				'min'      => 0,
+				'step'     => 1,
+				'max'      => 20,
+				'advanced' => true,
+				'compiler' => true,
+				'type'     => 'slider',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Root Relative URLs', 'four7' ),
-				'desc'      => __( 'Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON', 'four7' ),
-				'id'        => 'root_relative_urls',
-				'default'   => 0,
-				'type'      => 'switch'
+				'title'   => __( 'Root Relative URLs', 'four7' ),
+				'desc'    => __( 'Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON', 'four7' ),
+				'id'      => 'root_relative_urls',
+				'default' => 0,
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Enable Nice Search', 'four7' ),
-				'desc'      => __( 'Redirects /?s=query to /search/query/, convert %20 to +. Default: ON', 'four7' ),
-				'id'        => 'nice_search',
-				'default'   => 1,
-				'type'      => 'switch'
+				'title'   => __( 'Enable Nice Search', 'four7' ),
+				'desc'    => __( 'Redirects /?s=query to /search/query/, convert %20 to +. Default: ON', 'four7' ),
+				'id'      => 'nice_search',
+				'default' => 1,
+				'type'    => 'switch'
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Custom CSS', 'four7' ),
-				'desc'      => __( 'You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page.', 'four7' ),
-				'id'        => 'user_css',
-				'default'   => '',
-				'type'      => 'ace_editor',
-				'mode'      => 'css',
-				'theme'     => 'monokai',
+				'title'   => __( 'Custom CSS', 'four7' ),
+				'desc'    => __( 'You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page.', 'four7' ),
+				'id'      => 'user_css',
+				'default' => '',
+				'type'    => 'ace_editor',
+				'mode'    => 'css',
+				'theme'   => 'monokai',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Custom LESS', 'four7' ),
-				'desc'      => __( 'You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header.', 'four7' ),
-				'id'        => 'user_less',
-				'default'   => '',
-				'type'      => 'ace_editor',
-				'mode'      => 'less',
-				'theme'     => 'monokai',
-				'compiler'  => true,
+				'title'    => __( 'Custom LESS', 'four7' ),
+				'desc'     => __( 'You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header.', 'four7' ),
+				'id'       => 'user_less',
+				'default'  => '',
+				'type'     => 'ace_editor',
+				'mode'     => 'less',
+				'theme'    => 'monokai',
+				'compiler' => true,
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Custom JS', 'four7' ),
-				'desc'      => __( 'You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page.', 'four7' ),
-				'id'        => 'user_js',
-				'default'   => '',
-				'type'      => 'ace_editor',
-				'mode'      => 'javascript',
-				'theme'     => 'monokai',
+				'title'   => __( 'Custom JS', 'four7' ),
+				'desc'    => __( 'You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page.', 'four7' ),
+				'id'      => 'user_js',
+				'default' => '',
+				'type'    => 'ace_editor',
+				'mode'    => 'javascript',
+				'theme'   => 'monokai',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Minimize CSS', 'four7' ),
-				'desc'      => __( 'Minimize the genearated CSS. This should be ON for production sites. Default: OFF.', 'four7' ),
-				'id'        => 'minimize_css',
-				'default'   => 1,
-				'compiler'  => true,
-				'type'      => 'switch',
+				'title'    => __( 'Minimize CSS', 'four7' ),
+				'desc'     => __( 'Minimize the genearated CSS. This should be ON for production sites. Default: OFF.', 'four7' ),
+				'id'       => 'minimize_css',
+				'default'  => 1,
+				'compiler' => true,
+				'type'     => 'switch',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Toggle adminbar On/Off', 'four7' ),
-				'desc'      => __( 'Turn the admin bar On or Off on the frontend. Default: Off.', 'four7' ),
-				'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
-				'default'   => 1,
-				'type'      => 'switch',
+				'title'   => __( 'Toggle adminbar On/Off', 'four7' ),
+				'desc'    => __( 'Turn the admin bar On or Off on the frontend. Default: Off.', 'four7' ),
+				'id'      => 'advanced_wordpress_disable_admin_bar_toggle',
+				'default' => 1,
+				'type'    => 'switch',
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Use Google CDN for jQuery', 'four7' ),
-				'desc'      => '',
-				'id'        => 'jquery_cdn_toggler',
-				'default'   => 0,
-				'type'      => 'switch',
+				'title'   => __( 'Use Google CDN for jQuery', 'four7' ),
+				'desc'    => '',
+				'id'      => 'jquery_cdn_toggler',
+				'default' => 0,
+				'type'    => 'switch',
 			);
 
 			// Do not show this option if the less.php compiler is not present.
 			if ( class_exists( 'Less_Cache' ) && class_exists( 'Less_Parser' ) ) {
 				$fields[] = array(
-					'title'     => __( 'Use less.js instead of less.php compiler', 'four7' ),
-					'desc'      => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'four7' ),
-					'id'        => 'lessjs',
-					'default'   => 0,
-					'type'      => 'switch',
+					'title'   => __( 'Use less.js instead of less.php compiler', 'four7' ),
+					'desc'    => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'four7' ),
+					'id'      => 'lessjs',
+					'default' => 0,
+					'type'    => 'switch',
 				);
 			}
 
@@ -226,7 +226,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		 * echo any custom CSS the user has written to the <head> of the page
 		 */
 		function user_css() {
-			$settings = get_option( FOUR7_OPT_NAME );
+			$settings       = get_option( FOUR7_OPT_NAME );
 			$header_scripts = $settings['user_css'];
 
 			if ( trim( $header_scripts ) != '' ) {
@@ -238,7 +238,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		 * echo any custom JS the user has written to the footer of the page
 		 */
 		function user_js() {
-			$settings = get_option( FOUR7_OPT_NAME );
+			$settings       = get_option( FOUR7_OPT_NAME );
 			$footer_scripts = $settings['user_js'];
 
 			if ( trim( $footer_scripts ) != '' ) {
@@ -262,10 +262,10 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		 * The Google Analytics code
 		 */
 		function google_analytics() {
-			$settings = get_option( FOUR7_OPT_NAME );
+			$settings     = get_option( FOUR7_OPT_NAME );
 			$analytics_id = $settings['analytics_id'];
 
-			if ( !is_null( $analytics_id ) && !empty( $analytics_id ) ) {
+			if ( ! is_null( $analytics_id ) && ! empty( $analytics_id ) ) {
 				echo "<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','" . $analytics_id . "');ga('send','pageview');</script>";
 			}
 		}
@@ -278,12 +278,12 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		function nice_search_redirect() {
 			global $wp_rewrite;
 
-			if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() ) {
+			if ( ! isset( $wp_rewrite ) || ! is_object( $wp_rewrite ) || ! $wp_rewrite->using_permalinks() ) {
 				return;
 			}
 
 			$search_base = $wp_rewrite->search_base;
-			if ( is_search() && !is_admin() && strpos( $_SERVER['REQUEST_URI'], "/{$search_base}/" ) === false ) {
+			if ( is_search() && ! is_admin() && strpos( $_SERVER['REQUEST_URI'], "/{$search_base}/" ) === false ) {
 				wp_redirect( home_url( "/{$search_base}/" . urlencode( get_query_var( 's' ) ) ) );
 				exit();
 			}
@@ -300,17 +300,17 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 		function root_relative_url( $input ) {
 			preg_match( '|https?://([^/]+)(/.*)|i', $input, $matches );
 
-			if ( !isset( $matches[1] ) || !isset( $matches[2] ) ) {
+			if ( ! isset( $matches[1] ) || ! isset( $matches[2] ) ) {
 				return $input;
 			} elseif ( ( $matches[1] === $_SERVER['SERVER_NAME'] ) || $matches[1] === $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] ) {
-				return wp_make_link_relative($input);
+				return wp_make_link_relative( $input );
 			} else {
 				return $input;
 			}
 		}
 
 		function enable_root_relative_urls() {
-			return !( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) );
+			return ! ( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) );
 		}
 
 		/**
@@ -333,7 +333,7 @@ if ( !class_exists( 'Four7_Advanced' ) ) {
 			// jQuery is loaded using the same method from HTML5 Boilerplate:
 			// Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
 			// It's kept in the header instead of footer to avoid conflicts with plugins.
-			if ( !is_admin() ) {
+			if ( ! is_admin() ) {
 				wp_deregister_script( 'jquery' );
 				wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false );
 				add_filter( 'script_loader_src', array( $this, 'jquery_local_fallback' ), 10, 2 );

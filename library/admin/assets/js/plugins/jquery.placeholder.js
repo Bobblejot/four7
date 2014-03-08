@@ -1,16 +1,17 @@
 /*! http://mths.be/placeholder v2.0.7 by @mathias */
-;(function(window, document, $) {
+;
+(function (window, document, $) {
 
 	var isInputSupported = 'placeholder' in document.createElement('input'),
-	    isTextareaSupported = 'placeholder' in document.createElement('textarea'),
-	    prototype = $.fn,
-	    valHooks = $.valHooks,
-	    hooks,
-	    placeholder;
+		isTextareaSupported = 'placeholder' in document.createElement('textarea'),
+		prototype = $.fn,
+		valHooks = $.valHooks,
+		hooks,
+		placeholder;
 
 	if (isInputSupported && isTextareaSupported) {
 
-		placeholder = prototype.placeholder = function() {
+		placeholder = prototype.placeholder = function () {
 			return this;
 		};
 
@@ -18,14 +19,14 @@
 
 	} else {
 
-		placeholder = prototype.placeholder = function() {
+		placeholder = prototype.placeholder = function () {
 			var $this = this;
 			$this
 				.filter((isInputSupported ? 'textarea' : ':input') + '[placeholder]')
 				.not('.placeholder')
 				.bind({
 					'focus.placeholder': clearPlaceholder,
-					'blur.placeholder': setPlaceholder
+					'blur.placeholder' : setPlaceholder
 				})
 				.data('placeholder-enabled', true)
 				.trigger('blur.placeholder');
@@ -36,11 +37,11 @@
 		placeholder.textarea = isTextareaSupported;
 
 		hooks = {
-			'get': function(element) {
+			'get': function (element) {
 				var $element = $(element);
 				return $element.data('placeholder-enabled') && $element.hasClass('placeholder') ? '' : element.value;
 			},
-			'set': function(element, value) {
+			'set': function (element, value) {
 				var $element = $(element);
 				if (!$element.data('placeholder-enabled')) {
 					return element.value = value;
@@ -65,20 +66,20 @@
 		isInputSupported || (valHooks.input = hooks);
 		isTextareaSupported || (valHooks.textarea = hooks);
 
-		$(function() {
+		$(function () {
 			// Look for forms
-			$(document).delegate('form', 'submit.placeholder', function() {
+			$(document).delegate('form', 'submit.placeholder', function () {
 				// Clear the placeholder values so they don't get submitted
 				var $inputs = $('.placeholder', this).each(clearPlaceholder);
-				setTimeout(function() {
+				setTimeout(function () {
 					$inputs.each(setPlaceholder);
 				}, 10);
 			});
 		});
 
 		// Clear placeholder values upon page reload
-		$(window).bind('beforeunload.placeholder', function() {
-			$('.placeholder').each(function() {
+		$(window).bind('beforeunload.placeholder', function () {
+			$('.placeholder').each(function () {
 				this.value = '';
 			});
 		});
@@ -88,8 +89,8 @@
 	function args(elem) {
 		// Return an object of element attributes
 		var newAttrs = {},
-		    rinlinejQuery = /^jQuery\d+$/;
-		$.each(elem.attributes, function(i, attr) {
+			rinlinejQuery = /^jQuery\d+$/;
+		$.each(elem.attributes, function (i, attr) {
 			if (attr.specified && !rinlinejQuery.test(attr.name)) {
 				newAttrs[attr.name] = attr.value;
 			}
@@ -99,7 +100,7 @@
 
 	function clearPlaceholder(event, value) {
 		var input = this,
-		    $input = $(input);
+			$input = $(input);
 		if (input.value == $input.attr('placeholder') && $input.hasClass('placeholder')) {
 			if ($input.data('placeholder-password')) {
 				$input = $input.hide().next().show().attr('id', $input.removeAttr('id').data('placeholder-id'));
@@ -118,29 +119,29 @@
 
 	function setPlaceholder() {
 		var $replacement,
-		    input = this,
-		    $input = $(input),
-		    $origInput = $input,
-		    id = this.id;
+			input = this,
+			$input = $(input),
+			$origInput = $input,
+			id = this.id;
 		if (input.value == '') {
 			if (input.type == 'password') {
 				if (!$input.data('placeholder-textinput')) {
 					try {
 						$replacement = $input.clone().attr({ 'type': 'text' });
-					} catch(e) {
+					} catch (e) {
 						$replacement = $('<input>').attr($.extend(args(this), { 'type': 'text' }));
 					}
 					$replacement
 						.removeAttr('name')
 						.data({
 							'placeholder-password': true,
-							'placeholder-id': id
+							'placeholder-id'      : id
 						})
 						.bind('focus.placeholder', clearPlaceholder);
 					$input
 						.data({
 							'placeholder-textinput': $replacement,
-							'placeholder-id': id
+							'placeholder-id'       : id
 						})
 						.before($replacement);
 				}

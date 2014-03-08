@@ -2,17 +2,17 @@
 /**
  * Get the Image - An advanced post image script for WordPress.
  *
- * Get the Image was created to be a highly-intuitive image script that displays post-specific images (an 
- * image-based representation of a post).  The script handles old-style post images via custom fields for 
- * backwards compatibility.  It also supports WordPress' built-in featured image functionality.  On top of 
- * those things, it can automatically set attachment images as the post image or scan the post content for 
+ * Get the Image was created to be a highly-intuitive image script that displays post-specific images (an
+ * image-based representation of a post).  The script handles old-style post images via custom fields for
+ * backwards compatibility.  It also supports WordPress' built-in featured image functionality.  On top of
+ * those things, it can automatically set attachment images as the post image or scan the post content for
  * the first image element used.  It can also fall back to a given default image.
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
- * General Public License as published by the Free Software Foundation; either version 2 of the License, 
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License as published by the Free Software Foundation; either version 2 of the License,
  * or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package   GetTheImage
@@ -37,13 +37,15 @@ add_action( 'added_post_meta', 'get_the_image_delete_cache_by_meta', 10, 2 );
  * customize how the script outputs the image.
  *
  * The image check order is important to note here.  If an image is found by any specific check, the script
- * will no longer look for images.  The check order is 'meta_key', 'the_post_thumbnail', 'attachment', 
+ * will no longer look for images.  The check order is 'meta_key', 'the_post_thumbnail', 'attachment',
  * 'image_scan', 'callback', and 'default_image'.
  *
- * @since 0.1.0
+ * @since  0.1.0
  * @access public
- * @global $post The current post's database object.
+ * @global      $post The current post's database object.
+ *
  * @param array $args Arguments for how to load and display the image.
+ *
  * @return string|array The HTML for the image. | Image attributes in an array.
  */
 function get_the_image( $args = array() ) {
@@ -99,20 +101,24 @@ function get_the_image( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	/* If no post ID, return. */
-	if ( empty( $args['post_id'] ) )
+	if ( empty( $args['post_id'] ) ) {
 		return false;
+	}
 
 	/* If $default_size is given, overwrite $size. */
-	if ( !is_null( $args['default_size'] ) )
-		$args['size'] = $args['default_size']; // Deprecated 0.5 in favor of $size
+	if ( ! is_null( $args['default_size'] ) ) {
+		$args['size'] = $args['default_size'];
+	} // Deprecated 0.5 in favor of $size
 
 	/* If $custom_key is set, overwrite $meta_key. */
-	if ( !is_null( $args['custom_key'] ) )
-		$args['meta_key'] = $args['custom_key']; // Deprecated 0.6 in favor of $meta_key
+	if ( ! is_null( $args['custom_key'] ) ) {
+		$args['meta_key'] = $args['custom_key'];
+	} // Deprecated 0.6 in favor of $meta_key
 
 	/* If $format is set to 'array', don't link to the post. */
-	if ( 'array' == $args['format'] )
+	if ( 'array' == $args['format'] ) {
 		$args['link_to_post'] = false;
+	}
 
 	/* Extract the array to allow easy use of variables. */
 	extract( $args );
@@ -123,56 +129,62 @@ function get_the_image( $args = array() ) {
 	/* Check for a cached image. */
 	$image_cache = wp_cache_get( $post_id, 'get_the_image' );
 
-	if ( !is_array( $image_cache ) )
+	if ( ! is_array( $image_cache ) ) {
 		$image_cache = array();
+	}
 
 	/* Set up a default, empty $image_html variable. */
 	$image_html = '';
 
 	/* If there is no cached image, let's see if one exists. */
-	if ( !isset( $image_cache[ $key ] ) || empty( $cache ) ) {
+	if ( ! isset( $image_cache[$key] ) || empty( $cache ) ) {
 
 		/* If a custom field key (array) is defined, check for images by custom field. */
-		if ( !empty( $meta_key ) )
+		if ( ! empty( $meta_key ) ) {
 			$image = get_the_image_by_meta_key( $args );
+		}
 
 		/* If no image found and $the_post_thumbnail is set to true, check for a post image (WP feature). */
-		if ( empty( $image ) && !empty( $the_post_thumbnail ) )
+		if ( empty( $image ) && ! empty( $the_post_thumbnail ) ) {
 			$image = get_the_image_by_post_thumbnail( $args );
+		}
 
 		/* If no image found and $attachment is set to true, check for an image by attachment. */
-		if ( empty( $image ) && !empty( $attachment ) )
+		if ( empty( $image ) && ! empty( $attachment ) ) {
 			$image = get_the_image_by_attachment( $args );
+		}
 
 		/* If no image found and $image_scan is set to true, scan the post for images. */
-		if ( empty( $image ) && !empty( $image_scan ) )
+		if ( empty( $image ) && ! empty( $image_scan ) ) {
 			$image = get_the_image_by_scan( $args );
+		}
 
 		/* If no image found and a callback function was given. Callback function must pass back array of <img> attributes. */
-		if ( empty( $image ) && !is_null( $callback ) && function_exists( $callback ) )
+		if ( empty( $image ) && ! is_null( $callback ) && function_exists( $callback ) ) {
 			$image = call_user_func( $callback, $args );
+		}
 
 		/* If no image found and a $default_image is set, get the default image. */
-		if ( empty( $image ) && !empty( $default_image ) )
+		if ( empty( $image ) && ! empty( $default_image ) ) {
 			$image = get_the_image_by_default( $args );
+		}
 
 		/* If an image was found. */
-		if ( !empty( $image ) ) {
+		if ( ! empty( $image ) ) {
 
 			/* If $meta_key_save was set, save the image to a custom field. */
-			if ( !empty( $meta_key_save ) )
+			if ( ! empty( $meta_key_save ) ) {
 				get_the_image_meta_key_save( $args, $image );
+			}
 
 			/* Format the image HTML. */
 			$image_html = get_the_image_format( $args, $image );
 
 			/* Set the image cache for the specific post. */
-			$image_cache[ $key ] = $image_html;
+			$image_cache[$key] = $image_html;
 			wp_cache_set( $post_id, $image_cache, 'get_the_image' );
 		}
-	}
-
-	/* If an image was already cached for the post and arguments, use it. */
+	} /* If an image was already cached for the post and arguments, use it. */
 	else {
 		$image_html = $image_cache[$key];
 	}
@@ -190,49 +202,55 @@ function get_the_image( $args = array() ) {
 		$atts = wp_kses_hair( $image_html, array( 'http', 'https' ) );
 
 		/* Loop through the image attributes and add them in key/value pairs for the return array. */
-		foreach ( $atts as $att )
-			$out[ $att['name'] ] = $att['value'];
+		foreach ( $atts as $att ) {
+			$out[$att['name']] = $att['value'];
+		}
 
-		if ( !empty( $out['src'] ) )
-			$out['url'] = $out['src']; // @deprecated 0.5 Use 'src' instead of 'url'.
+		if ( ! empty( $out['src'] ) ) {
+			$out['url'] = $out['src'];
+		} // @deprecated 0.5 Use 'src' instead of 'url'.
 
 		/* Return the array of attributes. */
-		return $out;
-	}
 
-	/* Or, if $echo is set to false, return the formatted image. */
+		return $out;
+	} /* Or, if $echo is set to false, return the formatted image. */
 	elseif ( false === $echo ) {
-		return !empty( $image_html ) ? $args['before'] . $image_html . $args['after'] : $image_html;
+		return ! empty( $image_html ) ? $args['before'] . $image_html . $args['after'] : $image_html;
 	}
 
 	/* If there is a $post_thumbnail_id, do the actions associated with get_the_post_thumbnail(). */
-	if ( isset( $image['post_thumbnail_id'] ) )
+	if ( isset( $image['post_thumbnail_id'] ) ) {
 		do_action( 'begin_fetch_post_thumbnail_html', $post_id, $image['post_thumbnail_id'], $size );
+	}
 
 	/* Display the image if we get to this point. */
-	echo !empty( $image_html ) ? $args['before'] . $image_html . $args['after'] : $image_html;
+	echo ! empty( $image_html ) ? $args['before'] . $image_html . $args['after'] : $image_html;
 
 	/* If there is a $post_thumbnail_id, do the actions associated with get_the_post_thumbnail(). */
-	if ( isset( $image['post_thumbnail_id'] ) )
+	if ( isset( $image['post_thumbnail_id'] ) ) {
 		do_action( 'end_fetch_post_thumbnail_html', $post_id, $image['post_thumbnail_id'], $size );
+	}
 }
 
 /* Internal Functions */
 
 /**
- * Calls images by custom field key.  Script loops through multiple custom field keys.  If that particular 
+ * Calls images by custom field key.  Script loops through multiple custom field keys.  If that particular
  * key is found, $image is set and the loop breaks.  If an image is found, it is returned.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
+ *
  * @param array $args Arguments for how to load and display the image.
+ *
  * @return array|bool Array of image attributes. | False if no image is found.
  */
 function get_the_image_by_meta_key( $args = array() ) {
 
 	/* If $meta_key is not an array. */
-	if ( !is_array( $args['meta_key'] ) )
+	if ( ! is_array( $args['meta_key'] ) ) {
 		$args['meta_key'] = array( $args['meta_key'] );
+	}
 
 	/* Loop through each of the given meta keys. */
 	foreach ( $args['meta_key'] as $meta_key ) {
@@ -241,25 +259,29 @@ function get_the_image_by_meta_key( $args = array() ) {
 		$image = get_post_meta( $args['post_id'], $meta_key, true );
 
 		/* If an image was found, break out of the loop. */
-		if ( !empty( $image ) )
+		if ( ! empty( $image ) ) {
 			break;
+		}
 	}
 
 	/* If a custom key value has been given for one of the keys, return the image URL. */
-	if ( !empty( $image ) )
+	if ( ! empty( $image ) ) {
 		return array( 'src' => $image );
+	}
 
 	return false;
 }
 
 /**
- * Checks for images using a custom version of the WordPress 2.9+ get_the_post_thumbnail() function.  
- * If an image is found, return it and the $post_thumbnail_id.  The WordPress function's other filters are 
+ * Checks for images using a custom version of the WordPress 2.9+ get_the_post_thumbnail() function.
+ * If an image is found, return it and the $post_thumbnail_id.  The WordPress function's other filters are
  * later added in the display_the_image() function.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
+ *
  * @param array $args Arguments for how to load and display the image.
+ *
  * @return array|bool Array of image attributes. | False if no image is found.
  */
 function get_the_image_by_post_thumbnail( $args = array() ) {
@@ -268,8 +290,9 @@ function get_the_image_by_post_thumbnail( $args = array() ) {
 	$post_thumbnail_id = get_post_thumbnail_id( $args['post_id'] );
 
 	/* If no post image ID is found, return false. */
-	if ( empty( $post_thumbnail_id ) )
+	if ( empty( $post_thumbnail_id ) ) {
 		return false;
+	}
 
 	/* Apply filters on post_thumbnail_size because this is a default WP filter used with its image feature. */
 	$size = apply_filters( 'post_thumbnail_size', $args['size'] );
@@ -284,16 +307,19 @@ function get_the_image_by_post_thumbnail( $args = array() ) {
 	$caption = get_post_field( 'post_excerpt', $post_thumbnail_id );
 
 	/* Return both the image URL and the post thumbnail ID. */
+
 	return array( 'src' => $image[0], 'post_thumbnail_id' => $post_thumbnail_id, 'alt' => $alt, 'caption' => $caption );
 }
 
 /**
- * Check for attachment images.  Uses get_children() to check if the post has images attached.  If image 
+ * Check for attachment images.  Uses get_children() to check if the post has images attached.  If image
  * attachments are found, loop through each.  The loop only breaks once $order_of_image is reached.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
+ *
  * @param array $args Arguments for how to load and display the image.
+ *
  * @return array|bool Array of image attributes. | False if no image is found.
  */
 function get_the_image_by_attachment( $args = array() ) {
@@ -304,9 +330,7 @@ function get_the_image_by_attachment( $args = array() ) {
 	/* Check if the post itself is an image attachment. */
 	if ( 'attachment' == $post_type && wp_attachment_is_image( $args['post_id'] ) ) {
 		$attachment_id = $args['post_id'];
-	}
-
-	/* If the post is not an attachment, check if it has any image attachments. */
+	} /* If the post is not an attachment, check if it has any image attachments. */
 	elseif ( 'attachment' !== $post_type ) {
 
 		/* Get attachments for the inputted $post_id. */
@@ -323,7 +347,7 @@ function get_the_image_by_attachment( $args = array() ) {
 		);
 
 		/* Check if any attachments were found. */
-		if ( !empty( $attachments ) ) {
+		if ( ! empty( $attachments ) ) {
 
 			/* Set the default iterator to 0. */
 			$i = 0;
@@ -335,14 +359,15 @@ function get_the_image_by_attachment( $args = array() ) {
 				$attachment_id = $id;
 
 				/* Break if/when we hit 'order_of_image'. */
-				if ( ++$i == $args['order_of_image'] )
+				if ( ++$i == $args['order_of_image'] ) {
 					break;
+				}
 			}
 		}
 	}
 
 	/* Check if we have an attachment ID before proceeding. */
-	if ( !empty( $attachment_id ) ) {
+	if ( ! empty( $attachment_id ) ) {
 
 		/* Get the attachment image. */
 		$image = wp_get_attachment_image_src( $attachment_id, $args['size'] );
@@ -354,24 +379,29 @@ function get_the_image_by_attachment( $args = array() ) {
 		$caption = get_post_field( 'post_excerpt', $attachment_id );
 
 		/* Save the attachment as the 'featured image'. */
-		if ( true === $args['thumbnail_id_save'] )
+		if ( true === $args['thumbnail_id_save'] ) {
 			set_post_thumbnail( $args['post_id'], $attachment_id );
+		}
 
 		/* Return the image URL. */
+
 		return array( 'src' => $image[0], 'alt' => $alt, 'caption' => $caption );
 	}
 
 	/* Return false for anything else. */
+
 	return false;
 }
 
 /**
- * Scans the post for images within the content.  Not called by default with get_the_image().  Shouldn't use 
+ * Scans the post for images within the content.  Not called by default with get_the_image().  Shouldn't use
  * if using large images within posts, better to use the other options.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
+ *
  * @param array $args Arguments for how to load and display the image.
+ *
  * @return array|bool Array of image attributes. | False if no image is found.
  */
 function get_the_image_by_scan( $args = array() ) {
@@ -380,19 +410,22 @@ function get_the_image_by_scan( $args = array() ) {
 	preg_match_all( '|<img.*?src=[\'"](.*?)[\'"].*?>|i', get_post_field( 'post_content', $args['post_id'] ), $matches );
 
 	/* If there is a match for the image, return its URL. */
-	if ( isset( $matches ) && !empty( $matches[1][0] ) )
+	if ( isset( $matches ) && ! empty( $matches[1][0] ) ) {
 		return array( 'src' => $matches[1][0] );
+	}
 
 	return false;
 }
 
 /**
- * Used for setting a default image.  The function simply returns the image URL it was given in an array.  
+ * Used for setting a default image.  The function simply returns the image URL it was given in an array.
  * Not used with get_the_image() by default.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
+ *
  * @param array $args Arguments for how to load and display the image.
+ *
  * @return array|bool Array of image attributes. | False if no image is found.
  */
 function get_the_image_by_default( $args = array() ) {
@@ -400,44 +433,49 @@ function get_the_image_by_default( $args = array() ) {
 }
 
 /**
- * Formats an image with appropriate alt text and class.  Adds a link to the post if argument is set.  Should 
+ * Formats an image with appropriate alt text and class.  Adds a link to the post if argument is set.  Should
  * only be called if there is an image to display, but will handle it if not.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
- * @param array $args Arguments for how to load and display the image.
+ *
+ * @param array $args  Arguments for how to load and display the image.
  * @param array $image Array of image attributes ($image, $classes, $alt, $caption).
+ *
  * @return string $image Formatted image (w/link to post if the option is set).
  */
 function get_the_image_format( $args = array(), $image = false ) {
 
 	/* If there is no image URL, return false. */
-	if ( empty( $image['src'] ) )
+	if ( empty( $image['src'] ) ) {
 		return false;
+	}
 
 	/* Extract the arguments for easy-to-use variables. */
 	extract( $args );
 
 	/* If there is alt text, set it.  Otherwise, default to the post title. */
-	$image_alt = ( ( !empty( $image['alt'] ) ) ? $image['alt'] : get_post_field( 'post_title', $post_id ) );
+	$image_alt = ( ( ! empty( $image['alt'] ) ) ? $image['alt'] : get_post_field( 'post_title', $post_id ) );
 
 	/* If there is a width or height, set them as HMTL-ready attributes. */
-	$width = ( ( $width ) ? ' width="' . esc_attr( $width ) . '"' : '' );
+	$width  = ( ( $width ) ? ' width="' . esc_attr( $width ) . '"' : '' );
 	$height = ( ( $height ) ? ' height="' . esc_attr( $height ) . '"' : '' );
 
 	/* Loop through the custom field keys and add them as classes. */
 	if ( is_array( $meta_key ) ) {
-		foreach ( $meta_key as $key )
+		foreach ( $meta_key as $key ) {
 			$classes[] = $key;
+		}
 	}
 
 	/* Add the $size to the class. */
 	$classes[] = $size;
 
 	/* Get the custom image class. */
-	if ( !empty( $image_class ) ) {
-		if ( !is_array( $image_class ) )
+	if ( ! empty( $image_class ) ) {
+		if ( ! is_array( $image_class ) ) {
 			$image_class = preg_split( '#\s+#', $image_class );
+		}
 		$classes = array_merge( $classes, $image_class );
 	}
 
@@ -451,54 +489,61 @@ function get_the_image_format( $args = array(), $image = false ) {
 	$html = '<img src="' . $image['src'] . '" alt="' . esc_attr( strip_tags( $image_alt ) ) . '" class="' . esc_attr( $class ) . '"' . $width . $height . ' />';
 
 	/* If $link_to_post is set to true, link the image to its post. */
-	if ( $link_to_post )
+	if ( $link_to_post ) {
 		$html = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . $html . '</a>';
+	}
 
 	/* If there is a $post_thumbnail_id, apply the WP filters normally associated with get_the_post_thumbnail(). */
-	if ( !empty( $image['post_thumbnail_id'] ) )
+	if ( ! empty( $image['post_thumbnail_id'] ) ) {
 		$html = apply_filters( 'post_thumbnail_html', $html, $post_id, $image['post_thumbnail_id'], $size, '' );
+	}
 
 	/* If we're showing a caption. */
-	if ( true === $args['caption'] && !empty( $image['caption'] ) )
+	if ( true === $args['caption'] && ! empty( $image['caption'] ) ) {
 		$html = img_caption_shortcode( array( 'caption' => $image['caption'], 'width' => $args['width'] ), $html );
+	}
 
 	return $html;
 }
 
 /**
- * Saves the image URL as the value of the meta key provided.  This allows users to set a custom meta key 
- * for their image.  By doing this, users can trim off database queries when grabbing attachments or get rid 
+ * Saves the image URL as the value of the meta key provided.  This allows users to set a custom meta key
+ * for their image.  By doing this, users can trim off database queries when grabbing attachments or get rid
  * of expensive scans of the content when using the image scan feature.
  *
- * @since 0.6.0
+ * @since  0.6.0
  * @access private
- * @param array $args Arguments for how to load and display the image.
+ *
+ * @param array $args  Arguments for how to load and display the image.
  * @param array $image Array of image attributes ($image, $classes, $alt, $caption).
  */
 function get_the_image_meta_key_save( $args = array(), $image = array() ) {
 
 	/* If the $meta_key_save argument is empty or there is no image $url given, return. */
-	if ( empty( $args['meta_key_save'] ) || empty( $image['src'] ) )
+	if ( empty( $args['meta_key_save'] ) || empty( $image['src'] ) ) {
 		return;
+	}
 
 	/* Get the current value of the meta key. */
 	$meta = get_post_meta( $args['post_id'], $args['meta_key_save'], true );
 
 	/* If there is no value for the meta key, set a new value with the image $url. */
-	if ( empty( $meta ) )
+	if ( empty( $meta ) ) {
 		add_post_meta( $args['post_id'], $args['meta_key_save'], $image['src'] );
-
-	/* If the current value doesn't match the image $url, update it. */
-	elseif ( $meta !== $image['src'] )
+	} /* If the current value doesn't match the image $url, update it. */
+	elseif ( $meta !== $image['src'] ) {
 		update_post_meta( $args['post_id'], $args['meta_key_save'], $image['src'], $meta );
+	}
 }
 
 /**
  * Deletes the image cache for the specific post when the 'save_post' hook is fired.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
+ *
  * @param int $post_id The ID of the post to delete the cache for.
+ *
  * @return void
  */
 function get_the_image_delete_cache_by_post( $post_id ) {
@@ -506,13 +551,15 @@ function get_the_image_delete_cache_by_post( $post_id ) {
 }
 
 /**
- * Deletes the image cache for a specific post when the 'added_post_meta', 'deleted_post_meta', 
+ * Deletes the image cache for a specific post when the 'added_post_meta', 'deleted_post_meta',
  * or 'updated_post_meta' hooks are called.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access private
+ *
  * @param int $meta_id The ID of the metadata being updated.
  * @param int $post_id The ID of the post to delete the cache for.
+ *
  * @return void
  */
 function get_the_image_delete_cache_by_meta( $meta_id, $post_id ) {
@@ -520,7 +567,7 @@ function get_the_image_delete_cache_by_meta( $meta_id, $post_id ) {
 }
 
 /**
- * @since 0.1.0
+ * @since      0.1.0
  * @deprecated 0.3.0
  */
 function get_the_image_link( $deprecated = '', $deprecated_2 = '', $deprecated_3 = '' ) {
@@ -528,7 +575,7 @@ function get_the_image_link( $deprecated = '', $deprecated_2 = '', $deprecated_3
 }
 
 /**
- * @since 0.3.0
+ * @since      0.3.0
  * @deprecated 0.7.0
  */
 function image_by_custom_field( $args = array() ) {
@@ -536,7 +583,7 @@ function image_by_custom_field( $args = array() ) {
 }
 
 /**
- * @since 0.4.0
+ * @since      0.4.0
  * @deprecated 0.7.0
  */
 function image_by_the_post_thumbnail( $args = array() ) {
@@ -544,7 +591,7 @@ function image_by_the_post_thumbnail( $args = array() ) {
 }
 
 /**
- * @since 0.3.0
+ * @since      0.3.0
  * @deprecated 0.7.0
  */
 function image_by_attachment( $args = array() ) {
@@ -552,7 +599,7 @@ function image_by_attachment( $args = array() ) {
 }
 
 /**
- * @since 0.3.0
+ * @since      0.3.0
  * @deprecated 0.7.0
  */
 function image_by_scan( $args = array() ) {
@@ -560,7 +607,7 @@ function image_by_scan( $args = array() ) {
 }
 
 /**
- * @since 0.3.0
+ * @since      0.3.0
  * @deprecated 0.7.0
  */
 function image_by_default( $args = array() ) {
@@ -568,7 +615,7 @@ function image_by_default( $args = array() ) {
 }
 
 /**
- * @since 0.1.0
+ * @since      0.1.0
  * @deprecated 0.7.0
  */
 function display_the_image( $args = array(), $image = false ) {
@@ -576,7 +623,7 @@ function display_the_image( $args = array(), $image = false ) {
 }
 
 /**
- * @since 0.5.0
+ * @since      0.5.0
  * @deprecated 0.7.0 Replaced by cache delete functions specifically for the post ID.
  */
 function get_the_image_delete_cache() {

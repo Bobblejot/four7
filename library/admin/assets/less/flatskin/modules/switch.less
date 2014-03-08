@@ -7,144 +7,144 @@
  * ============================================================ */
 
 .has-switch {
-  border-radius: @switch-border-radius;
-  display: inline-block;
-  cursor: pointer;
-  line-height: @line-height-base;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
-  width: @switch-width;
-  .mask(~"url('../images/switch/mask.png') 0 0 no-repeat");
-  .user-select(none);
+	border-radius: @switch-border-radius;
+	display:       inline-block;
+	cursor:        pointer;
+	line-height:   @line-height-base;
+	overflow:      hidden;
+	position:      relative;
+	text-align:    left;
+	width:         @switch-width;
+	.mask(~"url('../images/switch/mask.png') 0 0 no-repeat");
+	.user-select(none);
 
-  &.deactivate {
-    .opacity(.5);
-    cursor: default !important;
-    
-    label,
-    span {
-      cursor: default !important;
-    }
-  }
+	&.deactivate {
+		.opacity(.5);
+		cursor: default !important;
 
-  > div {
-    width: 130px;
-    position: relative;
-    top: 0;
+		label,
+		span {
+			cursor: default !important;
+		}
+	}
 
-    &.switch-animate {
-      .transition(left .25s ease-out);
-    }
+	> div {
+		width:    130px;
+		position: relative;
+		top:      0;
 
-    &.switch-off {
-      left: -50px;
+		&.switch-animate {
+			.transition(left .25s ease-out);
+		}
 
-      label {
-        background-color: mix(@brand-primary, white, 63%);
-        border-color: @gray-light;
-        .box-shadow(-1px 0 0 fade(@inverse, 50%));
-      }
-    }
+		&.switch-off {
+			left: -50px;
 
-    &.switch-on {
-      left: 0;
+			label {
+				background-color: mix(@brand-primary, white, 63%);
+				border-color:     @gray-light;
+				.box-shadow(-1px 0 0 fade(@inverse, 50%));
+			}
+		}
 
-      label {
-        background-color: @brand-secondary;
-      }
-    }
-  }
+		&.switch-on {
+			left: 0;
 
-  input[type=checkbox] {
-    display: none;
-  }
+			label {
+				background-color: @brand-secondary;
+			}
+		}
+	}
 
-  span {
-    cursor: pointer;
-    font-size: @component-font-size-base; // 15px
-    font-weight: 700;
-    float: left;
-    height: 29px;
-    line-height: 19px;
-    margin: 0;
-    padding-bottom: 6px;
-    padding-top: 5px;
-    position: relative;
-    text-align: center;
-    width: 50%;
-    z-index: 1;
-    .transition(.25s ease-out);
+	input[type=checkbox] {
+		display: none;
+	}
 
-    &.switch-left {
-      border-radius: @switch-border-radius 0 0 @switch-border-radius;
-      background-color: @brand-primary;
-      color: @brand-secondary;
-      border-left: 1px solid transparent;
-    }
+	span {
+		cursor:         pointer;
+		font-size:      @component-font-size-base; // 15px
+		font-weight:    700;
+		float:          left;
+		height:         29px;
+		line-height:    19px;
+		margin:         0;
+		padding-bottom: 6px;
+		padding-top:    5px;
+		position:       relative;
+		text-align:     center;
+		width:          50%;
+		z-index:        1;
+		.transition(.25s ease-out);
 
-    &.switch-right {
-      border-radius: 0 @switch-border-radius @switch-border-radius 0;
-      background-color: @gray-light;
-      color: @inverse;
-      text-indent: 7px;
+		&.switch-left {
+			border-radius:    @switch-border-radius 0 0 @switch-border-radius;
+			background-color: @brand-primary;
+			color:            @brand-secondary;
+			border-left:      1px solid transparent;
+		}
 
-      [class*="fa-"] {
-        text-indent: 0;
-      }
-    }
-  }
+		&.switch-right {
+			border-radius:    0 @switch-border-radius @switch-border-radius 0;
+			background-color: @gray-light;
+			color:            @inverse;
+			text-indent:      7px;
 
-  label {
-    border: 4px solid @brand-primary;
-    border-radius: 50%;
-    float: left;
-    height: 29px;
-    margin: 0 -15px;
-    padding: 0;
-    position: relative;
-    vertical-align: middle;
-    width: 29px;
-    z-index: 100;
-    .transition(.25s ease-out);
-  }
+			[class*="fa-"] {
+				text-indent: 0;
+			}
+		}
+	}
+
+	label {
+		border:         4px solid @brand-primary;
+		border-radius:  50%;
+		float:          left;
+		height:         29px;
+		margin:         0 -15px;
+		padding:        0;
+		position:       relative;
+		vertical-align: middle;
+		width:          29px;
+		z-index:        100;
+		.transition(.25s ease-out);
+	}
 }
 
 // Square Switch
 // -------------------------------
 .switch-square {
-  border-radius: @border-radius-large;
-  .mask(~"url('../images/switch/mask.png') 0 0 no-repeat");
+	border-radius: @border-radius-large;
+	.mask(~"url('../images/switch/mask.png') 0 0 no-repeat");
 
-  > div {
-    &.switch-off {
-      label {
-        border-color: mix(@brand-primary, white, 63%);
-        border-radius: @border-radius-large 0 0 @border-radius-large;
-      }
-    }
-  }
+	> div {
+		&.switch-off {
+			label {
+				border-color:  mix(@brand-primary, white, 63%);
+				border-radius: @border-radius-large 0 0 @border-radius-large;
+			}
+		}
+	}
 
-  span {
-    &.switch-left {
-      border-radius: @border-radius-large 0 0 @border-radius-large;
-      
-      [class*="fa-"] {
-        text-indent: -10px;
-      }
-    }
+	span {
+		&.switch-left {
+			border-radius: @border-radius-large 0 0 @border-radius-large;
 
-    &.switch-right {
-      border-radius: 0 @border-radius-large @border-radius-large 0;
-      
-      [class*="fa-"] {
-        text-indent: 5px;
-      }
-    }
-  }
+			[class*="fa-"] {
+				text-indent: -10px;
+			}
+		}
 
-  label {
-    border-radius: 0 @border-radius-large @border-radius-large 0;
-    border-color: @brand-secondary;
-  }
+		&.switch-right {
+			border-radius: 0 @border-radius-large @border-radius-large 0;
+
+			[class*="fa-"] {
+				text-indent: 5px;
+			}
+		}
+	}
+
+	label {
+		border-radius: 0 @border-radius-large @border-radius-large 0;
+		border-color:  @brand-secondary;
+	}
 }

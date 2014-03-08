@@ -4,7 +4,7 @@
  * vCard widget
  */
 class Four7_Vcard_Widget extends WP_Widget {
-	private $fields = array( 
+	private $fields = array(
 		'title'          => 'Title ( optional )',
 		'street_address' => 'Street Address',
 		'locality'       => 'City/Locality',
@@ -12,7 +12,7 @@ class Four7_Vcard_Widget extends WP_Widget {
 		'postal_code'    => 'Zipcode/Postal Code',
 		'tel'            => 'Telephone',
 		'email'          => 'Email'
-	 );
+	);
 
 	function __construct() {
 		$widget_ops = array( 'classname' => 'widget_four7_vcard', 'description' => __( 'Use this widget to add a vCard', 'four7' ) );
@@ -28,16 +28,17 @@ class Four7_Vcard_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		$cache = wp_cache_get( 'widget_four7_vcard', 'widget' );
 
-		if ( !is_array( $cache ) ) {
+		if ( ! is_array( $cache ) ) {
 			$cache = array();
 		}
 
-		if ( !isset( $args['widget_id'] ) ) {
+		if ( ! isset( $args['widget_id'] ) ) {
 			$args['widget_id'] = null;
 		}
 
 		if ( isset( $cache[$args['widget_id']] ) ) {
 			echo $cache[$args['widget_id']];
+
 			return;
 		}
 
@@ -46,8 +47,10 @@ class Four7_Vcard_Widget extends WP_Widget {
 
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'vCard', 'four7' ) : $instance['title'], $instance, $this->id_base );
 
-		foreach( $this->fields as $name => $label ) {
-			if ( !isset( $instance[$name] ) ) { $instance[$name] = ''; }
+		foreach ( $this->fields as $name => $label ) {
+			if ( ! isset( $instance[$name] ) ) {
+				$instance[$name] = '';
+			}
 		}
 
 		echo $before_widget;
@@ -55,7 +58,7 @@ class Four7_Vcard_Widget extends WP_Widget {
 		if ( $title ) {
 			echo $before_title, $title, $after_title;
 		}
-	?>
+		?>
 		<p class="vcard">
 			<a class="fn org url" href="<?php echo home_url( '/' ); ?>"><?php bloginfo( 'name' ); ?></a><br>
 			<span class="adr">
@@ -67,7 +70,7 @@ class Four7_Vcard_Widget extends WP_Widget {
 			<span class="tel"><span class="value"><?php echo $instance['tel']; ?></span></span><br>
 			<a class="email" href="mailto:<?php echo $instance['email']; ?>"><?php echo $instance['email']; ?></a>
 		</p>
-	<?php
+		<?php
 		echo $after_widget;
 
 		$cache[$args['widget_id']] = ob_get_flush();
@@ -93,13 +96,13 @@ class Four7_Vcard_Widget extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		foreach( $this->fields as $name => $label ) {
+		foreach ( $this->fields as $name => $label ) {
 			${$name} = isset( $instance[$name] ) ? esc_attr( $instance[$name] ) : '';
-		?>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( $name ) ); ?>"><?php _e( "{$label}:", 'four7' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( $name ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $name ) ); ?>" type="text" value="<?php echo ${$name}; ?>">
-		</p>
+			?>
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( $name ) ); ?>"><?php _e( "{$label}:", 'four7' ); ?></label>
+				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( $name ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $name ) ); ?>" type="text" value="<?php echo ${$name}; ?>">
+			</p>
 		<?php
 		}
 	}
@@ -108,4 +111,5 @@ class Four7_Vcard_Widget extends WP_Widget {
 function four7_vcard_widget_init() {
 	register_widget( 'Four7_Vcard_Widget' );
 }
+
 add_action( 'widgets_init', 'four7_vcard_widget_init' );
