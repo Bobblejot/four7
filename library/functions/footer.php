@@ -28,7 +28,6 @@ function four7_footer_content() {
 			echo '</div>';
 		}
 	}
-	echo '</div>';
 
 	do_action( 'four7_footer_html' );
 }

@@ -9,7 +9,7 @@
 
 	<?php do_action( 'get_header' ); ?>
 
-	<?php fs_get_template_part( 'templates/top-bar' ); ?>
+	<?php fs_get_template_part( apply_filters( 'four7_top_bar_template', 'templates/top-bar' ) ); ?>
 
 	<?php do_action( 'four7_pre_wrap' ); ?>
 

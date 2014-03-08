@@ -468,8 +468,11 @@ class FOUR7_Framework_Core {
         return $this->defines['form-input'];
     }
 
+	public function panel_classes() {
+		return 'panel';
+	}
 
-    /*
+	/*
 	 * The site logo.
 	 * If no custom logo is uploaded, use the sitename
 	 */
